@@ -8,7 +8,7 @@ public class CharacterStatsController : MonoBehaviour
 
     private void Awake()
     {
-        InitializeStats();
+        //InitializeStats();
     }
 
     private void Update()
@@ -25,6 +25,18 @@ public class CharacterStatsController : MonoBehaviour
         //Stats.Add(StatTag.Mana, new CharacterStat("Mana", StatTag.Mana, 50f));
         Stats.Add(StatTag.Strength, new Stat("Strength", StatTag.Strength, 5f,true));
         //Stats.Add(StatTag.MovementSpeed, new CharacterStat("Movement Speed", StatTag.MovementSpeed, 5f));
+
+        foreach (var stat in Stats.Values)
+        {
+            stat.OnValueChanged += HandleStatChanged;
+        }
+    }
+
+    public void SOIntializeStats(SO_CharacterStats enterStats)
+    {
+        Stats.Add(enterStats.TagSTR, new Stat(enterStats.NameSTR, enterStats.TagSTR, enterStats.BaseValueSTR, enterStats.AlarmBZ_STR));
+        Stats.Add(enterStats.TagHP, new Stat(enterStats.NameHP, enterStats.TagHP, enterStats.BaseValueHP, enterStats.AlarmBZ_HP));
+        Stats.Add(enterStats.TagEP, new Stat(enterStats.NameEP, enterStats.TagEP, enterStats.BaseValueEP, enterStats.AlarmBZ_EP));
 
         foreach (var stat in Stats.Values)
         {

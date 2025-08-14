@@ -4,7 +4,10 @@ public class Character : MonoBehaviour
 {
     [Header("Настройки")]
     [SerializeField] private CharacterSettings _settings;
+    [SerializeField] private SO_CharacterStats _enetringStats;
+
     [SerializeField] private GameObject _selectedTarget;
+    private CharacterStatsController _statsController;
 
     public  SceneObjectTag SceneObjectTag {get; private set;}
 
@@ -12,11 +15,17 @@ public class Character : MonoBehaviour
 
     void Awake()
     {
+        _statsController = GetComponent<CharacterStatsController>();
+        if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
     }
 
+    #region Публичные свойства
     public GameObject GetSelectedTarget() => _selectedTarget;
     public void SetSelectedTarget(GameObject target) { _selectedTarget = target; }
+    public CharacterStatsController GetStatsController() { return _statsController; }
+
+    #endregion
 
     public void InitializeFromSettings()
     {
@@ -28,6 +37,17 @@ public class Character : MonoBehaviour
         else
         {
             Debug.LogWarning("Character settings not assigned!", this);
+            SceneObjectTag = SceneObjectTag.Hero;
+            _selectedTarget = null;
+        }
+
+        if (_enetringStats != null)
+        {
+            _statsController.SOIntializeStats(_enetringStats);
+        }
+        else
+        {
+            Debug.LogWarning("Character starting stats not assigned!", this);
             SceneObjectTag = SceneObjectTag.Hero;
             _selectedTarget = null;
         }

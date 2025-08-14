@@ -1,6 +1,7 @@
 public enum StatTag
 {
-    //Health,
+    Health,
+    Energy,
     //Mana,
     Strength,
     Agility
