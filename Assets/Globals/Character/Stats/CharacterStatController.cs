@@ -1,6 +1,7 @@
 using Mono.Cecil;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.STP;
 
 public class CharacterStatsController : MonoBehaviour
 {
@@ -32,17 +33,25 @@ public class CharacterStatsController : MonoBehaviour
         }
     }
 
-    public void SOIntializeStats(SO_CharacterStats enterStats)
+    public void SOIntializeStats(SO_CharacterStatsConfig config)
     {
-        Stats.Add(enterStats.TagSTR, new Stat(enterStats.NameSTR, enterStats.TagSTR, enterStats.BaseValueSTR, enterStats.AlarmBZ_STR));
-        Stats.Add(enterStats.TagHP, new Stat(enterStats.NameHP, enterStats.TagHP, enterStats.BaseValueHP, enterStats.AlarmBZ_HP));
-        Stats.Add(enterStats.TagEP, new Stat(enterStats.NameEP, enterStats.TagEP, enterStats.BaseValueEP, enterStats.AlarmBZ_EP));
+        Stats.Clear();
 
-        foreach (var stat in Stats.Values)
+        foreach (var statDef in config.Stats)
         {
-            stat.OnValueChanged += HandleStatChanged;
+            if (!Stats.ContainsKey(statDef.Tag))
+            {
+                var newStat = new Stat(statDef.Name, statDef.Tag, statDef.BaseValue, statDef.HasAlarm);
+                newStat.OnValueChanged += HandleStatChanged;
+                Stats.Add(statDef.Tag, newStat);
+            }
+            else
+            {
+                Debug.LogWarning($"Duplicate StatTag {statDef.Tag} in config!", this);
+            }
         }
     }
+
 
     private void UpdateAllTimedModifiers()
     {
@@ -74,6 +83,8 @@ public class CharacterStatsController : MonoBehaviour
     public void LogingData()
     {
         Debug.Log($"Stat {Stats[StatTag.Strength].Name} = {Stats[StatTag.Strength].Value} {Stats[StatTag.Strength].Tag}");
+        Debug.Log($"Stat {Stats[StatTag.Health].Name} = {Stats[StatTag.Health].Value} {Stats[StatTag.Health].Tag}");
+        Debug.Log($"Stat {Stats[StatTag.Energy].Name} = {Stats[StatTag.Energy].Value} {Stats[StatTag.Energy].Tag}");
     }
 
     public void AddTempModifier()

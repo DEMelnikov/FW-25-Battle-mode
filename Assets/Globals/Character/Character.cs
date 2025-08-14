@@ -4,7 +4,7 @@ public class Character : MonoBehaviour
 {
     [Header("Настройки")]
     [SerializeField] private CharacterSettings _settings;
-    [SerializeField] private SO_CharacterStats _enetringStats;
+    [SerializeField] private SO_CharacterStatsConfig _statsConfig;
 
     [SerializeField] private GameObject _selectedTarget;
     private CharacterStatsController _statsController;
@@ -41,9 +41,9 @@ public class Character : MonoBehaviour
             _selectedTarget = null;
         }
 
-        if (_enetringStats != null)
+        if (_statsConfig != null)
         {
-            _statsController.SOIntializeStats(_enetringStats);
+            _statsController.SOIntializeStats(_statsConfig);
         }
         else
         {
