@@ -68,11 +68,26 @@ public static class SelectionManager
 
     private static void SetSimpleSelection(GameObject selected)
     {
-        _selectedObject = selected;
-        _opponentObject = null;
-        OnSelectionChanged?.Invoke();
-        OnOpponentChanged?.Invoke();
-        Debug.Log($"Selected: {selected.name}");
+
+        if (selected.TryGetComponent<Character>(out var selectedChar))
+        {
+            if (selectedChar.SceneObjectTag == SceneObjectTag.Hero)
+            {
+                _selectedObject = selected;
+                _opponentObject = null;
+                OnSelectionChanged?.Invoke();
+                OnOpponentChanged?.Invoke();
+                Debug.Log($"Selected: {selected.name}");
+            }
+            if (selectedChar.SceneObjectTag == SceneObjectTag.Enemy)
+            {
+                _selectedObject = null;
+                _opponentObject = selected;
+                OnSelectionChanged?.Invoke();
+                OnOpponentChanged?.Invoke();
+                Debug.Log($"Selected: {selected.name}");
+            }
+        }
     }
 
     private static void SetSelectionWithOpponent(GameObject selected, GameObject opponent)
