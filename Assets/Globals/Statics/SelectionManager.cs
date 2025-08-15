@@ -8,7 +8,7 @@ public static class SelectionManager
 {
     #region События
     public static event Action OnSelectionChanged;
-    public static event Action<GameObject> OnOpponentChanged;
+    public static event Action OnOpponentChanged;
     #endregion
 
     private static GameObject _selectedObject;
@@ -71,6 +71,7 @@ public static class SelectionManager
         _selectedObject = selected;
         _opponentObject = null;
         OnSelectionChanged?.Invoke();
+        OnOpponentChanged?.Invoke();
         Debug.Log($"Selected: {selected.name}");
     }
 
@@ -79,6 +80,7 @@ public static class SelectionManager
         _selectedObject = selected;
         _opponentObject = opponent;
         OnSelectionChanged?.Invoke();
+        OnOpponentChanged?.Invoke();
         Debug.Log($"Selected: {selected.name}, Opponent: {opponent.name}");
     }
 
@@ -90,7 +92,7 @@ public static class SelectionManager
         if (_opponentObject == newOpponent) return;
 
         _opponentObject = newOpponent;
-        //OnOpponentChanged?.Invoke(_opponentObject);
+        OnOpponentChanged?.Invoke();
         Debug.Log($" SelectionManager: Selected new opponent: {_opponentObject.name} ");
     }
 
@@ -102,6 +104,7 @@ public static class SelectionManager
         _selectedObject = null;
         _opponentObject = null;
         OnSelectionChanged?.Invoke();
+        OnOpponentChanged?.Invoke();
     }
 
     /// <summary>
@@ -126,11 +129,11 @@ public static class SelectionManager
     private static void ResetStatic()
     {
         // Сбрасываем статическое состояние при перезагрузке домена
-        _selectedObject = null;
-        _opponentObject = null;
-        _lastSelected = null;
+        _selectedObject    = null;
+        _opponentObject    = null;
+        _lastSelected      = null;
         OnSelectionChanged = null;
-        OnOpponentChanged = null;
+        OnOpponentChanged  = null;
     }
     #endregion
 }

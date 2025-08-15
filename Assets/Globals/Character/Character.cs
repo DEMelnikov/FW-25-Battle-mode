@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject _selectedTarget;
     private CharacterStatsController _statsController;
 
-    public  SceneObjectTag SceneObjectTag {get; private set;}
+    [SerializeField] public  SceneObjectTag SceneObjectTag {get; private set;}
 
 
 

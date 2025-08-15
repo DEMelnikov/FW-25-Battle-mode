@@ -12,5 +12,23 @@ public class TempButtonScript : MonoBehaviour
         {
             healthStat.AddToTmpModifier(-5f);
         }
+
+        if (SelectionManager.SelectedObject.GetComponent<CharacterStatsController>().
+         Stats.TryGetValue(StatTag.Energy, out var epStat))
+        {
+            epStat.AddToTmpModifier(-5f);
+        }
+
+        if (SelectionManager.OpponentObject.GetComponent<CharacterStatsController>().
+        Stats.TryGetValue(StatTag.Health, out var EnhealthStat))
+        {
+            EnhealthStat.AddToTmpModifier(-10f);
+        }
+
+        if (SelectionManager.OpponentObject.GetComponent<CharacterStatsController>().
+         Stats.TryGetValue(StatTag.Energy, out var EnepStat))
+        {
+            EnepStat.AddToTmpModifier(-25f);
+        }
     }
 }
