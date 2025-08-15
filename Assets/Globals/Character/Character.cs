@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -11,14 +12,29 @@ public class Character : MonoBehaviour
 
     [SerializeField] public  SceneObjectTag SceneObjectTag {get; private set;}
 
+    public StateMaschine StateMaschine { get; set; }
+    public hState_Idle IdleState { get; set; }
 
-
+    #region Unity methods
     void Awake()
     {
         _statsController = GetComponent<CharacterStatsController>();
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
+
+        InitializeStateMachine();
     }
+
+    void Update()
+    {
+        StateMaschine.CurrentState.FrameUpdate();
+    }
+
+    void FixedUpdate()
+    {
+        StateMaschine.CurrentState.PhysicUpdate();
+    }
+    #endregion
 
     #region Публичные свойства
     public GameObject GetSelectedTarget() => _selectedTarget;
@@ -51,6 +67,17 @@ public class Character : MonoBehaviour
             SceneObjectTag = SceneObjectTag.Hero;
             _selectedTarget = null;
         }
+    }
+
+    private void InitializeStateMachine()
+    {
+        StateMaschine = new StateMaschine();
+        
+        IdleState = new hState_Idle(this, StateMaschine);
+        //AttackState = new AttackState(this, StateMachine);
+        //MoveState = new MoveState(this, StateMachine);
+
+        StateMaschine.Initialize(IdleState);
     }
 
 }
