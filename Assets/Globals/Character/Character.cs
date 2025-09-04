@@ -4,11 +4,15 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [Header("Настройки")]
+    [Tooltip("Контроллер характеристик персонажа")]
     [SerializeField] private CharacterSettings _settings;
     [SerializeField] private SO_CharacterStatsConfig _statsConfig;
-
-    [SerializeField] private GameObject _selectedTarget;
     private CharacterStatsController _statsController;
+
+
+    [Tooltip("Цель для атаки")]
+    [SerializeField] private GameObject _selectedTarget;
+
 
     [SerializeField] public  SceneObjectTag SceneObjectTag {get; private set;}
 
