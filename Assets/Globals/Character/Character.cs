@@ -4,13 +4,13 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [Header("Настройки")]
-    [SerializeField] private CharacterSettings _settings;
-    [SerializeField] private SO_CharacterStatsConfig _statsConfig;
+    [SerializeField] private CharacterSettings         _settings;
+    [SerializeField] private SO_CharacterStatsConfig   _statsConfig;
 
-    [SerializeField] private GameObject _selectedTarget;
-    private CharacterStatsController _statsController;
+    [SerializeField] private GameObject                _selectedTarget;
+                     private CharacterStatsController  _statsController;
 
-    [SerializeField] public  SceneObjectTag SceneObjectTag {get; private set;}
+    [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
 
     public StateMaschine StateMaschine { get; set; }
     public hState_Idle IdleState { get; set; }

@@ -25,3 +25,11 @@ MonoBehaviour:
     Tag: 1
     BaseValue: 150
     HasAlarm: 1
+  - Name: UnarmedAttack
+    Tag: 4
+    BaseValue: 2
+    HasAlarm: 0
+  - Name: Agility
+    Tag: 3
+    BaseValue: 3
+    HasAlarm: 0

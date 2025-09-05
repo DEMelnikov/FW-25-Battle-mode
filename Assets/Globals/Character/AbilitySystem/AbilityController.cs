@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using AbilitySystem.AbilityComponents;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AbilitySystem
 {
     public class AbilityController : MonoBehaviour
     {
-        [SerializeField] private Character character;
+                         private Character     character;
         [SerializeField] private List<Ability> availableAbilities = new List<Ability>();
 
         private void Awake()
@@ -17,15 +18,8 @@ namespace AbilitySystem
 
         public bool TryActivateAbility(Ability ability)
         {
-            if (ability == null || !CanActivateAbility(ability))
+            if (ability == null || !CanActivateAbility(ability) || !CheckTriggersReady(ability))
                 return false;
-
-            // Проверяем триггеры
-            foreach (var trigger in ability.triggers)
-            {
-                if (!trigger.CheckTrigger(character))
-                    return false;
-            }
 
             // Списание стоимости
             if (!PayAbilityCost(ability))
@@ -48,26 +42,21 @@ namespace AbilitySystem
             return ability != null && ability.CanAfford(character);
         }
 
+        private bool CheckTriggersReady(Ability ability)
+        {
+            // Проверяем триггеры
+            foreach (var trigger in ability.triggers)
+            {
+                if (!trigger.CheckTrigger(character))
+                    return false;
+            }
+            return true;
+        }
+
         private bool PayAbilityCost(Ability ability)
         {
-            foreach (var cost in ability.costs)
-            {
-                if (cost.type == AbilityCost.CostType.Stat)
-                {
-                    //TODO
-                    //var stat = character.Stats.GetStat(cost.statName);
-                    //if (stat != null)
-                    //{
-                    //    stat.CurrentValue -= cost.statCost;
-                    //}
-                }
-                // Для предметов - заглушка
-                else if (cost.type == AbilityCost.CostType.Item)
-                {
-                    // В будущем: удаление предмета из инвентаря
-                    Debug.Log($"Used item {cost.itemId} x{cost.itemCount}");
-                }
-            }
+            if (!ability.PayAllCost(character)) return false;
+
             return true;
         }
 

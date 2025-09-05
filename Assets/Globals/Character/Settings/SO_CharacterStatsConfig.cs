@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SO_CharacterStatsConfig", menuName = "Characters/Stats Config")]
+[CreateAssetMenu(fileName = "SO_CharacterStatsConfig", menuName = "FW25/Characters/Stats Config")]
 public class SO_CharacterStatsConfig : ScriptableObject
 {
     [System.Serializable]
