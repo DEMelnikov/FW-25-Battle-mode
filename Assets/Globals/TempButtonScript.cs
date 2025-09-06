@@ -34,6 +34,10 @@ public class TempButtonScript : MonoBehaviour
 
     public void ReadAllStats()
     {
-        SelectionManager.SelectedObject.GetComponent<CharacterStatsController>().LogingData();
+        var selection = SelectionManager.SelectedObject;
+        if (selection == null) selection = SelectionManager.OpponentObject;
+        if (selection == null) return;
+
+        selection.GetComponent<CharacterStatsController>().LogingData();
     }
 }

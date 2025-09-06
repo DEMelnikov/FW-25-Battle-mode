@@ -32,11 +32,11 @@ namespace AbilitySystem
             
             Debug.Log($"Ability Controller - result = {outcome} successes");
 
-            //// Применение результатов
-            //foreach (var resolve in ability.resolves)
-            //{
-            //    resolve.ApplyResolve(character, outcome);
-            //}
+            // Применение результатов
+            foreach (var resolve in ability.resolves)
+            {
+                resolve.ApplyResolve(character, outcome);
+            }
 
             return true;
         }

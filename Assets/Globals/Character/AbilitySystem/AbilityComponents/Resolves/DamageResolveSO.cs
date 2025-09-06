@@ -20,7 +20,7 @@ namespace AbilitySystem.AbilityComponents
 
                 CharacterStatsController heroStats = character.GetStatsController();
 
-                enemyStats.Stats[StatTag.Health].AddToTmpModifier(outcome * _defaultDamage*-1);
+                enemyStats.Stats[StatTag.Health].AddToTmpModifier(outcome * _defaultDamage * -1);
                 enemyStats.Stats[StatTag.Energy].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value*-1);
             }
 
