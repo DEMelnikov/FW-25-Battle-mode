@@ -22,9 +22,9 @@ namespace AbilitySystem
                 return false;
 
             Debug.Log("Ability Controller - ready to PayCost");
-            //// Списание стоимости
-            //if (!PayAbilityCost(ability))
-            //    return false;
+            // Списание стоимости
+            if (!PayAbilityCost(ability))
+                return false;
 
             //// Выполнение действия
             //var outcome = ability.action.ExecuteAction(character);

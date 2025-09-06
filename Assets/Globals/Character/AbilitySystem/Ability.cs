@@ -71,6 +71,8 @@ namespace AbilitySystem
 
         public bool PayAllCost(Character character)
         {
+            if (logging) { Debug.Log($"Start PayAllCost  ó {abilityName}"); }
+
             foreach (var cost in costs)
             {
                 if (!cost.PayAbilityCost(character))
