@@ -26,8 +26,11 @@ namespace AbilitySystem
             if (!PayAbilityCost(ability))
                 return false;
 
-            //// Выполнение действия
-            //var outcome = ability.action.ExecuteAction(character);
+            Debug.Log("Ability Controller - ready to abilityAction");
+            // Выполнение действия
+            var outcome = ability.action.ExecuteAction(character);
+            
+            Debug.Log($"Ability Controller - result = {outcome} successes");
 
             //// Применение результатов
             //foreach (var resolve in ability.resolves)

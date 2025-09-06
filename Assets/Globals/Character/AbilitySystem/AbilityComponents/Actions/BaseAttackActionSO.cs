@@ -14,17 +14,35 @@ namespace AbilitySystem.AbilityComponents
         //public override ActionOutcome ExecuteAction(Character character)
         public override int ExecuteAction(Character character)
         {
+            if (logging) { Debug.Log($"Character {character.name} starts action BaseAttackRollAction "); }
+
             int outcome = 0;
             float rolls = 0;
 
             CharacterStatsController charStats = character.GetStatsController();
+            if (charStats == null) 
+            {
+                if (logging) { Debug.Log($"BaseAttackRollAction: can't get CharacterStatsController "); }
+                return 0; 
+            }
+
+
+
             rolls += charStats.Stats[_primaryAttackStat].Value;
             rolls += charStats.Stats[_secondaryAttackStat].Value;
 
-            for (int i = 0; i <= rolls;)
+            if (logging) { Debug.Log($"BaseAttackRollAction: Got _primaryAttackStat   rolls = {rolls} "); }
+            if (logging) { Debug.Log($"BaseAttackRollAction: Got _secondaryAttackStat rolls = {rolls} "); }
+
+            for (int i = 0; i <= rolls; i++)
             {
-                if (Random.Range(0f, 100f) >= _DC) outcome++;
+                var roll = Random.Range(0f, 100f);
+                if (logging) { Debug.Log($"BaseAttackRollAction: Roll {i} result  = {roll} "); }
+                if ( roll >= _DC) outcome++;
             }
+
+            //if (logging) { Debug.Log($"BaseAttackRollAction: Made {rolls} and got  = {outcome} "); }
+
             //var outcome = new ActionOutcome();
             //float attackValue = character.Stats.GetStat(attackStat)?.CurrentValue ?? 0;
             //float defenseValue = character.Stats.GetStat(defenseStat)?.CurrentValue ?? 0;
@@ -56,7 +74,7 @@ namespace AbilitySystem.AbilityComponents
             //    outcome.effectiveness = 0.8f;
             //    outcome.message = "Attack failed!";
             //}
-            Debug.Log($"Character {character.name} make Attack roll & has {outcome} successes");
+            if (logging) { Debug.Log($"Character {character.name} make Attack roll & has {outcome} successes"); }
             return outcome;
         }
     }

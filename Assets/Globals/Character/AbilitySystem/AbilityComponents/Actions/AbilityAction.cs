@@ -15,6 +15,7 @@ namespace AbilitySystem.AbilityComponents
     public abstract class AbilityAction : ScriptableObject
     {
         //public abstract ActionOutcome ExecuteAction(Character character);
+        [SerializeField] public bool logging = true;
         public abstract int ExecuteAction(Character character);
     }
 }
