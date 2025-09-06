@@ -54,7 +54,8 @@ public class Character : MonoBehaviour
         {
             Debug.LogWarning("Character settings not assigned!", this);
             SceneObjectTag = SceneObjectTag.Hero;
-            _selectedTarget = null;
+            //TODO - убрать заглушку
+            //_selectedTarget = null;
         }
 
         if (_statsConfig != null)

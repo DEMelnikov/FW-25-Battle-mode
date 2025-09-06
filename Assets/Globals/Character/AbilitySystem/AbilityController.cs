@@ -21,18 +21,19 @@ namespace AbilitySystem
             if (ability == null || !CanActivateAbility(ability) || !CheckTriggersReady(ability))
                 return false;
 
-            // Списание стоимости
-            if (!PayAbilityCost(ability))
-                return false;
+            Debug.Log("Ability Controller - ready to PayCost");
+            //// Списание стоимости
+            //if (!PayAbilityCost(ability))
+            //    return false;
 
-            // Выполнение действия
-            var outcome = ability.action.ExecuteAction(character);
+            //// Выполнение действия
+            //var outcome = ability.action.ExecuteAction(character);
 
-            // Применение результатов
-            foreach (var resolve in ability.resolves)
-            {
-                resolve.ApplyResolve(character, outcome);
-            }
+            //// Применение результатов
+            //foreach (var resolve in ability.resolves)
+            //{
+            //    resolve.ApplyResolve(character, outcome);
+            //}
 
             return true;
         }
@@ -44,12 +45,20 @@ namespace AbilitySystem
 
         private bool CheckTriggersReady(Ability ability)
         {
+            if (ability.GetLoggingState()) { Debug.Log($"Start Check Triggers у {ability.name}"); }
             // Проверяем триггеры
             foreach (var trigger in ability.triggers)
             {
+                //if (!trigger.CheckTrigger(character))
+                //    return false;
                 if (!trigger.CheckTrigger(character))
-                    return false;
+                {
+                    Debug.Log($"  {ability.name} Trigger {trigger.name} not passed");
+                    return false; 
+                }
+                Debug.Log($"  {ability.name} Trigger {trigger.name} passed +++");
             }
+
             return true;
         }
 

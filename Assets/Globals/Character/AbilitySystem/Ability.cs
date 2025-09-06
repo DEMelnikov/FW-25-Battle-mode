@@ -11,6 +11,7 @@ namespace AbilitySystem
         [SerializeField] private string abilityName;
         [TextArea]       private string description;
                          public Sprite  icon;
+        [SerializeField] private bool   logging = false;
 
 
         [Header("Activation Requirements")]
@@ -52,13 +53,19 @@ namespace AbilitySystem
 
         public bool CanAfford(Character character)
         {
+            
+            if (logging) { Debug.Log($"Start check CanAfford ó {abilityName}"); }
+            //Debug.Log()
+
             foreach (var cost in costs)
             {
                 if (!cost.CanAffordCost(character))
                 {
-                      return false;
+                    if (logging) { Debug.Log($"CanAfford failed ó {abilityName}"); }
+                    return false;
                 }
             }
+            if (logging) { Debug.Log($"CanAfford passed ó {abilityName}"); }
             return true;
         }
 
@@ -73,5 +80,8 @@ namespace AbilitySystem
             }
             return true;
         }
+
+        public string GetAbilityName() { return abilityName; }
+        public bool GetLoggingState() { return logging; }
     }
 }

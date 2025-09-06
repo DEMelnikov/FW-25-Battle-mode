@@ -82,9 +82,14 @@ public class CharacterStatsController : MonoBehaviour
 
     public void LogingData()
     {
-        Debug.Log($"Stat {Stats[StatTag.Strength].Name} = {Stats[StatTag.Strength].Value} {Stats[StatTag.Strength].Tag}");
-        Debug.Log($"Stat {Stats[StatTag.Health].Name} = {Stats[StatTag.Health].Value} {Stats[StatTag.Health].Tag}");
-        Debug.Log($"Stat {Stats[StatTag.Energy].Name} = {Stats[StatTag.Energy].Value} {Stats[StatTag.Energy].Tag}");
+        //Debug.Log($"Stat {Stats[StatTag.Strength].Name} = {Stats[StatTag.Strength].Value} {Stats[StatTag.Strength].Tag}");
+        //Debug.Log($"Stat {Stats[StatTag.Health].Name} = {Stats[StatTag.Health].Value} {Stats[StatTag.Health].Tag}");
+        //Debug.Log($"Stat {Stats[StatTag.Energy].Name} = {Stats[StatTag.Energy].Value} {Stats[StatTag.Energy].Tag}");
+
+        foreach (var stat in Stats) 
+        {
+            Debug.Log($"Stat {stat.Key} = {stat.Value.Value}");
+        }
     }
 
     public void AddTempModifier()

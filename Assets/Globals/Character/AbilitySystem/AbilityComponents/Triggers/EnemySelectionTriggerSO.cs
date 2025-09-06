@@ -9,22 +9,62 @@ namespace AbilitySystem.AbilityComponents
         //public bool belowThreshold = true;
 
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Enemy;
+        [SerializeField] private bool logging = true;
 
         public override bool CheckTrigger(Character character)
         {
-            if (character.GetSelectedTarget() == null) return false;
-            GameObject _target = character.GetSelectedTarget();
-
-            if (!character.GetSelectedTarget().TryGetComponent<Character>(out var targetCharacter))
+            Debug.Log("Check trigger EnemySelectionTriggerSO started");
+            if (character == null)
+            {
+                if (logging) Debug.LogWarning("Character is null in EnemySelectionTriggerSO");
                 return false;
+            }
 
-            if (targetCharacter.SceneObjectTag != _targetTag) return false; else return true;
-                //var healthStat = character.Stats.GetStat("Health");
-                //if (healthStat == null) return false;
+            GameObject target = character.GetSelectedTarget();
+            if (target == null)
+            {
+                if (logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no selected target");
+                return false;
+            }
 
-                //float healthRatio = healthStat.CurrentValue / healthStat.MaxValue;
-                //return belowThreshold ? healthRatio <= healthThreshold : healthRatio >= healthThreshold;
+            // Защита 3: Проверка уничтоженного объекта
+            if (target.Equals(null))
+            {
+                if (logging) Debug.LogWarning("Check trigger EnemySelectionTriggerSO: Selected target is destroyed");
+                return false;
+            }
 
+            // Защита 4: Безопасное получение компонента
+            Character targetCharacter = target.GetComponent<Character>();
+            if (targetCharacter == null)
+            {
+                if (logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no Character component at target object");
+                return false;
+            }
+
+            // Защита 5: Проверка на уничтоженный компонент
+            if (targetCharacter.Equals(null))
+            {
+                if (logging) Debug.LogWarning("Character component is destroyed");
+                return false;
+            }
+
+            Debug.Log($"Check trigger EnemySelectionTriggerSO: get Target sceneObjectTag: {targetCharacter.SceneObjectTag} ");
+            Debug.Log($"Check trigger EnemySelectionTriggerSO: get _targetTag: {_targetTag} ");
+
+            // Защита 6: Проверка тега с null-check
+            bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;
+            Debug.Log($"Check trigger EnemySelectionTriggerSO: get tagMatches: {tagMatches} ");
+
+            if (logging)
+            {
+                Debug.Log($"Check trigger EnemySelectionTriggerSO: " +
+                         $"target tag = {targetCharacter.SceneObjectTag}, " +
+                         $"required tag = {_targetTag}, " +
+                         $"result = {(tagMatches ? "PASSED+++" : "FAILED---")}");
+            }
+
+            return tagMatches;
         }
     }
 }

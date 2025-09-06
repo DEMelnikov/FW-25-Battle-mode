@@ -31,4 +31,9 @@ public class TempButtonScript : MonoBehaviour
             EnepStat.AddToTmpModifier(-25f);
         }
     }
+
+    public void ReadAllStats()
+    {
+        SelectionManager.SelectedObject.GetComponent<CharacterStatsController>().LogingData();
+    }
 }
