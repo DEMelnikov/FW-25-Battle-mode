@@ -4,7 +4,8 @@ public enum StatTag
     Energy,
     //Mana,
     Strength,
-    Agility
+    Agility,
+    UnarmedAttack
     //Intelligence,
     //AttackDamage,
     //Armor,

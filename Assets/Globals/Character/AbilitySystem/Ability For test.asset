@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3701a9f828aa3674896752d19fe1246d, type: 3}
+  m_Name: Ability For test
+  m_EditorClassIdentifier: 
+  abilityName: MeleUnarmedAttack
+  icon: {fileID: 0}
+  triggers:
+  - {fileID: 11400000, guid: 3f4eb1e80a2509f40b3a6561bc36adad, type: 2}
+  costs:
+  - {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
+  action: {fileID: 11400000, guid: 348df2c179bed8a4a95546ff1dc95735, type: 2}
+  resolves:
+  - {fileID: 11400000, guid: ec494dc4b5f5c6241b1a95996e398a8f, type: 2}
+  tags:
+  - Mele
+  - Attack
+  - Unarmed
+  - Offencive

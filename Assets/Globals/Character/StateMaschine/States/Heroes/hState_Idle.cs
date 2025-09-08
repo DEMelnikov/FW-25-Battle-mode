@@ -20,7 +20,8 @@ public class hState_Idle : State
 
     public override void FrameUpdate()
     {
-        Debug.Log($"{base._character.name} just Idle");
+        //Debug.Log($"{base._character.name} just Idle");
+        if (PauseManager.IsPaused) return;
 
         if (base._character.GetSelectedTarget() != null)
         {
@@ -38,6 +39,7 @@ public class hState_Idle : State
 
     public override void PhysicUpdate()
     {
+        if (PauseManager.IsPaused) return;
         base.PhysicUpdate();
     }
 }
