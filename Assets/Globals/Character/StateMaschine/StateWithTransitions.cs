@@ -3,13 +3,7 @@ using UnityEngine;
 
 public abstract class StateWithTransitions : State
 {
-    [System.Serializable]
-    public class Transition
-    {
-        public Decision decision;
-        public State trueState;
-        public State falseState;
-    }
+
 
     [SerializeField] private List<Transition> transitions = new List<Transition>();
 
