@@ -8,9 +8,10 @@ public class Character : MonoBehaviour
     [SerializeField] private SO_CharacterStatsConfig   _statsConfig;
 
     [SerializeField] private GameObject                _selectedTarget;
-                     private CharacterStatsController  _statsController;
-
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
+
+                     private StateMachine _stateMachine;
+                     private CharacterStatsController  _statsController;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -21,6 +22,7 @@ public class Character : MonoBehaviour
         _statsController = GetComponent<CharacterStatsController>();
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
+        _stateMachine = GetComponent<StateMachine>();
 
         //InitializeStateMachine();
     }
@@ -40,7 +42,7 @@ public class Character : MonoBehaviour
     public GameObject GetSelectedTarget() => _selectedTarget;
     public void SetSelectedTarget(GameObject target) { _selectedTarget = target; }
     public CharacterStatsController GetStatsController() { return _statsController; }
-
+    public StateMachine GetStateMachine() => _stateMachine;
     #endregion
 
     public void InitializeFromSettings()
@@ -69,6 +71,9 @@ public class Character : MonoBehaviour
             _selectedTarget = null;
         }
     }
+
+
+    
 
     //private void InitializeStateMachine()
     //{
