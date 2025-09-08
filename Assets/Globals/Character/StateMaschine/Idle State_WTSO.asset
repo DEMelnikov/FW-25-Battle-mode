@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c7e4b7f4f2ef87468d56c2732d20c41, type: 3}
-  m_Name: New Idle State_WTSO
+  m_Name: Idle State_WTSO
   m_EditorClassIdentifier: 
   logging: 1
   transitions:

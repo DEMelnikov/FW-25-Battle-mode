@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1408b29bd2ff4d04293b4474a90ab26c, type: 3}
-  m_Name: New Has Target Taged_Decision SO
+  m_Script: {fileID: 11500000, guid: 3c7e4b7f4f2ef87468d56c2732d20c41, type: 3}
+  m_Name: e_Idle State_WTSO
   m_EditorClassIdentifier: 
   logging: 1
-  _targetTag: 1
+  transitions: []

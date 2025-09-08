@@ -15,7 +15,7 @@ namespace AbilitySystem
             if (character == null)
                 character = GetComponent<Character>();
         }
-
+        [ContextMenu("Вызвать метод")]
         public bool TryActivateAbility(Ability ability)
         {
             if (ability == null || !CanActivateAbility(ability) || !CheckTriggersReady(ability))
