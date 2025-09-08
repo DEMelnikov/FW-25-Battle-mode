@@ -22,7 +22,7 @@ public class StateMachine : MonoBehaviour
     private void Update()
     {
         if (PauseManager.IsPaused) return;
-            if (_currentState != null)
+        if (_currentState != null)
         {
             // Уведомляем decisions об обновлении
             NotifyDecisionsUpdate(_currentState);

@@ -11,7 +11,7 @@ public class IdleState_WTSO : StateWithTransitions
 
     public override void OnExit(StateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Exit Idle State:");
+        if (logging) Debug.Log($"{machine.Context.Owner.name} Exit Idle State:");
         base.OnExit(machine);
     }
 
@@ -22,13 +22,13 @@ public class IdleState_WTSO : StateWithTransitions
 
     public override void OnUpdate(StateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} On Idle State:");
+        if (logging) Debug.Log($"{machine.Context.Owner.name} On Idle State:");
         base.OnUpdate(machine);
     }
 
     protected override void CheckTransitions(StateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} CheckTransitions start on Idle State:");
+        if (logging) Debug.Log($"{machine.Context.Owner.name} CheckTransitions start on Idle State:");
         base.CheckTransitions(machine);
     }
 }

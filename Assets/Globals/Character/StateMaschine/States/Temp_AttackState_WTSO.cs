@@ -11,7 +11,7 @@ public class Temp_AttackState_WTSO : StateWithTransitions
 
     public override void OnExit(StateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Exit Attack State:");
+        if (logging) Debug.Log($"{machine.Context.Owner.name} Exit Attack State:");
         base.OnExit(machine);
     }
 
@@ -22,13 +22,13 @@ public class Temp_AttackState_WTSO : StateWithTransitions
 
     public override void OnUpdate(StateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} On Attack State:");
+        if (logging) Debug.Log($"{machine.Context.Owner.name} On Attack State:");
         base.OnUpdate(machine);
     }
 
     protected override void CheckTransitions(StateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} CheckTransitions start on Attack State:");
+        if (logging) Debug.Log($"{machine.Context.Owner.name} CheckTransitions start on Attack State:");
         base.CheckTransitions(machine);
     }
 }
