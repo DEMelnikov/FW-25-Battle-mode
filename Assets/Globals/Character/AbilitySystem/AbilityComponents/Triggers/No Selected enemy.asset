@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1408b29bd2ff4d04293b4474a90ab26c, type: 3}
-  m_Name: e_Has Target Taged_Decision SO
+  m_Script: {fileID: 11500000, guid: b4305960af531f140bbc930348b710c4, type: 3}
+  m_Name: No Selected enemy
   m_EditorClassIdentifier: 
+  _description: for test only
   logging: 1
   _targetTag: 0

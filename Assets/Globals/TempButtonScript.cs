@@ -4,6 +4,7 @@ using UnityEngine;
 public class TempButtonScript : MonoBehaviour
 {
     [SerializeField] private GameObject characterQQQ;
+    [SerializeField] private GameObject characterEnemy;
 
     public void DealDamage()
     {
@@ -39,5 +40,12 @@ public class TempButtonScript : MonoBehaviour
         if (selection == null) return;
 
         selection.GetComponent<CharacterStatsController>().LogingData();
+    }
+
+    public void TestAction()
+    {
+        var abilka = characterEnemy.GetComponent<Character>().GetAbilityController().GetAllAbilities();
+        var ability = abilka[0];
+        characterEnemy.GetComponent<Character>().GetAbilityController().TryActivateAbility(ability);
     }
 }

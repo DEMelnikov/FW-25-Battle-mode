@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Ability For test
   m_EditorClassIdentifier: 
   abilityName: MeleUnarmedAttack
+  description: only for tests
   icon: {fileID: 0}
+  logging: 0
   triggers:
   - {fileID: 11400000, guid: 3f4eb1e80a2509f40b3a6561bc36adad, type: 2}
   costs:

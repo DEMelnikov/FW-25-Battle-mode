@@ -9,7 +9,7 @@ namespace AbilitySystem
     {
         [Header("Basic Info")]
         [SerializeField] private string abilityName;
-        [TextArea]       private string description;
+        [SerializeField][TextArea(3,5)]  private string description;
                          public Sprite  icon;
         [SerializeField] private bool   logging = false;
 

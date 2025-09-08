@@ -1,3 +1,4 @@
+using AbilitySystem;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -10,8 +11,9 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject                _selectedTarget;
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
 
-                     private StateMachine _stateMachine;
+                     private StateMachine              _stateMachine;
                      private CharacterStatsController  _statsController;
+                     private AbilityController         _abilityController;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -43,6 +45,7 @@ public class Character : MonoBehaviour
     public void SetSelectedTarget(GameObject target) { _selectedTarget = target; }
     public CharacterStatsController GetStatsController() { return _statsController; }
     public StateMachine GetStateMachine() => _stateMachine;
+    public AbilityController GetAbilityController() => _abilityController;
     #endregion
 
     public void InitializeFromSettings()

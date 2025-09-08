@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: e_Idle State_WTSO
   m_EditorClassIdentifier: 
   logging: 1
-  transitions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: 10cf4681ac67e68468979af8111b6260, type: 2}
+    trueState: {fileID: 0}
+    falseState: {fileID: 0}
