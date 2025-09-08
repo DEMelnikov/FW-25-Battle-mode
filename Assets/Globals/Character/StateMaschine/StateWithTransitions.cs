@@ -3,8 +3,7 @@ using UnityEngine;
 
 public abstract class StateWithTransitions : State
 {
-
-
+    
     [SerializeField] private List<Transition> transitions = new List<Transition>();
 
     public override void OnUpdate(StateMachine machine)
