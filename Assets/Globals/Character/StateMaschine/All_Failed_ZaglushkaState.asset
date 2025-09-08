@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc61cdba064e37a40a2145acadc15bca, type: 3}
-  m_Name: e_Get Enemy_NPC State_WTSO
+  m_Script: {fileID: 11500000, guid: 4cf74ded57dc1344498f8c2fbbea41f9, type: 3}
+  m_Name: All_Failed_ZaglushkaState
   m_EditorClassIdentifier: 
   _description: 
   logging: 1
-  transitions:
-  - decision: {fileID: 0}
-    trueState: {fileID: 0}
+  transitions: []
   _allTransitiosFailedState: {fileID: 0}
+  _message: 

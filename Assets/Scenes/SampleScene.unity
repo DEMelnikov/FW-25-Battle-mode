@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63de1ed3f60d1564399a64ecae364986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testingObject: {fileID: 578513236}
+  testingObject: {fileID: 878806293192145506}
   testKey: 97
 --- !u!4 &304960289
 Transform:
@@ -1277,7 +1277,7 @@ Transform:
   m_GameObject: {fileID: 578513236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.73, y: -1.39, z: 0}
+  m_LocalPosition: {x: -2.72, y: -1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2286,9 +2286,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1560712530}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TempButtonScript, Assembly-CSharp
-        m_MethodName: ReadAllStats
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2349,6 +2349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterQQQ: {fileID: 578513236}
+  characterEnemy: {fileID: 878806293192145506}
 --- !u!1 &992131592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,6 +2545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterQQQ: {fileID: 578513236}
+  characterEnemy: {fileID: 0}
 --- !u!1 &1002492304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,6 +3297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterQQQ: {fileID: 578513236}
+  characterEnemy: {fileID: 0}
 --- !u!114 &1463234084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3539,6 +3542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterQQQ: {fileID: 0}
+  characterEnemy: {fileID: 0}
 --- !u!1 &1579725337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3667,6 +3671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterQQQ: {fileID: 578513236}
+  characterEnemy: {fileID: 878806293192145506}
 --- !u!114 &1738852371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3711,9 +3716,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 992131600}
+      - m_Target: {fileID: 7723458236203311624}
         m_TargetAssemblyTypeName: TempButtonScript, Assembly-CSharp
-        m_MethodName: test
+        m_MethodName: TestAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4240,6 +4245,7 @@ GameObject:
   - component: {fileID: 4815314378211106677}
   - component: {fileID: 7723458236203311622}
   - component: {fileID: 7723458236203311623}
+  - component: {fileID: 7723458236203311624}
   m_Layer: 3
   m_Name: En
   m_TagString: Untagged
@@ -4409,6 +4415,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableAbilities:
   - {fileID: 11400000, guid: 59a4160fb0359a542b8552f275dc5a23, type: 2}
+--- !u!114 &7723458236203311624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878806293192145506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterQQQ: {fileID: 578513236}
+  characterEnemy: {fileID: 878806293192145506}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

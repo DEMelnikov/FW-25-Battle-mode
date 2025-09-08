@@ -1,16 +1,12 @@
-using AbilitySystem;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "FW25/State Machine/States/GetEnemy (NPC)")]
-public class GetEnemy_NPCState_WTSO : StateWithTransitions
+[CreateAssetMenu(menuName = "FW25/State Machine/States/Zaglushka State")]
+public class tmp_ZaglushkaState : StateWithTransitions
 {
-                     private AbilityController _abilityController;
-    [SerializeField] private Ability _firstAbilityToSetEnemy;
-
+    [SerializeField] private string _message;
     public override void OnEnter(StateMachine machine)
     {
-        _abilityController = machine.Context._abilityController;
-        _abilityController.TryActivateAbility(_firstAbilityToSetEnemy);
+        Debug.LogWarning($"{machine.Context.Owner.name} Enters to Zaglushka State _ name: {_message}");
         base.OnEnter(machine);
     }
 
