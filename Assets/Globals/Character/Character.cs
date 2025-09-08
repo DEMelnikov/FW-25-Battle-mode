@@ -12,8 +12,8 @@ public class Character : MonoBehaviour
 
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
 
-    public StateMaschine StateMaschine { get; set; }
-    public hState_Idle IdleState { get; set; }
+    //public StateMaschine StateMaschine { get; set; }
+    //public hState_Idle IdleState { get; set; }
 
     #region Unity methods
     void Awake()
@@ -22,17 +22,17 @@ public class Character : MonoBehaviour
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
 
-        InitializeStateMachine();
+        //InitializeStateMachine();
     }
 
     void Update()
     {
-        StateMaschine.CurrentState.FrameUpdate();
+        //StateMaschine.CurrentState.FrameUpdate();
     }
 
     void FixedUpdate()
     {
-        StateMaschine.CurrentState.PhysicUpdate();
+        //StateMaschine.CurrentState.PhysicUpdate();
     }
     #endregion
 
@@ -70,15 +70,15 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void InitializeStateMachine()
-    {
-        StateMaschine = new StateMaschine();
+    //private void InitializeStateMachine()
+    //{
+    //    StateMaschine = new StateMaschine();
         
-        IdleState = new hState_Idle(this, StateMaschine);
-        //AttackState = new AttackState(this, StateMachine);
-        //MoveState = new MoveState(this, StateMachine);
+    //    IdleState = new hState_Idle(this, StateMaschine);
+    //    //AttackState = new AttackState(this, StateMachine);
+    //    //MoveState = new MoveState(this, StateMachine);
 
-        StateMaschine.Initialize(IdleState);
-    }
+    //    StateMaschine.Initialize(IdleState);
+    //}
 
 }

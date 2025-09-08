@@ -1,23 +1,15 @@
 using UnityEngine;
 
-public class State
+public abstract class State : ScriptableObject
 {
-    protected Character _character;
-    protected StateMaschine _stateMaschine;
+    public virtual void OnEnter(StateMachine machine) { }
+    public virtual void OnUpdate(StateMachine machine) { }
+    public virtual void OnFixedUpdate(StateMachine machine) { }
+    public virtual void OnExit(StateMachine machine) { }
 
-    public State(Character character, StateMaschine stateMaschine)
+    // Методы для проверки переходов
+    protected virtual void CheckTransitions(StateMachine machine)
     {
-        this._character = character;
-        this._stateMaschine = stateMaschine;
+        // Здесь будет логика проверки переходов между состояниями
     }
-
-    public virtual void EnterState() { }
-    public virtual void ExitState() { }
-    public virtual void FrameUpdate() { }
-    public virtual void PhysicUpdate() { }
-    //public virtual void AnimationTriggerEvent(_character.AnimationTriggerType triggerType) { }
-
-
-
-
 }
