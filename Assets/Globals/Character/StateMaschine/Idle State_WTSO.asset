@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7e4b7f4f2ef87468d56c2732d20c41, type: 3}
   m_Name: Idle State_WTSO
   m_EditorClassIdentifier: 
-  logging: 1
+  _description: 
+  logging: 0
   transitions:
   - decision: {fileID: 11400000, guid: 42eb9672ea7f23e499a6176b3b481c8d, type: 2}
     trueState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
-    falseState: {fileID: 0}
+  _allTransitiosFailedState: {fileID: 0}

@@ -16,4 +16,4 @@ MonoBehaviour:
   logging: 1
   transitions: []
   _allTransitiosFailedState: {fileID: 0}
-  _message: 
+  _message: all failed
