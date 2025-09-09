@@ -48,7 +48,7 @@ namespace AbilitySystem
 
         private bool CheckTriggersReady(Ability ability)
         {
-            if (ability.GetLoggingState()) { Debug.Log($"Start Check Triggers у {ability.name}"); }
+            //if (ability.GetLoggingState()) { Debug.Log($"Start Check Triggers у {ability.name}"); }
             // Проверяем триггеры
             foreach (var trigger in ability.triggers)
             {

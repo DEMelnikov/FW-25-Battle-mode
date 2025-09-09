@@ -1419,6 +1419,7 @@ MonoBehaviour:
   _selectedTarget: {fileID: 0}
   _waypoint: {fileID: 0}
   _whoIsYourEnemy: 1
+  logging: 1
 --- !u!114 &578513247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4507,6 +4508,7 @@ MonoBehaviour:
   _selectedTarget: {fileID: 0}
   _waypoint: {fileID: 0}
   _whoIsYourEnemy: 0
+  logging: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

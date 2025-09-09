@@ -49,9 +49,9 @@ namespace AbilitySystem
             return "TODO - work harder";
         }
 
-        public bool HasTag(string tag) => tags.Contains(tag);
+        public virtual bool HasTag(string tag) => tags.Contains(tag);
 
-        public bool CanAfford(Character character)
+        public virtual bool CanAfford(Character character)
         {
             
             if (logging) { Debug.Log($"Start check CanAfford ó {abilityName}"); }
@@ -69,7 +69,7 @@ namespace AbilitySystem
             return true;
         }
 
-        public bool PayAllCost(Character character)
+        public virtual bool PayAllCost(Character character)
         {
             if (logging) { Debug.Log($"Start PayAllCost  ó {abilityName}"); }
 
