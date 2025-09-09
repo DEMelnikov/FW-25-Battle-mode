@@ -14,7 +14,7 @@ namespace AbilitySystem.AbilityComponents
 
             if (outcome > 0)
             {
-                GameObject enemy = character.GetSelectedTarget();
+                GameObject enemy = character.GetTargets().GetTargetEnemy();
                 CharacterStatsController enemyStats = character.GetSelectedTarget().
                     GetComponent<Character>().GetStatsController();
 

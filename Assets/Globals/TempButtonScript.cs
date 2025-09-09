@@ -48,4 +48,9 @@ public class TempButtonScript : MonoBehaviour
         var ability = abilka[0];
         characterEnemy.GetComponent<Character>().GetAbilityController().TryActivateAbility(ability);
     }
+
+    public void SetTarget()
+    {
+        characterQQQ.GetComponent<Character>().GetTargets().SetTargetEnemy(characterEnemy);
+    }
 }

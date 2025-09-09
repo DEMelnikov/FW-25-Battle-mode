@@ -1206,6 +1206,8 @@ GameObject:
   - component: {fileID: 578513243}
   - component: {fileID: 578513244}
   - component: {fileID: 578513245}
+  - component: {fileID: 578513246}
+  - component: {fileID: 578513247}
   m_Layer: 3
   m_Name: He
   m_TagString: Untagged
@@ -1402,6 +1404,35 @@ MonoBehaviour:
   _currentState: {fileID: 0}
   _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   currentStateName: 
+--- !u!114 &578513246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578513236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770766db09adc2d4a8cb0b03a1936eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedTarget: {fileID: 0}
+  _waypoint: {fileID: 0}
+  _whoIsYourEnemy: 1
+--- !u!114 &578513247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578513236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterQQQ: {fileID: 0}
+  characterEnemy: {fileID: 0}
 --- !u!1 &589239454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2286,7 +2317,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 578513236}
         m_TargetAssemblyTypeName: TempButtonScript, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
@@ -3328,7 +3359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterQQQ: {fileID: 578513236}
-  characterEnemy: {fileID: 0}
+  characterEnemy: {fileID: 878806293192145506}
 --- !u!114 &1463234084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3373,9 +3404,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 578513239}
-        m_TargetAssemblyTypeName: CharacterStatsController, Assembly-CSharp
-        m_MethodName: LogingData
+      - m_Target: {fileID: 578513247}
+        m_TargetAssemblyTypeName: TempButtonScript, Assembly-CSharp
+        m_MethodName: SetTarget
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4277,6 +4308,7 @@ GameObject:
   - component: {fileID: 7723458236203311622}
   - component: {fileID: 7723458236203311623}
   - component: {fileID: 7723458236203311624}
+  - component: {fileID: 7723458236203311625}
   m_Layer: 3
   m_Name: En
   m_TagString: Untagged
@@ -4460,6 +4492,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 878806293192145506}
+--- !u!114 &7723458236203311625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878806293192145506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770766db09adc2d4a8cb0b03a1936eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedTarget: {fileID: 0}
+  _waypoint: {fileID: 0}
+  _whoIsYourEnemy: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

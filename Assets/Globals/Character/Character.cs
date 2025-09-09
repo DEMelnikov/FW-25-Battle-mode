@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
                      private StateMachine              _stateMachine;
                      private CharacterStatsController  _statsController;
                      private AbilityController         _abilityController;
+                     private Targets                   _targets;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -25,6 +26,7 @@ public class Character : MonoBehaviour
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
         _stateMachine = GetComponent<StateMachine>();
+        _targets = GetComponent<Targets>();
 
         //InitializeStateMachine();
     }
@@ -41,11 +43,12 @@ public class Character : MonoBehaviour
     #endregion
 
     #region Публичные свойства
-    public GameObject GetSelectedTarget() => _selectedTarget;
-    public void SetSelectedTarget(GameObject target) { _selectedTarget = target; }
+    public GameObject GetSelectedTarget() => _selectedTarget; //TODO заменить
+    public void SetSelectedTarget(GameObject target) { _selectedTarget = target; } //TODO заменить
     public CharacterStatsController GetStatsController() { return _statsController; }
     public StateMachine GetStateMachine() => _stateMachine;
     public AbilityController GetAbilityController() => _abilityController;
+    public Targets GetTargets() => _targets;
     #endregion
 
     public void InitializeFromSettings()
