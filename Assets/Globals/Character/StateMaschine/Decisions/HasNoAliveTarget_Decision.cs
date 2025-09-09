@@ -8,8 +8,8 @@ public class HasNoAliveTarget_DecisionSO : Decision
         if (logging) Debug.Log("Start Decision Has No Alive Target");
 
         var character = machine.Context.GetCharacter();
-        var target = character.GetSelectedTarget();
-        if (target == null)
+
+        if (character.GetTargets().HasTargetEnemy())
         {
             if (logging) Debug.Log($"Decision: {machine.Context.Owner.name} has no target");
             return true;

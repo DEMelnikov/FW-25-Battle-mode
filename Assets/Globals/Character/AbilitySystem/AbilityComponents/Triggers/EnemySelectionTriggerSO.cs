@@ -20,7 +20,7 @@ namespace AbilitySystem.AbilityComponents
                 return false;
             }
 
-            GameObject target = character.GetSelectedTarget();
+            GameObject target = character.GetTargets().GetTargetEnemy();
             if (target == null)
             {
                 if (logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no selected target");
@@ -33,7 +33,7 @@ namespace AbilitySystem.AbilityComponents
                 if (logging) Debug.LogWarning("Check trigger EnemySelectionTriggerSO: Selected target is destroyed");
                 return false;
             }
-
+            //TODO переписать под логику класса targetы
             // Защита 4: Безопасное получение компонента
             Character targetCharacter = target.GetComponent<Character>();
             if (targetCharacter == null)

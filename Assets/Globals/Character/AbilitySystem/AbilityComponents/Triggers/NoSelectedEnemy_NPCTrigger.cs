@@ -13,9 +13,9 @@ namespace AbilitySystem.AbilityComponents
 
             //var targetCharacter = character.GetComponent<Character>().GetSelectedTarget().GetComponent<Character>();
 
-            if (character?.GetSelectedTarget()==null) return true;
+            if (character.GetTargets().HasTargetEnemy()) return true;
 
-            var targetCharacter = character?.GetSelectedTarget()?.GetComponent<Character>();
+            character.GetTargets().TryGetTargetCharacter(out Character targetCharacter);
             if (targetCharacter == null) return false;
 
             bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;

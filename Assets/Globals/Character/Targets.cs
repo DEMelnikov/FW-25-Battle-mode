@@ -38,4 +38,11 @@ public class Targets:MonoBehaviour
     {
         return _selectedTarget;
     }
+
+    public bool TryGetTargetCharacter(out Character targetCharacter)
+    {
+        if (_selectedTarget != null && _selectedTarget.TryGetComponent<Character>(out targetCharacter)) return true;
+        targetCharacter = null;
+        return false;
+    }
 }
