@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63de1ed3f60d1564399a64ecae364986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityController: {fileID: 0}
   testingObject: {fileID: 878806293192145506}
   testKey: 97
 --- !u!4 &304960289
