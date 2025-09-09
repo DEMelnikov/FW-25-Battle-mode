@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>UnityAutoMoqPlus</id>
+    <version>3.0.0</version>
+    <title>Unity Auto Mocking container</title>
+    <authors>Raj Aththanayake, Thomas Pedersen</authors>
+    <owners>Raj Aththanayake,Thomas Pedersen</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/rajgit31/UnityAutoMoq</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Unity Auto Moq container allows developers to write maintainable Unit Tests in a productive manner.
+
+http://www.dotnetcurry.com/showarticle.aspx?ID=767
+
+http://thedersen.com/blog/2011/02/21/auto-mocking-with-unity-and-moq/</description>
+    <summary>A mocking container that allows you to write maintainable and productive Unit Tests with Moq and Unity DI container.</summary>
+    <releaseNotes>Upgraded to .NET 4.5
+Unity 3.5
+Also additional public API comments</releaseNotes>
+    <dependencies>
+      <dependency id="Moq" version="4.0.10827" />
+      <dependency id="Unity" version="3.5.1404.0" />
+    </dependencies>
+  </metadata>
+</package>

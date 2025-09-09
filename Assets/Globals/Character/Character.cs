@@ -1,3 +1,4 @@
+using AbilitySystem;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -8,12 +9,15 @@ public class Character : MonoBehaviour
     [SerializeField] private SO_CharacterStatsConfig   _statsConfig;
 
     [SerializeField] private GameObject                _selectedTarget;
-                     private CharacterStatsController  _statsController;
-
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
 
-    public StateMaschine StateMaschine { get; set; }
-    public hState_Idle IdleState { get; set; }
+                     private StateMachine              _stateMachine;
+                     private CharacterStatsController  _statsController;
+                     private AbilityController         _abilityController;
+                     private Targets                   _targets;
+
+    //public StateMaschine StateMaschine { get; set; }
+    //public hState_Idle IdleState { get; set; }
 
     #region Unity methods
     void Awake()
@@ -21,26 +25,30 @@ public class Character : MonoBehaviour
         _statsController = GetComponent<CharacterStatsController>();
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
+        _stateMachine = GetComponent<StateMachine>();
+        _targets = GetComponent<Targets>();
 
-        InitializeStateMachine();
+        //InitializeStateMachine();
     }
 
     void Update()
     {
-        StateMaschine.CurrentState.FrameUpdate();
+        //StateMaschine.CurrentState.FrameUpdate();
     }
 
     void FixedUpdate()
     {
-        StateMaschine.CurrentState.PhysicUpdate();
+        //StateMaschine.CurrentState.PhysicUpdate();
     }
     #endregion
 
     #region Публичные свойства
-    public GameObject GetSelectedTarget() => _selectedTarget;
-    public void SetSelectedTarget(GameObject target) { _selectedTarget = target; }
+    public GameObject GetSelectedTarget() => _selectedTarget; //TODO заменить
+    public void SetSelectedTarget(GameObject target) { _selectedTarget = target; } //TODO заменить
     public CharacterStatsController GetStatsController() { return _statsController; }
-
+    public StateMachine GetStateMachine() => _stateMachine;
+    public AbilityController GetAbilityController() => _abilityController;
+    public Targets GetTargets() => _targets;
     #endregion
 
     public void InitializeFromSettings()
@@ -70,15 +78,18 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void InitializeStateMachine()
-    {
-        StateMaschine = new StateMaschine();
-        
-        IdleState = new hState_Idle(this, StateMaschine);
-        //AttackState = new AttackState(this, StateMachine);
-        //MoveState = new MoveState(this, StateMachine);
 
-        StateMaschine.Initialize(IdleState);
-    }
+    
+
+    //private void InitializeStateMachine()
+    //{
+    //    StateMaschine = new StateMaschine();
+        
+    //    IdleState = new hState_Idle(this, StateMaschine);
+    //    //AttackState = new AttackState(this, StateMachine);
+    //    //MoveState = new MoveState(this, StateMachine);
+
+    //    StateMaschine.Initialize(IdleState);
+    //}
 
 }

@@ -9,18 +9,18 @@ namespace AbilitySystem.AbilityComponents
         //public bool belowThreshold = true;
 
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Enemy;
-        [SerializeField] private bool logging = true;
+        //[SerializeField] private bool logging = true;
 
         public override bool CheckTrigger(Character character)
         {
-            Debug.Log("Check trigger EnemySelectionTriggerSO started");
+            if (logging) Debug.Log("Check trigger EnemySelectionTriggerSO started");
             if (character == null)
             {
                 if (logging) Debug.LogWarning("Character is null in EnemySelectionTriggerSO");
                 return false;
             }
 
-            GameObject target = character.GetSelectedTarget();
+            GameObject target = character.GetTargets().GetTargetEnemy();
             if (target == null)
             {
                 if (logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no selected target");
@@ -33,7 +33,7 @@ namespace AbilitySystem.AbilityComponents
                 if (logging) Debug.LogWarning("Check trigger EnemySelectionTriggerSO: Selected target is destroyed");
                 return false;
             }
-
+            //TODO переписать под логику класса targetы
             // Защита 4: Безопасное получение компонента
             Character targetCharacter = target.GetComponent<Character>();
             if (targetCharacter == null)
