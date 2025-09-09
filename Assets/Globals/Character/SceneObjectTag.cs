@@ -1,5 +1,6 @@
 public enum SceneObjectTag
 {
     Hero,
-    Enemy
+    Enemy,
+    Neutral
 }

@@ -9,9 +9,10 @@ public class Character : MonoBehaviour
     [SerializeField] private SO_CharacterStatsConfig   _statsConfig;
 
     [SerializeField] private GameObject                _selectedTarget;
-    [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
+    //[SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
+    [SerializeField] public SceneObjectTag SceneObjectTag { get;  set; } //TODO - вернуть private
 
-                     private StateMachine              _stateMachine;
+    private StateMachine              _stateMachine;
                      private CharacterStatsController  _statsController;
                      private AbilityController         _abilityController;
                      private Targets                   _targets;
