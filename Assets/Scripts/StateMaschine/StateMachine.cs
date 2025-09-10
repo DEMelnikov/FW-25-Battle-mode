@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine : MonoBehaviour, IStateMachine
 {
     [SerializeField] private State _currentState;
     [SerializeField] private State _initialState;
-                     private StateContext _context;
+                     private IStateContext _context;
 
     // Для отладки в инспекторе
     [SerializeField] private string currentStateName;
@@ -103,7 +103,7 @@ public class StateMachine : MonoBehaviour
     }
 
     // Доступ к контексту для состояний
-    public StateContext Context => _context;
+    public IStateContext Context => _context;
 
     // Для установки внешних зависимостей
     //public void SetPlayerTarget(Transform playerTarget)

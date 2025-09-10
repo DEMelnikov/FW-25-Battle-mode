@@ -1,7 +1,7 @@
 using AbilitySystem;
 using UnityEngine;
 
-public class StateContext
+public class StateContext : IStateContext
 {
     public GameObject Owner { get; private set; }
     private Character _character;

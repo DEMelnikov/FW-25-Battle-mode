@@ -4,15 +4,15 @@ using UnityEngine;
 public abstract class StateWithTransitions : State
 {
     
-    [SerializeField] private List<Transition> transitions = new List<Transition>();
+    [SerializeField] private List<ITransition> transitions = new List<ITransition>();
     [SerializeField] private State _allTransitiosFailedState;
 
-    public override void OnUpdate(StateMachine machine)
+    public override void OnUpdate(IStateMachine machine)
     {
         CheckTransitions(machine);
     }
 
-    protected override void CheckTransitions(StateMachine machine)
+    protected override void CheckTransitions(IStateMachine machine)
     {
         foreach (var transition in transitions)
         {
@@ -34,7 +34,7 @@ public abstract class StateWithTransitions : State
         if(_allTransitiosFailedState!= null) machine.SetState(_allTransitiosFailedState);
     }
 
-    public List<Transition> GetTransitions()
+    public List<ITransition> GetTransitions()
     {
         return transitions;
     }

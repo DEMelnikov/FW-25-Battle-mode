@@ -2,7 +2,7 @@ using AbilitySystem;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, ISelectableCharacter
 {
     [Header("Настройки")]
     [SerializeField] private CharacterSettings         _settings;
@@ -11,10 +11,10 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject                _selectedTarget;
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
 
-                     private StateMachine              _stateMachine;
+                     private IStateMachine              _stateMachine;
                      private CharacterStatsController  _statsController;
                      private AbilityController         _abilityController;
-                     private CharacterTargets                   _targets;
+                     private CharacterTargets          _targets;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -25,7 +25,7 @@ public class Character : MonoBehaviour
         _statsController = GetComponent<CharacterStatsController>();
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
-        _stateMachine = GetComponent<StateMachine>();
+        _stateMachine = GetComponent<IStateMachine>();
         _targets = GetComponent<CharacterTargets>();
 
         //InitializeStateMachine();
@@ -46,7 +46,7 @@ public class Character : MonoBehaviour
     public GameObject GetSelectedTarget() => _selectedTarget; //TODO заменить
     public void SetSelectedTarget(GameObject target) { _selectedTarget = target; } //TODO заменить
     public CharacterStatsController GetStatsController() { return _statsController; }
-    public StateMachine GetStateMachine() => _stateMachine;
+    public IStateMachine GetStateMachine() => _stateMachine;
     public AbilityController GetAbilityController() => _abilityController;
     public CharacterTargets GetTargets() => _targets;
     #endregion

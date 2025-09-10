@@ -6,8 +6,8 @@ public abstract class Decision : ScriptableObject
 {
     [SerializeField] public bool logging = true;
     [SerializeField] private List<AbilityTrigger> abilityTriggers = new List<AbilityTrigger>();
-    public virtual void OnEnter(StateMachine machine) { }
-    public virtual void OnExit(StateMachine machine) { }
-    public virtual void OnUpdate(StateMachine machine) { }
-    public abstract bool Decide(StateMachine machine);
+    public virtual void OnEnter(IStateMachine machine) { }
+    public virtual void OnExit(IStateMachine machine) { }
+    public virtual void OnUpdate(IStateMachine machine) { }
+    public abstract bool Decide(IStateMachine machine);
 }
