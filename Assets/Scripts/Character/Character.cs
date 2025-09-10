@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
                      private StateMachine              _stateMachine;
                      private CharacterStatsController  _statsController;
                      private AbilityController         _abilityController;
-                     private Targets                   _targets;
+                     private CharacterTargets                   _targets;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
         _stateMachine = GetComponent<StateMachine>();
-        _targets = GetComponent<Targets>();
+        _targets = GetComponent<CharacterTargets>();
 
         //InitializeStateMachine();
     }
@@ -48,7 +48,7 @@ public class Character : MonoBehaviour
     public CharacterStatsController GetStatsController() { return _statsController; }
     public StateMachine GetStateMachine() => _stateMachine;
     public AbilityController GetAbilityController() => _abilityController;
-    public Targets GetTargets() => _targets;
+    public CharacterTargets GetTargets() => _targets;
     #endregion
 
     public void InitializeFromSettings()
