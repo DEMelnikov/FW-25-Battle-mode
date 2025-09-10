@@ -11,9 +11,9 @@ namespace AbilitySystem.AbilityComponents
         {
             if (logging) Debug.Log($"{character.name} starts CheckTrigger NoSelectedEnemy");
 
-            //var targetCharacter = character.GetComponent<Character>().GetSelectedTarget().GetComponent<Character>();
-
-            if (character.GetTargets().HasTargetEnemy()) return true;
+            // Используем новый безопасный метод
+            if (character.GetTargets().TryGetTargetEnemy(out _))
+                return true;
 
             character.GetTargets().TryGetTargetCharacter(out Character targetCharacter);
             if (targetCharacter == null) return false;
