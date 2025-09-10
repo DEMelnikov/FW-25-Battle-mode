@@ -1,7 +1,7 @@
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Targets:MonoBehaviour
+public class CharacterTargets:MonoBehaviour
 {
     [SerializeField] private GameObject     _selectedTarget;
     [SerializeField] private Transform      _waypoint;
