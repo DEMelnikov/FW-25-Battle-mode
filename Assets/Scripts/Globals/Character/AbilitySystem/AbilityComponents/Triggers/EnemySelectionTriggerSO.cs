@@ -5,6 +5,7 @@ namespace AbilitySystem.AbilityComponents
     [CreateAssetMenu(fileName = "EnemySelectionTrigger_Hero", menuName = "FW25/Ability System/Triggers/Enemy Selection(hero version)")]
     public class EnemySelectionTriggerSO : AbilityTrigger
     {
+        //есть тесткейсы - EnemySelectionTriggerTests
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Enemy;
         [SerializeField] private bool _logging = true;
 

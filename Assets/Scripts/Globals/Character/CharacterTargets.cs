@@ -18,18 +18,30 @@ public class CharacterTargets:MonoBehaviour
 
     public bool HasTargetEnemy()
     {
-        if (_selectedTarget == null) return false;
+        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.HasTargetEnemy() check start");
+        if (_selectedTarget == null) 
+        {
+            if (logging) Debug.Log($"{gameObject.name} CharacterTargets.HasTargetEnemy() _selectedTarget==null check over");
+            return false;
+        }
+
+        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.HasTargetEnemy() _selectedTarget!=null");
         if (_selectedTarget.GetComponent<Character>() == null) 
         {
             _selectedTarget = null;
             return false;
         }
-
+        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.HasTargetEnemy() _selectedTarget has CharacterComponent");
         if (_selectedTarget.GetComponent<Character>().SceneObjectTag != _whoIsYourEnemy) 
         {
+            if (logging) Debug.Log($"{gameObject.name} CharacterTargets.HasTargetEnemy() _selectedTarget " +
+                $"has tag{_selectedTarget.GetComponent<Character>().SceneObjectTag} " +
+                $"_whoIsYourEnemy = {_whoIsYourEnemy} Check FAILED---");
+
             _selectedTarget = null;
             return false;
         }
+        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.HasTargetEnemy() check Success");
 
         return true;
     }

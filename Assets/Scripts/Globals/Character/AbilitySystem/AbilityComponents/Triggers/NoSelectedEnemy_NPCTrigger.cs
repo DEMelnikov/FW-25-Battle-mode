@@ -15,20 +15,21 @@ namespace AbilitySystem.AbilityComponents
 
             if (character.GetTargets().HasTargetEnemy()) return true;
 
-            character.GetTargets().TryGetTargetCharacter(out Character targetCharacter);
-            if (targetCharacter == null) return false;
+            //character.GetTargets().TryGetTargetCharacter(out Character targetCharacter);
+            //if (targetCharacter == null) return false;
 
-            bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;
+            //bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;
 
-            if (logging)
-            {
-                Debug.Log($"Check trigger NoSelectedEnemy: " +
-                         $"target tag = {targetCharacter.SceneObjectTag}, " +
-                         $"required tag = {_targetTag}, " +
-                         $"result = {(tagMatches ? "PASSED+++" : "FAILED---")}");
-            }
+            //if (logging)
+            //{
+            //    Debug.Log($"Check trigger NoSelectedEnemy: " +
+            //             $"target tag = {targetCharacter.SceneObjectTag}, " +
+            //             $"required tag = {_targetTag}, " +
+            //             $"result = {(tagMatches ? "PASSED+++" : "FAILED---")}");
+            //}
 
-            return tagMatches;
+            //return tagMatches;
+            return false;
         }
     }
 }

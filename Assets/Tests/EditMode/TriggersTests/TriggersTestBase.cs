@@ -23,7 +23,7 @@ public class TriggerTestBase
 
         // 4. Настраиваем CharacterTargets через reflection:
         ReflectionHelper.SetPrivateField(testCharacterTargets, "_whoIsYourEnemy", SceneObjectTag.Enemy);
-        ReflectionHelper.SetPrivateField(testCharacterTargets, "logging", false);
+        ReflectionHelper.SetPrivateField(testCharacterTargets, "logging", true);
 
         // 5. Связываем CharacterTargets с Character через reflection
         ReflectionHelper.SetPrivateField(testCharacter, "_targets", testCharacterTargets);
@@ -34,6 +34,8 @@ public class TriggerTestBase
         // 7. Настраиваем триггер через reflection:
         ReflectionHelper.SetPrivateField(trigger, "_targetTag", SceneObjectTag.Enemy);
         ReflectionHelper.SetPrivateField(trigger, "_logging", false);
+
+        ClearAllTargets(); // Очищаем цели перед каждым тестом
     }
 
     [TearDown]
@@ -48,12 +50,15 @@ public class TriggerTestBase
     {
         var go = new GameObject(name);
         var character = go.AddComponent<Character>();
-        ReflectionHelper.SetPrivateField(character, "_sceneObjectTag", tag);
+
+        // ПРОСТОЕ РЕШЕНИЕ: используем public setter
+        character.SceneObjectTag = tag;
+
         return go;
     }
 
     // Вспомогательный метод для установки цели в систему CharacterTargets
-    protected void SetTestTarget(GameObject target)
+    protected void SetDirectTestTarget(GameObject target)
     {
         ReflectionHelper.SetPrivateField(testCharacterTargets, "_selectedTarget", target);
     }
@@ -86,5 +91,10 @@ public class TriggerTestBase
     protected void SetTargetThroughNativeMethod(GameObject target)
     {
         testCharacterTargets.SetTargetEnemy(target);
+    }
+
+    protected void ClearAllTargets()
+    {
+        ReflectionHelper.SetPrivateField(testCharacterTargets, "_selectedTarget", null);
     }
 }

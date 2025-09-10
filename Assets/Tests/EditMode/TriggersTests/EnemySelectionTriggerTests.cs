@@ -9,7 +9,7 @@ public class EnemySelectionTriggerTests : TriggerTestBase
     {
         // === ARRANGE ===
         var target = CreateTestTarget(SceneObjectTag.Enemy);
-        SetTestTarget(target);
+        SetDirectTestTarget(target);
 
         // === ACT ===
         bool result = trigger.CheckTrigger(testCharacter);
@@ -24,7 +24,7 @@ public class EnemySelectionTriggerTests : TriggerTestBase
     {
         // === ARRANGE ===
         var target = CreateTestTarget(SceneObjectTag.Hero);
-        SetTestTarget(target);
+        SetDirectTestTarget(target);
 
         // === ACT ===
         bool result = trigger.CheckTrigger(testCharacter);
@@ -39,7 +39,7 @@ public class EnemySelectionTriggerTests : TriggerTestBase
     {
         // === ARRANGE ===
         var target = new GameObject("TargetWithoutCharacter");
-        SetTestTarget(target);
+        SetDirectTestTarget(target);
 
         // === ACT ===
         bool result = trigger.CheckTrigger(testCharacter);
@@ -53,7 +53,7 @@ public class EnemySelectionTriggerTests : TriggerTestBase
     public void CheckTrigger_ReturnsFalse_WhenNoTarget()
     {
         // === ARRANGE ===
-        SetTestTarget(null);
+        SetDirectTestTarget(null);
 
         // === ACT ===
         bool result = trigger.CheckTrigger(testCharacter);
@@ -67,8 +67,9 @@ public class EnemySelectionTriggerTests : TriggerTestBase
     {
         // === ARRANGE ===
         var target = CreateTestTarget(SceneObjectTag.Enemy);
-        SetTestTarget(target);
+        SetDirectTestTarget(target);
         Object.DestroyImmediate(target);
+
 
         // === ACT ===
         bool result = trigger.CheckTrigger(testCharacter);
@@ -140,7 +141,7 @@ public class EnemySelectionTriggerTests : TriggerTestBase
         {
             // === ARRANGE ===
             var target = CreateTestTarget(testCase.target);
-            SetTestTarget(target);
+            SetDirectTestTarget(target);
             SetWhoIsEnemy(testCase.targetsEnemy);
             SetTriggerTargetTag(testCase.triggerTag);
 
@@ -168,7 +169,7 @@ public class EnemySelectionTriggerTests : TriggerTestBase
         // === ARRANGE ===
         var target = CreateTestTarget(SceneObjectTag.Enemy);
         target.SetActive(false); // Делаем цель неактивной
-        SetTestTarget(target);
+        SetDirectTestTarget(target);
 
         // === ACT ===
         bool result = trigger.CheckTrigger(testCharacter);
