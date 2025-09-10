@@ -5,7 +5,7 @@ public class StateContext : IStateContext
 {
     public GameObject Owner { get; private set; }
     private Character _character;
-    public AbilityController _abilityController { get; private set; }
+    public IAbilityController _abilityController { get; private set; }
     //public Transform PlayerTarget { get; set; }
     //public Animator Animator { get; private set; }
     //public Rigidbody Physics { get; private set; }
@@ -14,7 +14,7 @@ public class StateContext : IStateContext
     {
         Owner = owner;
         owner.TryGetComponent<Character>(out _character);
-        _abilityController = owner.GetComponent<AbilityController>();
+        _abilityController = owner.GetComponent<IAbilityController>();
         //Animator = owner.GetComponent<Animator>();
         //Physics = owner.GetComponent<Rigidbody>();
     }

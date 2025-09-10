@@ -18,6 +18,6 @@ namespace AbilitySystem.AbilityComponents
         //public abstract ActionOutcome ExecuteAction(Character character);
         [SerializeField] [TextArea(2,5)] protected string _description;
         [SerializeField] protected bool logging = true;
-        public abstract int ExecuteAction(Character character);
+        public virtual int ExecuteAction(ICharacter character) { return 0; }
     }
 }

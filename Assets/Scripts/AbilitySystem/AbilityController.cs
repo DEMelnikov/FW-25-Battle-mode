@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AbilitySystem
 {
-    public class AbilityController : MonoBehaviour
+    public class AbilityController : MonoBehaviour, IAbilityController
     {
                          private Character     character;
         [SerializeField] private List<Ability> availableAbilities = new List<Ability>();

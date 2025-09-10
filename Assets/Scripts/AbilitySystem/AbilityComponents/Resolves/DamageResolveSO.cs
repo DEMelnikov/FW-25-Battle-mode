@@ -9,7 +9,7 @@ namespace AbilitySystem.AbilityComponents
         //public float baseDamage = 10f;
         //public string damageStat = "Strength";
 
-        public override void ApplyResolve(Character character, int outcome)
+        public override void ApplyResolve(ICharacter character, int outcome)
         {
 
             if (outcome > 0)

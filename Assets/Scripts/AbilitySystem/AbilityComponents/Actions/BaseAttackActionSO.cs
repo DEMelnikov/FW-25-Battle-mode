@@ -12,14 +12,14 @@ namespace AbilitySystem.AbilityComponents
         //public string defenseStat = "Defense";
 
         //public override ActionOutcome ExecuteAction(Character character)
-        public override int ExecuteAction(Character character)
+        public override int ExecuteAction(ICharacter character)
         {
             if (logging) { Debug.Log($"Character {character.name} starts action BaseAttackRollAction "); }
 
             int outcome = 0;
             float rolls = 0;
 
-            CharacterStatsController charStats = character.GetStatsController();
+            IStatsController charStats = character.GetStatsController();
             if (charStats == null) 
             {
                 if (logging) { Debug.Log($"BaseAttackRollAction: can't get CharacterStatsController "); }

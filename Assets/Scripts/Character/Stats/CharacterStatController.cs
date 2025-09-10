@@ -1,9 +1,9 @@
 using Mono.Cecil;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.STP;
+//using static UnityEngine.Rendering.STP;
 
-public class CharacterStatsController : MonoBehaviour
+public class CharacterStatsController : MonoBehaviour, IStatsController
 {
     public Dictionary<StatTag, Stat> Stats { get; private set; } = new Dictionary<StatTag, Stat>();
 

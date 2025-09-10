@@ -2,7 +2,7 @@ using AbilitySystem;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public class Character : MonoBehaviour, ISelectableCharacter
+public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 {
     [Header("Настройки")]
     [SerializeField] private CharacterSettings         _settings;
@@ -13,7 +13,7 @@ public class Character : MonoBehaviour, ISelectableCharacter
 
                      private IStateMachine              _stateMachine;
                      private CharacterStatsController  _statsController;
-                     private AbilityController         _abilityController;
+                     private IAbilityController         _abilityController;
                      private CharacterTargets          _targets;
 
     //public StateMaschine StateMaschine { get; set; }
@@ -45,10 +45,12 @@ public class Character : MonoBehaviour, ISelectableCharacter
     #region Публичные свойства
     public GameObject GetSelectedTarget() => _selectedTarget; //TODO заменить
     public void SetSelectedTarget(GameObject target) { _selectedTarget = target; } //TODO заменить
-    public CharacterStatsController GetStatsController() { return _statsController; }
+    public IStatsController GetStatsController() { return _statsController; }
     public IStateMachine GetStateMachine() => _stateMachine;
-    public AbilityController GetAbilityController() => _abilityController;
-    public CharacterTargets GetTargets() => _targets;
+    public IAbilityController GetAbilityController() => _abilityController;
+    public ICharacterTargetsVault GetTargets() => _targets;
+    public Transform transform => this.transform;
+    public string name => gameObject.name;
     #endregion
 
     public void InitializeFromSettings()

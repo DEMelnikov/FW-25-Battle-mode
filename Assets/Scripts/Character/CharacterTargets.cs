@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterTargets : MonoBehaviour
+public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 {
     [SerializeField] private GameObject _selectedTarget;
     [SerializeField] private Transform _waypoint;

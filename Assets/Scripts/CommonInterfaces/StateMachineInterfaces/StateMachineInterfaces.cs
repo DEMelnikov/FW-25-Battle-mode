@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public interface IStateMachine
 {
@@ -10,6 +11,8 @@ public interface IStateMachine
 public interface IStateContext
 {
     GameObject Owner { get; }
+    ICharacter GetCharacter();
+
 }
 
 public interface ITransition

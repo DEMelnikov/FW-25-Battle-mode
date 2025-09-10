@@ -8,7 +8,7 @@ namespace AbilitySystem.AbilityComponents
         [SerializeField] [TextArea(3, 5)] protected string _description;
         [Header("Настройки:")]
                 [SerializeField] protected bool logging = true;
-        public abstract bool CheckTrigger(Character character);
+        public abstract bool CheckTrigger(ICharacter character);
 
         //public bool GetLoggingState() {  return logging; }
     }

@@ -13,7 +13,7 @@ namespace AbilitySystem.AbilityComponents
         private Transform myPosition;
 
 
-        public override int ExecuteAction(Character character)
+        public override int ExecuteAction(ICharacter character)
         {
             if (logging) Debug.Log($"{character.name} starts Action SetTarget and try find Enemy with tag {_targetTag}");
 

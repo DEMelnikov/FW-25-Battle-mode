@@ -5,7 +5,7 @@ public class HasTargetTaged_DecisionSO : Decision
 {
     [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Enemy;
 
-    public override bool Decide(StateMachine machine)
+    public override bool Decide(IStateMachine machine)
     {
         if (logging) Debug.Log("Start Decision HasTargetTaged");
 

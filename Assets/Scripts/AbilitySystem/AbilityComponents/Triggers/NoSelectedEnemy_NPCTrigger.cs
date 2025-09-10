@@ -7,7 +7,7 @@ namespace AbilitySystem.AbilityComponents
     {
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Hero;
 
-        public override bool CheckTrigger(Character character)
+        public override bool CheckTrigger(ICharacter character)
         {
             if (logging) Debug.Log($"{character.name} starts CheckTrigger NoSelectedEnemy");
 

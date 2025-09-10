@@ -12,11 +12,11 @@ namespace AbilitySystem.AbilityComponents
 
         //TODO - взять стоимость от оружия и набрать бафов
 
-        public override bool PayAbilityCost(Character character)
+        public override bool PayAbilityCost(ICharacter character)
         {
             if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: check started");
 
-            CharacterStatsController heroStats = character.GetStatsController();
+            IStatsController heroStats = character.GetStatsController();
 
             if (heroStats == null)
             {
@@ -40,9 +40,9 @@ namespace AbilitySystem.AbilityComponents
             return false;
         }
 
-        public override bool CanAffordCost(Character character)
+        public override bool CanAffordCost(ICharacter character)
         {
-            CharacterStatsController heroStats = character.GetStatsController();
+            IStatsController heroStats = character.GetStatsController();
             if (heroStats.Stats[StatTag.Energy].Value > _energyCost)  return true; else return false;
         }
     }

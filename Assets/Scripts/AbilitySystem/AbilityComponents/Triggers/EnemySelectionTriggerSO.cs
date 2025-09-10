@@ -9,7 +9,7 @@ namespace AbilitySystem.AbilityComponents
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Enemy;
         [SerializeField] private bool _logging = true;
 
-        public override bool CheckTrigger(Character character)
+        public override bool CheckTrigger(ICharacter character)
         {
             if (_logging) Debug.Log("Check trigger EnemySelectionTriggerSO started");
 

@@ -21,7 +21,7 @@ namespace AbilitySystem.AbilityComponents
 {
     public abstract class AbilityCost : ScriptableObject
     {
-        public abstract bool PayAbilityCost(Character character);
-        public abstract bool CanAffordCost(Character character);
+        public abstract bool PayAbilityCost(ICharacter character);
+        public abstract bool CanAffordCost(ICharacter character);
     }
 }
