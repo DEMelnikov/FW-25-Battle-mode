@@ -13,6 +13,7 @@ public abstract class IAbility : ScriptableObject
     public List<AbilityResolve> resolves;
     public List<AbilityTrigger> triggers;
     public virtual bool GetLoggingState() { return false; }
+    public string GetAbilityName() { return ""; }
 }
 
 public interface IAbilityController

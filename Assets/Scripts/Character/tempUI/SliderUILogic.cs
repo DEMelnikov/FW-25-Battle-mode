@@ -134,7 +134,7 @@ public class SliderUILogic : MonoBehaviour
         }
     }
 
-    private void OnStatChanged(Stat stat, float oldValue, float newValue)
+    private void OnStatChanged(IStat stat, float oldValue, float newValue)
     {
         _slider.value = newValue;
 
@@ -142,7 +142,7 @@ public class SliderUILogic : MonoBehaviour
         // healthSlider.maxValue = stat.BaseValue;
     }
 
-    private void OnStatBelowZero(Stat stat, float value)
+    private void OnStatBelowZero(IStat stat, float value)
     {
         Debug.Log("Stt is below zero!");
         // «десь можно добавить логику смерти персонажа
