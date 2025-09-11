@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterStatsController : MonoBehaviour, IStatsController
 {
-    public Dictionary<StatTag, Stat> Stats { get; private set; } = new Dictionary<StatTag, Stat>();
+    public Dictionary<StatTag, IStat> Stats { get; private set; } = new Dictionary<StatTag, IStat>();
 
     private void Awake()
     {
@@ -61,23 +61,9 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
         }
     }
 
-    private void HandleStatChanged(Stat stat, float oldValue, float newValue)
+    private void HandleStatChanged(IStat stat, float oldValue, float newValue)
     {
         Debug.Log($"[{Time.time}] Stat {stat.Name} changed from {oldValue} to {newValue}");
-    }
-
-    public void ApplyTemporaryShield()
-    {
-        var shieldMod = new TimedStatModifier(
-            "shield_" + Time.time,
-            "Magic Shield",
-            StatTag.Strength,
-            25f, // +25 к броне
-            StatModType.Flat,
-            10f); // 20 секунд действия
-
-        Stats[StatTag.Strength].AddTimedModifier(shieldMod);
-        Debug.Log("Shield activated!");
     }
 
     public void LogingData()

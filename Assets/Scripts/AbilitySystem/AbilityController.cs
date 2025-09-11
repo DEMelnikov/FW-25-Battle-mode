@@ -3,12 +3,11 @@ using AbilitySystem.AbilityComponents;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace AbilitySystem
-{
+
     public class AbilityController : MonoBehaviour, IAbilityController
     {
                          private Character     character;
-        [SerializeField] private List<Ability> availableAbilities = new List<Ability>();
+        [SerializeField] private List<IAbility> availableAbilities = new List<IAbility>();
 
         private void Awake()
         {
@@ -16,8 +15,10 @@ namespace AbilitySystem
                 character = GetComponent<Character>();
         }
         [ContextMenu("Вызвать метод")]
-        public bool TryActivateAbility(Ability ability)
+        //TODO - привести к нормальному виду TRY
+        public  bool TryActivateAbility(IAbility ability)
         {
+
             if (ability == null || !CanActivateAbility(ability) || !CheckTriggersReady(ability))
                 return false;
 
@@ -41,12 +42,12 @@ namespace AbilitySystem
             return true;
         }
 
-        public bool CanActivateAbility(Ability ability)
+        public bool CanActivateAbility(IAbility ability)
         {
             return ability != null && ability.CanAfford(character);
         }
 
-        private bool CheckTriggersReady(Ability ability)
+        private bool CheckTriggersReady(IAbility ability)
         {
             if (ability.GetLoggingState()) { Debug.Log($"Start Check Triggers у {ability.name}"); }
             // Проверяем триггеры
@@ -65,7 +66,7 @@ namespace AbilitySystem
             return true;
         }
 
-        private bool PayAbilityCost(Ability ability)
+        private bool PayAbilityCost(IAbility ability)
         {
             if (!ability.PayAllCost(character)) return false;
 
@@ -73,22 +74,21 @@ namespace AbilitySystem
         }
 
         // Методы для управления списком способностей
-        public void AddAbility(Ability ability)
+        public void AddAbility(IAbility ability)
         {
             if (ability != null && !availableAbilities.Contains(ability))
                 availableAbilities.Add(ability);
         }
 
-        public void RemoveAbility(Ability ability)
+        public void RemoveAbility(IAbility ability)
         {
             availableAbilities.Remove(ability);
         }
 
-        public List<Ability> GetAbilitiesByTag(string tag)
+        public List<IAbility> GetAbilitiesByTag(string tag)
         {
             return availableAbilities.FindAll(a => a.HasTag(tag));
         }
 
-        public List<Ability> GetAllAbilities() => availableAbilities;
+        public List<IAbility> GetAllAbilities() => availableAbilities;
     }
-}

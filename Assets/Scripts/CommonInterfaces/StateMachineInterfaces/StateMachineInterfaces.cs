@@ -12,6 +12,7 @@ public interface IStateContext
 {
     GameObject Owner { get; }
     ICharacter GetCharacter();
+    IAbilityController GetAbilityController();
 
 }
 

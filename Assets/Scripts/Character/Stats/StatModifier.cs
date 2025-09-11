@@ -1,6 +1,6 @@
 using Mono.Cecil;
 
-public class StatModifier
+public class StatModifier : IStatModifier
 {
     public string Id { get; private set; }
     public string Source { get; private set; }

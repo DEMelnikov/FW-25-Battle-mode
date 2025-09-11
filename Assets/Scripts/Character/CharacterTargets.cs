@@ -65,14 +65,15 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         }
     }
 
+    
     public GameObject GetTargetEnemy()
     {
         return TryGetTargetEnemy(out var target) ? target : null;
     }
 
-    public bool TryGetTargetCharacter(out Character targetCharacter)
+    public bool TryGetTargetCharacter(out ICharacter targetCharacter)
     {
-        if (_selectedTarget != null && _selectedTarget.TryGetComponent<Character>(out targetCharacter))
+        if (_selectedTarget != null && _selectedTarget.TryGetComponent<ICharacter>(out targetCharacter))
             return true;
 
         targetCharacter = null;

@@ -14,25 +14,16 @@ namespace AbilitySystem.AbilityComponents
 
             if (outcome > 0)
             {
-                GameObject enemy = character.GetTargets().GetTargetEnemy();
-                CharacterStatsController enemyStats = character.GetTargets().GetTargetEnemy().
-                    GetComponent<Character>().GetStatsController();
+                GameObject enemy = character.GetTargetsVault().GetTargetEnemy();
+                IStatsController enemyStats = character.GetTargetsVault().GetTargetEnemy().
+                    GetComponent<ICharacter>().GetStatsController();
 
-                CharacterStatsController heroStats = character.GetStatsController();
+                IStatsController heroStats = character.GetStatsController();
 
                 enemyStats.Stats[StatTag.Health].AddToTmpModifier(outcome * _defaultDamage * -1);
                 enemyStats.Stats[StatTag.Energy].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value*-1);
             }
 
-
-            //if (outcome.result == ActionResult.Success || outcome.result == ActionResult.CriticalSuccess)
-            //{
-            //    float statMultiplier = character.Stats.GetStat(damageStat)?.CurrentValue ?? 1f;
-            //    float damage = baseDamage * statMultiplier * outcome.effectiveness;
-
-            //    // «десь должна быть логика применени€ урона цели
-            //    Debug.Log($"Applied {damage} damage with effectiveness {outcome.effectiveness}");
-            //}
         }
     }
 }

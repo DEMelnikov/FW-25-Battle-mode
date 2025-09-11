@@ -7,25 +7,25 @@ public class TimeElapsedDecision : Decision
 
     private float _timer;
 
-    public override void OnEnter(StateMachine machine)
+    public override void OnEnter(IStateMachine machine)
     {
         _timer = 0f;
         Debug.Log("TimeElapsedDecision: Timer reset");
     }
 
-    public override bool Decide(StateMachine machine)
+    public override bool Decide(IStateMachine machine)
     {
         _timer += Time.deltaTime;
         Debug.Log($"TimeElapsedDecision: Timer = {_timer:F1}/{requiredTime}");
         return _timer >= requiredTime;
     }
 
-    public override void OnExit(StateMachine machine)
+    public override void OnExit(IStateMachine machine)
     {
         Debug.Log("TimeElapsedDecision: Exit");
     }
 
-    public override void OnUpdate(StateMachine machine)
+    public override void OnUpdate(IStateMachine machine)
     {
         // ƒополнительна€ логика обновлени€, если нужна
     }

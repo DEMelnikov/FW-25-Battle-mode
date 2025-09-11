@@ -1,6 +1,6 @@
 using Mono.Cecil;
 
-public class TimedStatModifier : StatModifier
+public class TimedStatModifier : StatModifier,ITimedStatModifier
 {
     public float Duration { get; private set; }
     public float TimeRemaining { get; private set; }

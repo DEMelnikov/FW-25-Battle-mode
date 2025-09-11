@@ -23,15 +23,15 @@ namespace AbilitySystem.AbilityComponents
             }
 
             // Защита 2: Проверка на наличие компонента Targets
-            var targetsComponent = character.GetTargets();
+            var targetsComponent = character.GetTargetsVault();
             if (targetsComponent == null)
             {
                 if (_logging) Debug.LogWarning("Targets component is null or missing");
                 return false;
             }
 
-            // Защита 3: Проверка на уничтоженный компонент Targets
-            if (targetsComponent == null || !targetsComponent)
+            // BROKEN: Защита 3: Проверка на уничтоженный компонент Targets - 
+            if (targetsComponent == null)// || !targetsComponent)
             {
                 if (_logging) Debug.LogWarning("Targets component is destroyed");
                 return false;

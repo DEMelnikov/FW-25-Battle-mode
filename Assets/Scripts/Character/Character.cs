@@ -48,7 +48,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public IStatsController GetStatsController() { return _statsController; }
     public IStateMachine GetStateMachine() => _stateMachine;
     public IAbilityController GetAbilityController() => _abilityController;
-    public ICharacterTargetsVault GetTargets() => _targets;
+    public ICharacterTargetsVault GetTargetsVault() => _targets;
     public Transform transform => this.transform;
     public string name => gameObject.name;
     #endregion

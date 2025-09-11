@@ -12,10 +12,10 @@ namespace AbilitySystem.AbilityComponents
             if (logging) Debug.Log($"{character.name} starts CheckTrigger NoSelectedEnemy");
 
             // Используем новый безопасный метод
-            if (character.GetTargets().TryGetTargetEnemy(out _))
+            if (character.GetTargetsVault().TryGetTargetEnemy(out _))
                 return true;
 
-            character.GetTargets().TryGetTargetCharacter(out Character targetCharacter);
+            character.GetTargetsVault().TryGetTargetCharacter(out ICharacter targetCharacter);
             if (targetCharacter == null) return false;
 
             bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;

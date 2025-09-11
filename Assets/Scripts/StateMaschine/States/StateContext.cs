@@ -5,7 +5,9 @@ public class StateContext : IStateContext
 {
     public GameObject Owner { get; private set; }
     private Character _character;
-    public IAbilityController _abilityController { get; private set; }
+    private IAbilityController _abilityController;
+    
+    //public AbilityController _abilityController;
     //public Transform PlayerTarget { get; set; }
     //public Animator Animator { get; private set; }
     //public Rigidbody Physics { get; private set; }
@@ -19,7 +21,8 @@ public class StateContext : IStateContext
         //Physics = owner.GetComponent<Rigidbody>();
     }
 
-    public Character GetCharacter() => _character;
+    public ICharacter GetCharacter() => _character;
+    public IAbilityController GetAbilityController () => _abilityController;
     // Вспомогательные методы
     //public bool HasPlayerTarget => PlayerTarget != null;
 

@@ -25,7 +25,7 @@ public class tmp_ZaglushkaState : StateWithTransitions
         base.OnUpdate(machine);
     }
 
-    protected override void CheckTransitions(StateMachine machine)
+    protected override void CheckTransitions(IStateMachine machine)
     {
         base.CheckTransitions(machine);
     }

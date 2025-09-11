@@ -9,7 +9,7 @@ public class HasNoAliveTarget_DecisionSO : Decision
 
         var character = machine.Context.GetCharacter();
 
-        if (character.GetTargets().HasTargetEnemy())
+        if (character.GetTargetsVault().HasTargetEnemy())
         {
             if (logging) Debug.Log($"Decision: {machine.Context.Owner.name} has no target");
             return true;

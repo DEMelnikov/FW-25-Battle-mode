@@ -5,7 +5,7 @@ using AbilitySystem.AbilityComponents;
 namespace AbilitySystem
 {
     [CreateAssetMenu(fileName = "New Ability", menuName = "FW25/Ability System/Ability")]
-    public class Ability : ScriptableObject
+    public class IAbility : ScriptableObject
     {
         [Header("Basic Info")]
         [SerializeField] private string abilityName;

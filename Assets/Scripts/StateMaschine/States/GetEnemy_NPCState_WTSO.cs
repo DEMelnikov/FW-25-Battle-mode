@@ -4,32 +4,32 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FW25/State Machine/States/GetEnemy (NPC)")]
 public class GetEnemy_NPCState_WTSO : StateWithTransitions
 {
-                     private AbilityController _abilityController;
-    [SerializeField] private Ability _firstAbilityToSetEnemy;
+                     private IAbilityController _abilityController;
+    [SerializeField] private IAbility _firstAbilityToSetEnemy;
 
-    public override void OnEnter(StateMachine machine)
+    public override void OnEnter(IStateMachine machine)
     {
-        _abilityController = machine.Context._abilityController;
+        _abilityController = machine.Context.GetAbilityController();
         _abilityController.TryActivateAbility(_firstAbilityToSetEnemy);
         base.OnEnter(machine);
     }
 
-    public override void OnExit(StateMachine machine)
+    public override void OnExit(IStateMachine machine)
     {
         base.OnExit(machine);
     }
 
-    public override void OnFixedUpdate(StateMachine machine)
+    public override void OnFixedUpdate(IStateMachine machine)
     {
         base.OnFixedUpdate(machine);
     }
 
-    public override void OnUpdate(StateMachine machine)
+    public override void OnUpdate(IStateMachine machine)
     {
         base.OnUpdate(machine);
     }
 
-    protected override void CheckTransitions(StateMachine machine)
+    protected override void CheckTransitions(IStateMachine machine)
     {
         base.CheckTransitions(machine);
     }
