@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ApproachTargetEnemyState_WTSO : StateWithTransitions
+public class ApproachTargetEnemyState_WTSO : State
 {
     public override void OnEnter(IStateMachine machine)
     {

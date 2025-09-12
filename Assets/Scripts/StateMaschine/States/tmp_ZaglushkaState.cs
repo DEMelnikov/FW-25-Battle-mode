@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FW25/State Machine/States/Zaglushka State")]
-public class tmp_ZaglushkaState : StateWithTransitions
+public class tmp_ZaglushkaState : State
 {
     [SerializeField] private string _message;
     public override void OnEnter(IStateMachine machine)

@@ -2,7 +2,7 @@ using AbilitySystem;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FW25/State Machine/States/GetEnemy (NPC)")]
-public class GetEnemy_NPCState_WTSO : StateWithTransitions
+public class GetEnemy_NPCState_WTSO : State
 {
                      private IAbilityController _abilityController;
     [SerializeField] private IAbility _firstAbilityToSetEnemy;

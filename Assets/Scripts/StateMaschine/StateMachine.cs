@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour, IStateMachine
 {
-    [SerializeField] private MonoBehaviour _currentStateBehaviour;
-    [SerializeField] private ScriptableObject _initialStateBehaviour;
+    //[SerializeField] private ScriptableObject _currentStateBehaviour;
+    //[SerializeField] private ScriptableObject _initialStateBehaviour;
 
-                     private IState _currentState;
-                     private IState _initialState;
+    [SerializeReference] private State _currentState;
+    [SerializeReference] private State _initialState;
                      private IStateContext _context;
 
     // Для отладки в инспекторе
@@ -16,9 +16,9 @@ public class StateMachine : MonoBehaviour, IStateMachine
     {
         _context = new StateContext(gameObject);
 
-        if (_initialStateBehaviour != null)
+        if (_initialState != null)
         {
-            _initialState = _initialStateBehaviour as IState;
+            //_initialState = _initialStateBehaviour as IState;
             SetState(_initialState);
         }
 
@@ -38,7 +38,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
 
 
             // Централизованный вызов CheckTransitions для состояний с переходами
-            if (_currentState is StateWithTransitions stateWithTransitions)
+            if (_currentState is State stateWithTransitions)
             {
                 stateWithTransitions.CheckTransitions(this);
             }
@@ -56,7 +56,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         }
     }
 
-    public void SetState(IState newState)
+    public void SetState(State newState)
     {
 
         // Уведомляем decisions текущего состояния о выходе
@@ -73,15 +73,15 @@ public class StateMachine : MonoBehaviour, IStateMachine
     }
 
 
-    public IState GetCurrentState()
+    public State GetCurrentState()
     {
         return _currentState;
     }
 
     // Вспомогательные методы для работы с decisions
-    private void NotifyDecisionsEnter(IState state)
+    private void NotifyDecisionsEnter(State state)
     {
-        if (state is StateWithTransitions stateWithTransitions)
+        if (state is State stateWithTransitions)
         {
             foreach (var transition in stateWithTransitions.GetTransitions())
             {
@@ -89,9 +89,9 @@ public class StateMachine : MonoBehaviour, IStateMachine
             }
         }
     }
-    private void NotifyDecisionsExit(IState state)
+    private void NotifyDecisionsExit(State state)
     {
-        if (state is StateWithTransitions stateWithTransitions)
+        if (state is State stateWithTransitions)
         {
             foreach (var transition in stateWithTransitions.GetTransitions())
             {
@@ -100,9 +100,9 @@ public class StateMachine : MonoBehaviour, IStateMachine
         }
     }
 
-    private void NotifyDecisionsUpdate(IState state)
+    private void NotifyDecisionsUpdate(State state)
     {
-        if (state is StateWithTransitions stateWithTransitions)
+        if (state is State stateWithTransitions)
         {
             foreach (var transition in stateWithTransitions.GetTransitions())
             {
@@ -112,7 +112,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     }
 
     // Для перехода по типу состояния (удобно для скриптов)
-    public void SetStateByType<T>() where T : IState
+    public void SetStateByType<T>() where T : State
     {
         // Здесь можно реализовать поиск состояния по типу
         // или использовать референсы заранее подготовленных состояний

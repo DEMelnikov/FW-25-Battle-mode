@@ -4,8 +4,8 @@ using UnityEngine.TextCore.Text;
 
 public interface IStateMachine
 {
-    void SetState(IState newState);
-    IState GetCurrentState();
+    void SetState(State newState);
+    State GetCurrentState();
     IStateContext Context { get; }
 }
 
@@ -20,7 +20,7 @@ public interface IStateContext
 public interface ITransition
 {
     Decision decision { get; }
-    IState trueState { get; }
+    State trueState { get; }
 }
 
 public interface IState

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FW25/State Machine/States/Temp_AttackState")]
-public class Temp_AttackState_WTSO : StateWithTransitions
+public class Temp_AttackState_WTSO : State
 {
     public override void OnEnter(IStateMachine machine)
     {

@@ -1,19 +1,39 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class State : ScriptableObject
+public abstract class State : BaseState
 {
-    //[SerializeField] [TextArea(2,3)] protected string _description;
-    //[SerializeField] public bool logging = true;
-    //public virtual void OnEnter(IStateMachine machine) { }
-    //public virtual void OnUpdate(IStateMachine machine) { }
-    //public virtual void OnFixedUpdate(IStateMachine machine) { }
-    //public virtual void OnExit(IStateMachine machine) { }
 
-    //[SerializeField] public string Name { get; }    
+    [SerializeField][TextArea(2, 3)] protected string _description;
+    [SerializeField] public bool logging = true;
 
-    // Методы для проверки переходов
-    public virtual void CheckTransitions(IStateMachine machine)
+    [SerializeField] private List<ITransition> transitions = new List<ITransition>();
+    [SerializeField] private State _allTransitiosFailedState;
+
+    public virtual void OnEnter(IStateMachine machine) { }
+    public virtual void OnUpdate(IStateMachine machine) { }
+    public virtual void OnFixedUpdate(IStateMachine machine) { }
+    public virtual void OnExit(IStateMachine machine) { }
+
+    public sealed override void CheckTransitions(IStateMachine machine)
     {
-        // Здесь будет логика проверки переходов между состояниями
+        foreach (var transition in transitions)
+        {
+            if (transition.decision != null && transition.trueState != null)
+            {
+                if (transition.decision.Decide(machine))
+                {
+                    machine.SetState(transition.trueState);
+                    return;
+                }
+            }
+        }
+
+        if(_allTransitiosFailedState!= null) machine.SetState(_allTransitiosFailedState);
+    }
+
+    public List<ITransition> GetTransitions()
+    {
+        return transitions;
     }
 }

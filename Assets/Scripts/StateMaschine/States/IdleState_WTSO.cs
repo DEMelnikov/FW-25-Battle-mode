@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FW25/State Machine/States/Idle State")]
-public class IdleState_WTSO : StateWithTransitions
+public class IdleState_WTSO : State
 {
     public override void OnEnter(IStateMachine machine)
     {
