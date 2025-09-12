@@ -13,7 +13,7 @@ namespace AbilitySystem.AbilityComponents
 
     }
 
-    public abstract class AbilityAction : ScriptableObject
+    public abstract class AbilityAction : ScriptableObject, IAction
     {
         //public abstract ActionOutcome ExecuteAction(Character character);
         [SerializeField] [TextArea(2,5)] protected string _description;

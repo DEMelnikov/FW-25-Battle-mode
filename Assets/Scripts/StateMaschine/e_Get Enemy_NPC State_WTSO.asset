@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: e_Get Enemy_NPC State_WTSO
   m_EditorClassIdentifier: 
   _description: 
-  logging: 0
+  logging: 1
   transitions:
   - decision: {fileID: 0}
     trueState: {fileID: 0}
   _allTransitiosFailedState: {fileID: 11400000, guid: 4d54b9956949fe342b602d3a071767f5, type: 2}
-  _firstAbilityToSetEnemy: {fileID: 0}
