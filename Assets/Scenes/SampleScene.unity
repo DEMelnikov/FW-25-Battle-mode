@@ -1407,8 +1407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8990a66f26437cf4eb6a8062b49d4918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentStateBehaviour: {fileID: 0}
-  _initialStateBehaviour: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
+  _currentState: {fileID: 0}
+  _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   currentStateName: 
 --- !u!114 &578513247
 MonoBehaviour:
@@ -4606,8 +4606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8990a66f26437cf4eb6a8062b49d4918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentStateBehaviour: {fileID: 0}
-  _initialStateBehaviour: {fileID: 0}
+  _currentState: {fileID: 0}
+  _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   currentStateName: 
 --- !u!114 &7723458236203311623
 MonoBehaviour:

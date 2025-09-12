@@ -17,25 +17,25 @@ public interface IStateContext
 
 }
 
-public interface ITransition
-{
-    Decision decision { get; }
-    State trueState { get; }
-}
+//public interface ITransition
+//{
+//    Decision decision { get; }
+//    State trueState { get; }
+//}
 
-public interface IState
-{
-    string name {  get; }
-    // Для доступа к списку переходов
-    List<ITransition> GetTransitions();
+//public interface IState
+//{
+//    string name {  get; }
+//    // Для доступа к списку переходов
+//    List<ITransition> GetTransitions();
 
-    // Методы жизненного цикла состояния
-    void OnEnter(IStateMachine machine);
-    void OnUpdate(IStateMachine machine);
-    void OnFixedUpdate(IStateMachine machine);
-    void OnExit(IStateMachine machine);
+//    // Методы жизненного цикла состояния
+//    void OnEnter(IStateMachine machine);
+//    void OnUpdate(IStateMachine machine);
+//    void OnFixedUpdate(IStateMachine machine);
+//    void OnExit(IStateMachine machine);
 
-    // Метод проверки переходов (можно сделать protected в классе, но в интерфейсе public)
-    void CheckTransitions(IStateMachine machine);
-}
+//    // Метод проверки переходов (можно сделать protected в классе, но в интерфейсе public)
+//    void CheckTransitions(IStateMachine machine);
+//}
 

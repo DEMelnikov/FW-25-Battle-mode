@@ -4,11 +4,12 @@ using UnityEngine;
 public abstract class State : BaseState
 {
 
-    [SerializeField][TextArea(2, 3)] protected string _description;
-    [SerializeField] public bool logging = true;
+    [SerializeField]
+    [TextArea(2, 3)] protected string _description;
+    [SerializeField] public bool logging;
 
-    [SerializeField] private List<ITransition> transitions = new List<ITransition>();
-    [SerializeField] private State _allTransitiosFailedState;
+    [SerializeField] protected List<Transition> transitions = new List<Transition>();
+    [SerializeField] protected State _allTransitiosFailedState;
 
     public virtual void OnEnter(IStateMachine machine) { }
     public virtual void OnUpdate(IStateMachine machine) { }
@@ -32,7 +33,7 @@ public abstract class State : BaseState
         if(_allTransitiosFailedState!= null) machine.SetState(_allTransitiosFailedState);
     }
 
-    public List<ITransition> GetTransitions()
+    public List<Transition> GetTransitions()
     {
         return transitions;
     }
