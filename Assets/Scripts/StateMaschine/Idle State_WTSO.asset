@@ -16,5 +16,5 @@ MonoBehaviour:
   logging: 0
   transitions:
   - decision: {fileID: 11400000, guid: 42eb9672ea7f23e499a6176b3b481c8d, type: 2}
-    trueState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
+    trueState: {fileID: 0}
   _allTransitiosFailedState: {fileID: 0}

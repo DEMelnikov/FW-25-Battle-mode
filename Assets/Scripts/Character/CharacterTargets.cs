@@ -5,7 +5,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     [SerializeField] private GameObject _selectedTarget;
     [SerializeField] private Transform _waypoint;
     [SerializeField] private SceneObjectTag _whoIsYourEnemy = SceneObjectTag.Enemy;
-    [SerializeField] private bool logging = true;
+    [SerializeField] protected bool logging = true;
 
     // Новый метод - безопасное получение вражеской цели
     public bool TryGetTargetEnemy(out GameObject targetEnemy)
@@ -29,6 +29,8 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     // Обновленный HasTargetEnemy - теперь без побочных эффектов!
     public bool HasTargetEnemy()
     {
+        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
+    $"- no valid enemy target");
         return TryGetTargetEnemy(out _); // Используем новый метод
     }
 

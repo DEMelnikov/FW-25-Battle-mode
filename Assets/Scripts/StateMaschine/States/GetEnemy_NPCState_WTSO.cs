@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FW25/State Machine/States/GetEnemy (NPC)")]
 public class GetEnemy_NPCState_WTSO : State
 {
-                     private IAbilityController _abilityController;
     [SerializeField] private IAbility _firstAbilityToSetEnemy;
+                     
+                     private IAbilityController _abilityController;
 
     //[SerializeField][TextArea(2, 3)] public string description;
     ////[SerializeField] public bool logging = true;
@@ -15,6 +16,7 @@ public class GetEnemy_NPCState_WTSO : State
 
     public override void OnEnter(IStateMachine machine)
     {
+        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Enter GetEnemy_NPCState_WTSO State:");
         _abilityController = machine.Context.GetAbilityController();
         _abilityController.TryActivateAbility(_firstAbilityToSetEnemy);
         base.OnEnter(machine);

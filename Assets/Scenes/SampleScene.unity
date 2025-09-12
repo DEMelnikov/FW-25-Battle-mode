@@ -4451,6 +4451,7 @@ GameObject:
   - component: {fileID: 7723458236203311623}
   - component: {fileID: 7723458236203311624}
   - component: {fileID: 7723458236203311626}
+  - component: {fileID: 7723458236203311627}
   m_Layer: 3
   m_Name: En
   m_TagString: Untagged
@@ -4607,7 +4608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
-  _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
+  _initialState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   currentStateName: 
 --- !u!114 &7723458236203311623
 MonoBehaviour:
@@ -4659,6 +4660,22 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7723458236203311627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878806293192145506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa69c71a63c539841869b45b80728803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Character::CharacterTargets
+  _selectedTarget: {fileID: 0}
+  _waypoint: {fileID: 0}
+  _whoIsYourEnemy: 1
+  logging: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

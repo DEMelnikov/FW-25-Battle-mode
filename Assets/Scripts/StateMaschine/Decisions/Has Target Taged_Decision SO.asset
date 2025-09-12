@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Has Target Taged_Decision SO
   m_EditorClassIdentifier: 
   logging: 1
+  abilityTriggers: []
   _targetTag: 1
