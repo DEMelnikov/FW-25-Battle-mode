@@ -2,10 +2,15 @@
 public class Transition: ITransition
 {
     public Decision decision;
-    public State trueState;
+    public IState trueState;
 
-    Decision ITransition.decision => throw new System.NotImplementedException();
+    Decision ITransition.decision => decision;// throw new System.NotImplementedException();
 
-    State ITransition.trueState => throw new System.NotImplementedException();
+    IState ITransition.trueState => trueState;//throw new System.NotImplementedException();
+
+    //public IDecision ITransition.decision => decision;
+
+    //IState ITransition.trueState => trueState;
+
     //public State falseState;
 }

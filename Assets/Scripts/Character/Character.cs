@@ -1,6 +1,8 @@
 using AbilitySystem;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.AI;
+using static Codice.Client.Common.WebApi.WebApiEndpoints;
 
 public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 {
@@ -11,10 +13,11 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     [SerializeField] private GameObject                _selectedTarget;
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
 
-                     private IStateMachine              _stateMachine;
+                     private IStateMachine             _stateMachine;
                      private CharacterStatsController  _statsController;
-                     private IAbilityController         _abilityController;
+                     private IAbilityController        _abilityController;
                      private CharacterTargets          _targets;
+                     private NavMeshAgent              _navMeshAgent;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -27,6 +30,11 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         InitializeFromSettings();
         _stateMachine = GetComponent<IStateMachine>();
         _targets = GetComponent<CharacterTargets>();
+
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.updateRotation = false;
+        _navMeshAgent.updateUpAxis   = false;
+        //agent.SetDestination(new Vector3(0, 0, transform.position.z));
 
         //InitializeStateMachine();
     }
@@ -51,6 +59,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public ICharacterTargetsVault GetTargetsVault() => _targets;
     public Transform transform => this.transform;
     public string name => gameObject.name;
+    public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
     #endregion
 
     public void InitializeFromSettings()

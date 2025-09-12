@@ -26,9 +26,4 @@ public class Temp_AttackState_WTSO : StateWithTransitions
         base.OnUpdate(machine);
     }
 
-    protected override void CheckTransitions(IStateMachine machine)
-    {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} CheckTransitions start on Attack State:");
-        base.CheckTransitions(machine);
-    }
 }

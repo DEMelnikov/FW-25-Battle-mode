@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 public interface IStateMachine
 {
-    void SetState(State newState);
-    State GetCurrentState();
+    void SetState(IState newState);
+    IState GetCurrentState();
     IStateContext Context { get; }
 }
 
@@ -19,6 +20,22 @@ public interface IStateContext
 public interface ITransition
 {
     Decision decision { get; }
-    State trueState { get; }
+    IState trueState { get; }
+}
+
+public interface IState
+{
+    string name {  get; }
+    // Для доступа к списку переходов
+    List<ITransition> GetTransitions();
+
+    // Методы жизненного цикла состояния
+    void OnEnter(IStateMachine machine);
+    void OnUpdate(IStateMachine machine);
+    void OnFixedUpdate(IStateMachine machine);
+    void OnExit(IStateMachine machine);
+
+    // Метод проверки переходов (можно сделать protected в классе, но в интерфейсе public)
+    void CheckTransitions(IStateMachine machine);
 }
 

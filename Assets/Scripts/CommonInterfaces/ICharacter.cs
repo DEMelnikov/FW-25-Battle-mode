@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public interface ICharacter
 {
@@ -9,4 +10,5 @@ public interface ICharacter
     GameObject GetSelectedTarget();
     public virtual void SetSelectedTarget(GameObject target) { }
     public SceneObjectTag SceneObjectTag { get; }
+    NavMeshAgent GetNavMeshAgent();
 }

@@ -3,16 +3,19 @@ using UnityEngine;
 
 public abstract class StateWithTransitions : State
 {
-    
+
+    [SerializeField][TextArea(2, 3)] protected string _description;
+    [SerializeField] public bool logging = true;
+
     [SerializeField] private List<ITransition> transitions = new List<ITransition>();
-    [SerializeField] private State _allTransitiosFailedState;
+    [SerializeField] private IState _allTransitiosFailedState;
 
-    public override void OnUpdate(IStateMachine machine)
-    {
-        CheckTransitions(machine);
-    }
+    public virtual void OnEnter(IStateMachine machine) { }
+    public virtual void OnUpdate(IStateMachine machine) { }
+    public virtual void OnFixedUpdate(IStateMachine machine) { }
+    public virtual void OnExit(IStateMachine machine) { }
 
-    protected override void CheckTransitions(IStateMachine machine)
+    public sealed override void CheckTransitions(IStateMachine machine)
     {
         foreach (var transition in transitions)
         {
@@ -23,11 +26,6 @@ public abstract class StateWithTransitions : State
                     machine.SetState(transition.trueState);
                     return;
                 }
-                //else if (transition.falseState != null)
-                //{
-                //    machine.SetState(transition.falseState);
-                //    return;
-                //}
             }
         }
 

@@ -25,10 +25,4 @@ public class IdleState_WTSO : StateWithTransitions
         if (logging) Debug.Log($"{machine.Context.Owner.name} On Idle State:");
         base.OnUpdate(machine);
     }
-
-    protected override void CheckTransitions(IStateMachine machine)
-    {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} CheckTransitions start on Idle State:");
-        base.CheckTransitions(machine);
-    }
 }

@@ -26,11 +26,7 @@ public class GetEnemy_NPCState_WTSO : StateWithTransitions
 
     public override void OnUpdate(IStateMachine machine)
     {
+        CheckTransitions(machine);
         base.OnUpdate(machine);
-    }
-
-    protected override void CheckTransitions(IStateMachine machine)
-    {
-        base.CheckTransitions(machine);
     }
 }

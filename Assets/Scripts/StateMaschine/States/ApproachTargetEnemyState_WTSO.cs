@@ -1,12 +1,9 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "FW25/State Machine/States/Zaglushka State")]
-public class tmp_ZaglushkaState : StateWithTransitions
+public class ApproachTargetEnemyState_WTSO : StateWithTransitions
 {
-    [SerializeField] private string _message;
     public override void OnEnter(IStateMachine machine)
     {
-        Debug.LogWarning($"{machine.Context.Owner.name} Enters to Zaglushka State _ name: {_message}");
         base.OnEnter(machine);
     }
 
@@ -23,5 +20,10 @@ public class tmp_ZaglushkaState : StateWithTransitions
     public override void OnUpdate(IStateMachine machine)
     {
         base.OnUpdate(machine);
+    }
+
+    public void CheckTransitions(IStateMachine machine)
+    {
+        base.CheckTransitions(machine);
     }
 }
