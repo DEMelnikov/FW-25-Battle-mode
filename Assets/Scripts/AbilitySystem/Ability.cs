@@ -33,7 +33,7 @@ using UnityEngine.TextCore.Text;
         public override IAction GetAbilityAction() => action;
         //public override List<AbilityResolve> GetAbilityResolves() => resolves;
 
-        public override bool CanAfford(ICharacter character)
+    public override bool CanAfford(ICharacter character)
         {
             
             if (logging) { Debug.Log($"Start check CanAfford ó {abilityName}"); }
@@ -51,7 +51,7 @@ using UnityEngine.TextCore.Text;
             return true;
         }
 
-        protected sealed override bool PayAllCost(ICharacter character)
+    protected sealed override bool PayAllCost(ICharacter character)
         {
             if (logging) { Debug.Log($"Start PayAllCost  ó {abilityName}"); }
 
@@ -66,7 +66,7 @@ using UnityEngine.TextCore.Text;
         }
 
         public string GetAbilityName() { return abilityName; }
-        public bool GetLoggingState() { return logging; }
+    public bool GetLoggingState() { return logging; }
 
     public sealed override bool TryActivateAbility(ICharacter character, out int outcome )
     {
