@@ -115,4 +115,10 @@ using UnityEngine.TextCore.Text;
         return true;
     }
 
+    public virtual IAbility Clone()
+    {
+        // Реализация клона через Instantiate
+        return Instantiate(this);
+    }
+
 }
