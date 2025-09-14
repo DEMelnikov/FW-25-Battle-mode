@@ -10,6 +10,7 @@ public interface IAbility
     bool TryActivateAbility(ICharacter character, out int outcome) {   outcome = 0; return false; }
     bool HasTag(string tag) {  return false; }
     string GetAbilityName() { return ""; }
+    IAbility Clone();
 }
 
 public interface IAbilityController

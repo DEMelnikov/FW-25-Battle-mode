@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Has No Alive Target_Decision SO
   m_EditorClassIdentifier: 
   logging: 1
+  abilityTriggers:
+  - {fileID: 11400000, guid: fb57947bafeef074e8ee7343add64776, type: 2}

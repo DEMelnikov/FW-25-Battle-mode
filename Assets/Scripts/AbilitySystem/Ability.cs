@@ -70,6 +70,8 @@ using UnityEngine.TextCore.Text;
 
     public sealed override bool TryActivateAbility(ICharacter character, out int outcome )
     {
+        if (logging) { Debug.Log($"---Start Activation Ability {this.name} у {character.name}"); }
+         
         outcome = 0;
 
         if (!CanAfford(character) || !CheckTriggersReady(character))
@@ -113,6 +115,12 @@ using UnityEngine.TextCore.Text;
         }
 
         return true;
+    }
+
+    public virtual IAbility Clone()
+    {
+        // Реализация клона через Instantiate
+        return Instantiate(this);
     }
 
 }
