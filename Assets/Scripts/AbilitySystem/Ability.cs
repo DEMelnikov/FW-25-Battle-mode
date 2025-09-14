@@ -70,6 +70,8 @@ using UnityEngine.TextCore.Text;
 
     public sealed override bool TryActivateAbility(ICharacter character, out int outcome )
     {
+        if (logging) { Debug.Log($"---Start Activation Ability {this.name} ó {character.name}"); }
+         
         outcome = 0;
 
         if (!CanAfford(character) || !CheckTriggersReady(character))
