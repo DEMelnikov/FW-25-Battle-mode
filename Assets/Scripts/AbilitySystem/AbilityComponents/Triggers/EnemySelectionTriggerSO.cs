@@ -7,18 +7,18 @@ namespace AbilitySystem.AbilityComponents
     {
         //есть тесткейсы - EnemySelectionTriggerTests
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Enemy;
-        [SerializeField] private bool _logging = true;
+
 
         public override bool CheckTrigger(ICharacter character)
         {
-            if (_logging) Debug.Log("Check trigger EnemySelectionTriggerSO started");
+            if (logging) Debug.Log("Check trigger EnemySelectionTriggerSO started");
 
-            if (_logging) Debug.Log("Check trigger EnemySelectionTriggerSO started");
+            if (logging) Debug.Log("Check trigger EnemySelectionTriggerSO started");
 
             // Защита 1: Проверка на null character
             if (character == null)
             {
-                if (_logging) Debug.LogWarning("Character is null in EnemySelectionTriggerSO");
+                if (logging) Debug.LogWarning("Character is null in EnemySelectionTriggerSO");
                 return false;
             }
 
@@ -26,14 +26,14 @@ namespace AbilitySystem.AbilityComponents
             var targetsComponent = character.GetTargetsVault();
             if (targetsComponent == null)
             {
-                if (_logging) Debug.LogWarning("Targets component is null or missing");
+                if (logging) Debug.LogWarning("Targets component is null or missing");
                 return false;
             }
 
             // BROKEN: Защита 3: Проверка на уничтоженный компонент Targets - 
             if (targetsComponent == null)// || !targetsComponent)
             {
-                if (_logging) Debug.LogWarning("Targets component is destroyed");
+                if (logging) Debug.LogWarning("Targets component is destroyed");
                 return false;
             }
 
@@ -42,21 +42,21 @@ namespace AbilitySystem.AbilityComponents
             // Защита 3: Проверка на null цель
             if (target == null)
             {
-                if (_logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no selected target");
+                if (logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no selected target");
                 return false;
             }
 
             // Защита 4: Корректная проверка уничтоженного Unity объекта
             if (target == null || !target) // Двойная проверка для Unity объектов
             {
-                if (_logging) Debug.LogWarning("Check trigger EnemySelectionTriggerSO: Selected target is destroyed");
+                if (logging) Debug.LogWarning("Check trigger EnemySelectionTriggerSO: Selected target is destroyed");
                 return false;
             }
 
             // Защита 5: Проверка на уничтоженный GameObject
             if (!target.activeInHierarchy) // Дополнительная проверка
             {
-                if (_logging) Debug.LogWarning("Check trigger EnemySelectionTriggerSO: Target is inactive or destroyed");
+                if (logging) Debug.LogWarning("Check trigger EnemySelectionTriggerSO: Target is inactive or destroyed");
                 return false;
             }
 
@@ -64,18 +64,18 @@ namespace AbilitySystem.AbilityComponents
             Character targetCharacter = target.GetComponent<Character>();
             if (targetCharacter == null)
             {
-                if (_logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no Character component at target object");
+                if (logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no Character component at target object");
                 return false;
             }
 
             // Защита 7: Проверка на уничтоженный компонент Character
             if (targetCharacter == null || !targetCharacter)
             {
-                if (_logging) Debug.LogWarning("Character component is destroyed");
+                if (logging) Debug.LogWarning("Character component is destroyed");
                 return false;
             }
 
-            if (_logging)
+            if (logging)
             {
                 Debug.Log($"Check trigger EnemySelectionTriggerSO: get Target sceneObjectTag: {targetCharacter.SceneObjectTag} ");
                 Debug.Log($"Check trigger EnemySelectionTriggerSO: get _targetTag: {_targetTag} ");
@@ -84,7 +84,7 @@ namespace AbilitySystem.AbilityComponents
             // Основная логика: проверка тега
             bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;
 
-            if (_logging)
+            if (logging)
             {
                 Debug.Log($"Check trigger EnemySelectionTriggerSO: " +
                          $"target tag = {targetCharacter.SceneObjectTag}, " +
@@ -93,13 +93,6 @@ namespace AbilitySystem.AbilityComponents
             }
 
             return tagMatches;
-        }
-
-        // Опционально: добавьте свойство для тестирования
-        public bool Logging
-        {
-            get => _logging;
-            set => _logging = value;
         }
     }
 }

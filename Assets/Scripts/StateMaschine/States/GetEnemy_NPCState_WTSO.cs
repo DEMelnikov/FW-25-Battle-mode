@@ -10,8 +10,8 @@ public class GetEnemy_NPCState_WTSO : State
     //[SerializeField] private ScriptableObject _abilityObject;
     private IAbility _firstAbilityToSetEnemy;
 
-    [AbilityName]
-    public string abilityName;
+    [Header("Визуальный поиск цели:")]
+    [AbilityName]  public string abilityName;
     private IAbility runtimeAbility;
 
 
@@ -22,16 +22,18 @@ public class GetEnemy_NPCState_WTSO : State
     //[SerializeField] public List<Transition> transitions = new List<Transition>();
     //[SerializeField] public State allTransitionsFailedState;
 
-    private void Awake()
-    {
-        runtimeAbility = AbilitiesVault.Instance.GetAbilityCopyByName(abilityName);
-        _firstAbilityToSetEnemy = runtimeAbility;
-    }
-
     public override void OnEnter(IStateMachine machine)
     {
+        runtimeAbility = AbilitiesVault.Instance.GetAbilityCopyByName(abilityName);
+        //if (runtimeAbility == null) Debug.LogWarning("runtimeAbility empty");
+        _firstAbilityToSetEnemy = runtimeAbility as IAbility;
+
+
         if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Enter GetEnemy_NPCState_WTSO State:");
         _abilityController = machine.Context.GetAbilityController();
+        if (_firstAbilityToSetEnemy == null ) Debug.LogWarning("Ability not SET!!!");
+        if (logging) Debug.Log($"{machine.Context.Owner.name} has ability {_firstAbilityToSetEnemy.GetAbilityName()}");
+
         _abilityController.TryActivateAbility(_firstAbilityToSetEnemy);
         base.OnEnter(machine);
     }

@@ -18,10 +18,14 @@ public abstract class State : BaseState
 
     public sealed override void CheckTransitions(IStateMachine machine)
     {
+        if (logging) Debug.Log($"Checking transitions in state {this.name}");
         foreach (var transition in transitions)
         {
+            if (logging) Debug.Log($" {this.name} Q transitions = {transitions.Count}");
+
             if (transition.decision != null && transition.trueState != null)
             {
+                if (logging) Debug.Log($" {this.name}: Start = {transition.decision.name} result {transition.decision.Decide(machine)}");
                 if (transition.decision.Decide(machine))
                 {
                     machine.SetState(transition.trueState);
@@ -29,6 +33,7 @@ public abstract class State : BaseState
                 }
             }
         }
+        if (logging) Debug.Log($"");
 
         if(_allTransitiosFailedState!= null) machine.SetState(_allTransitiosFailedState);
     }

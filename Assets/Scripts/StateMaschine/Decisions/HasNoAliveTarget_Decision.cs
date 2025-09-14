@@ -12,10 +12,10 @@ public class HasNoAliveTarget_DecisionSO : Decision
         if (character.GetTargetsVault().HasTargetEnemy())
         {
             if (logging) Debug.Log($"Decision: {machine.Context.Owner.name} have target");
-            return true;
+            return false;
         }
 
         if (logging) Debug.Log($"Decision: {machine.Context.Owner.name} has no target");
-        return false;
+        return true;
     }
 }
