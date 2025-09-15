@@ -17,5 +17,7 @@ public abstract class Trigger : ScriptableObject
             // Реализация клона через Instantiate
             return Instantiate(this);
         }
+
+    public string GetDescription() => _description;
     //public bool GetLoggingState() {  return logging; }
 }

@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: TestStatesVault
   m_EditorClassIdentifier: CommonInterfaces::StatesVault
   items:
-  - {fileID: 11400000, guid: 54fb4ba28cf0f594c96c7c6a6bae33b1, type: 2}
   - {fileID: 11400000, guid: 4d54b9956949fe342b602d3a071767f5, type: 2}
   - {fileID: 11400000, guid: 6af90b33c1db1f64eace687c83f2e436, type: 2}
   - {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   - {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   - {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
-  - {fileID: 11400000, guid: 54fb4ba28cf0f594c96c7c6a6bae33b1, type: 2}
   - {fileID: 11400000, guid: 86416e6097e9eda4b87e89a88c99fba0, type: 2}

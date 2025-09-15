@@ -2662,6 +2662,10 @@ MonoBehaviour:
   itemName: All_Failed_ZaglushkaState
   _SelectedState: {fileID: 0}
   _description: 
+  triggersVault: {fileID: 0}
+  triggerName: 
+  triggerSelected: {fileID: 0}
+  _triggerDescription: 
 --- !u!1 &1002492304
 GameObject:
   m_ObjectHideFlags: 0
