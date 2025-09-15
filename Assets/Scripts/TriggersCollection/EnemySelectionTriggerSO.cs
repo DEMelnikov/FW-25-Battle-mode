@@ -3,7 +3,7 @@ using UnityEngine;
 namespace AbilitySystem.AbilityComponents
 {
     [CreateAssetMenu(fileName = "EnemySelectionTrigger_Hero", menuName = "FW25/Ability System/Triggers/Enemy Selection(hero version)")]
-    public class EnemySelectionTriggerSO : AbilityTrigger
+    public class EnemySelectionTriggerSO : Trigger
     {
         //есть тесткейсы - EnemySelectionTriggerTests
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Enemy;
@@ -61,7 +61,7 @@ namespace AbilitySystem.AbilityComponents
             }
 
             // Защита 6: Безопасное получение компонента Character
-            Character targetCharacter = target.GetComponent<Character>();
+            ICharacter targetCharacter = target.GetComponent<ICharacter>();
             if (targetCharacter == null)
             {
                 if (logging) Debug.Log($"Check trigger EnemySelectionTriggerSO: no Character component at target object");
@@ -69,7 +69,7 @@ namespace AbilitySystem.AbilityComponents
             }
 
             // Защита 7: Проверка на уничтоженный компонент Character
-            if (targetCharacter == null || !targetCharacter)
+            if (targetCharacter == null)// || !targetCharacter)  TODO - to fix
             {
                 if (logging) Debug.LogWarning("Character component is destroyed");
                 return false;

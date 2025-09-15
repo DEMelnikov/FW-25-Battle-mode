@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Decision : ScriptableObject
 {
     [SerializeField] public bool logging = true;
-    [SerializeField] private List<AbilityTrigger> abilityTriggers = new List<AbilityTrigger>();
+    [SerializeField] private List<Trigger> abilityTriggers = new List<Trigger>();
     public virtual void OnEnter(IStateMachine machine) { }
     public virtual void OnExit(IStateMachine machine) { }
     public virtual void OnUpdate(IStateMachine machine) { }

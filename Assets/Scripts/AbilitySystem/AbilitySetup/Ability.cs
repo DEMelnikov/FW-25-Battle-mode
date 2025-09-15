@@ -16,7 +16,7 @@ using UnityEngine.TextCore.Text;
 
 
         [Header("Activation Requirements")]
-        [SerializeField] public  List<AbilityTrigger>  triggers = new List<AbilityTrigger>();
+        [SerializeField] public  List<Trigger>  triggers = new List<Trigger>();
         [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();
         [SerializeField] private AbilityAction         action;
         [SerializeField] private List<AbilityResolve>  resolves = new List<AbilityResolve>();
