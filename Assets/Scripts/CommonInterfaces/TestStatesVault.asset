@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9308a2e6038cc458e84cdf78b0c84d, type: 3}
+  m_Name: TestStatesVault
+  m_EditorClassIdentifier: CommonInterfaces::StatesVault
+  items:
+  - {fileID: 11400000, guid: 54fb4ba28cf0f594c96c7c6a6bae33b1, type: 2}
+  - {fileID: 11400000, guid: 4d54b9956949fe342b602d3a071767f5, type: 2}
+  - {fileID: 11400000, guid: 6af90b33c1db1f64eace687c83f2e436, type: 2}
+  - {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
+  - {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
+  - {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
+  - {fileID: 11400000, guid: 54fb4ba28cf0f594c96c7c6a6bae33b1, type: 2}
+  - {fileID: 11400000, guid: 86416e6097e9eda4b87e89a88c99fba0, type: 2}

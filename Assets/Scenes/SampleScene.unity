@@ -2439,6 +2439,7 @@ GameObject:
   - component: {fileID: 992131593}
   - component: {fileID: 992131600}
   - component: {fileID: 992131601}
+  - component: {fileID: 992131602}
   m_Layer: 3
   m_Name: He (1)
   m_TagString: Untagged
@@ -2645,6 +2646,22 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &992131602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992131592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3898e9f652aba488069a3ff21c2a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TriggersCollection::Test_TriggerUser
+  stateVault: {fileID: 11400000, guid: 8dcbf244fdf17c843acfea29c9991b4c, type: 2}
+  itemName: All_Failed_ZaglushkaState
+  _SelectedState: {fileID: 0}
+  _description: 
 --- !u!1 &1002492304
 GameObject:
   m_ObjectHideFlags: 0

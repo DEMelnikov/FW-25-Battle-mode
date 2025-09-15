@@ -4,8 +4,6 @@ using UnityEngine;
 public abstract class State : BaseState
 {
 
-    [SerializeField]
-    [TextArea(2, 3)] protected string _description;
     [SerializeField] public bool logging;
 
     [SerializeField] protected List<Transition> transitions = new List<Transition>();
