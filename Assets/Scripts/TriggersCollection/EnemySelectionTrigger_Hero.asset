@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dba1dc486c5f54a844a43808151d13, type: 3}
   m_Name: EnemySelectionTrigger_Hero
   m_EditorClassIdentifier: 
+  _description: Bla-Bla
+  _name: 
+  logging: 1
   _targetTag: 1

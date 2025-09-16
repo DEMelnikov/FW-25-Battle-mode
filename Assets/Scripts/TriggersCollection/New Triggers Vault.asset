@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a63981643489b4688d37fac8c40b48, type: 3}
   m_Name: New Triggers Vault
   m_EditorClassIdentifier: CommonInterfaces::TriggersVault
-  items: []
+  items:
+  - {fileID: 11400000, guid: 3f4eb1e80a2509f40b3a6561bc36adad, type: 2}
+  - {fileID: 11400000, guid: fb57947bafeef074e8ee7343add64776, type: 2}

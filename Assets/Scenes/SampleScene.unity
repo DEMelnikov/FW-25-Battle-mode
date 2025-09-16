@@ -2659,11 +2659,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TriggersCollection::Test_TriggerUser
   stateVault: {fileID: 11400000, guid: 8dcbf244fdf17c843acfea29c9991b4c, type: 2}
-  itemName: All_Failed_ZaglushkaState
+  itemName: Idle State_WTSO
   _SelectedState: {fileID: 0}
   _description: 
-  triggersVault: {fileID: 0}
-  triggerName: 
+  triggersVault: {fileID: 11400000, guid: 7196858bb5639a141a30697410f70646, type: 2}
+  triggerName: EnemySelectionTrigger_Hero
   triggerSelected: {fileID: 0}
   _triggerDescription: 
 --- !u!1 &1002492304
