@@ -10,15 +10,15 @@ using UnityEngine.TextCore.Text;
 {
         [Header("Basic Info")]
         [SerializeField] private string abilityName;
-        [SerializeField][TextArea(3,5)] private string description;
+        [SerializeField] [TextArea(3,5)] private string description;
                          public Sprite  icon;
         [SerializeField] private bool   logging = false;
 
 
         [Header("Activation Requirements")]
-        [SerializeField] public  List<Trigger>  triggers = new List<Trigger>();
+        [SerializeField] public  List<Trigger>         triggers = new List<Trigger>();
         [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();
-        [SerializeField] private AbilityAction         action;
+        [SerializeField] private IAction               action;
         [SerializeField] private List<AbilityResolve>  resolves = new List<AbilityResolve>();
 
 

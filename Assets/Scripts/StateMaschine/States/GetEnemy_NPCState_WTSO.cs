@@ -24,7 +24,7 @@ public class GetEnemy_NPCState_WTSO : State
 
     public override void OnEnter(IStateMachine machine)
     {
-        runtimeAbility = AbilitiesVault.Instance.GetAbilityCopyByName(abilityName);
+        //runtimeAbility = AbilitiesVault.Instance.GetAbilityCopyByName(abilityName);
         //if (runtimeAbility == null) Debug.LogWarning("runtimeAbility empty");
         _firstAbilityToSetEnemy = runtimeAbility as IAbility;
 

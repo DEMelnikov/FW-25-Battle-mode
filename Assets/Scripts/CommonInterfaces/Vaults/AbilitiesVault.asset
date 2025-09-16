@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79e571583f04c4c45be73a22684ac91c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8183cb4b952131c49a55d156c4656cb8, type: 3}
   m_Name: AbilitiesVault
-  m_EditorClassIdentifier: Statics::AbilitiesVault
-  abilities:
+  m_EditorClassIdentifier: CommonInterfaces::AbilitiesVault
+  items:
   - {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   - {fileID: 11400000, guid: 59a4160fb0359a542b8552f275dc5a23, type: 2}

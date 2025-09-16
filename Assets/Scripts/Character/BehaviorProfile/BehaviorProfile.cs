@@ -6,24 +6,41 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class BehaviorProfile : MonoBehaviour
 {
+    [Header("Vaults:")]
+    [SerializeField] private AbilitiesVault abilitiesVault;
+
+
+
     [Header("Attack Settings:")]
-    [SerializeField] private IAbility _defaultAttackAbility;
+    [SONameDropdown(typeof(AbilitiesVault))]
+    public string abilityName;
+
+    [SerializeField] private Ability _defaultAttackAbility;
 
     [Header("Defence Settings:")]
 
     [Header("Movement Settings:")]
-    [SerializeField] private float pursuitDistance = 150f;
+    [SerializeField] [Min(0.1f)] private float pursuitDistance = 150f;
 
 
-    
+
     //[Header("Unlocked Abilities")]
     //[SerializeField] private List<IAbility> unlockedAbilities = new List<IAbility>(); //TODO - подумать - возможно стоит делать отдельный Vault для каждого персонажа
 
-
+    private void Awake()
+    {
+        if (_defaultAttackAbility == null) Initialize();
+    }
 
     public void Initialize()
     {
-        
+        if (abilitiesVault == null || string.IsNullOrEmpty(abilityName))
+        {
+            Debug.LogError("abilitiesVault or abilityName не назначен");
+            return;
+        }
+
+        SetBaseAttackAbility(abilitiesVault.GetCopyByName(abilityName));
     }
 
 
@@ -33,7 +50,7 @@ public class BehaviorProfile : MonoBehaviour
     public float PursuitDistance => pursuitDistance;
 
     // Методы обновления значений
-    public void SetBaseAttackAbility(IAbility newAbility)
+    public void SetBaseAttackAbility(Ability newAbility)
     {
         _defaultAttackAbility = newAbility;
     }

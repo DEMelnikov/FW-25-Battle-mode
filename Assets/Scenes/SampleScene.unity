@@ -1211,6 +1211,8 @@ GameObject:
   - component: {fileID: 578513245}
   - component: {fileID: 578513247}
   - component: {fileID: 578513248}
+  - component: {fileID: 578513250}
+  - component: {fileID: 578513249}
   m_Layer: 3
   m_Name: He
   m_TagString: Untagged
@@ -1444,6 +1446,37 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &578513249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578513236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76334f2ae63190a41b5b5a03b56547db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Character::BehaviorProfile
+  abilitiesVault: {fileID: 11400000, guid: 15b406a7996371046aea86ee1f16fa83, type: 2}
+  abilityName: Ability For test
+  pursuitDistance: 150
+--- !u!114 &578513250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578513236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa69c71a63c539841869b45b80728803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Character::CharacterTargets
+  _selectedTarget: {fileID: 0}
+  _waypoint: {fileID: 0}
+  _whoIsYourEnemy: 1
+  logging: 1
 --- !u!1 &589239454
 GameObject:
   m_ObjectHideFlags: 0
