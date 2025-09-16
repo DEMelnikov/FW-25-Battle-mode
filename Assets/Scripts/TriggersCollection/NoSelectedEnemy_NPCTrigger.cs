@@ -3,7 +3,7 @@ namespace AbilitySystem.AbilityComponents
 {
     [CreateAssetMenu(fileName = "No Selected enemy", menuName = "FW25/Ability System/Triggers/NPC/No Enemy Selection")]
 
-    public class NoSelectedEnemy_NPCTrigger : AbilityTrigger
+    public class NoSelectedEnemy_NPCTrigger : Trigger
     {
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Hero;
 
