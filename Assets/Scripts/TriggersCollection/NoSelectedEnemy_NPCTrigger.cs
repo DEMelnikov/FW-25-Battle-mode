@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace AbilitySystem.AbilityComponents 
 {
-    [CreateAssetMenu(fileName = "No Selected enemy", menuName = "FW25/Ability System/Triggers/NPC/No Enemy Selection")]
+    [CreateAssetMenu(fileName = "No Selected enemy", menuName = "FW25/Triggers/NPC/No Enemy Selection")]
 
     public class NoSelectedEnemy_NPCTrigger : Trigger
     {

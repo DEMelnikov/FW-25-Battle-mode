@@ -1,11 +1,10 @@
 using UnityEngine;
 
-namespace AbilitySystem.AbilityComponents
-{
-    [CreateAssetMenu(fileName = "EnemySelectionTrigger_Hero", menuName = "FW25/Ability System/Triggers/Enemy Selection(hero version)")]
+
+    [CreateAssetMenu(fileName = "EnemySelectionTrigger_Hero", menuName = "FW25/Triggers/Enemy Selection(hero version)")]
     public class EnemySelectionTriggerSO : Trigger
     {
-        //есть тесткейсы - EnemySelectionTriggerTests
+
         [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Enemy;
 
 
@@ -95,4 +94,3 @@ namespace AbilitySystem.AbilityComponents
             return tagMatches;
         }
     }
-}

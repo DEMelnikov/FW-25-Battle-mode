@@ -11,4 +11,10 @@ public interface ICharacter
     public virtual void SetSelectedTarget(GameObject target) { }
     public SceneObjectTag SceneObjectTag { get; }
     NavMeshAgent GetNavMeshAgent();
+    IBehaviorProfile GetBehaviorProfile();
+}
+
+public interface IBehaviorProfile
+{
+    float PursuitDistance { get; }
 }

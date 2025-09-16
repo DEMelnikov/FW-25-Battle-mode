@@ -4,7 +4,7 @@ using UnityEditor.Playables;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class BehaviorProfile : MonoBehaviour
+public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
 {
     [Header("Vaults:")]
     [SerializeField] private AbilitiesVault abilitiesVault;
@@ -32,7 +32,7 @@ public class BehaviorProfile : MonoBehaviour
         if (_defaultAttackAbility == null) Initialize();
     }
 
-    public void Initialize()
+    private void Initialize()
     {
         if (abilitiesVault == null || string.IsNullOrEmpty(abilityName))
         {

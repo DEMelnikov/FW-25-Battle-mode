@@ -18,7 +18,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
                      private IAbilityController        _abilityController;
                      private CharacterTargets          _targets;
                      private NavMeshAgent              _navMeshAgent;
-                     private BehaviorProfile           _behaviorProfile;
+                     private IBehaviorProfile           _behaviorProfile;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -62,7 +62,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public Transform transform => this.transform;
     public string name => gameObject.name;
     public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
-    public BehaviorProfile GetBehaviorProfile() => _behaviorProfile;
+    public IBehaviorProfile GetBehaviorProfile() => _behaviorProfile;
     #endregion
 
     public void InitializeFromSettings()
