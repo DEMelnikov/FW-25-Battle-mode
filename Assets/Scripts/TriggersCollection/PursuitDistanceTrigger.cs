@@ -11,6 +11,8 @@ public class PursuitDistanceTrigger : Trigger
 
     public override bool CheckTrigger(ICharacter character)
     {
+        if (logging) Debug.Log("Check trigger PursuitDistanceTrigger started");
+
         if (!character.GetTargetsVault().TryGetTargetEnemy(out GameObject enemy)) return false;
         _targetDistance = character.GetBehaviorProfile().PursuitDistance;
         if(_targetDistance < 0) return false;
@@ -20,6 +22,9 @@ public class PursuitDistanceTrigger : Trigger
         
         // Вычисляем фактическое расстояние
         _actualDistance = Vector3.Distance(heroPosition, enemyPosition);
+
+
+        if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {_actualDistance}");
 
         // Сравниваем с целевым расстоянием
         return CompareDistancesWithTolerance(_actualDistance, _targetDistance, _relationType, _equalityTolerance);

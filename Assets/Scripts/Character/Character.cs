@@ -18,7 +18,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
                      private IAbilityController        _abilityController;
                      private CharacterTargets          _targets;
                      private NavMeshAgent              _navMeshAgent;
-                     private IBehaviorProfile           _behaviorProfile;
+                     private IBehaviorProfile          _behaviorProfile;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }

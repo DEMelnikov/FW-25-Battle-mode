@@ -10,7 +10,7 @@ using UnityEngine;
 
         public override bool CheckTrigger(ICharacter character)
         {
-            if (logging) Debug.Log("Check trigger EnemySelectionTriggerSO started");
+
 
             if (logging) Debug.Log("Check trigger EnemySelectionTriggerSO started");
 
