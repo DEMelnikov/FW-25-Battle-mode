@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a63981643489b4688d37fac8c40b48, type: 3}
+  m_Name: TriggersVault
+  m_EditorClassIdentifier: CommonInterfaces::TriggersVault
+  items:
+  - {fileID: 11400000, guid: 3f4eb1e80a2509f40b3a6561bc36adad, type: 2}
+  - {fileID: 11400000, guid: fb57947bafeef074e8ee7343add64776, type: 2}
+  - {fileID: 11400000, guid: 7b05ba2d1a63e064483cdfd47c6da954, type: 2}

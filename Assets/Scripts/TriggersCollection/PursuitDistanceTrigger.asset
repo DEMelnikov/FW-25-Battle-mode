@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PursuitDistanceTrigger
   m_EditorClassIdentifier: TriggersCollection::PursuitDistanceTrigger
   _description: count distance to target - and compare with PursuitDistance
-  _name: PursuitDistanceTrigger
+  _name: PursuitDistanceTrigger-Lesser
   logging: 1
   _relationType: 0
+  _equalityTolerance: 0.5

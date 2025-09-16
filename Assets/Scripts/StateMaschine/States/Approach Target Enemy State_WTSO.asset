@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: StateMaschine::ApproachTargetEnemyState_WTSO
   _description: 
   logging: 0
-  transitions: []
+  transitions:
+  - decision: {fileID: 0}
+    trueState: {fileID: 0}
   _allTransitiosFailedState: {fileID: 0}
