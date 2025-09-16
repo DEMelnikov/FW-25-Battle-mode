@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 {
     [SerializeField] private GameObject _selectedTarget;
