@@ -8,7 +8,7 @@ public class GetEnemy_NPCState_WTSO : State
 {
     //[SerializeReference] private IAbility _firstAbilityToSetEnemy;
     //[SerializeField] private ScriptableObject _abilityObject;
-    private IAbility _firstAbilityToSetEnemy;
+    [SerializeField] private IAbility _firstAbilityToSetEnemy;
 
     [Header("Визуальный поиск цели:")]
     [AbilityName]  public string abilityName;
