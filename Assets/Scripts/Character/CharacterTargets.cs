@@ -27,6 +27,18 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return false;
     }
 
+    public bool TryGetTargetEnemyTransform (out Transform _transform)
+    {
+        if (TryGetTargetEnemy(out var _enemy))
+        {
+            _transform = _enemy.transform;
+            return true; 
+        }
+
+        _transform = null;
+        return false;
+    }
+
     // Обновленный HasTargetEnemy - теперь без побочных эффектов!
     public bool HasTargetEnemy()
     {

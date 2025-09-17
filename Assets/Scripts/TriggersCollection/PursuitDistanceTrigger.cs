@@ -11,7 +11,7 @@ public class PursuitDistanceTrigger : Trigger
 
     public override bool CheckTrigger(ICharacter character)
     {
-        if (logging) Debug.Log("Check trigger PursuitDistanceTrigger started");
+        if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger started {_relationType} mode");
 
         if (!character.GetTargetsVault().TryGetTargetEnemy(out GameObject enemy)) return false;
         _targetDistance = character.GetBehaviorProfile().PursuitDistance;
@@ -24,23 +24,25 @@ public class PursuitDistanceTrigger : Trigger
         _actualDistance = Vector3.Distance(heroPosition, enemyPosition);
 
 
-        if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {_actualDistance}");
-
         // Сравниваем с целевым расстоянием
         return CompareDistancesWithTolerance(_actualDistance, _targetDistance, _relationType, _equalityTolerance);
     }
 
     private bool CompareDistancesWithTolerance(float actualDistance, float targetDistance, RelationType relation, float tolerance)
     {
+
         switch (relation)
         {
             case RelationType.Lesser:
+                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} targetDistance= {targetDistance}");
                 return actualDistance < targetDistance;
 
             case RelationType.Equal:
+                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} targetDistance= {targetDistance}");
                 return Mathf.Abs(actualDistance - targetDistance) <= tolerance;
 
             case RelationType.Greater:
+                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} targetDistance= {targetDistance}");
                 return actualDistance > targetDistance;
 
             default:

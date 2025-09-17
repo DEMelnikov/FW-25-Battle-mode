@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ea7d2c844a8f446a18997f98fb5211, type: 3}
   m_Name: Approach Target Enemy State_WTSO
   m_EditorClassIdentifier: StateMaschine::ApproachTargetEnemyState_WTSO
-  _description: 
+  _description: approach to enemy til actual distance>behaviour distance
   logging: 0
   transitions:
-  - decision: {fileID: 0}
-    trueState: {fileID: 0}
+  - decision: {fileID: 11400000, guid: bb4a463c3366cc94ca3c22f63e3bf2a3, type: 2}
+    trueState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   _allTransitiosFailedState: {fileID: 0}
+  _whenLooseTargetState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}

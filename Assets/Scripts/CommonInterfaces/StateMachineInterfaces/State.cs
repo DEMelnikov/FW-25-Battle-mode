@@ -10,7 +10,10 @@ public abstract class State : BaseState
     [SerializeField] protected State _allTransitiosFailedState;
 
     public virtual void OnEnter(IStateMachine machine) { }
-    public virtual void OnUpdate(IStateMachine machine) { }
+    public virtual void OnUpdate(IStateMachine machine) 
+    {
+        CheckTransitions(machine);
+    }
     public virtual void OnFixedUpdate(IStateMachine machine) { }
     public virtual void OnExit(IStateMachine machine) { }
 

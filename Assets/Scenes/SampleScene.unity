@@ -2696,7 +2696,7 @@ MonoBehaviour:
   itemName: Idle State_WTSO
   _SelectedState: {fileID: 0}
   _description: 
-  triggersVault: {fileID: 11400000, guid: 7196858bb5639a141a30697410f70646, type: 2}
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
   triggerName: EnemySelectionTrigger_Hero
   triggerSelected: {fileID: 0}
   _triggerDescription: 
@@ -4595,6 +4595,7 @@ GameObject:
   - component: {fileID: 7723458236203311624}
   - component: {fileID: 7723458236203311626}
   - component: {fileID: 7723458236203311627}
+  - component: {fileID: 7723458236203311628}
   m_Layer: 3
   m_Name: En
   m_TagString: Untagged
@@ -4817,6 +4818,22 @@ MonoBehaviour:
   _waypoint: {fileID: 0}
   _whoIsYourEnemy: 1
   logging: 1
+--- !u!114 &7723458236203311628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878806293192145506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76334f2ae63190a41b5b5a03b56547db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Character::BehaviorProfile
+  abilitiesVault: {fileID: 11400000, guid: 15b406a7996371046aea86ee1f16fa83, type: 2}
+  abilityName: Ability For test
+  _defaultAttackAbility: {fileID: 0}
+  pursuitDistance: 150
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
