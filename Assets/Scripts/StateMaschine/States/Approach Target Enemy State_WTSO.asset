@@ -15,7 +15,7 @@ MonoBehaviour:
   _description: approach to enemy til actual distance>behaviour distance
   logging: 0
   transitions:
-  - decision: {fileID: 11400000, guid: bb4a463c3366cc94ca3c22f63e3bf2a3, type: 2}
+  - decision: {fileID: 11400000, guid: 2ac4e85fd0c5b8b43827c867fe871d60, type: 2}
     trueState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   _allTransitiosFailedState: {fileID: 0}
   _whenLooseTargetState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}

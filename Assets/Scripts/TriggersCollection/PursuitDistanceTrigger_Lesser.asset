@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87937fee2eef22a45a63d6b821b9f76f, type: 3}
   m_Name: PursuitDistanceTrigger_Lesser
   m_EditorClassIdentifier: TriggersCollection::PursuitDistanceTrigger
-  _description: actual distance to target - and compare with PursuitDistance - LesserMode
+  _description: 'actual distance to target - and compare with PursuitDistance - LesserMode
+
+    actualDistance
+    < PursuitDistance = true'
   _name: 
   logging: 1
   _relationType: 0

@@ -1459,7 +1459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
   abilitiesVault: {fileID: 11400000, guid: 15b406a7996371046aea86ee1f16fa83, type: 2}
-  abilityName: Ability For test
+  defaultAttackAbilityName: 
+  _weaponRange: 7
   _defaultAttackAbility: {fileID: 0}
   pursuitDistance: 150
 --- !u!114 &578513250
@@ -4831,7 +4832,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
   abilitiesVault: {fileID: 11400000, guid: 15b406a7996371046aea86ee1f16fa83, type: 2}
-  abilityName: Ability For test
+  defaultAttackAbilityName: Ability For test
+  _weaponRange: 7
   _defaultAttackAbility: {fileID: 0}
   pursuitDistance: 150
 --- !u!1660057539 &9223372036854775807

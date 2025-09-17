@@ -9,11 +9,10 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
     [Header("Vaults:")]
     [SerializeField] private AbilitiesVault abilitiesVault;
 
-
-
     [Header("Attack Settings:")]
     [SONameDropdown(typeof(AbilitiesVault))]
-    public string abilityName;
+    public string defaultAttackAbilityName;
+    [SerializeField][Min(0.1f)] private float _weaponRange = 7f;
 
     [SerializeField] private Ability _defaultAttackAbility;
 
@@ -34,13 +33,13 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
 
     private void Initialize()
     {
-        if (abilitiesVault == null || string.IsNullOrEmpty(abilityName))
+        if (abilitiesVault == null || string.IsNullOrEmpty(defaultAttackAbilityName))
         {
-            Debug.LogError("abilitiesVault or abilityName не назначен");
+            Debug.LogError($"{this.gameObject.name}.BehaviorProfile abilitiesVault or abilityName не назначен");
             return;
         }
 
-        SetBaseAttackAbility(abilitiesVault.GetCopyByName(abilityName));
+        SetBaseAttackAbility(abilitiesVault.GetCopyByName(defaultAttackAbilityName));
     }
 
 
@@ -48,6 +47,8 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
     // ѕубличные свойства дл€ доступа к параметрам
     public IAbility BaseAttackAbility => _defaultAttackAbility;
     public float PursuitDistance => pursuitDistance;
+
+    public float WeaponRange { get => _weaponRange; set => _weaponRange = value; }
 
     // ћетоды обновлени€ значений
     public void SetBaseAttackAbility(Ability newAbility)
@@ -60,16 +61,4 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
         pursuitDistance = Mathf.Max(0f, distance);
     }
 
-
-    //public void UnlockAbility(Ability ability)
-    //{
-    //    if (ability != null && !unlockedAbilities.Contains(ability))
-    //        unlockedAbilities.Add(ability);
-    //}
-
-    //public void LockAbility(Ability ability)
-    //{
-    //    if (ability != null && unlockedAbilities.Contains(ability))
-    //        unlockedAbilities.Remove(ability);
-    //}
 }

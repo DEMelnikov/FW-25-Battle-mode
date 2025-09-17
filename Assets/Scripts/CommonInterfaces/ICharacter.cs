@@ -17,4 +17,5 @@ public interface ICharacter
 public interface IBehaviorProfile
 {
     float PursuitDistance { get; }
+    float WeaponRange {  get; }
 }

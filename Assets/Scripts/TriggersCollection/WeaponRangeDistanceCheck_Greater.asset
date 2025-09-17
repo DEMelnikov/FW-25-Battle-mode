@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e14c4b4e3a97f43be5b2bfd28f74b2, type: 3}
+  m_Name: WeaponRangeDistanceCheck_Greater
+  m_EditorClassIdentifier: TriggersCollection::WeaponRangeDistanceCheck
+  _description: actualDistance > _weaponRange true
+  _name: WeaponRangeDistanceCheck_Greater
+  logging: 1
+  _relationType: 2
+  _equalityTolerance: 0.5

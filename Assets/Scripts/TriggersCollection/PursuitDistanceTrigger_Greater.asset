@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87937fee2eef22a45a63d6b821b9f76f, type: 3}
   m_Name: PursuitDistanceTrigger_Greater
   m_EditorClassIdentifier: TriggersCollection::PursuitDistanceTrigger
-  _description: count distance to target - and compare with PursuitDistance - GreaterMode
+  _description: 'count distance to target - and compare with PursuitDistance - GreaterMode
+
+    actualDistance
+    > PursuitDistance = true'
   _name: PursuitDistanceTrigger-Greater
   logging: 1
   _relationType: 2

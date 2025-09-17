@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97f1a168e511b5f4d9f03f2239cba05a, type: 3}
-  m_Name: ApproachEnemyHeroDecision
+  m_Name: needApproachEnemyHeroDecision
   m_EditorClassIdentifier: StateMaschine::AllTriggersPassDecision
   _description: 'If has target = hero
 
@@ -21,5 +21,10 @@ MonoBehaviour:
   triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
   logging: 1
   triggersVaultNames:
-  - EnemySelectionTrigger_Hero
-  abilityTriggers: []
+  - HasValidatedEnemy
+  - PursuitDistanceTrigger_Lesser
+  - WeaponRangeDistanceCheck_Greater
+  abilityTriggers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
