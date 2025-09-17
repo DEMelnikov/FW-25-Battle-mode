@@ -13,8 +13,8 @@ public class GetEnemy_NPCState_WTSO : State
     [Header("Визуальный поиск цели:")]
     [SerializeField] private Ability _firstAbilityToSetEnemy;
 
-    [Header("State when Success")]
-    [SerializeField] private State _stateAfterSuccessSearch;
+    //[Header("State when Success")]
+    //[SerializeField] private State _stateAfterSuccessSearch;
 
     //private IAbilityController _abilityController; //nah ???
     private Character character;
@@ -30,8 +30,6 @@ public class GetEnemy_NPCState_WTSO : State
         }
 
         character = machine.Context.Owner.GetComponent<Character>();
-
-
     }
 
     public override void OnExit(IStateMachine machine)
@@ -46,11 +44,7 @@ public class GetEnemy_NPCState_WTSO : State
 
     public override void OnUpdate(IStateMachine machine)
     {
-        if (_firstAbilityToSetEnemy.TryActivateAbility(character, out _))
-        {
-            machine.SetState(_stateAfterSuccessSearch);
-        }
-        
+        _firstAbilityToSetEnemy.TryActivateAbility(character, out _);
         base.OnUpdate(machine);
     }
 }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: TriggersCollection::HasValidTargetTrigger
   _description: CharacterVault has TargetEnemy validated = success
   _name: HasValidTargetEnemy
-  logging: 1
+  logging: 0

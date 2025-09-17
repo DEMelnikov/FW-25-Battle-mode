@@ -18,28 +18,31 @@ public abstract class State : BaseState
         CheckTransitions(machine);
     }
     public virtual void OnFixedUpdate(IStateMachine machine) { }
-    public virtual void OnExit(IStateMachine machine) { }
+    public virtual void OnExit(IStateMachine machine) 
+    {
+        if (logging) Debug.Log($"{machine.Context.Owner.name} Exit {this.name} State");
+    }
 
     public sealed override void CheckTransitions(IStateMachine machine)
     {
-        if (logging) Debug.Log($"Checking transitions in state {this.name}");
+        //if (logging) Debug.Log($"Checking transitions in state {this.name}");
+        if (logging) Debug.Log($" State {this.name}  Checking transitions Q = {transitions.Count}");
         foreach (var transition in transitions)
         {
-            if (logging) Debug.Log($" {this.name} Q transitions = {transitions.Count}");
-
             if (transition.decision != null && transition.trueState != null)
             {
-                if (logging) Debug.Log($" {this.name}: Start = {transition.decision.name} result {transition.decision.Decide(machine)}");
                 if (transition.decision.Decide(machine))
                 {
+                    if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result TRUE! Next State {transition.trueState.name}");
+                    //if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result true ");
                     machine.SetState(transition.trueState);
                     return;
                 }
             }
         }
-        if (logging) Debug.Log($"");
+        //if (logging) Debug.Log($" {this.name}: All Transitions failed ");
 
-        if(_allTransitiosFailedState!= null) machine.SetState(_allTransitiosFailedState);
+        if (_allTransitiosFailedState!= null) machine.SetState(_allTransitiosFailedState);
     }
 
     public List<Transition> GetTransitions()

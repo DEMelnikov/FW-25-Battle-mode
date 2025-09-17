@@ -106,7 +106,7 @@ public class Ability : BaseAbility, IAbility
         if (_abilityAction == null) Initialize();
         outcome = _abilityAction.ExecuteAction(character);   //.GetExecuteAction(character);
 
-        Debug.Log($"Ability Controller - result = {outcome} successes");
+        Debug.Log($"Ability {this.name} - result = {outcome} successes");
 
         // Применение результатов
         foreach (var resolve in resolves)

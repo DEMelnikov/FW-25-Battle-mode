@@ -6,13 +6,11 @@ public class IdleState_WTSO : State
 {
     public override void OnEnter(IStateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Enter Idle State:");
         base.OnEnter(machine);
     }
 
     public override void OnExit(IStateMachine machine)
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} Exit Idle State:");
         base.OnExit(machine);
     }
 

@@ -11,7 +11,7 @@ public class AllTriggersPassDecision : Decision
         var character = machine.Context.GetCharacter();
         //bool finalDecision = true;
 
-        if(abilityTriggers.Count>0) return false;
+        if(abilityTriggers.Count>0) return true;
 
         foreach (var trigger in abilityTriggers) 
         {

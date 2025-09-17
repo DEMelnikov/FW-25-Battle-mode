@@ -54,7 +54,11 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 
     #region ѕубличные свойства
     public GameObject GetSelectedTarget() => _selectedTarget; //TODO заменить
-    public void SetSelectedTarget(GameObject target) { _selectedTarget = target; } //TODO заменить
+    public void SetSelectedTarget(GameObject target) 
+    {
+        _targets.SetTargetEnemy(target);
+    } 
+    //TODO заменить
     public IStatsController GetStatsController() { return _statsController; }
     public IStateMachine GetStateMachine() => _stateMachine;
     public IAbilityController GetAbilityController() => _abilityController;
