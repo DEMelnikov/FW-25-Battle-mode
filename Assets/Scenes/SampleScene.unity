@@ -2476,6 +2476,7 @@ GameObject:
   - component: {fileID: 992131601}
   - component: {fileID: 992131602}
   - component: {fileID: 992131603}
+  - component: {fileID: 992131604}
   m_Layer: 3
   m_Name: He (1)
   m_TagString: Untagged
@@ -2719,6 +2720,22 @@ MonoBehaviour:
   _weaponRange: 7
   _defaultAttackAbility: {fileID: 0}
   pursuitDistance: 150
+--- !u!114 &992131604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992131592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa69c71a63c539841869b45b80728803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Character::CharacterTargets
+  _selectedTarget: {fileID: 0}
+  _waypoint: {fileID: 0}
+  _whoIsYourEnemy: 1
+  logging: 1
 --- !u!1 &1002492304
 GameObject:
   m_ObjectHideFlags: 0
@@ -4835,8 +4852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Character::CharacterTargets
   _selectedTarget: {fileID: 0}
   _waypoint: {fileID: 0}
-  _whoIsYourEnemy: 1
-  logging: 0
+  _whoIsYourEnemy: 0
+  logging: 1
 --- !u!114 &7723458236203311628
 MonoBehaviour:
   m_ObjectHideFlags: 0

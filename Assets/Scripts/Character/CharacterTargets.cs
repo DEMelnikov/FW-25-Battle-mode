@@ -29,9 +29,11 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 
     public bool TryGetTargetEnemyTransform (out Transform _transform)
     {
-        if (TryGetTargetEnemy(out var _enemy))
+        if (TryGetTargetEnemy(out GameObject _enemy))
         {
+            if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() Got {_enemy.name} and now geting Transform");
             _transform = _enemy.transform;
+            if (logging) Debug.Log($" Transform position X: {_transform.position.x}");
             return true; 
         }
 
@@ -63,6 +65,8 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 
     public void SetTargetEnemy(GameObject target)
     {
+        //Debug.Break();
+
         if (target == null) return;
 
         var targetCharacter = target.GetComponent<Character>();
@@ -78,6 +82,8 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
             Debug.Log($"{gameObject.name} SetTargetEnemy rejected " +
                 $"- target tag {targetCharacter.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
         }
+
+        //Debug.Break();
     }
 
     

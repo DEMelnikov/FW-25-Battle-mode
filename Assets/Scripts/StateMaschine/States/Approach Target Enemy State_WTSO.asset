@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Approach Target Enemy State_WTSO
   m_EditorClassIdentifier: StateMaschine::ApproachTargetEnemyState_WTSO
   _description: approach to enemy til actual distance>behaviour distance
-  logging: 0
+  logging: 1
   transitions:
   - decision: {fileID: 11400000, guid: 2ac4e85fd0c5b8b43827c867fe871d60, type: 2}
     trueState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
