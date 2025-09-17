@@ -7,7 +7,7 @@ namespace AbilitySystem.AbilityComponents
     [CreateAssetMenu(fileName = "SetClosetAliveTargetAction", menuName = "FW25/Ability System/Actions/Set Closest Alive Target")]
     public class SetClosestAliveTarget : AbilityAction
     {
-        [SerializeField][Min(0.1f)] private float maxDistance = 200f;
+        [SerializeField][Min(0.1f)] private float maxDistance = 200f; //TODO - заменить на алгоритм от абилки и модификаторов
         [SerializeField]            private SceneObjectTag _targetTag = SceneObjectTag.Hero;
 
         private Transform myPosition;

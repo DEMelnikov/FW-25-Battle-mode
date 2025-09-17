@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Set New Target _NPC
   m_EditorClassIdentifier: 
   abilityName: Set New Target
-  description: "Test ability \nset new closest target in distance"
+  description: "Test ability \nset new closest target in distance. if no targets
+    in TargetsVault"
   icon: {fileID: 0}
   logging: 1
+  _actionsVault: {fileID: 11400000, guid: 6530373706c71704dbeacbdca6eeb6da, type: 2}
   triggers:
   - {fileID: 11400000, guid: fb57947bafeef074e8ee7343add64776, type: 2}
   costs: []
-  action: {fileID: 11400000, guid: 2046b42a408b1714aa3ef68650ef5b51, type: 2}
+  _actionName: SetClosetAliveTargetAction
   resolves: []
   tags: []

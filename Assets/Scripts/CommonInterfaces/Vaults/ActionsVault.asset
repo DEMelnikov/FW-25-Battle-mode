@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d2d1cb5b6cb7447a8634de36801ba3, type: 3}
+  m_Name: ActionsVault
+  m_EditorClassIdentifier: CommonInterfaces::ActionssVault
+  items:
+  - {fileID: 11400000, guid: 348df2c179bed8a4a95546ff1dc95735, type: 2}
+  - {fileID: 11400000, guid: 2046b42a408b1714aa3ef68650ef5b51, type: 2}

@@ -59,7 +59,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public IStateMachine GetStateMachine() => _stateMachine;
     public IAbilityController GetAbilityController() => _abilityController;
     public ICharacterTargetsVault GetTargetsVault() => _targets;
-    public Transform transform => this.transform;
+    public Transform transform => this.gameObject.transform;
     public string name => gameObject.name;
     public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
     public IBehaviorProfile GetBehaviorProfile() => _behaviorProfile;

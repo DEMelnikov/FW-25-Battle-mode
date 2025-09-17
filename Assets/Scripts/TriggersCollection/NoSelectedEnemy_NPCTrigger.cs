@@ -5,7 +5,7 @@ namespace AbilitySystem.AbilityComponents
 
     public class NoSelectedEnemy_NPCTrigger : Trigger
     {
-        [SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Hero;
+        //[SerializeField] private SceneObjectTag _targetTag = SceneObjectTag.Hero;
 
         public override bool CheckTrigger(ICharacter character)
         {
@@ -16,19 +16,27 @@ namespace AbilitySystem.AbilityComponents
                 return true;
 
             character.GetTargetsVault().TryGetTargetCharacter(out ICharacter targetCharacter);
-            if (targetCharacter == null) return false;
-
-            bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;
-
-            if (logging)
+            if (targetCharacter == null)
             {
-                Debug.Log($"Check trigger NoSelectedEnemy: " +
-                         $"target tag = {targetCharacter.SceneObjectTag}, " +
-                         $"required tag = {_targetTag}, " +
-                         $"result = {(tagMatches ? "PASSED+++" : "FAILED---")}");
+                if (logging) Debug.Log($"{character.name} Targetenemy is empty check pass");
+                return true;
             }
+            
+            if (logging) Debug.Log($"{character.name} Targetenemy is not empty check not pass");
 
-            return tagMatches;
+            return false;
+
+            //bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;
+
+            //if (logging)
+            //{
+            //    Debug.Log($"Check trigger NoSelectedEnemy: " +
+            //             $"target tag = {targetCharacter.SceneObjectTag}, " +
+            //             $"required tag = {_targetTag}, " +
+            //             $"result = {(tagMatches ? "PASSED+++" : "FAILED---")}");
+            //}
+
+            //return tagMatches;
         }
     }
 }

@@ -9,7 +9,10 @@ public abstract class State : BaseState
     [SerializeField] protected List<Transition> transitions = new List<Transition>();
     [SerializeField] protected State _allTransitiosFailedState;
 
-    public virtual void OnEnter(IStateMachine machine) { }
+    public virtual void OnEnter(IStateMachine machine) 
+    {
+        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Enter {this.name} State:");
+    }
     public virtual void OnUpdate(IStateMachine machine) 
     {
         CheckTransitions(machine);
