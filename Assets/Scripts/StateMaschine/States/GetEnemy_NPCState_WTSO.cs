@@ -2,6 +2,7 @@ using AbilitySystem;
 using System.Collections.Generic;
 using UnityEditor.Playables;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 [CreateAssetMenu(menuName = "FW25/State Machine/States/GetEnemy (NPC)")]
 public class GetEnemy_NPCState_WTSO : State
@@ -15,7 +16,8 @@ public class GetEnemy_NPCState_WTSO : State
     [Header("State when Success")]
     [SerializeField] private State _stateAfterSuccessSearch;
 
-    private IAbilityController _abilityController; //nah ???
+    //private IAbilityController _abilityController; //nah ???
+    private Character character;
 
     public override void OnEnter(IStateMachine machine)
     {
@@ -27,12 +29,9 @@ public class GetEnemy_NPCState_WTSO : State
             return;
         }
 
-        Character character = machine.Context.Owner.GetComponent<Character>();
+        character = machine.Context.Owner.GetComponent<Character>();
 
-        if(_firstAbilityToSetEnemy.TryActivateAbility(character, out _))
-        {
-            machine.SetState(_stateAfterSuccessSearch);
-        }
+
     }
 
     public override void OnExit(IStateMachine machine)
@@ -47,7 +46,11 @@ public class GetEnemy_NPCState_WTSO : State
 
     public override void OnUpdate(IStateMachine machine)
     {
-        CheckTransitions(machine);
+        if (_firstAbilityToSetEnemy.TryActivateAbility(character, out _))
+        {
+            machine.SetState(_stateAfterSuccessSearch);
+        }
+        
         base.OnUpdate(machine);
     }
 }

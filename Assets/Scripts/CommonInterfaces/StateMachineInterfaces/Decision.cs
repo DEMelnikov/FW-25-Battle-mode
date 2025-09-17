@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Decision : ScriptableObject
 {
+    [SerializeField] [TextArea (2,3)]private string _description;
+
     [Header("Triggers Vault")]
     public TriggersVault triggersVault;// —сылка на нужный vault-ассет
 

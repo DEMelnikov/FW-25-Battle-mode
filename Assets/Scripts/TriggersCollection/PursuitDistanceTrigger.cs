@@ -34,15 +34,15 @@ public class PursuitDistanceTrigger : Trigger
         switch (relation)
         {
             case RelationType.Lesser:
-                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} targetDistance= {targetDistance}");
+                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} PursuitDistance= {targetDistance}");
                 return actualDistance < targetDistance;
 
             case RelationType.Equal:
-                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} targetDistance= {targetDistance}");
+                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} PursuitDistance= {targetDistance}");
                 return Mathf.Abs(actualDistance - targetDistance) <= tolerance;
 
             case RelationType.Greater:
-                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} targetDistance= {targetDistance}");
+                if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger:_actualDistance = {actualDistance} PursuitDistance= {targetDistance}");
                 return actualDistance > targetDistance;
 
             default:

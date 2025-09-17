@@ -18,4 +18,5 @@ MonoBehaviour:
   - decision: {fileID: 0}
     trueState: {fileID: 0}
   _allTransitiosFailedState: {fileID: 11400000, guid: 4d54b9956949fe342b602d3a071767f5, type: 2}
-  abilityName: Set New Target
+  _firstAbilityToSetEnemy: {fileID: 11400000, guid: 59a4160fb0359a542b8552f275dc5a23, type: 2}
+  _stateAfterSuccessSearch: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}

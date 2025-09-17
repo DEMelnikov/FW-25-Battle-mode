@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TriggersVault
   m_EditorClassIdentifier: CommonInterfaces::TriggersVault
   items:
+  - {fileID: 11400000, guid: 976f0ad6d99642040a96942540933526, type: 2}
   - {fileID: 11400000, guid: 3f4eb1e80a2509f40b3a6561bc36adad, type: 2}
   - {fileID: 11400000, guid: fb57947bafeef074e8ee7343add64776, type: 2}
   - {fileID: 11400000, guid: 7b05ba2d1a63e064483cdfd47c6da954, type: 2}
