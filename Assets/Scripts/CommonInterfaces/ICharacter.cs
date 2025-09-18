@@ -12,6 +12,7 @@ public interface ICharacter
     public SceneObjectTag SceneObjectTag { get; }
     NavMeshAgent GetNavMeshAgent();
     IBehaviorProfile GetBehaviorProfile();
+    IStateMachine GetStateMachine();
 }
 
 public interface IBehaviorProfile

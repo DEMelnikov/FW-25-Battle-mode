@@ -1287,7 +1287,7 @@ Transform:
   m_GameObject: {fileID: 578513236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.72, y: -1.33, z: 0}
+  m_LocalPosition: {x: 7.14, y: -1.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1422,6 +1422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
+  triggersVaultNames: []
+  abilityTriggers: []
   characterQQQ: {fileID: 0}
   characterEnemy: {fileID: 0}
 --- !u!195 &578513248
@@ -2425,6 +2428,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggersVault: {fileID: 0}
+  triggersVaultNames: []
+  abilityTriggers: []
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 878806293192145506}
 --- !u!1 &875530933
@@ -2641,7 +2647,7 @@ Transform:
   m_GameObject: {fileID: 992131592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.914, y: -1.377, z: 0}
+  m_LocalPosition: {x: 4.34, y: -3.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2659,6 +2665,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
+  triggersVaultNames: []
+  abilityTriggers: []
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 0}
 --- !u!195 &992131601
@@ -3506,6 +3515,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggersVault: {fileID: 0}
+  triggersVaultNames: []
+  abilityTriggers: []
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 878806293192145506}
 --- !u!114 &1463234084
@@ -3834,6 +3846,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggersVault: {fileID: 0}
+  triggersVaultNames: []
+  abilityTriggers: []
   characterQQQ: {fileID: 0}
   characterEnemy: {fileID: 0}
 --- !u!1 &1579725337
@@ -4053,6 +4068,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggersVault: {fileID: 0}
+  triggersVaultNames: []
+  abilityTriggers: []
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 878806293192145506}
 --- !u!114 &1738852371
@@ -4814,6 +4832,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
+  triggersVaultNames:
+  - HasValidatedEnemy
+  abilityTriggers: []
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 878806293192145506}
 --- !u!195 &7723458236203311626
