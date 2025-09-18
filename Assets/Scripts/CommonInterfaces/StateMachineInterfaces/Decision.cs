@@ -21,9 +21,11 @@ public abstract class Decision : ScriptableObject
         abilityTriggers.Clear();
         Initialize();
     }
-    private void Initialize()
+    protected void Initialize()
     {
-        if(abilityTriggers.Count > 0) return;
+        //if(abilityTriggers.Count > 0) return;
+
+        abilityTriggers.Clear();
 
         if (triggersVault == null)
         {

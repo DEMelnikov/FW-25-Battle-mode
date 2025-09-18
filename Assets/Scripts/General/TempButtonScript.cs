@@ -99,7 +99,7 @@ public class TempButtonScript : MonoBehaviour
 
         if (triggersVault == null)
         {
-            Debug.LogWarning("TriggersVault не назначен");
+            Debug.LogWarning($"{this.gameObject.name} TriggersVault не назначен");
             return;
         }
 

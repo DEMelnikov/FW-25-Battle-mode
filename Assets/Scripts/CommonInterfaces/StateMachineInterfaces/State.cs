@@ -26,7 +26,7 @@ public abstract class State : BaseState
     public sealed override void CheckTransitions(IStateMachine machine)
     {
         //if (logging) Debug.Log($"Checking transitions in state {this.name}");
-        if (logging) Debug.Log($" State {this.name}  Checking transitions Q = {transitions.Count}");
+        if (logging) Debug.Log($" State {this.name} Start Checking transitions Q = {transitions.Count}");
         foreach (var transition in transitions)
         {
             if (transition.decision != null && transition.trueState != null)

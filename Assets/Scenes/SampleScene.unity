@@ -1209,7 +1209,6 @@ GameObject:
   - component: {fileID: 578513243}
   - component: {fileID: 578513244}
   - component: {fileID: 578513245}
-  - component: {fileID: 578513247}
   - component: {fileID: 578513248}
   - component: {fileID: 578513250}
   - component: {fileID: 578513249}
@@ -1410,23 +1409,6 @@ MonoBehaviour:
   _currentState: {fileID: 0}
   _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   currentStateName: 
---- !u!114 &578513247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578513236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
-  triggersVaultNames: []
-  abilityTriggers: []
-  characterQQQ: {fileID: 0}
-  characterEnemy: {fileID: 0}
 --- !u!195 &578513248
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2366,9 +2348,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 578513236}
-        m_TargetAssemblyTypeName: TempButtonScript, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 851700133}
+        m_TargetAssemblyTypeName: TempButtonScript, General
+        m_MethodName: TestTriggers
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2428,11 +2410,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggersVault: {fileID: 0}
-  triggersVaultNames: []
-  abilityTriggers: []
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 878806293192145506}
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
+  triggersVaultNames:
+  - HasValidatedEnemy
+  abilityTriggers: []
 --- !u!1 &875530933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,7 +2461,6 @@ GameObject:
   - component: {fileID: 992131595}
   - component: {fileID: 992131594}
   - component: {fileID: 992131593}
-  - component: {fileID: 992131600}
   - component: {fileID: 992131601}
   - component: {fileID: 992131602}
   - component: {fileID: 992131603}
@@ -2653,23 +2635,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &992131600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992131592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
-  triggersVaultNames: []
-  abilityTriggers: []
-  characterQQQ: {fileID: 578513236}
-  characterEnemy: {fileID: 0}
 --- !u!195 &992131601
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3515,11 +3480,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggersVault: {fileID: 0}
-  triggersVaultNames: []
-  abilityTriggers: []
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 878806293192145506}
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
+  triggersVaultNames: []
+  abilityTriggers: []
 --- !u!114 &1463234084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3564,7 +3529,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 578513247}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TempButtonScript, Assembly-CSharp
         m_MethodName: SetTarget
         m_Mode: 1
@@ -3741,7 +3706,6 @@ GameObject:
   - component: {fileID: 1560712529}
   - component: {fileID: 1560712528}
   - component: {fileID: 1560712527}
-  - component: {fileID: 1560712530}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3834,23 +3798,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1560712530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560712526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggersVault: {fileID: 0}
-  triggersVaultNames: []
-  abilityTriggers: []
-  characterQQQ: {fileID: 0}
-  characterEnemy: {fileID: 0}
 --- !u!1 &1579725337
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,11 +4015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggersVault: {fileID: 0}
-  triggersVaultNames: []
-  abilityTriggers: []
   characterQQQ: {fileID: 578513236}
   characterEnemy: {fileID: 878806293192145506}
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
+  triggersVaultNames: []
+  abilityTriggers: []
 --- !u!114 &1738852371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4117,7 +4064,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7723458236203311624}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TempButtonScript, Assembly-CSharp
         m_MethodName: TestAction
         m_Mode: 1
@@ -4646,7 +4593,6 @@ GameObject:
   - component: {fileID: 4815314378211106677}
   - component: {fileID: 7723458236203311622}
   - component: {fileID: 7723458236203311623}
-  - component: {fileID: 7723458236203311624}
   - component: {fileID: 7723458236203311626}
   - component: {fileID: 7723458236203311627}
   - component: {fileID: 7723458236203311628}
@@ -4820,24 +4766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04a48f283275a34e90741a421745381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7723458236203311624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878806293192145506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 931f70cfc48b6534aa11e930e6c1acdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
-  triggersVaultNames:
-  - HasValidatedEnemy
-  abilityTriggers: []
-  characterQQQ: {fileID: 578513236}
-  characterEnemy: {fileID: 878806293192145506}
 --- !u!195 &7723458236203311626
 NavMeshAgent:
   m_ObjectHideFlags: 0

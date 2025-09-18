@@ -4,11 +4,12 @@ using UnityEngine;
 public abstract class Trigger : ScriptableObject
 {
 
-        [SerializeField] [TextArea(3, 5)] protected string _description;
-        [SerializeField] string _name;
+    [SerializeField] [TextArea(3, 5)] protected string _description;
+    [SerializeField] string _name;
 
-        [Header("Настройки:")]
-                [SerializeField] protected bool logging = true;
+    [Header("Настройки:")]
+    [SerializeField] protected bool logging = true;
+
     public abstract bool CheckTrigger(ICharacter character);
     public string GetTriggerName() { return _name; } //TODO - seal this
 
