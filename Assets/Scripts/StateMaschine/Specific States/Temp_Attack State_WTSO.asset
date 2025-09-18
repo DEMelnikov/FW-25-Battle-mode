@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba35d5efedf59041aa5618dc3348c78, type: 3}
   m_Name: Temp_Attack State_WTSO
   m_EditorClassIdentifier: 
+  _description: 
+  stateId: Attack_Zaglushka
   logging: 1
   transitions:
   - decision: {fileID: 11400000, guid: 95d3360814b121f489f6dc13979ba2a9, type: 2}
     trueState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
-    falseState: {fileID: 0}
+  _allTransitiosFailedState: {fileID: 0}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ZaglushkaState
   m_EditorClassIdentifier: 
   _description: 
+  stateId: Universal_zaglushka
   logging: 1
   transitions: []
   _allTransitiosFailedState: {fileID: 0}

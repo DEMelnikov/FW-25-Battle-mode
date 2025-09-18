@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 
+//version 1.2
 public class StateMachine : MonoBehaviour, IStateMachine
 {
     //[SerializeField] private ScriptableObject _currentStateBehaviour;
@@ -8,6 +10,9 @@ public class StateMachine : MonoBehaviour, IStateMachine
     [SerializeReference] private State _currentState;
     [SerializeReference] private State _initialState;
                      private IStateContext _context;
+
+    private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
+
 
     // Для отладки в инспекторе
     [SerializeField] private string currentStateName;
@@ -18,8 +23,8 @@ public class StateMachine : MonoBehaviour, IStateMachine
 
         if (_initialState != null)
         {
-            //_initialState = _initialStateBehaviour as IState;
-            SetState(_initialState);
+            InitState(_initialState);
+            SetStateById(_initialState.StateId);
         }
 
         //if (_initialState != null)
@@ -56,7 +61,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         }
     }
 
-    public void SetState(State newState)
+    public void OldSetState(State newState)
     {
 
         // Уведомляем decisions текущего состояния о выходе
@@ -70,6 +75,12 @@ public class StateMachine : MonoBehaviour, IStateMachine
         NotifyDecisionsEnter(_currentState);
 
         _currentState?.OnEnter(this);
+    }
+
+    public void SetState(State originalState)
+    {
+        InitState(originalState);
+        SetStateById(originalState.StateId);
     }
 
 
@@ -111,12 +122,34 @@ public class StateMachine : MonoBehaviour, IStateMachine
         }
     }
 
-    // Для перехода по типу состояния (удобно для скриптов)
-    public void SetStateByType<T>() where T : State
+    private void InitState(State originalState)
     {
-        // Здесь можно реализовать поиск состояния по типу
-        // или использовать референсы заранее подготовленных состояний
+        if (!stateInstances.ContainsKey(originalState.StateId))
+        {
+            State clone = Instantiate(originalState);
+            stateInstances[originalState.StateId] = clone;
+        }
     }
+
+    public void SetStateById(string stateId)
+    {
+        if (!stateInstances.ContainsKey(stateId))
+        {
+            Debug.LogError($"State with ID {stateId} not found in stateInstances.");
+            return;
+        }
+
+        State newState = stateInstances[stateId];
+
+        if (_currentState == newState) return;
+
+        _currentState?.OnExit(this);
+        _currentState = newState;
+        currentStateName = newState.name;
+        _currentState?.OnEnter(this);
+    }
+
+
 
     // Доступ к контексту для состояний
     public IStateContext Context => _context;

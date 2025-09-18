@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: e_Get Enemy_NPC State_WTSO
   m_EditorClassIdentifier: 
   _description: 
+  stateId: GetEnemy_primitive
   logging: 1
   transitions:
   - decision: {fileID: 11400000, guid: 2ac4e85fd0c5b8b43827c867fe871d60, type: 2}
