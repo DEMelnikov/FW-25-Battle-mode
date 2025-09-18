@@ -32,6 +32,7 @@ public class AllTriggersPassDecision : Decision
             if (!trigger.CheckTrigger(character))
             {
                 if (logging) Debug.Log($"Decision {this.name} - check {trigger.name} - FAILED");
+                if (logging) Debug.Log($"Decision {this.name} FAILED fully - *!*!*!*");
                 return false;
             }
             else

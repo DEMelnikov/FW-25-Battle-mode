@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "Test ability \nset new closest target in distance. if no targets
     in TargetsVault"
   icon: {fileID: 0}
-  logging: 1
+  logging: 0
   _actionsVault: {fileID: 11400000, guid: 6530373706c71704dbeacbdca6eeb6da, type: 2}
   triggers:
   - {fileID: 11400000, guid: fb57947bafeef074e8ee7343add64776, type: 2}

@@ -11,7 +11,7 @@ public class ApproachTargetEnemyState_WTSO : State
     private NavMeshAgent _navMeshAgent;
     private IBehaviorProfile _behaviorProfile;
     private Transform _targetTransform;
-    //private float _pauseSaveSpeed;
+    private bool _isSubscribed = false;
 
 
     public override void OnEnter(IStateMachine machine)
@@ -37,27 +37,29 @@ public class ApproachTargetEnemyState_WTSO : State
         _navMeshAgent.acceleration = 8f;   // Ускорение
         _navMeshAgent.stoppingDistance = 1f; // Дистанция остановки
 
-        StopAgentAtPause();
+        // Подписываемся на событие паузы
+        SubscribeToPauseEvents();
 
     }
 
     public override void OnExit(IStateMachine machine)
     {
-        base.OnExit(machine);
         _navMeshAgent.isStopped = true;
+
+        // Отписываемся от события при выходе из состояния
+        UnsubscribeFromPauseEvents();
+
+        base.OnExit(machine);
     }
 
     public override void OnFixedUpdate(IStateMachine machine)
     {
-        StopAgentAtPause();
         if (PauseManager.IsPaused) return;
         base.OnFixedUpdate(machine);
     }
 
     public override void OnUpdate(IStateMachine machine)
     {
-
-        StopAgentAtPause();
         if (PauseManager.IsPaused) return;
 
         base.OnUpdate(machine);
@@ -75,15 +77,32 @@ public class ApproachTargetEnemyState_WTSO : State
         base.CheckTransitions(machine);
     }
 
-    private void StopAgentAtPause()
+    // Метод для подписки на события паузы
+    private void SubscribeToPauseEvents()
     {
-        if (PauseManager.IsPaused)
+        if (!_isSubscribed)
         {
-            _navMeshAgent.isStopped = true;
-        }         
-        else
+            PauseManager.OnPauseStateChanged += HandlePauseStateChanged;
+            _isSubscribed = true;
+        }
+    }
+
+    // Метод для отписки от событий паузы
+    private void UnsubscribeFromPauseEvents()
+    {
+        if (_isSubscribed)
         {
-            _navMeshAgent.isStopped = false;
+            PauseManager.OnPauseStateChanged -= HandlePauseStateChanged;
+            _isSubscribed = false;
+        }
+    }
+
+    // Обработчик изменения состояния паузы
+    private void HandlePauseStateChanged(bool isPaused)
+    {
+        if (_navMeshAgent != null)
+        {
+            _navMeshAgent.isStopped = isPaused;
         }
     }
 }
