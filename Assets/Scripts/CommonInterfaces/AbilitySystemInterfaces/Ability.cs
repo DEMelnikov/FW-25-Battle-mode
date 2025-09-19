@@ -15,10 +15,15 @@ public class Ability : BaseAbility, IAbility
     [SerializeField] private bool   logging = false;
 
     [Header("Vaults")]
-    [SerializeField] private ActionsVault _actionsVault;
+    [SerializeField] private ActionsVault  _actionsVault;
+    [SerializeField] private TriggersVault _triggersVault;
     
     [Header("Activation Requirements")]
-    [SerializeField] public  List<Trigger>         triggers = new List<Trigger>();
+    [SONameDropdown(typeof(TriggersVault))]
+    public    List<string>   triggersNames = new List<string>();
+    protected List<Trigger>  triggers      = new List<Trigger>();
+
+
     [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();
     //[SerializeField] private IAction               action;
 
@@ -40,10 +45,26 @@ public class Ability : BaseAbility, IAbility
 
     public void Initialize()
     {
-        if (_actionsVault == null)
+        if (_actionsVault == null || _triggersVault==null)
         {
-            Debug.LogError("ActionsVault не назначен");
+            Debug.LogError($"{this.name} Vault не назначен");
             return;
+        }
+
+        if (triggers.Count == 0 || triggers[0] == null)
+        {
+            triggers.Clear();
+
+            foreach (var triggerName in triggersNames)
+            {
+                if (string.IsNullOrEmpty(triggerName)) continue;
+
+                var clonedTrigger = _triggersVault.GetCopyByName(triggerName);
+                if (clonedTrigger != null)
+                {
+                    triggers.Add(clonedTrigger);
+                }
+            }
         }
 
         if (_abilityAction == null) _abilityAction = _actionsVault.GetCopyByName(_actionName);
@@ -119,6 +140,8 @@ public class Ability : BaseAbility, IAbility
 
 protected sealed override bool CheckTriggersReady(ICharacter character)
 {
+    Initialize();
+
     if (logging) { Debug.Log($"Start Check Triggers у {character.name}"); }
     if (triggers.Count == 0) return true;
     // Проверяем триггеры
