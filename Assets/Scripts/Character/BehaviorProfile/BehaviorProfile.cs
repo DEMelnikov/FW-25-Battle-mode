@@ -14,7 +14,8 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
     public string defaultAttackAbilityName;
     [SerializeField][Min(0.1f)] private float _weaponRange = 7f;
 
-    [SerializeField] private Ability _defaultAttackAbility;
+    [SerializeField] private IAbility _defaultAttackAbility;
+    [SerializeField] private float    _baseAttackInterval;
 
     [Header("Defence Settings:")]
 
@@ -45,12 +46,14 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
 
 
     // Публичные свойства для доступа к параметрам
-    public IAbility BaseAttackAbility => _defaultAttackAbility;
+    public IAbility BaseAttackAbility  { get => _defaultAttackAbility; set => _defaultAttackAbility = value; }
     public float PursuitDistance => pursuitDistance;
 
     public float WeaponRange { get => _weaponRange; set => _weaponRange = value; }
+    public float BaseAttackInterval { get => _baseAttackInterval; set => _baseAttackInterval = value; }
 
     // Методы обновления значений
+    [System.Obsolete("Use BaseAttackAbility")]
     public void SetBaseAttackAbility(Ability newAbility)
     {
         _defaultAttackAbility = newAbility;

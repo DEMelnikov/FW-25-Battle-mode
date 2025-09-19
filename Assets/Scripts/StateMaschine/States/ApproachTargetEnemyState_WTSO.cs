@@ -88,7 +88,7 @@ public class ApproachTargetEnemyState_WTSO : State
     }
 
     // Метод для отписки от событий паузы
-    private void UnsubscribeFromPauseEvents()
+    public  void UnsubscribeFromPauseEvents()
     {
         if (_isSubscribed)
         {

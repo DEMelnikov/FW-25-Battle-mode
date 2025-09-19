@@ -2,22 +2,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FW25/State Machine/States/Temp_AttackState")]
-public class Temp_AttackState_WTSO : State
+public class Temp_AttackState_WTSO : StateWithPause
 {
-    //[SerializeField][TextArea(2, 3)] public string description;
-    //[SerializeField] public bool logging = true;
-    //[SerializeField] public List<Transition> transitions = new List<Transition>();
-    //[SerializeField] public State allTransitionsFailedState;
+
+    private IBehaviorProfile  behaviorProfile;
+    private IAbility          defaultAttack;
+    private TimerTrigger      attackTimer;
+
 
     public override void OnEnter(IStateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Enter Attack State:");
         base.OnEnter(machine);
+        behaviorProfile = owner.GetBehaviorProfile();
+        defaultAttack = behaviorProfile.BaseAttackAbility;
+
+        attackTimer = new TimerTrigger(
+        duration: behaviorProfile.BaseAttackInterval, // Например, 1 секунда
+        onTick: () => Attack(), //defaultAttack.Use(),        // Активация атаки
+        onStart: null,
+        onComplete: null,
+        looped: true);
+
+        attackTimer.Start();
     }
 
     public override void OnExit(IStateMachine machine)
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} Exit Attack State:");
+        attackTimer.UnsubscribeFromPauseEvents();
         base.OnExit(machine);
     }
 
@@ -28,8 +39,16 @@ public class Temp_AttackState_WTSO : State
 
     public override void OnUpdate(IStateMachine machine)
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} On Attack State:");
         base.OnUpdate(machine);
     }
 
+    private void Attack()
+    {
+        if (defaultAttack.TryActivateAbility(owner,out var outcome))
+        {
+            Debug.Log($"{this.owner.name} Making Attack result {outcome}");
+            return;
+        }
+        Debug.Log($"{this.owner.name} Making Attack no success");
+    }
 }

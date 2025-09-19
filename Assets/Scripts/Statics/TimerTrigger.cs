@@ -1,14 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TimerTrigger
 {
     private float _duration;
     private float _currentTime;
     private bool  _isRunning;
+    private bool  _isGlobalPause;
     private bool  _isLooped;
     private int   _maxLoops;
     private int   _loopsCompleted;
+    private bool  _isSubscribed = false;
 
     // Коллбэки вместо событий
     private Action _onStart;
@@ -29,6 +32,8 @@ public class TimerTrigger
         _onComplete = onComplete;
         _isLooped = looped;
         _maxLoops = maxLoops;
+        SubscribeToPauseEvents();
+        _isGlobalPause = PauseManager.IsPaused;
     }
 
     //public TimerTrigger(
@@ -49,7 +54,7 @@ public class TimerTrigger
 
     public void Update(float deltaTime)
     {
-        if (!_isRunning) return;
+        if (!_isRunning || _isGlobalPause) return;
 
         _currentTime += deltaTime;
 
@@ -108,5 +113,26 @@ public class TimerTrigger
     public int LoopsCompleted => _loopsCompleted;
     public float RemainingTime => _duration - _currentTime;
 
+    private void SubscribeToPauseEvents()
+    {
+        if (!_isSubscribed)
+        {
+            PauseManager.OnPauseStateChanged += HandlePauseStateChanged;
+            _isSubscribed = true;
+        }
+    }
+    private void HandlePauseStateChanged(bool isPaused)
+    {
+        _isGlobalPause = isPaused;
+    }
+    public void UnsubscribeFromPauseEvents()
+    {
+        if (_isSubscribed)
+        {
+            PauseManager.OnPauseStateChanged -= HandlePauseStateChanged;
+            _isSubscribed = false;
+        }
+    }
+    
     // ...остальные методы (Stop, Reset и свойства) как в предыдущем примере...
 }

@@ -15,8 +15,3 @@ public interface ICharacter
     IStateMachine GetStateMachine();
 }
 
-public interface IBehaviorProfile
-{
-    float PursuitDistance { get; }
-    float WeaponRange {  get; }
-}
