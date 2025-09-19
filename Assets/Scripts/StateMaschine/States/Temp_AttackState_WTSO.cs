@@ -40,13 +40,23 @@ public class Temp_AttackState_WTSO : StateWithPause
     public override void OnUpdate(IStateMachine machine)
     {
         base.OnUpdate(machine);
+
+        attackTimer.Update(Time.deltaTime);
+
+        //Debug.Log($"is running: {attackTimer.IsRunning} GlobalPause {PauseManager.IsPaused}");
+        Debug.Log($"Attack interval Time remain: {attackTimer.RemainingTime} Loops: {attackTimer.LoopsCompleted}");
     }
 
     private void Attack()
     {
+        if (defaultAttack == null)
+        {
+            Debug.LogError($" No Default attack {owner.name}");
+            return;
+        } 
         if (defaultAttack.TryActivateAbility(owner,out var outcome))
         {
-            Debug.Log($"{this.owner.name} Making Attack result {outcome}");
+           if(logging) Debug.Log($"{this.owner.name} Making Attack result {outcome}");
             return;
         }
         Debug.Log($"{this.owner.name} Making Attack no success");

@@ -15,7 +15,5 @@ MonoBehaviour:
   _description: 
   stateId: Attack_Zaglushka
   logging: 1
-  transitions:
-  - decision: {fileID: 11400000, guid: 95d3360814b121f489f6dc13979ba2a9, type: 2}
-    trueState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
+  transitions: []
   _allTransitiosFailedState: {fileID: 0}

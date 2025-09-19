@@ -12,10 +12,10 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
     [Header("Attack Settings:")]
     [SONameDropdown(typeof(AbilitiesVault))]
     public string defaultAttackAbilityName;
-    [SerializeField][Min(0.1f)] private float _weaponRange = 7f;
+    [SerializeField][Min(0.1f)] private float _weaponRange = 3f;
 
     [SerializeField] private IAbility _defaultAttackAbility;
-    [SerializeField] private float    _baseAttackInterval;
+    [SerializeField] private float    _baseAttackInterval = 2f;
 
     [Header("Defence Settings:")]
 

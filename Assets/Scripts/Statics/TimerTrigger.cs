@@ -34,6 +34,7 @@ public class TimerTrigger
         _maxLoops = maxLoops;
         SubscribeToPauseEvents();
         _isGlobalPause = PauseManager.IsPaused;
+        _isSubscribed = false;
     }
 
     //public TimerTrigger(
