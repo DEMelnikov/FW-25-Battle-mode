@@ -15,10 +15,12 @@ MonoBehaviour:
   abilityName: MeleUnarmedAttack
   description: only for tests
   icon: {fileID: 0}
-  logging: 0
+  logging: 1
   _actionsVault: {fileID: 11400000, guid: 6530373706c71704dbeacbdca6eeb6da, type: 2}
-  triggers:
-  - {fileID: 11400000, guid: 3f4eb1e80a2509f40b3a6561bc36adad, type: 2}
+  _triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
+  triggersNames:
+  - HasValidatedEnemy
+  - WeaponRangeDistanceCheck_Lesser
   costs:
   - {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
   _actionName: BaseAttackRollAction

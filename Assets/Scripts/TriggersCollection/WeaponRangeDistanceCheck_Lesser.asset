@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TriggersCollection::WeaponRangeDistanceCheck
   _description: actualDistance < _weaponRange = true
   _name: WeaponRangeDistanceCheck_LesserMode
-  logging: 1
+  logging: 0
   _relationType: 0
   _equalityTolerance: 0.5

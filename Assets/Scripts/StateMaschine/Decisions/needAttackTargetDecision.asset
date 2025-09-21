@@ -16,7 +16,7 @@ MonoBehaviour:
 
     actual distance < WeaponRange = true'
   triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
-  logging: 1
+  logging: 0
   triggersVaultNames:
   - HasValidatedEnemy
   - WeaponRangeDistanceCheck_Lesser

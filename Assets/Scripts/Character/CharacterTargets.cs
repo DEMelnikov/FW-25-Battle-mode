@@ -45,9 +45,9 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     {
         if (TryGetTargetEnemy(out GameObject _enemy))
         {
-            if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() Got {_enemy.name} and now geting Transform");
+            //if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() Got {_enemy.name} and now geting Transform");
             _transform = _enemy.transform;
-            if (logging) Debug.Log($" Transform position X: {_transform.position.x}");
+            //if (logging) Debug.Log($" Transform position X: {_transform.position.x}");
             return true; 
         }
 

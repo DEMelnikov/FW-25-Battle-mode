@@ -5,9 +5,10 @@ using UnityEngine;
 public class Temp_AttackState_WTSO : StateWithPause
 {
 
-    private IBehaviorProfile  behaviorProfile;
-    private IAbility          defaultAttack;
-    private TimerTrigger      attackTimer;
+    private IBehaviorProfile        behaviorProfile;
+    private ICharacterTargetsVault  targetsVault;
+    private IAbility                defaultAttack;
+    private TimerTrigger            attackTimer;
 
 
     public override void OnEnter(IStateMachine machine)
@@ -15,6 +16,7 @@ public class Temp_AttackState_WTSO : StateWithPause
         base.OnEnter(machine);
         behaviorProfile = owner.GetBehaviorProfile();
         defaultAttack = behaviorProfile.BaseAttackAbility;
+        targetsVault = owner.GetTargetsVault();
 
         attackTimer = new TimerTrigger(
         duration: behaviorProfile.BaseAttackInterval, // Например, 1 секунда
@@ -41,7 +43,8 @@ public class Temp_AttackState_WTSO : StateWithPause
     {
         base.OnUpdate(machine);
 
-        attackTimer.Update(Time.deltaTime);
+        attackTimer. Update(Time.deltaTime);
+        targetsVault.UpdateDistanceTargetEnemy();
 
         //Debug.Log($"is running: {attackTimer.IsRunning} GlobalPause {PauseManager.IsPaused}");
         //Debug.Log($"Attack interval Time remain: {attackTimer.RemainingTime} Loops: {attackTimer.LoopsCompleted}");
