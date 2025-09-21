@@ -21,6 +21,7 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
 
     [Header("Movement Settings:")]
     [SerializeField] [Min(0.1f)] private float pursuitDistance = 150f;
+    [SerializeField] [Min(0.1f)] private float walkEnergyCost = 0.5f;
 
 
 
@@ -51,6 +52,7 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
 
     public float WeaponRange { get => _weaponRange; set => _weaponRange = value; }
     public float BaseAttackInterval { get => _baseAttackInterval; set => _baseAttackInterval = value; }
+    public float WalkEnergyCost { get => walkEnergyCost; set => walkEnergyCost = value; }
 
     // Методы обновления значений
     [System.Obsolete("Use BaseAttackAbility")]

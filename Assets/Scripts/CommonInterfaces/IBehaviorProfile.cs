@@ -6,4 +6,5 @@ public interface IBehaviorProfile
     float WeaponRange { get; }
     IAbility BaseAttackAbility { get; }
     float BaseAttackInterval {  get; }
+    float WalkEnergyCost { get; }
 }

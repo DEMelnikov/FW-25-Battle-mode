@@ -1,3 +1,4 @@
+using AbilitySystem.AbilityComponents;
 using UnityEngine;
 using UnityEngine.AI;
 //using static Codice.Client.Common.WebApi.WebApiEndpoints;
@@ -6,6 +7,8 @@ using UnityEngine.AI;
 public class ApproachTargetEnemyState_WTSO : State
 {
     [SerializeField] private State _whenLooseTargetState;
+    [SerializeField] private AbilityCost _energyCost;
+
     private ICharacterTargetsVault _targetsVault;
     private IStatsController _statsController;
     private NavMeshAgent _navMeshAgent;
@@ -13,12 +16,15 @@ public class ApproachTargetEnemyState_WTSO : State
     private Transform _targetTransform;
     private bool _isSubscribed = false;
 
+    private TimerTrigger energyLoseTrigger;
+
+    private Character owner;
 
     public override void OnEnter(IStateMachine machine)
     {
         base.OnEnter(machine);
 
-        var owner = machine.Context.Owner.GetComponent<Character>();
+        owner = machine.Context.Owner.GetComponent<Character>();
         _targetsVault    = owner.GetTargetsVault();
         _statsController = owner.GetStatsController();
         _navMeshAgent    = owner.GetNavMeshAgent();
@@ -40,6 +46,15 @@ public class ApproachTargetEnemyState_WTSO : State
         // Подписываемся на событие паузы
         SubscribeToPauseEvents();
 
+        energyLoseTrigger = new TimerTrigger(
+            duration: 1f, // Например, 1 секунда
+            onTick: () => OnTimerTick(),
+            onStart: null,
+            onComplete: null,
+            looped: true);
+
+        energyLoseTrigger.Start();
+        if (_energyCost == null) Debug.LogError($"{owner.gameObject.name}.{this.name} has no ABilityCost" );
     }
 
     public override void OnExit(IStateMachine machine)
@@ -49,6 +64,7 @@ public class ApproachTargetEnemyState_WTSO : State
         // Отписываемся от события при выходе из состояния
         UnsubscribeFromPauseEvents();
 
+        energyLoseTrigger.UnsubscribeFromPauseEvents();
         base.OnExit(machine);
     }
 
@@ -63,6 +79,9 @@ public class ApproachTargetEnemyState_WTSO : State
         if (PauseManager.IsPaused) return;
 
         base.OnUpdate(machine);
+
+        energyLoseTrigger.Update(Time.deltaTime);
+
         if (!_targetsVault.TryGetTargetEnemyTransform(out Transform _newTargetTransform))
         {
             if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
@@ -105,5 +124,13 @@ public class ApproachTargetEnemyState_WTSO : State
         {
             _navMeshAgent.isStopped = isPaused;
         }
+    }
+
+    private void OnTimerTick()
+    {
+        if (_navMeshAgent.isStopped) return;
+
+        Debug.Log("Spend energy");
+        _energyCost.PayAbilityCost(owner);
     }
 }
