@@ -70,6 +70,7 @@ public class ApproachTargetEnemyState_WTSO : State
         }
 
         if (_targetTransform != _newTargetTransform) _navMeshAgent.SetDestination(_newTargetTransform.position);
+        _targetsVault.UpdateDistanceTargetEnemy();
     }
 
     public void CheckTransitions(IStateMachine machine)

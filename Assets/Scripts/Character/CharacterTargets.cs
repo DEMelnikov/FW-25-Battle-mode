@@ -7,6 +7,9 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     [SerializeField] private Transform _waypoint;
     [SerializeField] private SceneObjectTag _whoIsYourEnemy = SceneObjectTag.Enemy;
     [SerializeField] protected bool logging = true;
+    [SerializeField] private float actualDistance;
+
+    public float ActualDistance { get => actualDistance; set => actualDistance = value; }
 
     // Ќовый метод - безопасное получение вражеской цели
     public bool TryGetTargetEnemy(out GameObject targetEnemy)
@@ -25,6 +28,17 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
             $"- no valid enemy target");
         return false;
+    }
+
+    public void UpdateDistanceTargetEnemy()
+    {
+        actualDistance = Mathf.Infinity;
+        ValidateAndCleanTarget();
+
+        if (_selectedTarget == null) return;
+        Transform enemyTransform = _selectedTarget.transform;
+
+        actualDistance = Vector3.Distance(this.gameObject.transform.position, enemyTransform.position);
     }
 
     public bool TryGetTargetEnemyTransform (out Transform _transform)

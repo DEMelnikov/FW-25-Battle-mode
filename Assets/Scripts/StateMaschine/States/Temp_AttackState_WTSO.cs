@@ -44,7 +44,7 @@ public class Temp_AttackState_WTSO : StateWithPause
         attackTimer.Update(Time.deltaTime);
 
         //Debug.Log($"is running: {attackTimer.IsRunning} GlobalPause {PauseManager.IsPaused}");
-        Debug.Log($"Attack interval Time remain: {attackTimer.RemainingTime} Loops: {attackTimer.LoopsCompleted}");
+        //Debug.Log($"Attack interval Time remain: {attackTimer.RemainingTime} Loops: {attackTimer.LoopsCompleted}");
     }
 
     private void Attack()

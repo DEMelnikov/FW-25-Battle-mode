@@ -9,5 +9,7 @@ public interface ICharacterTargetsVault
     public bool TryGetTargetCharacter(out ICharacter targetCharacter);
     public bool TryGetTargetEnemyTransform(out Transform _transform);
     public GameObject GetTargetEnemy();
+    public float ActualDistance { get; set; }
+    public void UpdateDistanceTargetEnemy();
 
 }
