@@ -1,8 +1,6 @@
-using AbilitySystem;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.AI;
-using static Codice.Client.Common.WebApi.WebApiEndpoints;
+
 
 public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 {

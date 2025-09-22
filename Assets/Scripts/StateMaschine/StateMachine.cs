@@ -10,7 +10,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     [SerializeReference] private State _currentState;
     [SerializeReference] private State _initialState;
     [SerializeReference] private State _InEngageState;
-                     private IStateContext _context;
+                         private IStateContext _context;
 
     private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
 
