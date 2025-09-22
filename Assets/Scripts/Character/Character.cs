@@ -19,6 +19,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
                      private CharacterTargets          _targets;
                      private NavMeshAgent              _navMeshAgent;
                      private IBehaviorProfile          _behaviorProfile;
+    [SerializeField] private bool                      _inEngage;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -65,6 +66,8 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public ICharacterTargetsVault GetTargetsVault() => _targets;
     public Transform transform => this.gameObject.transform;
     public string name => gameObject.name;
+    public bool InEngage { get => _inEngage; set => _inEngage = value; }
+
     public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
     public IBehaviorProfile GetBehaviorProfile() => _behaviorProfile;
     #endregion
@@ -96,13 +99,17 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         }
     }
 
+    public void UnderMeleAttack()
+    {
+        _inEngage = true;
+        _stateMachine.SetStateInEngage();
+    }
 
-    
 
     //private void InitializeStateMachine()
     //{
     //    StateMaschine = new StateMaschine();
-        
+
     //    IdleState = new hState_Idle(this, StateMaschine);
     //    //AttackState = new AttackState(this, StateMachine);
     //    //MoveState = new MoveState(this, StateMachine);

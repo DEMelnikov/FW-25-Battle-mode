@@ -130,7 +130,7 @@ public class ApproachTargetEnemyState_WTSO : State
     {
         if (_navMeshAgent.isStopped) return;
 
-        Debug.Log("Spend energy");
+        //Debug.Log("Spend energy");
         _energyCost.PayAbilityCost(owner);
     }
 }

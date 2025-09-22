@@ -13,5 +13,7 @@ public interface ICharacter
     NavMeshAgent GetNavMeshAgent();
     IBehaviorProfile GetBehaviorProfile();
     IStateMachine GetStateMachine();
+    bool InEngage {  get; }
+    void UnderMeleAttack();
 }
 

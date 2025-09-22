@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3701a9f828aa3674896752d19fe1246d, type: 3}
-  m_Name: Ability For test
-  m_EditorClassIdentifier: 
-  abilityName: MeleUnarmedAttack
-  description: only for tests
+  m_Name: BaseAttack
+  m_EditorClassIdentifier: CommonInterfaces::Ability
+  abilityName: BaseMeleAttack
+  description: 
   icon: {fileID: 0}
   logging: 1
   _actionsVault: {fileID: 11400000, guid: 6530373706c71704dbeacbdca6eeb6da, type: 2}
   _triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
   triggersNames: []
-  costs:
-  - {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
-  _actionName: BaseAttackRollAction
+  costs: []
+  _actionName: 
   resolves: []
-  tags:
-  - Mele
-  - Attack
-  - Unarmed
-  - Offencive
+  tags: []
