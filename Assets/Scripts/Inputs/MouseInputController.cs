@@ -21,6 +21,7 @@ public class MouseInputController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             TryFinishDrag();
     }
+    public bool IsDragging => isDragging;
 
     void TryBeginDrag()
     {

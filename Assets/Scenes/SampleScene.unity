@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e399f13e7f8c5134f86d66f727ef864a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  mouseInputController: {fileID: 1560712530}
   enableDrag: 1
   dragSpeed: 2
   invertDrag: 0
@@ -3755,7 +3756,7 @@ GameObject:
   - component: {fileID: 1560712527}
   - component: {fileID: 1560712530}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: InputsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3858,7 +3859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2525138c93aee54b818653895ee7d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MouseInputController
-  dragShadowPrefab: {fileID: 0}
+  dragShadowPrefab: {fileID: 7268205497281249671, guid: d56e0f8a10c43dc4db9fe11264d02328, type: 3}
 --- !u!1 &1579725337
 GameObject:
   m_ObjectHideFlags: 0
