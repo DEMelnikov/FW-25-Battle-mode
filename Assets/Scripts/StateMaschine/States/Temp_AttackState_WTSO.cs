@@ -1,34 +1,83 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "FW25/State Machine/States/Temp_AttackState")]
-public class Temp_AttackState_WTSO : StateWithTransitions
+public class Temp_AttackState_WTSO : StateWithPause
 {
-    public override void OnEnter(StateMachine machine)
+
+    private IBehaviorProfile        behaviorProfile;
+    private ICharacterTargetsVault  targetsVault;
+    private IAbility                defaultAttack;
+    private TimerTrigger            attackTimer;
+
+
+    public override void OnEnter(IStateMachine machine)
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Enter Attack State:");
         base.OnEnter(machine);
+        behaviorProfile = owner.GetBehaviorProfile();
+        defaultAttack = behaviorProfile.BaseAttackAbility;
+        targetsVault = owner.GetTargetsVault();
+
+        attackTimer = new TimerTrigger(
+        duration: behaviorProfile.BaseAttackInterval, // Например, 1 секунда
+        onTick: () => Attack(), //defaultAttack.Use(),        // Активация атаки
+        onStart: null,
+        onComplete: null,
+        looped: true);
+
+        attackTimer.Start();
+        Engage();
     }
 
-    public override void OnExit(StateMachine machine)
+    public override void OnExit(IStateMachine machine)
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} Exit Attack State:");
+        attackTimer.UnsubscribeFromPauseEvents();
         base.OnExit(machine);
     }
 
-    public override void OnFixedUpdate(StateMachine machine)
+    public override void OnFixedUpdate(IStateMachine machine)
     {
         base.OnFixedUpdate(machine);
     }
 
-    public override void OnUpdate(StateMachine machine)
+    public override void OnUpdate(IStateMachine machine)
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} On Attack State:");
         base.OnUpdate(machine);
+
+        attackTimer. Update(Time.deltaTime);
+        targetsVault.UpdateDistanceTargetEnemy();
+
+        //Debug.Log($"is running: {attackTimer.IsRunning} GlobalPause {PauseManager.IsPaused}");
+        //Debug.Log($"Attack interval Time remain: {attackTimer.RemainingTime} Loops: {attackTimer.LoopsCompleted}");
     }
 
-    protected override void CheckTransitions(StateMachine machine)
+    private void Attack()
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} CheckTransitions start on Attack State:");
-        base.CheckTransitions(machine);
+        if (defaultAttack == null)
+        {
+            Debug.LogError($" No Default attack {owner.name}");
+            return;
+        } 
+        if (defaultAttack.TryActivateAbility(owner,out var outcome))
+        {
+           if(logging) Debug.Log($"{this.owner.name} Making Attack result {outcome}");
+            return;
+        }
+        Debug.Log($"{this.owner.name} Making Attack no success");
+    }
+
+    private void Engage()
+    {
+        if (!owner.InEngage)
+        {
+            owner.InEngage = true;
+        }
+        if (targetsVault.TryGetTargetCharacter(out var targetCharacter))
+        {
+            if (!targetCharacter.InEngage)
+            {
+                targetCharacter.UnderMeleAttack(owner.gameObject);
+            }
+        }
     }
 }

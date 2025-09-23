@@ -4,7 +4,7 @@ using System;
 using System.Diagnostics;
 using UnityEngine;
 
-public class Stat
+public class Stat:IStat
 {
     public string Name { get; private set; }
     public StatTag Tag { get; private set; }
@@ -13,11 +13,11 @@ public class Stat
     private float _lastCalculatedValue;
     private bool _isDirty = true;
     private bool _alarmIfBelowZero = true;
-    private List<StatModifier> _permanentModifiers = new List<StatModifier>();
-    private List<TimedStatModifier> _timedModifiers = new List<TimedStatModifier>();
+    private List<IStatModifier> _permanentModifiers = new List<IStatModifier>();
+    private List<ITimedStatModifier> _timedModifiers = new List<ITimedStatModifier>();
 
-    public event Action<Stat, float, float> OnValueChanged;
-    public event Action<Stat, float> OnBelowZero;
+    public event Action<IStat, float, float> OnValueChanged;
+    public event Action<IStat, float> OnBelowZero;
 
     public float Value
     {
@@ -34,7 +34,6 @@ public class Stat
             return _lastCalculatedValue;
         }
     }
-
 
     public void CheckForInvoke()
     {
@@ -73,7 +72,7 @@ public class Stat
         CheckForInvoke();
     }
 
-    public void AddTimedModifier(TimedStatModifier modifier)
+    public void AddTimedModifier(ITimedStatModifier modifier)
     {
         _timedModifiers.Add(modifier);
         _isDirty = true;
@@ -167,10 +166,14 @@ public class Stat
     }
 
     private void ProcessModifiers<T>(List<T> modifiers, ref float finalValue,
-                                   ref float sumPercentAdd, ref float productPercentMult) where T : StatModifier
+                               ref float sumPercentAdd, ref float productPercentMult) where T : IStatModifier
     {
         foreach (var mod in modifiers)
         {
+            // Пропускаем просроченные временные модификаторы
+            if (mod is ITimedStatModifier timedMod && timedMod.IsExpired)
+                continue;
+
             switch (mod.Type)
             {
                 case StatModType.Flat:

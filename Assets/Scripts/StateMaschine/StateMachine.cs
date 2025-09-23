@@ -1,10 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+//version 1.2
+public class StateMachine : MonoBehaviour, IStateMachine
 {
-    [SerializeField] private State _currentState;
-    [SerializeField] private State _initialState;
-                     private StateContext _context;
+    //[SerializeField] private ScriptableObject _currentStateBehaviour;
+    //[SerializeField] private ScriptableObject _initialStateBehaviour;
+
+    [SerializeReference] private State _currentState;
+    [SerializeReference] private State _initialState;
+    [SerializeReference] private State _InEngageState;
+                         private IStateContext _context;
+
+    private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
+
 
     // Для отладки в инспекторе
     [SerializeField] private string currentStateName;
@@ -15,8 +24,20 @@ public class StateMachine : MonoBehaviour
 
         if (_initialState != null)
         {
-            SetState(_initialState);
+            InitState(_InEngageState);
         }
+
+        if (_initialState != null)
+        {
+            InitState(_initialState);
+            SetStateById(_initialState.StateId);
+        }
+
+
+        //if (_initialState != null)
+        //{
+        //    SetState(_initialState);
+        //}
     }
 
     private void Update()
@@ -27,6 +48,13 @@ public class StateMachine : MonoBehaviour
             // Уведомляем decisions об обновлении
             NotifyDecisionsUpdate(_currentState);
 
+
+            // Централизованный вызов CheckTransitions для состояний с переходами
+            if (_currentState is State stateWithTransitions)
+            {
+                stateWithTransitions.CheckTransitions(this);
+            }
+            
             _currentState?.OnUpdate(this);
         }
     }
@@ -40,7 +68,7 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    public void SetState(State newState)
+    public void OldSetState(State newState)
     {
 
         // Уведомляем decisions текущего состояния о выходе
@@ -56,6 +84,12 @@ public class StateMachine : MonoBehaviour
         _currentState?.OnEnter(this);
     }
 
+    public void SetState(State originalState)
+    {
+        InitState(originalState);
+        SetStateById(originalState.StateId);
+    }
+
 
     public State GetCurrentState()
     {
@@ -65,7 +99,7 @@ public class StateMachine : MonoBehaviour
     // Вспомогательные методы для работы с decisions
     private void NotifyDecisionsEnter(State state)
     {
-        if (state is StateWithTransitions stateWithTransitions)
+        if (state is State stateWithTransitions)
         {
             foreach (var transition in stateWithTransitions.GetTransitions())
             {
@@ -75,7 +109,7 @@ public class StateMachine : MonoBehaviour
     }
     private void NotifyDecisionsExit(State state)
     {
-        if (state is StateWithTransitions stateWithTransitions)
+        if (state is State stateWithTransitions)
         {
             foreach (var transition in stateWithTransitions.GetTransitions())
             {
@@ -86,7 +120,7 @@ public class StateMachine : MonoBehaviour
 
     private void NotifyDecisionsUpdate(State state)
     {
-        if (state is StateWithTransitions stateWithTransitions)
+        if (state is State stateWithTransitions)
         {
             foreach (var transition in stateWithTransitions.GetTransitions())
             {
@@ -95,15 +129,40 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    // Для перехода по типу состояния (удобно для скриптов)
-    public void SetStateByType<T>() where T : State
+    private void InitState(State originalState)
     {
-        // Здесь можно реализовать поиск состояния по типу
-        // или использовать референсы заранее подготовленных состояний
+        if (!stateInstances.ContainsKey(originalState.StateId))
+        {
+            State clone = Instantiate(originalState);
+            stateInstances[originalState.StateId] = clone;
+        }
+    }
+
+    public void SetStateById(string stateId)
+    {
+        if (!stateInstances.ContainsKey(stateId))
+        {
+            Debug.LogError($"State with ID {stateId} not found in stateInstances.");
+            return;
+        }
+
+        State newState = stateInstances[stateId];
+
+        if (_currentState == newState) return;
+
+        _currentState?.OnExit(this);
+        _currentState = newState;
+        currentStateName = newState.name;
+        _currentState?.OnEnter(this);
+    }
+
+    public void SetStateInEngage()
+    {
+        SetStateById(_InEngageState.StateId);
     }
 
     // Доступ к контексту для состояний
-    public StateContext Context => _context;
+    public IStateContext Context => _context;
 
     // Для установки внешних зависимостей
     //public void SetPlayerTarget(Transform playerTarget)

@@ -37,11 +37,13 @@ public static class SelectionManager
     private static void ProcessSelection(GameObject selected)
     {
         // Если выбран Hero с установленной целью (Enemy)
-        if (selected.TryGetComponent<Character>(out var character) &&
+        if (selected.TryGetComponent<ISelectableCharacter>(out var character) &&
             character.SceneObjectTag == SceneObjectTag.Hero)
         {
             var target = character.GetSelectedTarget();
-            if (target != null && target.TryGetComponent<Character>(out var targetChar) &&
+
+
+            if (target != null && target.TryGetComponent<ISelectableCharacter>(out var targetChar) &&
                 targetChar.SceneObjectTag == SceneObjectTag.Enemy)
             {
                 SetSelectionWithOpponent(selected, target);
@@ -50,11 +52,11 @@ public static class SelectionManager
         }
 
         // Если выбран Enemy с установленной целью (Hero)
-        if (selected.TryGetComponent<Character>(out var enemy) &&
+        if (selected.TryGetComponent<ISelectableCharacter>(out var enemy) &&
             enemy.SceneObjectTag == SceneObjectTag.Enemy)
         {
             var target = enemy.GetSelectedTarget();
-            if (target != null && target.TryGetComponent<Character>(out var targetChar) &&
+            if (target != null && target.TryGetComponent<ISelectableCharacter>(out var targetChar) &&
                 targetChar.SceneObjectTag == SceneObjectTag.Hero)
             {
                 SetSelectionWithOpponent(target, selected);
@@ -69,7 +71,7 @@ public static class SelectionManager
     private static void SetSimpleSelection(GameObject selected)
     {
 
-        if (selected.TryGetComponent<Character>(out var selectedChar))
+        if (selected.TryGetComponent<ISelectableCharacter>(out var selectedChar))
         {
             if (selectedChar.SceneObjectTag == SceneObjectTag.Hero)
             {

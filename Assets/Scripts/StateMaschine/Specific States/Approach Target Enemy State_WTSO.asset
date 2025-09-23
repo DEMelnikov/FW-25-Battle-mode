@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ea7d2c844a8f446a18997f98fb5211, type: 3}
+  m_Name: Approach Target Enemy State_WTSO
+  m_EditorClassIdentifier: StateMaschine::ApproachTargetEnemyState_WTSO
+  _description: approach to enemy til actual distance>behaviour distance
+  stateId: Approach_actual
+  logging: 0
+  transitions:
+  - decision: {fileID: 11400000, guid: a2aada5a8a0a0cd4da623b45f8c099b6, type: 2}
+    trueState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
+  _allTransitiosFailedState: {fileID: 0}
+  _whenLooseTargetState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
+  _energyCost: {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}

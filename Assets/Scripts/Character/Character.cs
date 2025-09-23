@@ -1,20 +1,23 @@
-using AbilitySystem;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Character : MonoBehaviour
+
+public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 {
     [Header("Настройки")]
     [SerializeField] private CharacterSettings         _settings;
     [SerializeField] private SO_CharacterStatsConfig   _statsConfig;
 
-    [SerializeField] private GameObject                _selectedTarget;
+    //[SerializeField] private GameObject                _selectedTarget;
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
 
-                     private StateMachine              _stateMachine;
+                     private IStateMachine             _stateMachine;
                      private CharacterStatsController  _statsController;
-                     private AbilityController         _abilityController;
-                     private CharacterTargets                   _targets;
+                     private IAbilityController        _abilityController;
+                     private CharacterTargets          _targets;
+                     private NavMeshAgent              _navMeshAgent;
+                     private IBehaviorProfile          _behaviorProfile;
+    [SerializeField] private bool                      _inEngage;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -25,8 +28,16 @@ public class Character : MonoBehaviour
         _statsController = GetComponent<CharacterStatsController>();
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
-        _stateMachine = GetComponent<StateMachine>();
+        _stateMachine = GetComponent<IStateMachine>();
         _targets = GetComponent<CharacterTargets>();
+        _behaviorProfile = GetComponent<BehaviorProfile>();
+
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        if (_navMeshAgent == null) { Debug.Log("NO _navMeshAgent CONTROLLER"); } else { Debug.Log("_navMeshAgent is on"); }
+        _navMeshAgent.updateRotation = false;
+        _navMeshAgent.updateUpAxis   = false;
+
+        //agent.SetDestination(new Vector3(0, 0, transform.position.z));
 
         //InitializeStateMachine();
     }
@@ -43,12 +54,31 @@ public class Character : MonoBehaviour
     #endregion
 
     #region Публичные свойства
-    public GameObject GetSelectedTarget() => _selectedTarget; //TODO заменить
-    public void SetSelectedTarget(GameObject target) { _selectedTarget = target; } //TODO заменить
-    public CharacterStatsController GetStatsController() { return _statsController; }
-    public StateMachine GetStateMachine() => _stateMachine;
-    public AbilityController GetAbilityController() => _abilityController;
-    public CharacterTargets GetTargets() => _targets;
+
+    [System.Obsolete("Use CharacterTargetVaults")]
+    public GameObject GetSelectedTarget()
+    {
+        if (_targets.TryGetTargetEnemy(out GameObject enemyGameobject)) return enemyGameobject; 
+        return null;
+    }
+
+    //TODO заменить и возмоно убрать
+    public void SetSelectedTarget(GameObject target) 
+    {
+        _targets.SetTargetEnemy(target);
+    } 
+
+    public IStatsController GetStatsController() { return _statsController; }
+    public IStateMachine GetStateMachine() => _stateMachine;
+    public IAbilityController GetAbilityController() => _abilityController;
+    public ICharacterTargetsVault GetTargetsVault() => _targets;
+    public Transform transform => this.gameObject.transform;
+    public GameObject GetGameObject => this.gameObject;
+    public string name => gameObject.name;
+    public bool InEngage { get => _inEngage; set => _inEngage = value; }
+
+    public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
+    public IBehaviorProfile GetBehaviorProfile() => _behaviorProfile;
     #endregion
 
     public void InitializeFromSettings()
@@ -56,7 +86,9 @@ public class Character : MonoBehaviour
         if (_settings != null)
         {
             SceneObjectTag = _settings.SceneObjectTag;
-            _selectedTarget = _settings.DefaultTarget;
+            //_targets.SetTargetEnemy(null);
+            //if (_settings.DefaultTarget == null) _targets.SetTargetEnemy(null); else _targets.SetTargetEnemy(_settings.DefaultTarget);
+            //_targets.SetTargetEnemy(_settings.DefaultTarget); 
         }
         else
         {
@@ -74,17 +106,25 @@ public class Character : MonoBehaviour
         {
             Debug.LogWarning("Character starting stats not assigned!", this);
             SceneObjectTag = SceneObjectTag.Hero;
-            _selectedTarget = null;
+            //_selectedTarget = null;
         }
     }
 
+    public void UnderMeleAttack(GameObject agressor)
+    {
+        _inEngage = true;
+        if (!_targets.HasTargetEnemy())
+        {
+            _targets.SetTargetEnemy(agressor);
+        }
+        _stateMachine.SetStateInEngage();
+    }
 
-    
 
     //private void InitializeStateMachine()
     //{
     //    StateMaschine = new StateMaschine();
-        
+
     //    IdleState = new hState_Idle(this, StateMaschine);
     //    //AttackState = new AttackState(this, StateMachine);
     //    //MoveState = new MoveState(this, StateMachine);

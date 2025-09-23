@@ -1,11 +1,12 @@
-using AbilitySystem;
 using UnityEngine;
 
-public class StateContext
+public class StateContext : IStateContext
 {
     public GameObject Owner { get; private set; }
     private Character _character;
-    public AbilityController _abilityController { get; private set; }
+    private IAbilityController _abilityController;
+    
+    //public AbilityController _abilityController;
     //public Transform PlayerTarget { get; set; }
     //public Animator Animator { get; private set; }
     //public Rigidbody Physics { get; private set; }
@@ -14,12 +15,13 @@ public class StateContext
     {
         Owner = owner;
         owner.TryGetComponent<Character>(out _character);
-        _abilityController = owner.GetComponent<AbilityController>();
+        _abilityController = owner.GetComponent<IAbilityController>();
         //Animator = owner.GetComponent<Animator>();
         //Physics = owner.GetComponent<Rigidbody>();
     }
 
-    public Character GetCharacter() => _character;
+    public ICharacter GetCharacter() => _character;
+    public IAbilityController GetAbilityController () => _abilityController;
     // Вспомогательные методы
     //public bool HasPlayerTarget => PlayerTarget != null;
 
