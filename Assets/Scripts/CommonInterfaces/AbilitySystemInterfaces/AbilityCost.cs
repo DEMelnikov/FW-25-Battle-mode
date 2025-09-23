@@ -17,11 +17,9 @@
 
 using UnityEngine;
 
-namespace AbilitySystem.AbilityComponents
+
+public abstract class AbilityCost : ScriptableObject
 {
-    public abstract class AbilityCost : ScriptableObject
-    {
-        public abstract bool PayAbilityCost(ICharacter character);
-        public abstract bool CanAffordCost(ICharacter character);
-    }
+    public abstract bool PayAbilityCost(ICharacter character);
+    public abstract bool CanAffordCost(ICharacter character);
 }

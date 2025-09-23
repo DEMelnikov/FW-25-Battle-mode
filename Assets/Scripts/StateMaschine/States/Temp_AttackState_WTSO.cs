@@ -26,6 +26,7 @@ public class Temp_AttackState_WTSO : StateWithPause
         looped: true);
 
         attackTimer.Start();
+        Engage();
     }
 
     public override void OnExit(IStateMachine machine)
@@ -63,5 +64,20 @@ public class Temp_AttackState_WTSO : StateWithPause
             return;
         }
         Debug.Log($"{this.owner.name} Making Attack no success");
+    }
+
+    private void Engage()
+    {
+        if (!owner.InEngage)
+        {
+            owner.InEngage = true;
+        }
+        if (targetsVault.TryGetTargetCharacter(out var targetCharacter))
+        {
+            if (!targetCharacter.InEngage)
+            {
+                targetCharacter.UnderMeleAttack(owner.gameObject);
+            }
+        }
     }
 }

@@ -1,4 +1,3 @@
-using AbilitySystem.AbilityComponents;
 using UnityEngine;
 using UnityEngine.AI;
 //using static Codice.Client.Common.WebApi.WebApiEndpoints;
@@ -130,7 +129,7 @@ public class ApproachTargetEnemyState_WTSO : State
     {
         if (_navMeshAgent.isStopped) return;
 
-        Debug.Log("Spend energy");
+        //Debug.Log("Spend energy");
         _energyCost.PayAbilityCost(owner);
     }
 }

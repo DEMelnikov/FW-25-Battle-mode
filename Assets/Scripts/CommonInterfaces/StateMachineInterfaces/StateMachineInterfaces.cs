@@ -7,6 +7,7 @@ public interface IStateMachine
     void SetState(State newState);
     State GetCurrentState();
     IStateContext Context { get; }
+    void SetStateInEngage();
 }
 
 public interface IStateContext

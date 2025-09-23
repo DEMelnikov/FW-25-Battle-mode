@@ -26,6 +26,7 @@ MonoBehaviour:
   _actionName: BaseAttackRollAction
   resolves:
   - {fileID: 11400000, guid: ec494dc4b5f5c6241b1a95996e398a8f, type: 2}
+  - {fileID: 11400000, guid: 43b8668ef765bc64e8627cc687164692, type: 2}
   tags:
   - Mele
   - Attack

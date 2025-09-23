@@ -9,7 +9,8 @@ public class StateMachine : MonoBehaviour, IStateMachine
 
     [SerializeReference] private State _currentState;
     [SerializeReference] private State _initialState;
-                     private IStateContext _context;
+    [SerializeReference] private State _InEngageState;
+                         private IStateContext _context;
 
     private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
 
@@ -23,9 +24,15 @@ public class StateMachine : MonoBehaviour, IStateMachine
 
         if (_initialState != null)
         {
+            InitState(_InEngageState);
+        }
+
+        if (_initialState != null)
+        {
             InitState(_initialState);
             SetStateById(_initialState.StateId);
         }
+
 
         //if (_initialState != null)
         //{
@@ -149,7 +156,10 @@ public class StateMachine : MonoBehaviour, IStateMachine
         _currentState?.OnEnter(this);
     }
 
-
+    public void SetStateInEngage()
+    {
+        SetStateById(_InEngageState.StateId);
+    }
 
     // Доступ к контексту для состояний
     public IStateContext Context => _context;
