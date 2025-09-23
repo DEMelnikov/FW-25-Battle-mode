@@ -79,6 +79,15 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 
     public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
     public IBehaviorProfile GetBehaviorProfile() => _behaviorProfile;
+    public void UnderMeleAttack(GameObject agressor)
+    {
+        _inEngage = true;
+        if (!_targets.HasTargetEnemy())
+        {
+            _targets.SetTargetEnemy(agressor);
+        }
+        _stateMachine.SetStateInEngage();
+    }
     #endregion
 
     public void InitializeFromSettings()
@@ -110,15 +119,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         }
     }
 
-    public void UnderMeleAttack(GameObject agressor)
-    {
-        _inEngage = true;
-        if (!_targets.HasTargetEnemy())
-        {
-            _targets.SetTargetEnemy(agressor);
-        }
-        _stateMachine.SetStateInEngage();
-    }
+
 
 
     //private void InitializeStateMachine()
