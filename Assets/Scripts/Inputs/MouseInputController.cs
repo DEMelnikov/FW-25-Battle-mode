@@ -38,7 +38,7 @@ public class MouseInputController : MonoBehaviour
             Character hero = hit.collider.GetComponent<Character>();
             if (hero != null && hero.SceneObjectTag == SceneObjectTag.Hero)
             {
-                Debug.LogWarning("Hit Hero");
+                //Debug.LogWarning("Hit Hero");
                 selectedHero = hero;
                 mouseDownPosition = Input.mousePosition; // Запоминаем стартовую позицию мыши
                 isDragging = true;
@@ -79,11 +79,14 @@ public class MouseInputController : MonoBehaviour
         else
         {
             // Drag действительно имел место — обычная логика
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+            if (hit.collider != null)
             {
                 ICharacter enemy = hit.collider.GetComponent<Character>();
+                Debug.LogWarning($"Hit ------- {enemy.GetGameObject.name} with {enemy.SceneObjectTag}");
+                Debug.LogWarning($"Hit Herp {selectedHero.GetGameObject.name}");
                 if (enemy != null && enemy.SceneObjectTag == SceneObjectTag.Enemy)
                 {
                     //selectedHero.TargetsVault.AddAttackTarget(enemy);

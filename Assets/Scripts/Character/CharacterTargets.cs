@@ -125,7 +125,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
                 $"- target tag {targetCharacter.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
         }
 
-        SetTargetEnemyCharacter(target.GetComponent<Character>());
+        //SetTargetEnemyCharacter(target.GetComponent<Character>());
         //Debug.Break();
     }
 
@@ -133,10 +133,17 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     {
         if (target == null) return;
 
+
+
         if (target.SceneObjectTag == _whoIsYourEnemy)
         {
+            //Debug.LogWarning("I'm in targetsVault");
+
             _targetEnemyChararacter = target;
-            if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_selectedTarget.name}");
+            if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_targetEnemyChararacter.name}");
+
+            //TODO убрать потом
+            SetTargetEnemy(target.GetGameObject);
         }
         else if (logging)
         {
