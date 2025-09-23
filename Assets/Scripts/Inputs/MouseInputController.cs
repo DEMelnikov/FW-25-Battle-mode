@@ -85,17 +85,20 @@ public class MouseInputController : MonoBehaviour
             if (hit.collider != null)
             {
                 ICharacter enemy = hit.collider.GetComponent<Character>();
-                Debug.LogWarning($"Hit ------- {enemy.GetGameObject.name} with {enemy.SceneObjectTag}");
-                Debug.LogWarning($"Hit Herp {selectedHero.GetGameObject.name}");
+                //Debug.LogWarning($"Hit ------- {enemy.GetGameObject.name} with {enemy.SceneObjectTag}");
+                //Debug.LogWarning($"Hit Herp {selectedHero.GetGameObject.name}");
                 if (enemy != null && enemy.SceneObjectTag == SceneObjectTag.Enemy)
                 {
                     //selectedHero.TargetsVault.AddAttackTarget(enemy);
                     selectedHero.GetTargetsVault().SetTargetEnemyCharacter(enemy);
                 }
-                else
-                {
-                    selectedHero.GetTargetsVault().SetWayPoint(hit.point);
-                }
+
+            }
+            else
+            {
+                //Debug.LogWarning($"End Drag no colision  {mousePos.x}");
+                //Vector3 waypoint = new Vector3(mousePos.x, mousePos.y, 0f);
+                selectedHero.GetTargetsVault().SetWayPoint(new Vector3(mousePos.x, mousePos.y, 0f));
             }
         }
 

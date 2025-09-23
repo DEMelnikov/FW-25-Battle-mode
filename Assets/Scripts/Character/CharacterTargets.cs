@@ -177,9 +177,10 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return _waypoint;
     }
 
-    public void SetWayPoint(Vector3 waypoint)
+    public void SetWayPoint(Vector3 wp)
     {
-        _waypoint = waypoint;
+        //Debug.LogWarning($"I'M in SetWaypoint {wp.x}");
+        _waypoint = wp;
     }
     #endregion
 }
