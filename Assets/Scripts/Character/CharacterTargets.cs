@@ -4,15 +4,17 @@ using UnityEngine;
 public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 {
     [SerializeField] private GameObject _selectedTarget;
-    [SerializeField] private Character _targetEnemyChararacter;
+    [SerializeField] private ICharacter _targetEnemyChararacter;
 
-    [SerializeField] private Transform _waypoint;
+    [SerializeField] private Vector3 _waypoint;
     [SerializeField] private SceneObjectTag _whoIsYourEnemy = SceneObjectTag.Enemy;
     [SerializeField] protected bool logging = true;
     [SerializeField] private float actualDistance;
 
     public float ActualDistance { get => actualDistance; set => actualDistance = value; }
 
+
+    #region Target Enemy methods
     // Ќовый метод - безопасное получение вражеской цели
     [System.Obsolete("Use TryGetEnemyCharacter")]
     public bool TryGetTargetEnemy(out GameObject targetEnemy)
@@ -29,7 +31,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 
         if (_targetEnemyChararacter !=null && _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
         {
-            targetEnemy = _targetEnemyChararacter.gameObject;
+            targetEnemy = _targetEnemyChararacter.GetGameObject;
             return true;
         }
 
@@ -39,14 +41,14 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return false;
     }
 
-    public bool TryGetEnemyCharacter(out Character characterEnemy)
+    public bool TryGetEnemyCharacter(out ICharacter characterEnemy)
     {
         if (_targetEnemyChararacter != null &&
             _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
         {
             characterEnemy = _targetEnemyChararacter;
             if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
-                $"- valid enemy target: {_targetEnemyChararacter.gameObject.name}");
+                $"- valid enemy target: {_targetEnemyChararacter.GetGameObject.name}");
             return true;
         }
 
@@ -55,8 +57,6 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
             $"- no valid enemy target");
         return false;
     }
-
-
 
     public void UpdateDistanceTargetEnemy()
     {
@@ -125,26 +125,23 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
                 $"- target tag {targetCharacter.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
         }
 
-        SetTargetEnemyCharacter(target);
+        SetTargetEnemyCharacter(target.GetComponent<Character>());
         //Debug.Break();
     }
 
-    public void SetTargetEnemyCharacter(GameObject target)
+    public void SetTargetEnemyCharacter(ICharacter target)
     {
         if (target == null) return;
 
-        var targetCharacter = target.GetComponent<Character>();
-        if (targetCharacter == null) return;
-
-        if (targetCharacter.SceneObjectTag == _whoIsYourEnemy)
+        if (target.SceneObjectTag == _whoIsYourEnemy)
         {
-            _targetEnemyChararacter = targetCharacter;
+            _targetEnemyChararacter = target;
             if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_selectedTarget.name}");
         }
         else if (logging)
         {
             Debug.Log($"{gameObject.name} SetTargetEnemyCharacter rejected " +
-                $"- target tag {targetCharacter.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
+                $"- target tag {target.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
         }
 
     }
@@ -163,4 +160,19 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         targetCharacter = null;
         return false;
     }
+
+    #endregion
+
+    #region Waypoint methods
+
+    public Vector3 GetWayPoint()
+    {
+        return _waypoint;
+    }
+
+    public void SetWayPoint(Vector3 waypoint)
+    {
+        _waypoint = waypoint;
+    }
+    #endregion
 }
