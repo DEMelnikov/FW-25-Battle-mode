@@ -41,6 +41,8 @@ public static class SelectionManager
             character.SceneObjectTag == SceneObjectTag.Hero)
         {
             var target = character.GetSelectedTarget();
+
+
             if (target != null && target.TryGetComponent<ISelectableCharacter>(out var targetChar) &&
                 targetChar.SceneObjectTag == SceneObjectTag.Enemy)
             {

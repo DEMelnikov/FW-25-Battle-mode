@@ -8,7 +8,7 @@ public interface ICharacter
     string name { get; }
     ICharacterTargetsVault GetTargetsVault();
     IStatsController GetStatsController();
-    GameObject GetSelectedTarget();
+    //GameObject GetSelectedTarget();
     public virtual void SetSelectedTarget(GameObject target) { }
     public SceneObjectTag SceneObjectTag { get; }
     NavMeshAgent GetNavMeshAgent();

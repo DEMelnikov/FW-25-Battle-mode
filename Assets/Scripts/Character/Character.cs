@@ -8,7 +8,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     [SerializeField] private CharacterSettings         _settings;
     [SerializeField] private SO_CharacterStatsConfig   _statsConfig;
 
-    [SerializeField] private GameObject                _selectedTarget;
+    //[SerializeField] private GameObject                _selectedTarget;
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
 
                      private IStateMachine             _stateMachine;
@@ -52,12 +52,20 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     #endregion
 
     #region Публичные свойства
-    public GameObject GetSelectedTarget() => _selectedTarget; //TODO заменить
+
+    [System.Obsolete("Use CharacterTargetVaults")]
+    public GameObject GetSelectedTarget()
+    {
+        if (_targets.TryGetTargetEnemy(out GameObject enemyGameobject)) return enemyGameobject; 
+        return null;
+    }
+
+    //TODO заменить и возмоно убрать
     public void SetSelectedTarget(GameObject target) 
     {
         _targets.SetTargetEnemy(target);
     } 
-    //TODO заменить
+
     public IStatsController GetStatsController() { return _statsController; }
     public IStateMachine GetStateMachine() => _stateMachine;
     public IAbilityController GetAbilityController() => _abilityController;
@@ -76,7 +84,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         if (_settings != null)
         {
             SceneObjectTag = _settings.SceneObjectTag;
-            _selectedTarget = _settings.DefaultTarget;
+            _targets.SetTargetEnemy(_settings.DefaultTarget); 
         }
         else
         {
@@ -94,7 +102,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         {
             Debug.LogWarning("Character starting stats not assigned!", this);
             SceneObjectTag = SceneObjectTag.Hero;
-            _selectedTarget = null;
+            //_selectedTarget = null;
         }
     }
 

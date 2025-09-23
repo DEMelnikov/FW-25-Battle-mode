@@ -28,7 +28,7 @@ public abstract class Decision : ScriptableObject
 
         if (triggersVault == null)
         {
-            Debug.LogWarning($"TriggersVault не назначен");
+            Debug.LogWarning($"{this.name} TriggersVault не назначен");
             return;
         }
 

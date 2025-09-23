@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cee98950e7f47f48816ba3366299aac, type: 3}
   m_Name: Old-Has No Alive Target_Decision SO
   m_EditorClassIdentifier: 
+  _description: 
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
   logging: 1
-  abilityTriggers:
-  - {fileID: 11400000, guid: fb57947bafeef074e8ee7343add64776, type: 2}
+  triggersVaultNames: []
+  abilityTriggers: []

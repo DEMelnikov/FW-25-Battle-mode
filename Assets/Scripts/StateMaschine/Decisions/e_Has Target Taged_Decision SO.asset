@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1408b29bd2ff4d04293b4474a90ab26c, type: 3}
   m_Name: e_Has Target Taged_Decision SO
   m_EditorClassIdentifier: 
+  _description: 
+  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
   logging: 1
+  triggersVaultNames: []
+  abilityTriggers: []
   _targetTag: 0
