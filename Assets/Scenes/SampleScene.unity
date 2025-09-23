@@ -272,7 +272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: 9e850d570140353469d720dd7028b659, type: 2}
   _statsConfig: {fileID: 11400000, guid: a91a5c632b97a904297224f7810f2b6a, type: 2}
-  _selectedTarget: {fileID: 0}
   _inEngage: 0
 --- !u!58 &299483187
 CircleCollider2D:
@@ -916,6 +915,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1058,6 +1058,30 @@ MonoBehaviour:
     m_Bits: 8
   autoAssignMainCamera: 1
   clearSelectionOnMissClick: 0
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e399f13e7f8c5134f86d66f727ef864a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  enableDrag: 1
+  dragSpeed: 2
+  invertDrag: 0
+  dragSmoothing: 5
+  enableZoom: 1
+  zoomSpeed: 5
+  minZoom: 3
+  maxZoom: 15
+  zoomSmoothing: 10
+  useBoundaries: 0
+  minBoundary: {x: -10, y: -10}
+  maxBoundary: {x: 10, y: 10}
 --- !u!1 &552484300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,7 +1406,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: 2da03e227c2c57548b20f76b9f5eeabe, type: 2}
   _statsConfig: {fileID: 11400000, guid: a91a5c632b97a904297224f7810f2b6a, type: 2}
-  _selectedTarget: {fileID: 878806293192145506}
   _inEngage: 0
 --- !u!114 &578513244
 MonoBehaviour:
@@ -2492,7 +2515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: 2da03e227c2c57548b20f76b9f5eeabe, type: 2}
   _statsConfig: {fileID: 11400000, guid: a91a5c632b97a904297224f7810f2b6a, type: 2}
-  _selectedTarget: {fileID: 0}
   _inEngage: 0
 --- !u!58 &992131594
 CircleCollider2D:
@@ -4642,7 +4664,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: 9e850d570140353469d720dd7028b659, type: 2}
   _statsConfig: {fileID: 11400000, guid: a91a5c632b97a904297224f7810f2b6a, type: 2}
-  _selectedTarget: {fileID: 0}
   _inEngage: 0
 --- !u!114 &4815314378211106677
 MonoBehaviour:
