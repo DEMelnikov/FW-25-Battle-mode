@@ -33,8 +33,10 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         _behaviorProfile = GetComponent<BehaviorProfile>();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        if (_navMeshAgent == null) { Debug.Log("NO _navMeshAgent CONTROLLER"); } else { Debug.Log("_navMeshAgent is on"); }
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis   = false;
+
         //agent.SetDestination(new Vector3(0, 0, transform.position.z));
 
         //InitializeStateMachine();
@@ -84,7 +86,9 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         if (_settings != null)
         {
             SceneObjectTag = _settings.SceneObjectTag;
-            _targets.SetTargetEnemy(_settings.DefaultTarget); 
+            //_targets.SetTargetEnemy(null);
+            //if (_settings.DefaultTarget == null) _targets.SetTargetEnemy(null); else _targets.SetTargetEnemy(_settings.DefaultTarget);
+            //_targets.SetTargetEnemy(_settings.DefaultTarget); 
         }
         else
         {
