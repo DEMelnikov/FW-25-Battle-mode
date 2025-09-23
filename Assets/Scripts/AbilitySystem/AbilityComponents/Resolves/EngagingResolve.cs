@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EngagingResolve", menuName = "FW25/Ability System/Resolves/DefaultDamage")]
+[CreateAssetMenu(fileName = "EngagingResolve", menuName = "FW25/Ability System/Resolves/Engaging")]
 public class EngagingResolve : AbilityResolve
 {
     public override void ApplyResolve(ICharacter character, int outcome)
@@ -13,7 +13,7 @@ public class EngagingResolve : AbilityResolve
         {
             if (!targetCharacter.InEngage)
             {
-                targetCharacter.UnderMeleAttack();
+                targetCharacter.UnderMeleAttack(character.GetGameObject);
             }
         }
     }

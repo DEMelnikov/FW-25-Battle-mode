@@ -63,6 +63,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public IAbilityController GetAbilityController() => _abilityController;
     public ICharacterTargetsVault GetTargetsVault() => _targets;
     public Transform transform => this.gameObject.transform;
+    public GameObject GetGameObject => this.gameObject;
     public string name => gameObject.name;
     public bool InEngage { get => _inEngage; set => _inEngage = value; }
 
@@ -97,9 +98,13 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         }
     }
 
-    public void UnderMeleAttack()
+    public void UnderMeleAttack(GameObject agressor)
     {
         _inEngage = true;
+        if (!_targets.HasTargetEnemy())
+        {
+            _targets.SetTargetEnemy(agressor);
+        }
         _stateMachine.SetStateInEngage();
     }
 

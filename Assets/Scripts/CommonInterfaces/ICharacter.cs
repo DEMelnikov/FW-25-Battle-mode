@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public interface ICharacter
 {
     Transform transform { get; }
+    GameObject GetGameObject { get; }
     string name { get; }
     ICharacterTargetsVault GetTargetsVault();
     IStatsController GetStatsController();
@@ -14,6 +15,6 @@ public interface ICharacter
     IBehaviorProfile GetBehaviorProfile();
     IStateMachine GetStateMachine();
     bool InEngage {  get; }
-    void UnderMeleAttack();
+    void UnderMeleAttack(GameObject agressor);
 }
 

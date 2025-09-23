@@ -76,7 +76,7 @@ public class Temp_AttackState_WTSO : StateWithPause
         {
             if (!targetCharacter.InEngage)
             {
-                targetCharacter.UnderMeleAttack();
+                targetCharacter.UnderMeleAttack(owner.gameObject);
             }
         }
     }
