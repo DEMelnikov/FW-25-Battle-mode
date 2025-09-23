@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
   _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
-  _InEngageState: {fileID: 0}
+  _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   currentStateName: 
 --- !u!195 &578513248
 NavMeshAgent:
@@ -2699,7 +2699,7 @@ MonoBehaviour:
   abilitiesVault: {fileID: 11400000, guid: 15b406a7996371046aea86ee1f16fa83, type: 2}
   defaultAttackAbilityName: Ability For test
   _weaponRange: 7
-  _baseAttackInterval: 0
+  _baseAttackInterval: 2
   pursuitDistance: 150
   walkEnergyCost: 0.5
 --- !u!114 &992131604
@@ -4779,7 +4779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
   _initialState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
-  _InEngageState: {fileID: 0}
+  _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   currentStateName: 
 --- !u!114 &7723458236203311623
 MonoBehaviour:
