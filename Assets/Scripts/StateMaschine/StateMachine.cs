@@ -170,6 +170,8 @@ public class StateMachine : MonoBehaviour, IStateMachine
     {
         SetStateById(_initialState.StateId);
     }
+
+    public GameObject GetGameObject() => this.gameObject;
     // Для установки внешних зависимостей
     //public void SetPlayerTarget(Transform playerTarget)
     //{

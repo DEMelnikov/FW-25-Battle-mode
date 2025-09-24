@@ -44,6 +44,7 @@ public class ApproachTargetEnemyState_WTSO : State
         _navMeshAgent.angularSpeed = 120f; // Скорость поворота
         _navMeshAgent.acceleration = 8f;   // Ускорение
         _navMeshAgent.stoppingDistance = 1f; // Дистанция остановки
+        _navMeshAgent.isStopped = PauseManager.IsPaused;
 
         // Подписываемся на событие паузы
         SubscribeToPauseEvents();
@@ -113,6 +114,7 @@ public class ApproachTargetEnemyState_WTSO : State
         {
             // Переход в следующее состояние (например, атака)
             //Debug.LogWarning("Reached destination");
+            machine.CharacterGoal = CharacterGlobalGoal.Idle;
             machine.SetInitialState();   // TODO или другое целевое состояние
             return;
         }
