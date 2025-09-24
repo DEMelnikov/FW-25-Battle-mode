@@ -7,6 +7,7 @@ public class SliderUILogic : MonoBehaviour
     [SerializeField] private CharacterStatsController statsController;
     [SerializeField] private StatTag _statTag = StatTag.Health;
     [SerializeField] public SceneObjectTag SceneObjectTag;
+    [SerializeField] private bool logging = false;
 
     private void Awake()
     {
@@ -31,7 +32,7 @@ public class SliderUILogic : MonoBehaviour
         if (SceneObjectTag==SceneObjectTag.Hero)  SelectionManager.OnSelectionChanged += GotNewSelectionAlarm;
         if (SceneObjectTag==SceneObjectTag.Enemy) SelectionManager.OnOpponentChanged += GotNewOppSelectionAlarm;
 
-        Debug.Log("HealthBarUI:  Subscribe to OnSelectionChanged is on");
+        if (logging) Debug.Log("HealthBarUI:  Subscribe to OnSelectionChanged is on");
     }
 
     private void OnDisable()
@@ -55,7 +56,7 @@ public class SliderUILogic : MonoBehaviour
 
     private void GotNewSelectionAlarm()
     {
-        Debug.Log("HealthBarUI:  Got invoke - start cheking");
+        if (logging) Debug.Log("HealthBarUI:  Got invoke - start cheking");
         if (SelectionManager.HasSelection)
         {
             if (SelectionManager.SelectedObject.TryGetComponent<CharacterStatsController>(out var newSstatsController))
@@ -71,7 +72,7 @@ public class SliderUILogic : MonoBehaviour
 
     private void GotNewOppSelectionAlarm()
     {
-        Debug.Log("BarUI:  Got invoke - start cheking");
+        if (logging) Debug.Log("BarUI:  Got invoke - start cheking");
         if (SelectionManager.HasOpponent)
         {
             if (SelectionManager.OpponentObject.TryGetComponent<CharacterStatsController>(out var newSstatsController))
@@ -109,7 +110,7 @@ public class SliderUILogic : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"New StatsController doesn't have {_statTag.ToString()} stat", this);
+            if (logging) Debug.LogWarning($"New StatsController doesn't have {_statTag.ToString()} stat", this);
         }
     }
 
@@ -130,7 +131,7 @@ public class SliderUILogic : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("StatsController doesn't have Health stat", this);
+            if (logging) Debug.LogWarning("StatsController doesn't have Health stat", this);
         }
     }
 
@@ -144,7 +145,7 @@ public class SliderUILogic : MonoBehaviour
 
     private void OnStatBelowZero(IStat stat, float value)
     {
-        Debug.Log("Stt is below zero!");
+        if (logging) Debug.Log("Stt is below zero!");
         // Здесь можно добавить логику смерти персонажа
         //понаблюдать - возможно не нужно
     }

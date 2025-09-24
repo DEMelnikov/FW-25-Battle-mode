@@ -31,12 +31,12 @@ public class AllTriggersPassDecision : Decision
             if (!trigger.CheckTrigger(character))
             {
                 if (logging) Debug.Log($"Decision {this.name} - check {trigger.name} - FAILED");
-                if (logging) Debug.Log($"Decision {this.name} FAILED fully - *!*!*!*");
+                if (logging) Debug.Log($"{machine.GetGameObject().name} - Decision {this.name} FAILED fully - *!*!*!*");
                 return false;
             }
             else
             {
-                if (logging) Debug.Log($"Decision {this.name} - check {trigger.name} - PASSED");
+                if (logging) Debug.Log($"{machine.GetGameObject().name} Decision {this.name} - check {trigger.name} - PASSED");
             }
         } 
 

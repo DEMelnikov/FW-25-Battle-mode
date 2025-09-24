@@ -1,3 +1,4 @@
+using Unity.Android.Gradle;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     [Header("Настройки")]
     [SerializeField] private CharacterSettings         _settings;
     [SerializeField] private SO_CharacterStatsConfig   _statsConfig;
+    [SerializeField] private bool logging = false;
 
     //[SerializeField] private GameObject                _selectedTarget;
     [SerializeField] public SceneObjectTag SceneObjectTag {get; private set;}
@@ -26,7 +28,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     void Awake()
     {
         _statsController = GetComponent<CharacterStatsController>();
-        if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
+        if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { if(logging) Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
 
         _stateMachine = GetComponent<IStateMachine>();
@@ -36,7 +38,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         _behaviorProfile = GetComponent<BehaviorProfile>();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        if (_navMeshAgent == null) { Debug.Log("NO _navMeshAgent CONTROLLER"); } else { Debug.Log("_navMeshAgent is on"); }
+        if (_navMeshAgent == null) { Debug.Log("NO _navMeshAgent CONTROLLER"); } else { if (logging) Debug.Log("_navMeshAgent is on"); }
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis   = false;
 
