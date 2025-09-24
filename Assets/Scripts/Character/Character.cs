@@ -28,7 +28,10 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         _statsController = GetComponent<CharacterStatsController>();
         if ( _statsController == null ) { Debug.Log("NO STATS CONTROLLER"); } else { Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
+
         _stateMachine = GetComponent<IStateMachine>();
+        _stateMachine.CharacterGoal = CharacterGlobalGoal.Idle;
+
         _targets = GetComponent<CharacterTargets>();
         _behaviorProfile = GetComponent<BehaviorProfile>();
 

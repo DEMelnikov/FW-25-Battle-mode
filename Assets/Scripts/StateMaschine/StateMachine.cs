@@ -7,10 +7,11 @@ public class StateMachine : MonoBehaviour, IStateMachine
     //[SerializeField] private ScriptableObject _currentStateBehaviour;
     //[SerializeField] private ScriptableObject _initialStateBehaviour;
 
-    [SerializeReference] private State _currentState;
-    [SerializeReference] private State _initialState;
-    [SerializeReference] private State _InEngageState;
-                         private IStateContext _context;
+    [SerializeReference] private State               _currentState;
+    [SerializeReference] private State               _initialState;
+    [SerializeReference] private State               _InEngageState;
+                         private IStateContext       _context;
+    [SerializeReference] private CharacterGlobalGoal _characterGoal = CharacterGlobalGoal.Idle;
 
     private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
 
@@ -163,6 +164,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
 
     // Доступ к контексту для состояний
     public IStateContext Context => _context;
+    public CharacterGlobalGoal CharacterGoal { get => _characterGoal; set => _characterGoal = value; }
 
     // Для установки внешних зависимостей
     //public void SetPlayerTarget(Transform playerTarget)
