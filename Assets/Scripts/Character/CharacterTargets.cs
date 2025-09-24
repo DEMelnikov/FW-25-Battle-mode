@@ -15,6 +15,16 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 
 
     #region Target Enemy methods
+
+    public bool TryGetTargetCharacter(out ICharacter targetCharacter)
+    {
+        if (_selectedTarget != null && _selectedTarget.TryGetComponent<ICharacter>(out targetCharacter))
+            return true;
+
+        targetCharacter = null;
+        return false;
+    }
+
     // Ќовый метод - безопасное получение вражеской цели
     [System.Obsolete("Use TryGetEnemyCharacter")]
     public bool TryGetTargetEnemy(out GameObject targetEnemy)
@@ -153,20 +163,13 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 
     }
 
-    
+    [System.Obsolete("Use TryGetEnemyCharacter")]
     public GameObject GetTargetEnemy()
     {
         return TryGetTargetEnemy(out var target) ? target : null;
     }
 
-    public bool TryGetTargetCharacter(out ICharacter targetCharacter)
-    {
-        if (_selectedTarget != null && _selectedTarget.TryGetComponent<ICharacter>(out targetCharacter))
-            return true;
 
-        targetCharacter = null;
-        return false;
-    }
 
     #endregion
 

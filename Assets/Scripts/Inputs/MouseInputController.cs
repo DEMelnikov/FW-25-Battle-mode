@@ -75,6 +75,8 @@ public class MouseInputController : MonoBehaviour
             // Если drag не начат или мышь почти не двигалась — считаем это кликом
             // Например, просто выбираем героя без отметки цели или waypoint-a
             //SelectHero(selectedHero); // Ваша логика выбора
+
+            // TODO: Перенести логику выбора персонажа из ObjectSelector2D в MouseInputController
         }
         else
         {
