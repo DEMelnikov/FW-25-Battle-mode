@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -6,10 +7,15 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     [SerializeField] private GameObject _selectedTarget;
     [SerializeField] private ICharacter _targetEnemyChararacter;
 
-    [SerializeField] private Vector3 _waypoint;
+    [SerializeField] private Vector3 _waypoint = Vector3.zero;
     [SerializeField] private SceneObjectTag _whoIsYourEnemy = SceneObjectTag.Enemy;
     [SerializeField] protected bool logging = true;
     [SerializeField] private float actualDistance;
+                     private IStateMachine _sm;
+    void Awake()
+    {
+        _sm = this.gameObject.GetComponent<Character>().GetStateMachine();
+    }
 
     public float ActualDistance { get => actualDistance; set => actualDistance = value; }
 
@@ -169,8 +175,6 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return TryGetTargetEnemy(out var target) ? target : null;
     }
 
-
-
     #endregion
 
     #region Waypoint methods
@@ -184,6 +188,37 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     {
         //Debug.LogWarning($"I'M in SetWaypoint {wp.x}");
         _waypoint = wp;
+    }
+    #endregion
+
+    #region Universal
+    public Vector3 GetCoordinates()
+    {
+        switch (GetCharacterGoal())
+        {
+            case CharacterGlobalGoal.MoveToPoint:
+                {
+                    return GetWayPoint();
+                }
+            case CharacterGlobalGoal.Attack:
+                {
+                    Vector3 coordinates = Vector3.zero;
+                    if (TryGetTargetEnemyTransform(out var targetTransform))  coordinates = targetTransform.position; 
+                    return coordinates;
+                }
+            case CharacterGlobalGoal.Chase:
+                {
+                    Vector3 coordinates = Vector3.zero;
+                    if (TryGetTargetEnemyTransform(out var targetTransform)) coordinates = targetTransform.position;
+                    return coordinates;
+                }
+            default: return Vector3.zero;
+        }
+    }
+
+    private CharacterGlobalGoal GetCharacterGoal()
+    {
+        return _sm.CharacterGoal;
     }
     #endregion
 }
