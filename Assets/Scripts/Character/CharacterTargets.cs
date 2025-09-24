@@ -10,7 +10,8 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     [SerializeField] private Vector3 _waypoint = Vector3.zero;
     [SerializeField] private SceneObjectTag _whoIsYourEnemy = SceneObjectTag.Enemy;
     [SerializeField] protected bool logging = true;
-    [SerializeField] private float actualDistance;
+    [SerializeField] private float enemyActualDistance;
+    [SerializeField] private float wpActualDistance;
                      private IStateMachine _sm;
     void Awake()
     {
@@ -19,7 +20,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         //if (_sm != null ) Debug.LogWarning($" Awake in TargetsVault {_sm.GetGameObject().name}");
     }
 
-    public float ActualDistance { get => actualDistance; set => actualDistance = value; }
+    public float ActualDistance { get => enemyActualDistance; set => enemyActualDistance = value; }
 
 
     #region Target Enemy methods
@@ -76,15 +77,15 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return false;
     }
 
-    public void UpdateDistanceTargetEnemy()
+    private void UpdateDistanceTargetEnemy()
     {
-        actualDistance = Mathf.Infinity;
+        enemyActualDistance = Mathf.Infinity;
         ValidateAndCleanTarget();
 
         if (_selectedTarget == null) return;
         Transform enemyTransform = _selectedTarget.transform;
 
-        actualDistance = Vector3.Distance(this.gameObject.transform.position, enemyTransform.position);
+        enemyActualDistance = Vector3.Distance(this.gameObject.transform.position, enemyTransform.position);
     }
 
     public bool TryGetTargetEnemyTransform (out Transform _transform)
@@ -186,6 +187,16 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return _waypoint;
     }
 
+    private void UpdateDistanceWayPoint()
+    {
+        wpActualDistance = Mathf.Infinity;
+        if (_waypoint == Vector3.zero) return;
+
+        //Ve enemyTransform = _selectedTarget.transform;
+
+        enemyActualDistance = Vector3.Distance(this.gameObject.transform.position, _waypoint);
+    }
+
     public void SetWayPoint(Vector3 wp)
     {
         //Debug.LogWarning($"I'M in SetWaypoint {wp.x}");
@@ -222,5 +233,12 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     {
         return _sm.CharacterGoal;
     }
+    
+    public void UpdateDistances()
+    {
+        if (_selectedTarget != null) UpdateDistanceTargetEnemy();
+        if (_waypoint != Vector3.zero) UpdateDistanceWayPoint();
+    }
+    
     #endregion
 }
