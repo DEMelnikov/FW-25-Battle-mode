@@ -13,14 +13,14 @@ public class Ability : BaseAbility, IAbility
                      public Sprite  icon;
     [SerializeField] private bool   logging = false;
 
-    [Header("Vaults")]
-    [SerializeField] private ActionsVault  _actionsVault;
-    [SerializeField] private TriggersVault _triggersVault;
+    //[Header("Vaults")]
+    //[SerializeField] private ActionsVault  _actionsVault;
+    //[SerializeField] private TriggersVault _triggersVault;
     
     [Header("Activation Requirements")]
-    [SONameDropdown(typeof(TriggersVault))]
-    public    List<string>   triggersNames = new List<string>();
-    protected List<Trigger>  triggers      = new List<Trigger>();
+    //[SONameDropdown(typeof(TriggersVault))]
+    //public    List<string>   triggersNames = new List<string>();
+    [SerializeField] protected List<Trigger>  triggers      = new List<Trigger>();
 
 
     [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();
@@ -28,46 +28,16 @@ public class Ability : BaseAbility, IAbility
 
 
     [Header("Execution Logic")]
-    [SONameDropdown(typeof(ActionsVault))]
-    public string _actionName;
-    private AbilityAction _abilityAction;
+    //[SONameDropdown(typeof(ActionsVault))]
+    //public string _actionName;
+    [SerializeField] private AbilityAction _abilityAction;
+
     [SerializeField] private List<AbilityResolve>  resolves = new List<AbilityResolve>();
 
     [Header("UI & Filtering")]
     public List<string> tags = new List<string>();
 
     // UI методы
-    void Awake()
-    {
-        Initialize();
-    }
-
-    public void Initialize()
-    {
-        if (_actionsVault == null || _triggersVault==null)
-        {
-            Debug.LogError($"{this.name} Vault не назначен");
-            return;
-        }
-
-        if (triggers.Count == 0 || triggers[0] == null)
-        {
-            triggers.Clear();
-
-            foreach (var triggerName in triggersNames)
-            {
-                if (string.IsNullOrEmpty(triggerName)) continue;
-
-                var clonedTrigger = _triggersVault.GetCopyByName(triggerName);
-                if (clonedTrigger != null)
-                {
-                    triggers.Add(clonedTrigger);
-                }
-            }
-        }
-
-        if (_abilityAction == null) _abilityAction = _actionsVault.GetCopyByName(_actionName);
-    }
 
     public override bool HasTag(string tag) => tags.Contains(tag);
     public override IAction GetAbilityAction() => _abilityAction;
@@ -123,7 +93,6 @@ public class Ability : BaseAbility, IAbility
         if (logging) Debug.Log($"Ability {this.name} - ready to abilityAction");
 
         // ¬ыполнение действи€
-        if (_abilityAction == null) Initialize();
         outcome = _abilityAction.ExecuteAction(character);   //.GetExecuteAction(character);
 
         Debug.Log($"Ability {this.name} - result = {outcome} successes");
@@ -139,7 +108,6 @@ public class Ability : BaseAbility, IAbility
 
 protected sealed override bool CheckTriggersReady(ICharacter character)
 {
-    Initialize();
 
     if (logging) { Debug.Log($"Start Check Triggers у {character.name}"); }
     if (triggers.Count == 0) return true;

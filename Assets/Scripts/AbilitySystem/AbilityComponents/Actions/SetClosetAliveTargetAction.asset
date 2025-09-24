@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: Set Closest Target with tag and Character Component
   logging: 1
-  maxDistance: 200
+  maxDistance: 20
   _targetTag: 0
