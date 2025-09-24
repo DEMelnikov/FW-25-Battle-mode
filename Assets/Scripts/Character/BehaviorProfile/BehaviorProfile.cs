@@ -6,15 +6,15 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
 {
-    [Header("Vaults:")]
-    [SerializeField] private AbilitiesVault abilitiesVault;
+    //[Header("Vaults:")]
+    //[SerializeField] private AbilitiesVault abilitiesVault;
 
     [Header("Attack Settings:")]
-    [SONameDropdown(typeof(AbilitiesVault))]
-    public string defaultAttackAbilityName;
+    //[SONameDropdown(typeof(AbilitiesVault))]
+    //public string defaultAttackAbilityName;
     [SerializeField][Min(0.1f)] private float _weaponRange = 3f;
 
-    [SerializeField] private IAbility _defaultAttackAbility;
+    [SerializeField] private Ability _defaultAttackAbility;
     [SerializeField] private float    _baseAttackInterval = 2f;
 
     [Header("Defence Settings:")]
@@ -28,26 +28,26 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
     //[Header("Unlocked Abilities")]
     //[SerializeField] private List<IAbility> unlockedAbilities = new List<IAbility>(); //TODO - подумать - возможно стоит делать отдельный Vault для каждого персонажа
 
-    private void Awake()
-    {
-        if (_defaultAttackAbility == null) Initialize();
-    }
+    //private void Awake()
+    //{
+    //    if (_defaultAttackAbility == null) Initialize();
+    //}
 
-    private void Initialize()
-    {
-        if (abilitiesVault == null || string.IsNullOrEmpty(defaultAttackAbilityName))
-        {
-            Debug.LogError($"{this.gameObject.name}.BehaviorProfile abilitiesVault or abilityName не назначен");
-            return;
-        }
+    //private void Initialize()
+    //{
+    //    if (abilitiesVault == null || string.IsNullOrEmpty(defaultAttackAbilityName))
+    //    {
+    //        Debug.LogError($"{this.gameObject.name}.BehaviorProfile abilitiesVault or abilityName не назначен");
+    //        return;
+    //    }
 
-        SetBaseAttackAbility(abilitiesVault.GetCopyByName(defaultAttackAbilityName));
-    }
+    //    SetBaseAttackAbility(abilitiesVault.GetCopyByName(defaultAttackAbilityName));
+    //}
 
 
 
     // Публичные свойства для доступа к параметрам
-    public IAbility BaseAttackAbility  { get => _defaultAttackAbility; set => _defaultAttackAbility = value; }
+    public Ability BaseAttackAbility  { get => _defaultAttackAbility; set => _defaultAttackAbility = value; }
     public float PursuitDistance => pursuitDistance;
 
     public float WeaponRange { get => _weaponRange; set => _weaponRange = value; }

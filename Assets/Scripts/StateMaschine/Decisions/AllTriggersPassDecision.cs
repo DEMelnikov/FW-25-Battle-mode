@@ -9,9 +9,8 @@ public class AllTriggersPassDecision : Decision
     public override bool Decide(IStateMachine machine)
     {
         //Debug.Break();
-        Initialize();
 
-        if (logging) Debug.Log($"Start Decision {this.name}");
+        if (logging) Debug.Log($"{machine.Context.Owner.name} Start Decision {this.name}");
         var character = machine.Context.GetCharacter();
         //bool finalDecision = true;
 

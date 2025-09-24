@@ -15,6 +15,10 @@ MonoBehaviour:
   _description: 
   stateId: failed_temp_State_I
   logging: 1
-  transitions: []
+  transitions:
+  - decision: {fileID: 0}
+    trueState: {fileID: 0}
+    isInfluenceCharacterGlobalGoal: 0
+    setNewGlobalGoal: 0
   _allTransitiosFailedState: {fileID: 0}
   _message: all failed

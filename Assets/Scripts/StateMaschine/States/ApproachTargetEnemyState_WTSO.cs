@@ -30,11 +30,11 @@ public class ApproachTargetEnemyState_WTSO : State
         _navMeshAgent    = owner.GetNavMeshAgent();
         _behaviorProfile = owner.GetBehaviorProfile();
 
-        if( !_targetsVault.TryGetTargetEnemyTransform(out _targetTransform))
-        {
-            if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
-            machine.SetState(_whenLooseTargetState);
-        }
+        //if( !_targetsVault.TryGetTargetEnemyTransform(out _targetTransform))
+        //{
+        //    if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
+        //    machine.SetState(_whenLooseTargetState);
+        //}
 
         _currentTargetCoordinates = _targetsVault.GetCoordinates();
 
