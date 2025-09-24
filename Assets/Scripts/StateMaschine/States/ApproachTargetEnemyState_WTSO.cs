@@ -102,10 +102,21 @@ public class ApproachTargetEnemyState_WTSO : State
 
         if (_currentTargetCoordinates != _targetsVault.GetCoordinates())
         {
+            _currentTargetCoordinates = _targetsVault.GetCoordinates();
             _navMeshAgent.SetDestination(_currentTargetCoordinates);
         }
 
-        _targetsVault.UpdateDistanceTargetEnemy();
+        //_targetsVault.UpdateDistanceTargetEnemy();
+
+        // ПРОВЕРКА ДОСТИЖЕНИЯ ЦЕЛИ
+        if (HasReachedDestination())
+        {
+            // Переход в следующее состояние (например, атака)
+            //Debug.LogWarning("Reached destination");
+            machine.SetInitialState();   // TODO или другое целевое состояние
+            return;
+        }
+
         //i
     }
 
@@ -147,7 +158,15 @@ public class ApproachTargetEnemyState_WTSO : State
     {
         if (_navMeshAgent.isStopped) return;
 
+        //_navMeshAgent.Pa
         //Debug.Log("Spend energy");
         _energyCost.PayAbilityCost(owner);
+    }
+
+    private bool HasReachedDestination()
+    {
+        return !_navMeshAgent.pathPending &&
+               _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance &&
+               _navMeshAgent.velocity.sqrMagnitude == 0f;
     }
 }
