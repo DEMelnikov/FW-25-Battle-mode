@@ -16,7 +16,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     {
         _sm = GetComponent<IStateMachine>();//.GetStateMachine();
         
-        if (_sm != null ) Debug.LogWarning($" Awake in TargetsVault {_sm.GetGameObject().name}");
+        //if (_sm != null ) Debug.LogWarning($" Awake in TargetsVault {_sm.GetGameObject().name}");
     }
 
     public float ActualDistance { get => actualDistance; set => actualDistance = value; }

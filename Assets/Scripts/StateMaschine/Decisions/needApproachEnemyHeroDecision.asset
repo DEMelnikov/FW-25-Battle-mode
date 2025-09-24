@@ -18,13 +18,8 @@ MonoBehaviour:
 
     if
     actual distance < weapon range'
-  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
   logging: 1
-  triggersVaultNames:
-  - HasValidatedEnemy
-  - WeaponRangeDistanceCheck_Greater
-  - PursuitDistanceTrigger_Lesser
   abilityTriggers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 976f0ad6d99642040a96942540933526, type: 2}
+  - {fileID: 11400000, guid: 4aac2f52c08616f4d9dbede78aaf8d6a, type: 2}
+  - {fileID: 11400000, guid: 05bd35f922be7114d81b55eed62f7b6d, type: 2}

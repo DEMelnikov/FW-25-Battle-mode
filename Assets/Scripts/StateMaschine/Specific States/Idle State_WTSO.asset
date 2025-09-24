@@ -20,4 +20,8 @@ MonoBehaviour:
     trueState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
     isInfluenceCharacterGlobalGoal: 1
     setNewGlobalGoal: 2
+  - decision: {fileID: 11400000, guid: 0f000b1da5750834ba998a5605fbf722, type: 2}
+    trueState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
+    isInfluenceCharacterGlobalGoal: 1
+    setNewGlobalGoal: 1
   _allTransitiosFailedState: {fileID: 0}
