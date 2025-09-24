@@ -14,6 +14,7 @@ public class ApproachTargetEnemyState_WTSO : State
     private IBehaviorProfile _behaviorProfile;
     private Transform _targetTransform;
     private bool _isSubscribed = false;
+    [SerializeField] private Vector3 _currentTargetCoordinates;
 
     private TimerTrigger energyLoseTrigger;
 
@@ -35,7 +36,9 @@ public class ApproachTargetEnemyState_WTSO : State
             machine.SetState(_whenLooseTargetState);
         }
 
-        _navMeshAgent.SetDestination(_targetTransform.position);
+        _currentTargetCoordinates = _targetsVault.GetCoordinates();
+
+        _navMeshAgent.SetDestination(_currentTargetCoordinates);
 
         _navMeshAgent.speed = 2f;          // Скорость движения
         _navMeshAgent.angularSpeed = 120f; // Скорость поворота
@@ -81,14 +84,29 @@ public class ApproachTargetEnemyState_WTSO : State
 
         energyLoseTrigger.Update(Time.deltaTime);
 
-        if (!_targetsVault.TryGetTargetEnemyTransform(out Transform _newTargetTransform))
+        //if (!_targetsVault.TryGetTargetEnemyTransform(out Transform _newTargetTransform))
+        //{
+        //    if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
+        //    machine.SetState(_whenLooseTargetState);
+        //}
+
+        //if (_targetTransform != _newTargetTransform) _navMeshAgent.SetDestination(_newTargetTransform.position);
+        //_targetsVault.UpdateDistanceTargetEnemy();
+
+        
+        if (_targetsVault.GetCoordinates() == Vector3.zero) 
         {
-            if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
-            machine.SetState(_whenLooseTargetState);
+            machine.SetInitialState();
+            return;
+        } 
+
+        if (_currentTargetCoordinates != _targetsVault.GetCoordinates())
+        {
+            _navMeshAgent.SetDestination(_currentTargetCoordinates);
         }
 
-        if (_targetTransform != _newTargetTransform) _navMeshAgent.SetDestination(_newTargetTransform.position);
         _targetsVault.UpdateDistanceTargetEnemy();
+        //i
     }
 
     public void CheckTransitions(IStateMachine machine)

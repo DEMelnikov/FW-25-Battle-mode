@@ -166,6 +166,10 @@ public class StateMachine : MonoBehaviour, IStateMachine
     public IStateContext Context => _context;
     public CharacterGlobalGoal CharacterGoal { get => _characterGoal; set => _characterGoal = value; }
 
+    public void SetInitialState()
+    {
+        SetStateById(_initialState.StateId);
+    }
     // Для установки внешних зависимостей
     //public void SetPlayerTarget(Transform playerTarget)
     //{
