@@ -35,6 +35,8 @@ public abstract class State : BaseState
                 {
                     if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result TRUE! Next State {transition.trueState.name}");
                     //if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result true ");
+
+                    if (transition.IsInfluenceCharacterGlobalGoal) machine.CharacterGoal = transition.GetNewGlobalGoal;
                     machine.SetState(transition.trueState);
                     return;
                 }
