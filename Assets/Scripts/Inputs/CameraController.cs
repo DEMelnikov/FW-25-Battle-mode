@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private MouseInputController mouseInputController;
+
     [Header("Drag Movement")]
     [SerializeField] private bool enableDrag = true;
     [SerializeField] private float dragSpeed = 2f;
@@ -47,6 +49,10 @@ public class CameraController : MonoBehaviour
 
     private void HandleInput()
     {
+        if (mouseInputController != null && mouseInputController.IsDragging)
+            return;
+
+
         // Определяем тип управления на основе платформы
 #if UNITY_EDITOR || UNITY_STANDALONE
         HandleMouseInput();

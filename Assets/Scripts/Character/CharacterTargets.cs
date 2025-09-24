@@ -4,14 +4,29 @@ using UnityEngine;
 public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 {
     [SerializeField] private GameObject _selectedTarget;
-    [SerializeField] private Transform _waypoint;
+    [SerializeField] private ICharacter _targetEnemyChararacter;
+
+    [SerializeField] private Vector3 _waypoint;
     [SerializeField] private SceneObjectTag _whoIsYourEnemy = SceneObjectTag.Enemy;
     [SerializeField] protected bool logging = true;
     [SerializeField] private float actualDistance;
 
     public float ActualDistance { get => actualDistance; set => actualDistance = value; }
 
+
+    #region Target Enemy methods
+
+    public bool TryGetTargetCharacter(out ICharacter targetCharacter)
+    {
+        if (_selectedTarget != null && _selectedTarget.TryGetComponent<ICharacter>(out targetCharacter))
+            return true;
+
+        targetCharacter = null;
+        return false;
+    }
+
     // Новый метод - безопасное получение вражеской цели
+    [System.Obsolete("Use TryGetEnemyCharacter")]
     public bool TryGetTargetEnemy(out GameObject targetEnemy)
     {
         if (_selectedTarget != null &&
@@ -24,8 +39,31 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
             return true;
         }
 
+        if (_targetEnemyChararacter !=null && _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
+        {
+            targetEnemy = _targetEnemyChararacter.GetGameObject;
+            return true;
+        }
+
         targetEnemy = null;
         if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
+            $"- no valid enemy target");
+        return false;
+    }
+
+    public bool TryGetEnemyCharacter(out ICharacter characterEnemy)
+    {
+        if (_targetEnemyChararacter != null &&
+            _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
+        {
+            characterEnemy = _targetEnemyChararacter;
+            if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
+                $"- valid enemy target: {_targetEnemyChararacter.GetGameObject.name}");
+            return true;
+        }
+
+        characterEnemy = null;
+        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetEnemyCharacter() " +
             $"- no valid enemy target");
         return false;
     }
@@ -97,21 +135,55 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
                 $"- target tag {targetCharacter.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
         }
 
+        //SetTargetEnemyCharacter(target.GetComponent<Character>());
         //Debug.Break();
     }
 
-    
+    public void SetTargetEnemyCharacter(ICharacter target)
+    {
+        if (target == null) return;
+
+
+
+        if (target.SceneObjectTag == _whoIsYourEnemy)
+        {
+            //Debug.LogWarning("I'm in targetsVault");
+
+            _targetEnemyChararacter = target;
+            if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_targetEnemyChararacter.name}");
+
+            //TODO убрать потом
+            SetTargetEnemy(target.GetGameObject);
+        }
+        else if (logging)
+        {
+            Debug.Log($"{gameObject.name} SetTargetEnemyCharacter rejected " +
+                $"- target tag {target.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
+        }
+
+    }
+
+    [System.Obsolete("Use TryGetEnemyCharacter")]
     public GameObject GetTargetEnemy()
     {
         return TryGetTargetEnemy(out var target) ? target : null;
     }
 
-    public bool TryGetTargetCharacter(out ICharacter targetCharacter)
-    {
-        if (_selectedTarget != null && _selectedTarget.TryGetComponent<ICharacter>(out targetCharacter))
-            return true;
 
-        targetCharacter = null;
-        return false;
+
+    #endregion
+
+    #region Waypoint methods
+
+    public Vector3 GetWayPoint()
+    {
+        return _waypoint;
     }
+
+    public void SetWayPoint(Vector3 wp)
+    {
+        //Debug.LogWarning($"I'M in SetWaypoint {wp.x}");
+        _waypoint = wp;
+    }
+    #endregion
 }

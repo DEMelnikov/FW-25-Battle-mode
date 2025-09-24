@@ -11,5 +11,9 @@ public interface ICharacterTargetsVault
     public GameObject GetTargetEnemy();
     public float ActualDistance { get; set; }
     public void UpdateDistanceTargetEnemy();
+    public void SetTargetEnemyCharacter(ICharacter target);
+
+    Vector3 GetWayPoint();
+    public void SetWayPoint(Vector3 point);
 
 }
