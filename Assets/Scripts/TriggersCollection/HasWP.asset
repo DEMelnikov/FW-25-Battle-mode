@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: TriggersCollection::AbilitySystem.AbilityComponents.HasWayPointNotNull
   _description: 
   _name: 
-  logging: 1
+  logging: 0

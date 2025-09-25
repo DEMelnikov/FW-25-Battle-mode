@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NeedPassToWayPoint
   m_EditorClassIdentifier: StateMaschine::AllTriggersPassDecision
   _description: 
-  logging: 1
+  logging: 0
   abilityTriggers:
   - {fileID: 11400000, guid: 0d2334803f606d74f858ee83217457c7, type: 2}

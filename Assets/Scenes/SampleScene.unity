@@ -383,6 +383,7 @@ MonoBehaviour:
   _initialState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _characterGoal: 3
+  logging: 0
   currentStateName: 
 --- !u!114 &332707780
 MonoBehaviour:
@@ -1531,6 +1532,7 @@ MonoBehaviour:
   _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _characterGoal: 3
+  logging: 1
   currentStateName: 
 --- !u!195 &578513248
 NavMeshAgent:
@@ -1586,7 +1588,7 @@ MonoBehaviour:
   _selectedTarget: {fileID: 0}
   _waypoint: {x: 0, y: 0, z: 0}
   _whoIsYourEnemy: 1
-  logging: 1
+  logging: 0
   enemyActualDistance: 0
   wpActualDistance: 0
 --- !u!1 &589239454
@@ -2684,6 +2686,7 @@ MonoBehaviour:
   _initialState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _characterGoal: 3
+  logging: 0
   currentStateName: 
 --- !u!114 &966839504
 MonoBehaviour:
@@ -4477,7 +4480,7 @@ MonoBehaviour:
   _selectedTarget: {fileID: 0}
   _waypoint: {x: 0, y: 0, z: 0}
   _whoIsYourEnemy: 1
-  logging: 1
+  logging: 0
   enemyActualDistance: 0
   wpActualDistance: 0
 --- !u!195 &1971976392
@@ -4518,6 +4521,7 @@ MonoBehaviour:
   _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _characterGoal: 3
+  logging: 1
   currentStateName: 
 --- !u!114 &1971976394
 MonoBehaviour:
@@ -5188,6 +5192,7 @@ MonoBehaviour:
   _initialState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _characterGoal: 3
+  logging: 1
   currentStateName: 
 --- !u!114 &7723458236203311623
 MonoBehaviour:

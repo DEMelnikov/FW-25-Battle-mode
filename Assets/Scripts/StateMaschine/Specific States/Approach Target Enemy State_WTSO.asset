@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: StateMaschine::ApproachTargetEnemyState_WTSO
   _description: approach to enemy til actual distance>behaviour distance
   stateId: Approach_actual
-  logging: 1
+  logging: 0
   transitions: []
   _allTransitiosFailedState: {fileID: 0}
   _whenLooseTargetState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}

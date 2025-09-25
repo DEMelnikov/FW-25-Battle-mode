@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HasNoAliveTarget
   m_EditorClassIdentifier: StateMaschine::AllTriggersPassDecision
   _description: 
-  logging: 1
+  logging: 0
   abilityTriggers:
   - {fileID: 11400000, guid: 5a505f918366bf84d92d77bccdd24659, type: 2}

@@ -95,7 +95,7 @@ public class Ability : BaseAbility, IAbility
         // Выполнение действия
         outcome = _abilityAction.ExecuteAction(character);   //.GetExecuteAction(character);
 
-        Debug.Log($"Ability {this.name} - result = {outcome} successes");
+        if (logging) Debug.Log($"Ability {this.name} - result = {outcome} successes");
 
         // Применение результатов
         foreach (var resolve in resolves)
@@ -118,10 +118,10 @@ protected sealed override bool CheckTriggersReady(ICharacter character)
         //    return false;
         if (!trigger.CheckTrigger(character))
         {
-            Debug.Log($"{abilityName} Trigger {trigger.name} not passed");
+            if (logging) Debug.Log($"{abilityName} Trigger {trigger.name} not passed");
             return false;
         }
-        Debug.Log($"  {abilityName} Trigger {trigger.name} passed +++");
+            if (logging) Debug.Log($"  {abilityName} Trigger {trigger.name} passed +++");
     }
 
     return true;

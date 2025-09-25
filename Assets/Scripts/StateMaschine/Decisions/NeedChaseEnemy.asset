@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NeedChaseEnemy
   m_EditorClassIdentifier: StateMaschine::AllTriggersPassDecision
   _description: 
-  logging: 1
+  logging: 0
   abilityTriggers:
   - {fileID: 11400000, guid: 976f0ad6d99642040a96942540933526, type: 2}
