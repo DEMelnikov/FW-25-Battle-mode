@@ -14,6 +14,7 @@ public interface ICharacterTargetsVault
     public void SetTargetEnemyCharacter(ICharacter target);
     Vector3 GetWayPoint();
     public void SetWayPoint(Vector3 point);
+    void ClearWayPoint();
     Vector3 GetCoordinates();
 
 }

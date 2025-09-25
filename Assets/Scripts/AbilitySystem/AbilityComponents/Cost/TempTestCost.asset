@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fec55e5c7405a4699f2fbf08775082, type: 3}
   m_Name: TempTestCost
   m_EditorClassIdentifier: 
-  _energyCost: 1
+  _energyCost: 5
+  logging: 0

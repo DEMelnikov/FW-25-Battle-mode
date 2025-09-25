@@ -194,13 +194,19 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 
         //Ve enemyTransform = _selectedTarget.transform;
 
-        enemyActualDistance = Vector3.Distance(this.gameObject.transform.position, _waypoint);
+        wpActualDistance = Vector3.Distance(this.gameObject.transform.position, _waypoint);
     }
 
     public void SetWayPoint(Vector3 wp)
     {
         //Debug.LogWarning($"I'M in SetWaypoint {wp.x}");
         _waypoint = wp;
+    }
+
+    public void ClearWayPoint()
+    {
+        _waypoint = Vector3.zero;
+        UpdateDistanceWayPoint();
     }
     #endregion
 

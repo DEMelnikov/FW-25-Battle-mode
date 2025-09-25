@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SetClosetAliveTargetAction
   m_EditorClassIdentifier: 
   _description: Set Closest Target with tag and Character Component
-  logging: 1
+  logging: 0
   maxDistance: 20
   _targetTag: 0
