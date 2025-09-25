@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class RadialStatBar : MonoBehaviour
 {
     [SerializeField] private Image fillImage;
     [SerializeField] private StatTag _statTag;
+    //[SerializeField] private Canvas _canvas;
+
     [SerializeField]
     private Color barColor = Color.red; // это поле будет видно в инспекторе
 
@@ -40,7 +43,7 @@ public class RadialStatBar : MonoBehaviour
             //    stat.OnValueChanged -= OnStatChanged;
 
             stat = foundStat;
-            Debug.LogWarning($" found stat {stat.Name}");
+            //Debug.LogWarning($" found stat {stat.Name}");
             stat.OnValueChanged += OnStatChanged;
 
             maxValue = stat.BaseValue;
@@ -50,6 +53,8 @@ public class RadialStatBar : MonoBehaviour
         {
             Debug.LogError($"Stat {_statTag} not found on StatsController");
         }
+
+        UIDisplayManager.OnDisplayingStateChanged += HandleDisplayStateChanged;
     }
 
     private void OnDestroy()
@@ -58,6 +63,7 @@ public class RadialStatBar : MonoBehaviour
         {
             stat.OnValueChanged -= OnStatChanged;
         }
+        UIDisplayManager.OnDisplayingStateChanged -= HandleDisplayStateChanged;
     }
 
     private void OnStatChanged(IStat stat, float oldValue, float newValue)
@@ -71,5 +77,11 @@ public class RadialStatBar : MonoBehaviour
         {
             fillImage.fillAmount = Mathf.Clamp01(current / max);
         }
+    }
+
+    private void HandleDisplayStateChanged(bool isDisplayed)
+    {
+        fillImage.enabled = isDisplayed;
+        //_canvas.enabled = isDisplayed;
     }
 }

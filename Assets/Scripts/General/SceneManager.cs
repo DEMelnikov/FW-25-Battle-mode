@@ -8,5 +8,10 @@ public class SceneManager : MonoBehaviour
         {
             PauseManager.TogglePause();
         }
-    }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            UIDisplayManager.ToggleDisplaying();
+        }
+    }    
 }
