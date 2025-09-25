@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
   _weaponRange: 3
-  _defaultAttackAbility: {fileID: 0}
-  _baseAttackInterval: 1
+  _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
+  _baseAttackInterval: 2
   pursuitDistance: 150
   walkEnergyCost: 10
 --- !u!114 &332707776
@@ -1571,8 +1571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
   _weaponRange: 2
-  _defaultAttackAbility: {fileID: 0}
-  _baseAttackInterval: 0
+  _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
+  _baseAttackInterval: 2
   pursuitDistance: 150
   walkEnergyCost: 0.5
 --- !u!114 &578513250
@@ -2826,8 +2826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
   _weaponRange: 3
-  _defaultAttackAbility: {fileID: 0}
-  _baseAttackInterval: 1
+  _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
+  _baseAttackInterval: 2
   pursuitDistance: 150
   walkEnergyCost: 10
 --- !u!114 &966839500
@@ -4904,8 +4904,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
   _weaponRange: 2
-  _defaultAttackAbility: {fileID: 0}
-  _baseAttackInterval: 0
+  _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
+  _baseAttackInterval: 2
   pursuitDistance: 150
   walkEnergyCost: 0.5
 --- !u!114 &1971976391
@@ -5525,7 +5525,7 @@ Transform:
   m_GameObject: {fileID: 878806293192145506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.4, y: 22.7, z: 0}
+  m_LocalPosition: {x: -5.11, y: 1.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5709,8 +5709,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
   _weaponRange: 3
-  _defaultAttackAbility: {fileID: 0}
-  _baseAttackInterval: 1
+  _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
+  _baseAttackInterval: 2
   pursuitDistance: 150
   walkEnergyCost: 10
 --- !u!1001 &9186112560801738580

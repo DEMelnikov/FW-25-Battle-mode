@@ -19,12 +19,11 @@ public class EnergyFromWeaponCost : AbilityCost
 
         if (heroStats == null)
         {
-            if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: can't get Hero stats");
+            Debug.LogError($"Check payCost EnergyFromWeaponCost: can't get Hero stats");
             return false;
         }
             
-        if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: Got Hero stats");
-            
+        if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: Got Hero stats");            
 ;
         if (logging) Debug.Log($"Check payCost CanAffordCost: check started");
 

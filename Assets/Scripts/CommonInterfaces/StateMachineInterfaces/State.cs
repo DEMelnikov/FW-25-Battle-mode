@@ -37,6 +37,12 @@ public abstract class State : BaseState
                     //if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result true ");
 
                     if (transition.IsInfluenceCharacterGlobalGoal) machine.CharacterGoal = transition.GetNewGlobalGoal;
+                    if (transition.SetIdleState)
+                    {
+                        machine.CharacterGoal = CharacterGlobalGoal.Idle;
+                        machine.SetInitialState();
+                        return;
+                    }
                     machine.SetState(transition.trueState);
                     return;
                 }
@@ -44,6 +50,7 @@ public abstract class State : BaseState
         }
         //if (logging) Debug.Log($" {this.name}: All Transitions failed ");
 
+        
         if (_allTransitiosFailedState!= null) machine.SetState(_allTransitiosFailedState);
     }
 

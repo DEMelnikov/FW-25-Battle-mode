@@ -16,10 +16,12 @@ MonoBehaviour:
   description: only for tests
   icon: {fileID: 0}
   logging: 0
-  triggers: []
+  triggers:
+  - {fileID: 11400000, guid: 976f0ad6d99642040a96942540933526, type: 2}
+  - {fileID: 11400000, guid: 1b3ccb156c40ad04f92559c7451d6c51, type: 2}
   costs:
   - {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
-  _abilityAction: {fileID: 0}
+  _abilityAction: {fileID: 11400000, guid: 348df2c179bed8a4a95546ff1dc95735, type: 2}
   resolves:
   - {fileID: 11400000, guid: ec494dc4b5f5c6241b1a95996e398a8f, type: 2}
   - {fileID: 11400000, guid: 43b8668ef765bc64e8627cc687164692, type: 2}

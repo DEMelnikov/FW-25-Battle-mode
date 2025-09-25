@@ -15,7 +15,17 @@ MonoBehaviour:
   _description: approach to enemy til actual distance>behaviour distance
   stateId: Approach_actual
   logging: 0
-  transitions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: a2aada5a8a0a0cd4da623b45f8c099b6, type: 2}
+    trueState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
+    isInfluenceCharacterGlobalGoal: 1
+    setNewGlobalGoal: 0
+    setIdleState: 0
+  - decision: {fileID: 11400000, guid: e3552fa972c6ec04ca41a1d5e4283e9d, type: 2}
+    trueState: {fileID: 0}
+    isInfluenceCharacterGlobalGoal: 1
+    setNewGlobalGoal: 3
+    setIdleState: 1
   _allTransitiosFailedState: {fileID: 0}
   _whenLooseTargetState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   _energyCost: {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}

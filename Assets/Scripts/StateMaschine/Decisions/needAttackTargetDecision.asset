@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f1a168e511b5f4d9f03f2239cba05a, type: 3}
   m_Name: needAttackTargetDecision
   m_EditorClassIdentifier: StateMaschine::AllTriggersPassDecision
-  _description: 'has targe
+  _description: 'has target
 
     actual distance < WeaponRange = true'
   logging: 0
   abilityTriggers:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 976f0ad6d99642040a96942540933526, type: 2}
+  - {fileID: 11400000, guid: 1b3ccb156c40ad04f92559c7451d6c51, type: 2}
