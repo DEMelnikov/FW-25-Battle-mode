@@ -12,6 +12,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     [SerializeReference] private State               _InEngageState;
                          private IStateContext       _context;
     [SerializeReference] private CharacterGlobalGoal _characterGoal = CharacterGlobalGoal.Idle;
+    [SerializeReference] private bool logging = false;
 
     private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
 
@@ -33,6 +34,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
             InitState(_initialState);
             SetStateById(_initialState.StateId);
         }
+
 
 
         //if (_initialState != null)
@@ -144,6 +146,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         if (!stateInstances.ContainsKey(stateId))
         {
             Debug.LogError($"State with ID {stateId} not found in stateInstances.");
+
             return;
         }
 
@@ -155,6 +158,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         _currentState = newState;
         currentStateName = newState.name;
         _currentState?.OnEnter(this);
+        if (logging) Debug.LogWarning($"{_context.Owner.name} - enter State {_currentState.StateId}");
     }
 
     public void SetStateInEngage()
