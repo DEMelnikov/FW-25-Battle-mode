@@ -35,6 +35,7 @@ public class AbilityController : MonoBehaviour, IAbilityController
         foreach (var ability in AabilitiesATStart) 
         {        
             InitAbility(ability);
+            ability.IniTialize(character);
             ability.Subscribe(character);        
         }
         if (logging) Debug.Log($" {character.name } AbilityController Initialized = {abilityInstances.Count} abilities");

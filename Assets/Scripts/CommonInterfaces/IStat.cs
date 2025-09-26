@@ -27,6 +27,7 @@ public interface IStat
     /// Событие изменения значения характеристики
     /// </summary>
     event Action<IStat, float, float> OnValueChanged;
+    //event Action<IStat, float, float> OnValueChanged2;
 
     /// <summary>
     /// Событие при достижении значения ниже нуля

@@ -8,10 +8,12 @@ using UnityEngine.TextCore.Text;
 public class Ability : BaseAbility, IAbility
 {
     [Header("Basic Info")]
-    [SerializeField] private string abilityName;
+    [SerializeField] protected string abilityName;
     [SerializeField] [TextArea(3,5)] private string description;
                      public Sprite  icon;
-    [SerializeField] private bool   logging = false;
+    [SerializeField] protected bool logging = false;
+    [SerializeField] private ICharacter _character;
+
     
     [Header("Activation Requirements")]
     [SerializeField] protected List<Trigger>  triggers      = new List<Trigger>();
@@ -28,11 +30,17 @@ public class Ability : BaseAbility, IAbility
     public List<string> tags = new List<string>();
 
     [Header("Events Subscribing")]
-    private bool isSubscribed = false;
+    [SerializeField] private bool isSubscribed = false;
 
     // UI методы
 
+    public void IniTialize(ICharacter character)
+    {
+        _character = character;
+    }
+
     public string GetName { get=>abilityName; }
+    public bool IsSubscribed { get => isSubscribed; set => isSubscribed = value; }
     public override bool HasTag(string tag) => tags.Contains(tag);
     public override IAction GetAbilityAction() => _abilityAction;
     //public override List<AbilityResolve> GetAbilityResolves() => resolves;
@@ -139,7 +147,7 @@ public class Ability : BaseAbility, IAbility
         // По умолчанию ничего не отписываем
     }
 
-    public void EventHandler()
+    protected virtual void EventHandler()
     {
         //TryActivateAbility(character, out int outcome);
     }

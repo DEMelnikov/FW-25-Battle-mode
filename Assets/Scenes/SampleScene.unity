@@ -372,6 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04a48f283275a34e90741a421745381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logging: 0
+  AabilitiesATStart: []
 --- !u!114 &332707779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,6 +1635,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04a48f283275a34e90741a421745381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logging: 1
+  AabilitiesATStart:
+  - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
 --- !u!114 &578513245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,6 +3017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04a48f283275a34e90741a421745381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logging: 0
+  AabilitiesATStart: []
 --- !u!114 &966839503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5149,6 +5156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04a48f283275a34e90741a421745381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logging: 0
+  AabilitiesATStart: []
 --- !u!114 &1971976395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5955,6 +5964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04a48f283275a34e90741a421745381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logging: 0
+  AabilitiesATStart: []
 --- !u!195 &7723458236203311626
 NavMeshAgent:
   m_ObjectHideFlags: 0

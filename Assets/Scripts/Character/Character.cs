@@ -82,7 +82,6 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     {
         _targets.SetTargetEnemy(target);
     }
-
     public IStatsController GetStatsController() { return _statsController; }
     public IStateMachine GetStateMachine() => _stateMachine;
     public IAbilityController AbilityController { get => _abilityController; }
