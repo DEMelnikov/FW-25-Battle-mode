@@ -32,9 +32,10 @@ public class TimerTrigger
         _onComplete = onComplete;
         _isLooped = looped;
         _maxLoops = maxLoops;
-        SubscribeToPauseEvents();
         _isGlobalPause = PauseManager.IsPaused;
         _isSubscribed = false;
+
+        SubscribeToPauseEvents();
     }
 
     //public TimerTrigger(

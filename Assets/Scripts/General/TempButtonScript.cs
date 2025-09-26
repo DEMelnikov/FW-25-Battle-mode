@@ -7,20 +7,15 @@ public class TempButtonScript : MonoBehaviour
 {
     [SerializeField] private GameObject characterQQQ;
     [SerializeField] private GameObject characterEnemy;
+    [SerializeField] private PlayerState playerState = PlayerState.IDLE;
 
-    [Header("Triggers Vault")]
-    public TriggersVault triggersVault;// —сылка на нужный vault-ассет
-
-    [SONameDropdown(typeof(TriggersVault))]
-    public List<string> triggersVaultNames = new List<string>();
 
     [SerializeField] protected List<Trigger> abilityTriggers = new List<Trigger>(); //TODO remove SerializeField
 
 
     private void Awake()
     {
-        abilityTriggers.Clear();
-        Initialize();
+
     }
 
     public void TestTriggers()
@@ -93,25 +88,10 @@ public class TempButtonScript : MonoBehaviour
         //    characterQQQ.GetComponent<Character>().GetTargets().SetTargetEnemy(characterEnemy);
     }
 
-    private void Initialize()
+    public void SetSPUMAnimation()
     {
-        if (abilityTriggers.Count > 0) return;
-
-        if (triggersVault == null)
-        {
-            Debug.LogWarning($"{this.gameObject.name} TriggersVault не назначен");
-            return;
-        }
-
-        foreach (var triggerName in triggersVaultNames)
-        {
-            if (string.IsNullOrEmpty(triggerName)) continue;
-
-            var clonedTrigger = triggersVault.GetCopyByName(triggerName);
-            if (clonedTrigger != null)
-            {
-                abilityTriggers.Add(clonedTrigger);
-            }
-        }
+        characterQQQ.GetComponent<ICharacter>().TESTTEST();//SPUM_PF.PlayAnimation(playerState, 0);
     }
+
+
 }

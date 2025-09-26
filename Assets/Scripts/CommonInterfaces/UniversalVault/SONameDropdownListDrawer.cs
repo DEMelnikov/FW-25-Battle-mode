@@ -10,12 +10,20 @@ public class SONameDropdownListDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
+        if (!property.isArray)
+        {
+            // Если не массив, вернуть стандартную высоту
+            return EditorGUIUtility.singleLineHeight;
+        }
         // Высота на каждый элемент + заголовок
         return EditorGUIUtility.singleLineHeight * (property.arraySize + 1) + 4;
     }
 
+
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        Debug.Log($"SONameDropdownListDrawer: {property.name} ({property.propertyType}) [{property.type}]");
+
         var attr = attribute as SONameDropdownAttribute;
         if (attr == null || attr.VaultType == null)
         {

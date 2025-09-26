@@ -16,6 +16,12 @@ MonoBehaviour:
   stateId: Idle_primitive_h
   logging: 0
   transitions:
-  - decision: {fileID: 11400000, guid: 42eb9672ea7f23e499a6176b3b481c8d, type: 2}
-    trueState: {fileID: 0}
+  - decision: {fileID: 11400000, guid: 699a03580f2b45b4684a90c00ce6eec8, type: 2}
+    trueState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
+    isInfluenceCharacterGlobalGoal: 1
+    setNewGlobalGoal: 2
+  - decision: {fileID: 11400000, guid: 0f000b1da5750834ba998a5605fbf722, type: 2}
+    trueState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
+    isInfluenceCharacterGlobalGoal: 1
+    setNewGlobalGoal: 1
   _allTransitiosFailedState: {fileID: 0}

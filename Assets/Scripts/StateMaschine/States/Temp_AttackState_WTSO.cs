@@ -45,7 +45,7 @@ public class Temp_AttackState_WTSO : StateWithPause
         base.OnUpdate(machine);
 
         attackTimer. Update(Time.deltaTime);
-        targetsVault.UpdateDistanceTargetEnemy();
+        targetsVault.UpdateDistances();
 
         //Debug.Log($"is running: {attackTimer.IsRunning} GlobalPause {PauseManager.IsPaused}");
         //Debug.Log($"Attack interval Time remain: {attackTimer.RemainingTime} Loops: {attackTimer.LoopsCompleted}");

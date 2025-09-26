@@ -8,6 +8,9 @@ public interface IStateMachine
     State GetCurrentState();
     IStateContext Context { get; }
     void SetStateInEngage();
+    CharacterGlobalGoal CharacterGoal { get; set;    }
+    void SetInitialState();
+    GameObject GetGameObject();
 }
 
 public interface IStateContext

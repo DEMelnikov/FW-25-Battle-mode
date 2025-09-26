@@ -4,6 +4,7 @@ public class UIVisuabilityController : MonoBehaviour
 {
     [SerializeField] private GameObject _targetObject;
     [SerializeField] private SceneObjectTag _targetTag;
+    [SerializeField] private bool logging = false;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class UIVisuabilityController : MonoBehaviour
         //SelectionManager.Instance.OnSelectedObjectChanged += UpdateVisibility;
         //SelectionManager.Instance.OnOpponentObjectChanged += UpdateVisibility;
         SelectionManager.OnSelectionChanged += UpdateVisibility;
-        Debug.Log("UIVisuabilityController:  Subscribe to OnSelectionChanged is on");
+       if(logging) Debug.Log("UIVisuabilityController:  Subscribe to OnSelectionChanged is on");
         //UpdateVisibility(null); // Инициализация
     }
 
@@ -38,17 +39,17 @@ public class UIVisuabilityController : MonoBehaviour
         //SelectionManager.Instance.OnSelectedObjectChanged -= UpdateVisibility;
         //SelectionManager.Instance.OnOpponentObjectChanged -= UpdateVisibility;
         SelectionManager.OnSelectionChanged -= UpdateVisibility;
-        Debug.Log("UIVisuabilityController:  UnSubscribe to OnSelectionChanged");
+        if (logging) Debug.Log("UIVisuabilityController:  UnSubscribe to OnSelectionChanged");
     }
 
     private void UpdateVisibility()
     {
-        Debug.Log("UIVisuabilityController:  Got invoke - start cheking");
+        if (logging) Debug.Log("UIVisuabilityController:  Got invoke - start cheking");
         if (_targetObject == null) return;
 
         SetterActive();
 
-        Debug.Log("Selection Hit in UpdateVisibility");
+        if (logging) Debug.Log("Selection Hit in UpdateVisibility");
     }
 
 

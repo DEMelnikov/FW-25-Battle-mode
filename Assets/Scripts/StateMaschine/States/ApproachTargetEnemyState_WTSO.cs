@@ -14,6 +14,7 @@ public class ApproachTargetEnemyState_WTSO : State
     private IBehaviorProfile _behaviorProfile;
     private Transform _targetTransform;
     private bool _isSubscribed = false;
+    [SerializeField] private Vector3 _currentTargetCoordinates;
 
     private TimerTrigger energyLoseTrigger;
 
@@ -29,18 +30,21 @@ public class ApproachTargetEnemyState_WTSO : State
         _navMeshAgent    = owner.GetNavMeshAgent();
         _behaviorProfile = owner.GetBehaviorProfile();
 
-        if( !_targetsVault.TryGetTargetEnemyTransform(out _targetTransform))
-        {
-            if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
-            machine.SetState(_whenLooseTargetState);
-        }
+        //if( !_targetsVault.TryGetTargetEnemyTransform(out _targetTransform))
+        //{
+        //    if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
+        //    machine.SetState(_whenLooseTargetState);
+        //}
 
-        _navMeshAgent.SetDestination(_targetTransform.position);
+        _currentTargetCoordinates = _targetsVault.GetCoordinates();
+
+        _navMeshAgent.SetDestination(_currentTargetCoordinates);
 
         _navMeshAgent.speed = 2f;          // Скорость движения
         _navMeshAgent.angularSpeed = 120f; // Скорость поворота
         _navMeshAgent.acceleration = 8f;   // Ускорение
         _navMeshAgent.stoppingDistance = 1f; // Дистанция остановки
+        _navMeshAgent.isStopped = PauseManager.IsPaused;
 
         // Подписываемся на событие паузы
         SubscribeToPauseEvents();
@@ -81,14 +85,44 @@ public class ApproachTargetEnemyState_WTSO : State
 
         energyLoseTrigger.Update(Time.deltaTime);
 
-        if (!_targetsVault.TryGetTargetEnemyTransform(out Transform _newTargetTransform))
+        //if (!_targetsVault.TryGetTargetEnemyTransform(out Transform _newTargetTransform))
+        //{
+        //    if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
+        //    machine.SetState(_whenLooseTargetState);
+        //}
+
+        //if (_targetTransform != _newTargetTransform) _navMeshAgent.SetDestination(_newTargetTransform.position);
+        _targetsVault.UpdateDistances();
+
+        
+        if (_targetsVault.GetCoordinates() == Vector3.zero) 
         {
-            if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
-            machine.SetState(_whenLooseTargetState);
+            machine.SetInitialState();
+            return;
+        } 
+
+        if (_currentTargetCoordinates != _targetsVault.GetCoordinates())
+        {
+            _currentTargetCoordinates = _targetsVault.GetCoordinates();
+            _navMeshAgent.SetDestination(_currentTargetCoordinates);
         }
 
-        if (_targetTransform != _newTargetTransform) _navMeshAgent.SetDestination(_newTargetTransform.position);
-        _targetsVault.UpdateDistanceTargetEnemy();
+        //_targetsVault.UpdateDistanceTargetEnemy();
+
+        // ПРОВЕРКА ДОСТИЖЕНИЯ ЦЕЛИ
+        if (HasReachedDestination())
+        {
+            if (logging) Debug.Log($" {owner.gameObject.name}.{this.name} HasReachedDestination");
+            // Переход в следующее состояние (например, атака)
+            //Debug.LogWarning("Reached destination");
+            machine.CharacterGoal = CharacterGlobalGoal.Idle;
+            machine.SetInitialState(); // TODO или другое целевое состояние
+            _targetsVault.ClearWayPoint();
+            _targetsVault.UpdateDistances();
+            return;
+        }
+
+        //i
     }
 
     public void CheckTransitions(IStateMachine machine)
@@ -129,7 +163,15 @@ public class ApproachTargetEnemyState_WTSO : State
     {
         if (_navMeshAgent.isStopped) return;
 
+        //_navMeshAgent.Pa
         //Debug.Log("Spend energy");
         _energyCost.PayAbilityCost(owner);
+    }
+
+    private bool HasReachedDestination()
+    {
+        return !_navMeshAgent.pathPending &&
+               _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance &&
+               _navMeshAgent.velocity.sqrMagnitude == 0f;
     }
 }

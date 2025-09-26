@@ -1,7 +1,9 @@
 {
     "name": "CommonInterfaces",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:398ce9098c1d6ce4f94a57a7a29d36aa"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TempTestCost
   m_EditorClassIdentifier: 
   _energyCost: 1
+  logging: 0

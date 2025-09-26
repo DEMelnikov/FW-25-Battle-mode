@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37eb7038f826c6a46b642b287c953fdc, type: 3}
   m_Name: BaseAttackRollAction
   m_EditorClassIdentifier: 
+  _description: 
+  logging: 0
   _primaryAttackStat: 3
   _secondaryAttackStat: 4
   _DC: 38
