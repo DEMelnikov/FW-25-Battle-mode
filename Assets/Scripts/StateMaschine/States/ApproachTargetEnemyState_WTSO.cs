@@ -45,6 +45,8 @@ public class ApproachTargetEnemyState_WTSO : State
         _navMeshAgent.acceleration = 8f;   // Ускорение
         _navMeshAgent.stoppingDistance = 1f; // Дистанция остановки
         _navMeshAgent.isStopped = PauseManager.IsPaused;
+        
+        SetAnimation();
 
         // Подписываемся на событие паузы
         SubscribeToPauseEvents();
@@ -68,6 +70,8 @@ public class ApproachTargetEnemyState_WTSO : State
         UnsubscribeFromPauseEvents();
 
         energyLoseTrigger.UnsubscribeFromPauseEvents();
+        SetAnimation();
+
         base.OnExit(machine);
     }
 
@@ -157,6 +161,7 @@ public class ApproachTargetEnemyState_WTSO : State
         {
             _navMeshAgent.isStopped = isPaused;
         }
+        SetAnimation();
     }
 
     private void OnTimerTick()
@@ -174,4 +179,10 @@ public class ApproachTargetEnemyState_WTSO : State
                _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance &&
                _navMeshAgent.velocity.sqrMagnitude == 0f;
     }
+
+    private void SetAnimation()
+    {
+        owner.SetAnimationBool("WALK", !_navMeshAgent.isStopped);
+    }
+
 }

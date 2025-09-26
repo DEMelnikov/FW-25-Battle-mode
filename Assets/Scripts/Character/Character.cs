@@ -99,10 +99,17 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         }
         _stateMachine.SetStateInEngage();
     }
+    #endregion
+
+    #region Animations
     public void ActivateAnimationTrigger(AnimationTriggers trigger)
     {
         Debug.LogWarning($"Using Animation Trigger {trigger.ToString()}");
         if(trigger!=AnimationTriggers.EMPTY) animator.SetTrigger(trigger.ToString());
+    }
+    public void SetAnimationBool(string state, bool _bool)
+    {
+        animator.SetBool(state, _bool);
     }
     
     #endregion
