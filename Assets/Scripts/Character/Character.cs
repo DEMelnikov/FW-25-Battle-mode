@@ -33,6 +33,9 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         if (_statsController == null) { Debug.Log("NO STATS CONTROLLER"); } else { if (logging) Debug.Log("Stat controller is on"); }
         InitializeFromSettings();
 
+        _abilityController = GetComponent<IAbilityController>();
+        _abilityController.Initialize();
+
         _stateMachine = GetComponent<IStateMachine>();
         _stateMachine.CharacterGoal = CharacterGlobalGoal.Idle;
 
@@ -82,7 +85,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 
     public IStatsController GetStatsController() { return _statsController; }
     public IStateMachine GetStateMachine() => _stateMachine;
-    public IAbilityController GetAbilityController() => _abilityController;
+    public IAbilityController AbilityController { get => _abilityController; }
     public ICharacterTargetsVault GetTargetsVault() => _targets;
     public Transform transform => this.gameObject.transform;
     public GameObject GetGameObject => this.gameObject;

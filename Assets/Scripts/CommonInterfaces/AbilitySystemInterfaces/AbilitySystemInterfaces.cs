@@ -10,11 +10,13 @@ public interface IAbility
     bool HasTag(string tag) {  return false; }
     string GetAbilityName() { return ""; }
     IAbility Clone();
+    string GetName {  get; }
 }
 
 public interface IAbilityController
 {
     bool TryActivateAbility(IAbility ability);
+    void Initialize();
 
 }
 
