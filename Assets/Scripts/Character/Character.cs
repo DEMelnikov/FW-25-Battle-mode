@@ -104,12 +104,12 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     #region Animations
     public void ActivateAnimationTrigger(AnimationTriggers trigger)
     {
-        Debug.LogWarning($"Using Animation Trigger {trigger.ToString()}");
+        //Debug.LogWarning($"Using Animation Trigger {trigger.ToString()}");
         if(trigger!=AnimationTriggers.EMPTY) animator.SetTrigger(trigger.ToString());
     }
-    public void SetAnimationBool(string state, bool _bool)
+    public void SetAnimationBool(AnimationBools stateName, bool _bool)
     {
-        animator.SetBool(state, _bool);
+        animator.SetBool(stateName.ToString(), _bool);
     }
     
     #endregion

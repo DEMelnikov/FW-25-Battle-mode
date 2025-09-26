@@ -182,7 +182,7 @@ public class ApproachTargetEnemyState_WTSO : State
 
     private void SetAnimation()
     {
-        owner.SetAnimationBool("WALK", !_navMeshAgent.isStopped);
+        owner.SetAnimationBool(AnimationBools.ISWALK, !_navMeshAgent.isStopped);
     }
 
 }

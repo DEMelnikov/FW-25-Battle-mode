@@ -17,7 +17,7 @@ public interface ICharacter
     bool InEngage {  get; }
     void UnderMeleAttack(GameObject agressor);
     void ActivateAnimationTrigger(AnimationTriggers trigger);
-    void SetAnimationBool(string state, bool _bool);
+    void SetAnimationBool(AnimationBools stateName, bool _bool);
 
 }
 
