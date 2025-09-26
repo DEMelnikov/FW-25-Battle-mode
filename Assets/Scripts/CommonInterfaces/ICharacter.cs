@@ -16,5 +16,7 @@ public interface ICharacter
     IStateMachine GetStateMachine();
     bool InEngage {  get; }
     void UnderMeleAttack(GameObject agressor);
+    SPUM_Prefabs SPUM_PF { get; }
+    void TESTTEST();
 }
 
