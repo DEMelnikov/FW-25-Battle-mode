@@ -48,7 +48,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 
         //InitializeStateMachine();
 
-        //animator = GetComponentInChildren<Animator>();//GetComponentIn<Animator>();
+        animator = GetComponentInChildren<Animator>();//GetComponentIn<Animator>();
         if (animator == null) Debug.LogError("No Animator");
     }
 
@@ -99,6 +99,12 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         }
         _stateMachine.SetStateInEngage();
     }
+    public void ActivateAnimationTrigger(AnimationTriggers trigger)
+    {
+        Debug.LogWarning($"Using Animation Trigger {trigger.ToString()}");
+        if(trigger!=AnimationTriggers.EMPTY) animator.SetTrigger(trigger.ToString());
+    }
+    
     #endregion
 
     public void InitializeFromSettings()
@@ -128,8 +134,8 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
             SceneObjectTag = SceneObjectTag.Hero;
             //_selectedTarget = null;
         }
-
-
-
     }
+
+
+
 }

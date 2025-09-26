@@ -22,6 +22,7 @@ MonoBehaviour:
   costs:
   - {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
   _abilityAction: {fileID: 11400000, guid: 348df2c179bed8a4a95546ff1dc95735, type: 2}
+  _animationTrigger: 0
   resolves:
   - {fileID: 11400000, guid: ec494dc4b5f5c6241b1a95996e398a8f, type: 2}
   - {fileID: 11400000, guid: 43b8668ef765bc64e8627cc687164692, type: 2}

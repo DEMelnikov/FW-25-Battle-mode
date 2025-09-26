@@ -88,10 +88,6 @@ public class TempButtonScript : MonoBehaviour
         //    characterQQQ.GetComponent<Character>().GetTargets().SetTargetEnemy(characterEnemy);
     }
 
-    public void SetSPUMAnimation()
-    {
-        characterQQQ.GetComponent<ICharacter>().TESTTEST();//SPUM_PF.PlayAnimation(playerState, 0);
-    }
 
 
 }

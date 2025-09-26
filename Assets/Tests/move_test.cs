@@ -33,14 +33,14 @@ public class MoveTest : MonoBehaviour
         // Атака (по пробелу)
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetTrigger("qqq");
+            animator.SetTrigger("ATTACK");
             //animator.SetBool("Attack",);
         }
 
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            animator.SetTrigger("ddd");
+            animator.SetTrigger("DEATH");
             //animator.SetBool("Attack",);
         }
     }

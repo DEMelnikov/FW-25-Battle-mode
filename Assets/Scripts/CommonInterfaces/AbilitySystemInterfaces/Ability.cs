@@ -31,6 +31,7 @@ public class Ability : BaseAbility, IAbility
     //[SONameDropdown(typeof(ActionsVault))]
     //public string _actionName;
     [SerializeField] private AbilityAction _abilityAction;
+    [SerializeField] private AnimationTriggers _animationTrigger = AnimationTriggers.EMPTY;
 
     [SerializeField] private List<AbilityResolve>  resolves = new List<AbilityResolve>();
 
@@ -94,6 +95,8 @@ public class Ability : BaseAbility, IAbility
 
         // Выполнение действия
         outcome = _abilityAction.ExecuteAction(character);   //.GetExecuteAction(character);
+        character.ActivateAnimationTrigger(_animationTrigger);
+
 
         if (logging) Debug.Log($"Ability {this.name} - result = {outcome} successes");
 
