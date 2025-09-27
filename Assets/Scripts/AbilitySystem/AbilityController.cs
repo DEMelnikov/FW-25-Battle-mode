@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.Android.Gradle;
 using Unity.VisualScripting;
+using UnityEditor.Playables;
 using UnityEngine;
 
 //Version 1.2 - with Dictionary for abilities with subscribe
@@ -32,12 +33,26 @@ public class AbilityController : MonoBehaviour, IAbilityController
         if (character == null)
             character = GetComponent<Character>();
 
+        //Debug.LogError($"{character.GetGameObject.name} - Start Initialize AC");
+
+        //Debug.LogError($"{character.GetGameObject.name} - in AabilitiesATStart {AabilitiesATStart.Count} abilities");
+
         foreach (var ability in AabilitiesATStart) 
         {        
-            InitAbility(ability);
-            ability.IniTialize(character);
-            ability.Subscribe(character);        
+            InitAbility(ability);  
         }
+
+        //Debug.LogError($"{character.GetGameObject.name} - in abilityInstances {abilityInstances.Count} abilities");
+
+        foreach (var ability in abilityInstances)
+        {
+
+            ability.Value.IniTialize(character);
+            ability.Value.Subscribe(character);
+        }
+
+
+
         if (logging) Debug.Log($" {character.name } AbilityController Initialized = {abilityInstances.Count} abilities");
     }
 

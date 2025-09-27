@@ -12,7 +12,7 @@ public class Ability : BaseAbility, IAbility
     [SerializeField] [TextArea(3,5)] private string description;
                      public Sprite  icon;
     [SerializeField] protected bool logging = false;
-    [SerializeField] private ICharacter _character;
+    [SerializeField] protected ICharacter _character;
 
     
     [Header("Activation Requirements")]
@@ -36,7 +36,11 @@ public class Ability : BaseAbility, IAbility
 
     public void IniTialize(ICharacter character)
     {
+        //Debug.LogError($"{character.GetGameObject.name} - TRY IniTialize abilitiy");
         _character = character;
+        isSubscribed = false;
+
+        //Debug.LogError($"{character.GetGameObject.name} -  IniTialize Success {_character.GetGameObject.name} + {isSubscribed}");
     }
 
     public string GetName { get=>abilityName; }
@@ -95,7 +99,8 @@ public class Ability : BaseAbility, IAbility
         if (logging) Debug.Log($"Ability {this.name} - ready to abilityAction");
 
         // Выполнение действия
-        outcome = _abilityAction.ExecuteAction(character);   //.GetExecuteAction(character);
+        if(_abilityAction != null) outcome = _abilityAction.ExecuteAction(character);   //.GetExecuteAction(character);
+
         character.ActivateAnimationTrigger(_animationTrigger);
 
 

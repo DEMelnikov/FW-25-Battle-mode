@@ -5965,7 +5965,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logging: 0
-  AabilitiesATStart: []
+  AabilitiesATStart:
+  - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
 --- !u!195 &7723458236203311626
 NavMeshAgent:
   m_ObjectHideFlags: 0

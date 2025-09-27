@@ -71,21 +71,21 @@ public class StateMachine : MonoBehaviour, IStateMachine
         }
     }
 
-    public void OldSetState(State newState)
-    {
+    //public void OldSetState(State newState)
+    //{
 
-        // Уведомляем decisions текущего состояния о выходе
-        NotifyDecisionsExit(_currentState);
+    //    // Уведомляем decisions текущего состояния о выходе
+    //    NotifyDecisionsExit(_currentState);
 
-        _currentState?.OnExit(this);
-        _currentState = newState;
-        currentStateName = newState?.name;
+    //    _currentState?.OnExit(this);
+    //    _currentState = newState;
+    //    currentStateName = newState?.name;
 
-        // Уведомляем decisions нового состояния о входе
-        NotifyDecisionsEnter(_currentState);
+    //    // Уведомляем decisions нового состояния о входе
+    //    NotifyDecisionsEnter(_currentState);
 
-        _currentState?.OnEnter(this);
-    }
+    //    _currentState?.OnEnter(this);
+    //}
 
     public void SetState(State originalState)
     {

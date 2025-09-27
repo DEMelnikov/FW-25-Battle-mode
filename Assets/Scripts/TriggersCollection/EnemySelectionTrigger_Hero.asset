@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: Bla-Bla
   _name: 
-  logging: 1
+  logging: 0
   _targetTag: 1

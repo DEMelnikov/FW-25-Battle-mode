@@ -40,8 +40,13 @@ public class MoveTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            animator.SetTrigger("DEATH");
+            animator.SetTrigger("DDD");
             //animator.SetBool("Attack",);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetBool("ISDEAD", true);
         }
     }
 }

@@ -20,7 +20,8 @@ MonoBehaviour:
   costs: []
   _abilityAction: {fileID: 0}
   _animationTrigger: 4
-  resolves: []
+  resolves:
+  - {fileID: 11400000, guid: a17303255fa1ec84382a8a27cda73a38, type: 2}
   tags: []
   isSubscribed: 1
   _statToSubscribe: 1

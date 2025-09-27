@@ -17,6 +17,6 @@ MonoBehaviour:
     actualDistance
     < PursuitDistance = true'
   _name: 
-  logging: 1
+  logging: 0
   _relationType: 0
   _equalityTolerance: 0.5

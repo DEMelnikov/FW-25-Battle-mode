@@ -63,7 +63,7 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
 
     private void HandleStatChanged(IStat stat, float oldValue, float newValue)
     {
-        Debug.Log($"[{Time.time}] Stat {stat.Name} changed from {oldValue} to {newValue}");
+        Debug.Log($"[{Time.time}] {this.gameObject.name} -  Stat {stat.Name} changed from {oldValue} to {newValue}");
     }
 
     public void LogingData()

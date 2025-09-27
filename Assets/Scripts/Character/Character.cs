@@ -111,7 +111,12 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     }
     public void SetAnimationBool(AnimationBools stateName, bool _bool)
     {
+
+        Debug.LogError($"Using Animation BOOOL {stateName.ToString()} {_bool}");
         animator.SetBool(stateName.ToString(), _bool);
+        //animator.
+        //animator.SetBool("ISDEAD", true);
+        //owner.SetAnimationBool(AnimationBools.ISDEAD.ToString(), true);
     }
     
     #endregion
