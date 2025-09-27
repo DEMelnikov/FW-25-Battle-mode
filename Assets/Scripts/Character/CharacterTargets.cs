@@ -215,17 +215,17 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     {
         switch (GetCharacterGoal())
         {
-            case CharacterGlobalGoal.MoveToPoint:
+            case CharacterGlobalState.MoveToPoint:
                 {
                     return GetWayPoint();
                 }
-            case CharacterGlobalGoal.Attack:
+            case CharacterGlobalState.Attack:
                 {
                     Vector3 coordinates = Vector3.zero;
                     if (TryGetTargetEnemyTransform(out var targetTransform))  coordinates = targetTransform.position; 
                     return coordinates;
                 }
-            case CharacterGlobalGoal.Chase:
+            case CharacterGlobalState.Chase:
                 {
                     Vector3 coordinates = Vector3.zero;
                     if (TryGetTargetEnemyTransform(out var targetTransform)) coordinates = targetTransform.position;
@@ -235,9 +235,9 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         }
     }
 
-    private CharacterGlobalGoal GetCharacterGoal()
+    private CharacterGlobalState GetCharacterGoal()
     {
-        return _sm.CharacterGoal;
+        return _sm.CharacterGlobalState;
     }
     
     public void UpdateDistances()

@@ -5,7 +5,7 @@ using UnityEngine.TextCore.Text;
 //using static Codice.Client.Common.WebApi.WebApiEndpoints;
 
 [CreateAssetMenu(menuName = "FW25/State Machine/States/Death")]
-public class DeathState : State
+public class Unconscious : State
 {
     //[SerializeField] private State _whenLooseTargetState;
     //[SerializeField] private AbilityCost _energyCost;
@@ -27,6 +27,7 @@ public class DeathState : State
         base.OnEnter(machine);
 
         owner = machine.Context.Owner.GetComponent<Character>();
+        machine.CharacterGlobalState = CharacterGlobalState.UNCONSCIOUS;
         //_targetsVault = owner.GetTargetsVault();
         //_statsController = owner.GetStatsController();
         //_navMeshAgent = owner.GetNavMeshAgent();

@@ -22,7 +22,7 @@ public class MoveTest : MonoBehaviour
 
         // Смена состояния Walk/Idle
         bool isMoving = moveVector.sqrMagnitude > 0.01f;
-        animator.SetBool("Walk", isMoving);
+        animator.SetBool("ISWALK", isMoving);
 
         // Разворот персонажа по горизонтали
         if (moveX > 0)

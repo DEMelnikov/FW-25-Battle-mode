@@ -11,7 +11,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     [SerializeReference] private State               _initialState;
     [SerializeReference] private State               _InEngageState;
                          private IStateContext       _context;
-    [SerializeReference] private CharacterGlobalGoal _characterGoal = CharacterGlobalGoal.Idle;
+    [SerializeReference] private CharacterGlobalState _characterGoal = CharacterGlobalState.Idle;
     [SerializeReference] private bool logging = false;
 
     private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
@@ -168,7 +168,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
 
     // Доступ к контексту для состояний
     public IStateContext Context => _context;
-    public CharacterGlobalGoal CharacterGoal { get => _characterGoal; set => _characterGoal = value; }
+    public CharacterGlobalState CharacterGlobalState { get => _characterGoal; set => _characterGoal = value; }
 
     public void SetInitialState()
     {

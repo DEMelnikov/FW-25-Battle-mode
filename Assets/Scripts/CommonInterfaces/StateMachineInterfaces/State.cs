@@ -36,10 +36,10 @@ public abstract class State : BaseState
                     if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result TRUE! Next State {transition.trueState.name}");
                     //if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result true ");
 
-                    if (transition.IsInfluenceCharacterGlobalGoal) machine.CharacterGoal = transition.GetNewGlobalGoal;
+                    if (transition.IsInfluenceCharacterGlobalGoal) machine.CharacterGlobalState = transition.GetNewGlobalGoal;
                     if (transition.SetIdleState)
                     {
-                        machine.CharacterGoal = CharacterGlobalGoal.Idle;
+                        machine.CharacterGlobalState = CharacterGlobalState.Idle;
                         machine.SetInitialState();
                         return;
                     }

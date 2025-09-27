@@ -119,7 +119,7 @@ public class ApproachTargetEnemyState_WTSO : State
             if (logging) Debug.Log($" {owner.gameObject.name}.{this.name} HasReachedDestination");
             // Переход в следующее состояние (например, атака)
             //Debug.LogWarning("Reached destination");
-            machine.CharacterGoal = CharacterGlobalGoal.Idle;
+            machine.CharacterGlobalState = CharacterGlobalState.Idle;
             machine.SetInitialState(); // TODO или другое целевое состояние
             _targetsVault.ClearWayPoint();
             _targetsVault.UpdateDistances();

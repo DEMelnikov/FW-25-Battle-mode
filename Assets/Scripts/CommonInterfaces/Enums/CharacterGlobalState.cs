@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public enum CharacterGlobalGoal
+public enum CharacterGlobalState
 {
     Attack,
     Chase,
     //Patrol,
     MoveToPoint,
-    Idle
+    Idle,
+    UNCONSCIOUS,
+    ISDEAD
+
 }

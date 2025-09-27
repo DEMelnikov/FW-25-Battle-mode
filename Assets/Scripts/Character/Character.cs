@@ -37,7 +37,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         _abilityController.Initialize();
 
         _stateMachine = GetComponent<IStateMachine>();
-        _stateMachine.CharacterGoal = CharacterGlobalGoal.Idle;
+        _stateMachine.CharacterGlobalState = CharacterGlobalState.Idle;
 
         _targets = GetComponent<CharacterTargets>();
         _behaviorProfile = GetComponent<BehaviorProfile>();
@@ -112,7 +112,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public void SetAnimationBool(AnimationBools stateName, bool _bool)
     {
 
-        Debug.LogError($"Using Animation BOOOL {stateName.ToString()} {_bool}");
+        //Debug.LogError($"Using Animation BOOOL {stateName.ToString()} {_bool}");
         animator.SetBool(stateName.ToString(), _bool);
         //animator.
         //animator.SetBool("ISDEAD", true);
