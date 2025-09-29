@@ -21,4 +21,9 @@ MonoBehaviour:
     isInfluenceCharacterGlobalGoal: 0
     setNewGlobalGoal: 3
     setIdleState: 0
+  - decision: {fileID: 11400000, guid: 4f795b1a6b741ec4c9f98175cdfdef54, type: 2}
+    trueState: {fileID: 0}
+    isInfluenceCharacterGlobalGoal: 0
+    setNewGlobalGoal: 3
+    setIdleState: 1
   _allTransitiosFailedState: {fileID: 0}

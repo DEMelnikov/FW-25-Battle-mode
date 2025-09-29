@@ -3,6 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class Transition
 {
+    [SerializeField] [TextArea(2,3)] public string description;
     [SerializeField] public Decision decision;
     [SerializeField] public State trueState;
     [SerializeField] private bool isInfluenceCharacterGlobalGoal = false;
