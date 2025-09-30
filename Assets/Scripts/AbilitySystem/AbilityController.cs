@@ -71,7 +71,7 @@ public class AbilityController : MonoBehaviour, IAbilityController
         //}
 
 
-        if (logging) Debug.Log($" {character.name } AbilityController Initialized = {abilityInstances.Count} abilities");
+        if (logging) Debug.Log($" {character.name } AbilityController Initialized = {abilityInstances.Count+timedAbilityInstances.Count} abilities");
     }
 
     private void InitAbility(Ability originalability)

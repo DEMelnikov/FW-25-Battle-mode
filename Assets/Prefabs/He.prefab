@@ -208,6 +208,7 @@ MonoBehaviour:
   logging: 1
   AabilitiesATStart:
   - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
+  - {fileID: 11400000, guid: 529c5dd05716b9c4ca8cc2ba1d588e58, type: 2}
 --- !u!114 &1282041725716576328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
+  _character: {fileID: 0}
   _characterGoal: 3
   logging: 1
   _idleState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
