@@ -68,7 +68,8 @@ public class StateMachine : MonoBehaviour, IStateMachine
         set
         {
             if (value != null && value.StateType == FSMStates.IDLE)
-                idleState = value;
+                //State clone = Instantiate(originalState);
+            idleState = Instantiate(value);
         }
     }
     public State ChaseState
@@ -77,7 +78,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         set
         {
             if (value != null && value.StateType == FSMStates.CHASE)
-                chaseState = value;
+                chaseState = Instantiate(value);
         }
     }
     public State MoveState
@@ -86,7 +87,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         set
         {
             if (value != null && value.StateType == FSMStates.MOVE)
-                moveState = value;
+                moveState = Instantiate(value);
         }
     }
     public State AttackState
@@ -95,7 +96,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         set
         {
             if (value != null && value.StateType == FSMStates.ATTACK)
-                attackState = value;
+                attackState = Instantiate(value);
         }
     }
     public State UnconsciousState
@@ -104,7 +105,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         set
         {
             if (value != null && value.StateType == FSMStates.UNCONSCIOUS)
-                unconsciousState = value;
+                unconsciousState = Instantiate(value);
         }
     }
 
@@ -114,7 +115,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
         set
         {
             if (value != null && value.StateType == FSMStates.INENGAGE)
-                inEngageState = value;
+                inEngageState = Instantiate(value);
         }
     }
 
