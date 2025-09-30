@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using static UnityEngine.GraphicsBuffer;
 
 
 [CreateAssetMenu(fileName = "New Ability", menuName = "FW25/Ability System/Ability")]
@@ -16,14 +17,14 @@ public class Ability : BaseAbility, IAbility
     [SerializeField] protected bool       logging = false;
     [SerializeField] protected ICharacter _character;
 
+    [Header("Activation Requirements")]
+    [SerializeField] protected List<Trigger>      triggers      = new List<Trigger>();
+    [SerializeField] public    List<AbilityCost>  costs         = new List<AbilityCost>();    
+
     [Header("Targeting:")]
     [SerializeField] protected AbilityTargets _targeting    = AbilityTargets.SELF;
     [SerializeField] 
            [Min (0)] protected float          _targetRadius = 0f;
-
-    [Header("Activation Requirements")]
-    [SerializeField] protected List<Trigger>      triggers      = new List<Trigger>();
-    [SerializeField] public    List<AbilityCost>  costs         = new List<AbilityCost>();    
 
     [Header("Execution Logic")]
     [SerializeField] private AbilityAction     _abilityAction;
@@ -121,7 +122,7 @@ public class Ability : BaseAbility, IAbility
     }
 
     protected sealed override bool CheckTriggersReady(ICharacter character)
-{
+    {
 
     if (logging) { Debug.Log($"Start Check Triggers ó {character.name}"); }
     if (triggers.Count == 0) return true;
@@ -139,7 +140,7 @@ public class Ability : BaseAbility, IAbility
     }
 
     return true;
-}
+    }
 
     public virtual IAbility Clone()
     {
@@ -166,4 +167,6 @@ public class Ability : BaseAbility, IAbility
     {
 
     }
+
+
 }
