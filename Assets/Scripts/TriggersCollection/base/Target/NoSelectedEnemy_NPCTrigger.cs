@@ -12,18 +12,22 @@ namespace AbilitySystem.AbilityComponents
             if (logging) Debug.Log($"{character.name} starts CheckTrigger NoSelectedEnemy");
 
             // Используем новый безопасный метод
-            if (character.GetTargetsVault().TryGetTargetEnemy(out _))
-                return true;
-
-            character.GetTargetsVault().TryGetTargetCharacter(out ICharacter targetCharacter);
-            if (targetCharacter == null)
+            if (!character.GetTargetsVault().TryGetTargetCharacter(out _)) 
             {
-                if (logging) Debug.Log($"{character.name} Targetenemy is empty check pass");
+                if (logging) Debug.Log($"{character.name}  NoSelectedEnemy - result TRUE");
                 return true;
-            }
-            
-            if (logging) Debug.Log($"{character.name} Targetenemy is not empty check not pass");
+            }//TryGetTargetEnemy(out _))
 
+
+            //character.GetTargetsVault().TryGetTargetCharacter(out ICharacter targetCharacter);
+            //if (targetCharacter == null)
+            //{
+            //    if (logging) Debug.Log($"{character.name} Targetenemy is empty check pass");
+            //    return true;
+            //}
+
+            //if (logging) Debug.Log($"{character.name} Targetenemy is not empty check not pass");
+            if (logging) Debug.Log($"{character.name}  NoSelectedEnemy - result FALSE");
             return false;
 
             //bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;

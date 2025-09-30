@@ -170,10 +170,10 @@ public class StateMachine : MonoBehaviour, IStateMachine
     private void Update()
     {
         if (PauseManager.IsPaused) return;
-        //if (_currentState != null)
-        //{
-        //    // Уведомляем decisions об обновлении
-        //    NotifyDecisionsUpdate(_currentState);
+        if (_currentState != null)
+        {
+            //// Уведомляем decisions об обновлении
+            //NotifyDecisionsUpdate(_currentState);
 
 
             //// Централизованный вызов CheckTransitions для состояний с переходами
@@ -181,18 +181,18 @@ public class StateMachine : MonoBehaviour, IStateMachine
             //{
             //    stateWithTransitions.CheckTransitions(this);
             //}
-            
-            //_currentState?.OnUpdate(this);
-        //}
+
+            _currentState?.OnUpdate(this);
+        }
     }
 
     private void FixedUpdate()
     {
         if (PauseManager.IsPaused) return;
-        //if (_currentState != null)
-        //{
-        //    _currentState.OnFixedUpdate(this);
-        //}
+        if (_currentState != null)
+        {
+            _currentState.OnFixedUpdate(this);
+        }
     }
 
     //public void OldSetState(State newState)
