@@ -19,7 +19,7 @@ MonoBehaviour:
   transitions:
   - description: 
     decision: {fileID: 11400000, guid: a2aada5a8a0a0cd4da623b45f8c099b6, type: 2}
-    trueState: 0
+    trueState: 3
     isInfluenceCharacterGlobalGoal: 1
     setNewGlobalGoal: 0
   - description: 
