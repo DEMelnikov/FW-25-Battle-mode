@@ -4,7 +4,12 @@ public class BaseState : ScriptableObject, INameable
 {
     [SerializeField] [TextArea(2, 3)] private string _description;
     [SerializeField] private string stateId;
+    [SerializeField] private FSMStates stateType;
+
     public string StateId => stateId;
+
+    public FSMStates StateType { get => stateType;}
+
     public virtual void CheckTransitions(IStateMachine machine)
     {
         // Здесь будет логика проверки переходов между состояниями

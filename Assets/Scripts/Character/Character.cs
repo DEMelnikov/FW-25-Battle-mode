@@ -37,7 +37,8 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         _abilityController.Initialize();
 
         _stateMachine = GetComponent<IStateMachine>();
-        _stateMachine.CharacterGlobalState = CharacterGlobalState.Idle;
+        _stateMachine.Initialize();
+        //_stateMachine.CharacterGlobalState = CharacterGlobalState.Idle;
 
         _targets = GetComponent<CharacterTargets>();
         _behaviorProfile = GetComponent<BehaviorProfile>();
@@ -99,7 +100,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         {
             _targets.SetTargetEnemy(agressor);
         }
-        _stateMachine.SetStateInEngage();
+        _stateMachine.SetState(FSMStates.INENGAGE);
     }
     #endregion
 

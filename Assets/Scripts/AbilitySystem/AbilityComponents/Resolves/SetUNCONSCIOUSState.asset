@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a843eb661e5e1d64e854bc30108887c0, type: 3}
-  m_Name: SetDeathState
+  m_Name: SetUNCONSCIOUSState
   m_EditorClassIdentifier: AbilitySystem::SetFSMState
-  _stateToSet: {fileID: 11400000, guid: 79c9db308430a434496bb86499b47649, type: 2}
+  newState: 4

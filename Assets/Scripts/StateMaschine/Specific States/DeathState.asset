@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4474166e8e11af647a99372b608b8c05, type: 3}
   m_Name: DeathState
   m_EditorClassIdentifier: StateMaschine::DeathState
-  _description: 
+  _description: temp State
   stateId: 
+  stateType: 4
   logging: 1
   transitions: []
-  _allTransitiosFailedState: {fileID: 0}

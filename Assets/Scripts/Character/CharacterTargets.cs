@@ -237,7 +237,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 
     private CharacterGlobalState GetCharacterGoal()
     {
-        return _sm.CharacterGlobalState;
+        return _sm.CharacterGoal;
     }
     
     public void UpdateDistances()

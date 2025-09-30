@@ -7,7 +7,7 @@ public abstract class State : BaseState
     [SerializeField] public bool logging;
 
     [SerializeField] protected List<Transition> transitions = new List<Transition>();
-    [SerializeField] protected State _allTransitiosFailedState;
+    //[SerializeField] protected FSMStates _allTransitiosFailedState;
 
     public virtual void OnEnter(IStateMachine machine) 
     {
@@ -33,14 +33,14 @@ public abstract class State : BaseState
             {
                 if (transition.decision.Decide(machine))
                 {
-                    if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result TRUE! Next State {transition.trueState.name}");
+                    if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result TRUE! Next State {transition.trueState.ToString()}");
                     //if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result true ");
 
-                    if (transition.IsInfluenceCharacterGlobalGoal) machine.CharacterGlobalState = transition.GetNewGlobalGoal;
+                    if (transition.IsInfluenceCharacterGlobalGoal) machine.CharacterGoal = transition.GetNewGlobalGoal;
                     if (transition.SetIdleState)
                     {
-                        machine.CharacterGlobalState = CharacterGlobalState.Idle;
-                        machine.SetInitialState();
+                        machine.CharacterGoal = CharacterGlobalState.Idle;
+                        machine.SetState(FSMStates.IDLE);
                         return;
                     }
                     machine.SetState(transition.trueState);
@@ -51,7 +51,7 @@ public abstract class State : BaseState
         //if (logging) Debug.Log($" {this.name}: All Transitions failed ");
 
         
-        if (_allTransitiosFailedState!= null) machine.SetState(_allTransitiosFailedState);
+        //if (_allTransitiosFailedState != null) machine.SetState(transition.);
     }
 
     public List<Transition> GetTransitions()

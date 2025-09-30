@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   stateId: Attack_Zaglushka
+  stateType: 3
   logging: 0
   transitions:
-  - decision: {fileID: 11400000, guid: 2ac4e85fd0c5b8b43827c867fe871d60, type: 2}
-    trueState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
+  - description: 
+    decision: {fileID: 11400000, guid: 2ac4e85fd0c5b8b43827c867fe871d60, type: 2}
+    trueState: 0
     isInfluenceCharacterGlobalGoal: 0
     setNewGlobalGoal: 3
     setIdleState: 0
-  - decision: {fileID: 11400000, guid: 4f795b1a6b741ec4c9f98175cdfdef54, type: 2}
-    trueState: {fileID: 0}
+  - description: 
+    decision: {fileID: 11400000, guid: 4f795b1a6b741ec4c9f98175cdfdef54, type: 2}
+    trueState: 0
     isInfluenceCharacterGlobalGoal: 0
     setNewGlobalGoal: 3
     setIdleState: 1
-  _allTransitiosFailedState: {fileID: 0}

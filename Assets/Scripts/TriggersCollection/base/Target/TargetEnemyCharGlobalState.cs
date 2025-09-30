@@ -15,7 +15,7 @@ public class TargetEnemyCharGlobalState : Trigger
         if (logging) Debug.Log($"Start trigger {this.name} ");
         if (character.GetTargetsVault().TryGetTargetCharacter(out var enemy))
         {
-            var enemyState = enemy.GetStateMachine().CharacterGlobalState;
+            var enemyState = enemy.GetStateMachine().CharacterGoal;
             bool contains = _statesToCheck.Contains(enemyState);
 
             // В зависимости от того, требуется совпадение или наоборот

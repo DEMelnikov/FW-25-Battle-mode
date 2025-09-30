@@ -4,12 +4,11 @@ using UnityEngine.TextCore.Text;
 
 public interface IStateMachine
 {
-    void SetState(State newState);
-    State GetCurrentState();
+    void Initialize();
+    void SetState(FSMStates newState);
     IStateContext Context { get; }
-    void SetStateInEngage();
-    CharacterGlobalState CharacterGlobalState { get; set;    }
-    void SetInitialState();
+    CharacterGlobalState CharacterGoal { get; set;    }
+    //void SetInitialState();
     GameObject GetGameObject();
 }
 

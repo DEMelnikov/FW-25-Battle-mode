@@ -101,7 +101,7 @@ public class ApproachTargetEnemyState_WTSO : State
         
         if (_targetsVault.GetCoordinates() == Vector3.zero) 
         {
-            machine.SetInitialState();
+            machine.SetState(FSMStates.IDLE);
             return;
         } 
 
@@ -119,8 +119,8 @@ public class ApproachTargetEnemyState_WTSO : State
             if (logging) Debug.Log($" {owner.gameObject.name}.{this.name} HasReachedDestination");
             // Переход в следующее состояние (например, атака)
             //Debug.LogWarning("Reached destination");
-            machine.CharacterGlobalState = CharacterGlobalState.Idle;
-            machine.SetInitialState(); // TODO или другое целевое состояние
+            machine.CharacterGoal = CharacterGlobalState.Idle;
+            machine.SetState(FSMStates.IDLE); // TODO или другое целевое состояние
             _targetsVault.ClearWayPoint();
             _targetsVault.UpdateDistances();
             return;

@@ -5,7 +5,7 @@ public class Transition
 {
     [SerializeField] [TextArea(2,3)] public string description;
     [SerializeField] public Decision decision;
-    [SerializeField] public State trueState;
+    [SerializeField] public FSMStates trueState;
     [SerializeField] private bool isInfluenceCharacterGlobalGoal = false;
     [SerializeField] private CharacterGlobalState setNewGlobalGoal = CharacterGlobalState.Idle;
     [SerializeField] private bool setIdleState = false; 
