@@ -20,7 +20,7 @@ public class DamageResolveSO : AbilityResolve
             IStatsController heroStats = character.GetStatsController();
 
             enemyStats.Stats[StatTag.Health].AddToTmpModifier(outcome * _defaultDamage * -1);
-            enemyStats.Stats[StatTag.Energy].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value*-1);
+            enemyStats.Stats[StatTag.ENERGY].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value*-1);
         }
 
     }

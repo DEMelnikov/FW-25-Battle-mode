@@ -29,7 +29,7 @@ public class EnergyFromWeaponCost : AbilityCost
 
         if (CanAffordCost(character))
         {
-            heroStats.Stats[StatTag.Energy].AddToTmpModifier(_energyCost * -1);
+            heroStats.Stats[StatTag.ENERGY].AddToTmpModifier(_energyCost * -1);
             if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: check finished success");
             return true;
         }
@@ -41,7 +41,7 @@ public class EnergyFromWeaponCost : AbilityCost
     public override bool CanAffordCost(ICharacter character)
     {
         IStatsController heroStats = character.GetStatsController();
-        if (heroStats.Stats[StatTag.Energy].Value > _energyCost)  return true; else return false;
+        if (heroStats.Stats[StatTag.ENERGY].Value > _energyCost)  return true; else return false;
     }
 }
 
