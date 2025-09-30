@@ -1374,16 +1374,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
-  _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
-  _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _characterGoal: 3
   logging: 1
   _idleState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   _chaseState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
-  _moveState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
+  _moveState: {fileID: 11400000, guid: f27ef8a28b871964aa881019864b323c, type: 2}
   _attackState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _unconsciousState: {fileID: 11400000, guid: 79c9db308430a434496bb86499b47649, type: 2}
-  _inEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
+  _inEngageState: {fileID: 11400000, guid: 4fdace59909ec644887beea34a83335e, type: 2}
   idleState: {fileID: 0}
   chaseState: {fileID: 0}
   moveState: {fileID: 0}
@@ -4373,16 +4371,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
-  _initialState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
-  _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _characterGoal: 3
   logging: 1
   _idleState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
   _chaseState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
-  _moveState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
+  _moveState: {fileID: 11400000, guid: f27ef8a28b871964aa881019864b323c, type: 2}
   _attackState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _unconsciousState: {fileID: 11400000, guid: 79c9db308430a434496bb86499b47649, type: 2}
-  _inEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
+  _inEngageState: {fileID: 11400000, guid: 4fdace59909ec644887beea34a83335e, type: 2}
   idleState: {fileID: 0}
   chaseState: {fileID: 0}
   moveState: {fileID: 0}
@@ -5193,16 +5189,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
-  _initialState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
-  _InEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _characterGoal: 3
   logging: 1
   _idleState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   _chaseState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
-  _moveState: {fileID: 11400000, guid: 55cb62e86d510f246a9dc63a7b0bba66, type: 2}
+  _moveState: {fileID: 11400000, guid: f27ef8a28b871964aa881019864b323c, type: 2}
   _attackState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _unconsciousState: {fileID: 11400000, guid: 79c9db308430a434496bb86499b47649, type: 2}
-  _inEngageState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
+  _inEngageState: {fileID: 11400000, guid: 4fdace59909ec644887beea34a83335e, type: 2}
   idleState: {fileID: 0}
   chaseState: {fileID: 0}
   moveState: {fileID: 0}

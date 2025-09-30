@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60ea7d2c844a8f446a18997f98fb5211, type: 3}
-  m_Name: Approach Target Enemy State_WTSO
+  m_Name: Move
   m_EditorClassIdentifier: StateMaschine::ApproachTargetEnemyState_WTSO
-  _description: approach to enemy til actual distance>behaviour distance
+  _description: 'clone for move
+
+'
   stateId: Approach_actual
-  stateType: 1
+  stateType: 2
   logging: 0
   transitions:
   - description: 
@@ -22,13 +24,11 @@ MonoBehaviour:
     trueState: 0
     isInfluenceCharacterGlobalGoal: 1
     setNewGlobalGoal: 0
-    setIdleState: 0
   - description: 
     decision: {fileID: 11400000, guid: e3552fa972c6ec04ca41a1d5e4283e9d, type: 2}
     trueState: 0
     isInfluenceCharacterGlobalGoal: 1
     setNewGlobalGoal: 3
-    setIdleState: 1
   _whenLooseTargetState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}
   _energyCost: {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
   _currentTargetCoordinates: {x: 0, y: 0, z: 0}

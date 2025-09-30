@@ -48,11 +48,11 @@ public class StateMachine : MonoBehaviour, IStateMachine
         UnconsciousState = _unconsciousState;
         InEngageState = _inEngageState;
 
-        if (IdleState == null     || 
-            ChaseState == null    || 
-            MoveState == null     || 
-            AttackState == null   ||
-            InEngageState == null ||
+        if (IdleState        == null || 
+            ChaseState       == null || 
+            MoveState        == null || 
+            AttackState      == null ||
+            InEngageState    == null ||
             UnconsciousState == null)
         {
             Debug.LogError($"{this.gameObject.name} - has no Initial State in SM");
