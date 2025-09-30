@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   stateId: Universal_zaglushka
+  stateType: 2
   logging: 1
   transitions: []
-  _allTransitiosFailedState: {fileID: 0}
   _message: Tipa start Chasing

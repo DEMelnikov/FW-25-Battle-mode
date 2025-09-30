@@ -14,14 +14,17 @@ public class WeaponRangeDistanceCheck : Trigger
         if (logging) Debug.Log($"Check trigger {this.name} started {_relationType} mode");
 
         if (!character.GetTargetsVault().TryGetTargetEnemy(out GameObject enemy)) return false;
+
+        _actualDistance = character.GetTargetsVault().ActualEnemyDistance;
+
         _weaponRange = character.GetBehaviorProfile().WeaponRange;
         if (_weaponRange < 0) return false;
 
-        Vector3 enemyPosition = enemy.transform.position;
-        Vector3 heroPosition = character.transform.position;
+        //Vector3 enemyPosition = enemy.transform.position;
+        //Vector3 heroPosition = character.transform.position;
 
-        // Вычисляем фактическое расстояние
-        _actualDistance = Vector3.Distance(heroPosition, enemyPosition);
+        //// Вычисляем фактическое расстояние
+        //_actualDistance = Vector3.Distance(heroPosition, enemyPosition);
 
 
         // Сравниваем с целевым расстоянием

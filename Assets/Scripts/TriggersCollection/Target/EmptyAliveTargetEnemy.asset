@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: TriggersCollection::AbilitySystem.AbilityComponents.NoSelectedEnemy_NPCTrigger
   _description: TargetVault -> GetTarrgetEnemy = null => true
   _name: EmptyAliveTargetEnemy
-  logging: 0
+  logging: 1

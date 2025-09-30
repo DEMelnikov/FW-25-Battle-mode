@@ -4,14 +4,13 @@ using UnityEngine;
 public class SetFSMState : AbilityResolve
 {
     //private bool Test;
-    [SerializeField] private State _stateToSet;
+    //[SerializeField] private State _stateToSet;
+    [SerializeField] private FSMStates newState;
 
     public override void ApplyResolve(ICharacter character, int outcome)
     {
-        if(_stateToSet == null) return;
-
         var stateMachine = character.GetStateMachine();
-        stateMachine.SetState(_stateToSet);
+        stateMachine.SetState(newState);
 
     }
 }

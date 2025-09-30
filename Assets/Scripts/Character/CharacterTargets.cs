@@ -20,21 +20,56 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         //if (_sm != null ) Debug.LogWarning($" Awake in TargetsVault {_sm.GetGameObject().name}");
     }
 
-    public float ActualDistance { get => enemyActualDistance; set => enemyActualDistance = value; }
+    //public float ActualEnemyDistance { get => enemyActualDistance; set => enemyActualDistance = value; }
+
+    public float ActualEnemyDistance
+    {
+        get
+        {
+            // Вызов дополнительной функции перед возвратом значения
+            UpdateDistanceTargetEnemy();
+            return enemyActualDistance;
+        }
+        set
+        {
+            enemyActualDistance = value;
+        }
+    }
+
+
+
 
 
     #region Target Enemy methods
 
+    /// <summary>
+    /// Проверяет валидность целевого врага.
+    /// Возвращает true, если цель валидна, иначе false.
+    /// </summary>
+    /// <returns>bool — результат проверки, out ICharacter </returns>
     public bool TryGetTargetCharacter(out ICharacter targetCharacter)
     {
-        if (_selectedTarget != null && _selectedTarget.TryGetComponent<ICharacter>(out targetCharacter))
+        targetCharacter = null;
+        if (!ValidateTargetEnemy()) return false;
+
+        if (_selectedTarget.TryGetComponent<ICharacter>(out targetCharacter))
             return true;
 
-        targetCharacter = null;
         return false;
     }
 
-    // Новый метод - безопасное получение вражеской цели
+    private bool ValidateTargetEnemy()
+    {
+        if (_selectedTarget != null &&
+            _selectedTarget.GetComponent<Character>() != null &&
+            _selectedTarget.GetComponent<Character>().SceneObjectTag == _whoIsYourEnemy)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
     [System.Obsolete("Use TryGetEnemyCharacter")]
     public bool TryGetTargetEnemy(out GameObject targetEnemy)
     {
@@ -60,22 +95,22 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return false;
     }
 
-    public bool TryGetEnemyCharacter(out ICharacter characterEnemy)
-    {
-        if (_targetEnemyChararacter != null &&
-            _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
-        {
-            characterEnemy = _targetEnemyChararacter;
-            if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
-                $"- valid enemy target: {_targetEnemyChararacter.GetGameObject.name}");
-            return true;
-        }
+    //public bool TryGetEnemyCharacter(out ICharacter characterEnemy)
+    //{
+    //    if (_targetEnemyChararacter != null &&
+    //        _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
+    //    {
+    //        characterEnemy = _targetEnemyChararacter;
+    //        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
+    //            $"- valid enemy target: {_targetEnemyChararacter.GetGameObject.name}");
+    //        return true;
+    //    }
 
-        characterEnemy = null;
-        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetEnemyCharacter() " +
-            $"- no valid enemy target");
-        return false;
-    }
+    //    characterEnemy = null;
+    //    if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetEnemyCharacter() " +
+    //        $"- no valid enemy target");
+    //    return false;
+    //}
 
     private void UpdateDistanceTargetEnemy()
     {
@@ -105,23 +140,12 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     // Обновленный HasTargetEnemy - теперь без побочных эффектов!
     public bool HasTargetEnemy()
     {
-        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
-    $"- no valid enemy target");
-        return TryGetTargetEnemy(out _); // Используем новый метод
+        return ValidateTargetEnemy();
     }
 
-    // Валидация и очистка - отдельный метод
     public void ValidateAndCleanTarget()
     {
-        if (!TryGetTargetEnemy(out _)) // Если цель невалидна
-        {
-            if (logging && _selectedTarget != null)
-            {
-                Debug.Log($"{gameObject.name} CharacterTargets.ValidateAndCleanTarget() " +
-                    $"- cleaning invalid target: {_selectedTarget.name}");
-            }
-            _selectedTarget = null;
-        }
+        if (!ValidateTargetEnemy()) { _selectedTarget = null; }
     }
 
     public void SetTargetEnemy(GameObject target)
@@ -237,7 +261,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
 
     private CharacterGlobalState GetCharacterGoal()
     {
-        return _sm.CharacterGlobalState;
+        return _sm.CharacterGoal;
     }
     
     public void UpdateDistances()

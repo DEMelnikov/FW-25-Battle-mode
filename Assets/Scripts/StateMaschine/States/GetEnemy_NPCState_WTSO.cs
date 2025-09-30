@@ -18,30 +18,30 @@ public class GetEnemy_NPCState_WTSO : State
     //private IAbilityController _abilityController; //nah ???
     private Character character;
 
-    public override void OnEnter(IStateMachine machine)
+    public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
 
         if (_firstAbilityToSetEnemy == null)
         {
-            Debug.LogError($"{machine.Context.Owner.name} in State GetEnemy_NPCState_WTSO - Ability not SET!!!");
+            Debug.LogError($"{machine.GetGameObject().name} in State GetEnemy_NPCState_WTSO - Ability not SET!!!");
             return;
         }
 
-        character = machine.Context.Owner.GetComponent<Character>();
+        character = machine.GetGameObject().GetComponent<Character>();
     }
 
-    public override void OnExit(IStateMachine machine)
+    public override void OnExit(StateMachine machine)
     {
         base.OnExit(machine);
     }
 
-    public override void OnFixedUpdate(IStateMachine machine)
+    public override void OnFixedUpdate(StateMachine machine)
     {
         base.OnFixedUpdate(machine);
     }
 
-    public override void OnUpdate(IStateMachine machine)
+    public override void OnUpdate(StateMachine machine)
     {
         _firstAbilityToSetEnemy.TryActivateAbility(character, out _);
         base.OnUpdate(machine);

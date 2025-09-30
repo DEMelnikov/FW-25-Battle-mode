@@ -17,7 +17,7 @@ public class AbilityWithSubscribeToStat: Ability
             foundStat.OnValueChanged += OnStatValueChanged;
         }
 
-        Debug.LogError($"{_character.GetGameObject.name} - Ability Subscribed to STAT!!!");
+        //Debug.LogError($"{_character.GetGameObject.name} - Ability Subscribed to STAT!!!");
         IsSubscribed = true;
     }
 

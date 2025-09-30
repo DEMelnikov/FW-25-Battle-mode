@@ -6,12 +6,17 @@ using UnityEngine;
 public class AllTriggersPassDecision : Decision
 {
 
-    public override bool Decide(IStateMachine machine)
+    public override bool Decide(ICharacter character)
     {
         //Debug.Break();
+        if (character == null)
+        {
+            Debug.LogError($"NO CHARACTER IN DECISION");
+            return false;
+        }
 
-        if (logging) Debug.Log($"{machine.Context.Owner.name} Start Decision {this.name}");
-        var character = machine.Context.GetCharacter();
+        if (logging) Debug.Log($"{character.GetGameObject.name } Start Decision {this.name}");
+        //var character = machine.GetGameObject().GetComponent<Character>();//Context.GetCharacter();
         //bool finalDecision = true;
 
         if (abilityTriggers.Count == 0)
@@ -31,12 +36,12 @@ public class AllTriggersPassDecision : Decision
             if (!trigger.CheckTrigger(character))
             {
                 if (logging) Debug.Log($"Decision {this.name} - check {trigger.name} - FAILED");
-                if (logging) Debug.Log($"{machine.GetGameObject().name} - Decision {this.name} FAILED fully - *!*!*!*");
+                if (logging) Debug.Log($"{character.GetGameObject.name} - Decision {this.name} FAILED fully - *!*!*!*");
                 return false;
             }
             else
             {
-                if (logging) Debug.Log($"{machine.GetGameObject().name} Decision {this.name} - check {trigger.name} - PASSED");
+                if (logging) Debug.Log($"{character.GetGameObject.name} Decision {this.name} - check {trigger.name} - PASSED");
             }
         } 
 
