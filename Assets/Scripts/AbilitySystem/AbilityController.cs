@@ -8,9 +8,9 @@ using UnityEngine;
 
 public class AbilityController : MonoBehaviour, IAbilityController
 {
-                     private ICharacter     character;
-    [SerializeField] private bool logging = false;
-    [SerializeField] private List<Ability> AabilitiesATStart   = new List<Ability>();
+                     private ICharacter    character;
+    [SerializeField] private bool          logging            = false;
+    [SerializeField] private List<Ability> AabilitiesATStart  = new List<Ability>();
     //[SerializeField] private List<IAbility> availableAbilities = new List<IAbility>();          //OLD
 
     private Dictionary<string, Ability> abilityInstances      = new Dictionary<string, Ability>();

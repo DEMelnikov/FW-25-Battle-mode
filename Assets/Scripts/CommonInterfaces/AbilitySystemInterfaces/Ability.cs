@@ -22,8 +22,8 @@ public class Ability : BaseAbility, IAbility
            [Min (0)] protected float          _targetRadius = 0f;
 
     [Header("Activation Requirements")]
-    [SerializeField] protected List<Trigger>    triggers      = new List<Trigger>();
-    [SerializeField] public  List<AbilityCost>  costs         = new List<AbilityCost>();    
+    [SerializeField] protected List<Trigger>      triggers      = new List<Trigger>();
+    [SerializeField] public    List<AbilityCost>  costs         = new List<AbilityCost>();    
 
     [Header("Execution Logic")]
     [SerializeField] private AbilityAction     _abilityAction;
@@ -87,7 +87,7 @@ public class Ability : BaseAbility, IAbility
     }
 
     public string GetAbilityName() { return abilityName; }
-    public bool GetLoggingState() { return logging; }
+    public bool  GetLoggingState() { return logging; }
 
     public sealed override bool TryActivateAbility(ICharacter character, out int outcome )
     {
