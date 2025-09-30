@@ -20,7 +20,24 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         //if (_sm != null ) Debug.LogWarning($" Awake in TargetsVault {_sm.GetGameObject().name}");
     }
 
-    public float ActualDistance { get => enemyActualDistance; set => enemyActualDistance = value; }
+    //public float ActualEnemyDistance { get => enemyActualDistance; set => enemyActualDistance = value; }
+
+    public float ActualEnemyDistance
+    {
+        get
+        {
+            // Вызов дополнительной функции перед возвратом значения
+            UpdateDistanceTargetEnemy();
+            return enemyActualDistance;
+        }
+        set
+        {
+            enemyActualDistance = value;
+        }
+    }
+
+
+
 
 
     #region Target Enemy methods
@@ -53,10 +70,6 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     }
 
 
-
-
-
-    // Новый метод - безопасное получение вражеской цели
     [System.Obsolete("Use TryGetEnemyCharacter")]
     public bool TryGetTargetEnemy(out GameObject targetEnemy)
     {
@@ -130,7 +143,6 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return ValidateTargetEnemy();
     }
 
-    // Валидация и очистка - отдельный метод
     public void ValidateAndCleanTarget()
     {
         if (!ValidateTargetEnemy()) { _selectedTarget = null; }
