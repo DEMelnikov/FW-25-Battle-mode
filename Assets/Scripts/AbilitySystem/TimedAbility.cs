@@ -2,7 +2,7 @@ using Unity.Android.Gradle;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-[CreateAssetMenu(fileName = "TimedAbility", menuName = "FW25/Ability System/Timed Ability")]
+[CreateAssetMenu(fileName = "TimedAbility", menuName = "FW25/Ability System/Ability/Timed Ability")]
 public class TimedAbility : Ability
 {
 

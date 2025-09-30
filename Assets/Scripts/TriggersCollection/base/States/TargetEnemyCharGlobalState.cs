@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "TargetEnemyState", menuName = "FW25/Triggers/Targets/Target Enemy Character Global State")]
+[CreateAssetMenu(fileName = "TargetEnemyState", menuName = "FW25/Triggers/States/Target Enemy Character Global State")]
 
 public class TargetEnemyCharGlobalState : Trigger
 {
