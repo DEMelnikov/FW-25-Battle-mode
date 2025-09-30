@@ -7,10 +7,11 @@ public class StateMachine : MonoBehaviour, IStateMachine
     //[SerializeField] private ScriptableObject _currentStateBehaviour;
     //[SerializeField] private ScriptableObject _initialStateBehaviour;
 
-    [SerializeReference] private State               _currentState;
-    [SerializeReference] private State               _initialState;
-    [SerializeReference] private State               _InEngageState;
-                         private IStateContext       _context;
+    [SerializeReference] private State                _currentState;
+    //[SerializeReference] private State                _initialState;
+    //[SerializeReference] private State                _InEngageState;
+                         private IStateContext        _context;
+                         private Character           _character;
     [SerializeReference] private CharacterGlobalState _characterGoal = CharacterGlobalState.Idle;
     [SerializeReference] private bool logging = false;
 
@@ -31,7 +32,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     [SerializeField] private State unconsciousState;
     [SerializeField] private State inEngageState;
 
-    private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
+    //private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
 
     // Для отладки в инспекторе
     [SerializeField] private string currentStateName;
@@ -40,6 +41,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     public void Initialize()
     {
         //_сontext = new StateContext(gameObject);
+        _character = GetComponent<Character>();
 
         IdleState = _idleState;
         ChaseState = _chaseState;
@@ -58,6 +60,8 @@ public class StateMachine : MonoBehaviour, IStateMachine
             Debug.LogError($"{this.gameObject.name} - has no Initial State in SM");
             return;
         }
+
+        this.SetState(FSMStates.IDLE);
     }
 
     public State IdleState
@@ -122,6 +126,9 @@ public class StateMachine : MonoBehaviour, IStateMachine
 
     public IStateContext Context { get => _context;}
     public CharacterGlobalState CharacterGoal { get => _characterGoal; set => _characterGoal = value; }
+    public Character Character { get => _character; private set => _character = value; }
+    //public ICharacter Character { get => _icharacter;  }
+
 
     public void SetState(FSMStates stateType)
     {

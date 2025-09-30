@@ -20,5 +20,8 @@ public abstract class Decision : ScriptableObject
     public virtual void OnEnter(IStateMachine machine) { }
     public virtual void OnExit(IStateMachine machine) { }
     public virtual void OnUpdate(IStateMachine machine) { }
+    
+    [System.Obsolete("Use Decide with character")]
     public virtual bool Decide(IStateMachine machine) { return false; }
+    public virtual bool Decide(ICharacter character) { return false; }
 }

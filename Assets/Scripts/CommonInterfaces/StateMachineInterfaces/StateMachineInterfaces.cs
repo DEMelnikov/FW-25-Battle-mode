@@ -10,6 +10,7 @@ public interface IStateMachine
     CharacterGlobalState CharacterGoal { get; set;    }
     //void SetInitialState();
     GameObject GetGameObject();
+    //ICharacter Character {  get; }
 }
 
 public interface IStateContext

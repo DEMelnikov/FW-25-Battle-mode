@@ -8,9 +8,9 @@ public class Transition
     [SerializeField] public FSMStates trueState;
     [SerializeField] private bool isInfluenceCharacterGlobalGoal = false;
     [SerializeField] private CharacterGlobalState setNewGlobalGoal = CharacterGlobalState.Idle;
-    [SerializeField] private bool setIdleState = false; 
+    //[SerializeField] private bool setIdleState = false; 
 
     public bool IsInfluenceCharacterGlobalGoal { get => isInfluenceCharacterGlobalGoal;}
     public CharacterGlobalState GetNewGlobalGoal { get => setNewGlobalGoal; }
-    public bool SetIdleState { get => setIdleState; }
+    //public bool SetIdleState { get => setIdleState; }
 }

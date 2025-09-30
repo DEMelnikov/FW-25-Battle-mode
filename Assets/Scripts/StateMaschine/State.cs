@@ -11,7 +11,7 @@ public abstract class State : BaseState
 
     public virtual void OnEnter(IStateMachine machine) 
     {
-        if (logging) Debug.LogWarning($"{machine.Context.Owner.name} Enter {this.name} State:");
+        if (logging) Debug.LogWarning($"{machine.GetGameObject().name} Enter {this.name} State:");
     }
     public virtual void OnUpdate(IStateMachine machine) 
     {
@@ -20,29 +20,29 @@ public abstract class State : BaseState
     public virtual void OnFixedUpdate(IStateMachine machine) { }
     public virtual void OnExit(IStateMachine machine) 
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} Exit {this.name} State");
+        if (logging) Debug.Log($"{machine.GetGameObject().name} Exit {this.name} State");
     }
 
     public sealed override void CheckTransitions(IStateMachine machine)
     {
         //if (logging) Debug.Log($"Checking transitions in state {this.name}");
-        if (logging) Debug.Log($" {machine.Context.Owner.name} State {this.name} Start Checking transitions Q = {transitions.Count}");
+        if (logging) Debug.Log($" {machine.GetGameObject().name} State {this.name} Start Checking transitions Q = {transitions.Count}");
         foreach (var transition in transitions)
         {
             if (transition.decision != null && transition.trueState != null)
             {
-                if (transition.decision.Decide(machine))
+                if (transition.decision.Decide(machine.Character))
                 {
                     if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result TRUE! Next State {transition.trueState.ToString()}");
                     //if (logging) Debug.Log($" {this.name}: Decision: {transition.decision.name} result true ");
 
                     if (transition.IsInfluenceCharacterGlobalGoal) machine.CharacterGoal = transition.GetNewGlobalGoal;
-                    if (transition.SetIdleState)
-                    {
-                        machine.CharacterGoal = CharacterGlobalState.Idle;
-                        machine.SetState(FSMStates.IDLE);
-                        return;
-                    }
+                    //if (transition.SetIdleState)
+                    //{
+                    //    machine.CharacterGoal = CharacterGlobalState.Idle;
+                    //    machine.SetState(FSMStates.IDLE);
+                    //    return;
+                    //}
                     machine.SetState(transition.trueState);
                     return;
                 }
