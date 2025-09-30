@@ -26,7 +26,8 @@ public class Unconscious : State
     {
         base.OnEnter(machine);
 
-        owner = machine.Context.Owner.GetComponent<Character>();
+        //owner = machine.Context.Owner.GetComponent<Character>();
+        owner = machine.Character;
         machine.CharacterGoal = CharacterGlobalState.UNCONSCIOUS;
         //_targetsVault = owner.GetTargetsVault();
         //_statsController = owner.GetStatsController();

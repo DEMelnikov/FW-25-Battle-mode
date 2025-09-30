@@ -6,7 +6,7 @@ public interface IStateMachine
 {
     void Initialize();
     void SetState(FSMStates newState);
-    IStateContext Context { get; }
+    //IStateContext Context { get; }
     CharacterGlobalState CharacterGoal { get; set;    }
     //void SetInitialState();
     GameObject GetGameObject();

@@ -24,11 +24,11 @@ public class GetEnemy_NPCState_WTSO : State
 
         if (_firstAbilityToSetEnemy == null)
         {
-            Debug.LogError($"{machine.Context.Owner.name} in State GetEnemy_NPCState_WTSO - Ability not SET!!!");
+            Debug.LogError($"{machine.GetGameObject().name} in State GetEnemy_NPCState_WTSO - Ability not SET!!!");
             return;
         }
 
-        character = machine.Context.Owner.GetComponent<Character>();
+        character = machine.GetGameObject().GetComponent<Character>();
     }
 
     public override void OnExit(StateMachine machine)

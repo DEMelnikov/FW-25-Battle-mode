@@ -10,7 +10,7 @@ public class StateWithPause : State
     public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
-        owner = machine.Context.Owner.GetComponent<Character>();
+        owner = owner = machine.Character;
 
         SubscribeToPauseEvents();
 

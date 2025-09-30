@@ -21,7 +21,7 @@ public class IdleState_WTSO : State
 
     public override void OnUpdate(StateMachine machine)
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} On Idle State:");
+        if (logging) Debug.Log($"{machine.GetGameObject().name} On Idle State:");
         base.OnUpdate(machine);
     }
 }

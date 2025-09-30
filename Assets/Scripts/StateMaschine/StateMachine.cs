@@ -8,7 +8,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     //[SerializeField] private ScriptableObject _initialStateBehaviour;
 
     [SerializeReference] private State                _currentState;
-                         private IStateContext        _context;
+                         //private IStateContext        _context;
                          private Character            _character;
     [SerializeReference] private CharacterGlobalState _characterGoal = CharacterGlobalState.Idle;
     [SerializeReference] private bool logging = false;
@@ -123,7 +123,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
 
     public State CurrentState => _currentState;
 
-    public IStateContext Context { get => _context;}
+    //public IStateContext Context { get => _context;}
     public CharacterGlobalState CharacterGoal { get => _characterGoal; set => _characterGoal = value; }
     public Character Character { get => _character; private set => _character = value; }
     //public ICharacter Character { get => _icharacter;  }

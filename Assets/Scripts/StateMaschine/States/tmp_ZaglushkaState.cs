@@ -6,7 +6,7 @@ public class tmp_ZaglushkaState : State
     [SerializeField] private string _message;
     public override void OnEnter(StateMachine machine)
     {
-        Debug.LogWarning($"{machine.Context.Owner.name} Enters to Zaglushka State _ name: {_message}");
+        Debug.LogWarning($"{machine.GetGameObject().name} Enters to Zaglushka State _ name: {_message}");
         base.OnEnter(machine);
     }
 
