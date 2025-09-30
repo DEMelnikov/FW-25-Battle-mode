@@ -162,6 +162,9 @@ public class Stat:IStat
         // Применяем PercentMult
         finalValue *= productPercentMult;
 
+        // Ограничение значения не выше BaseValue
+        if (finalValue > BaseValue)  finalValue = BaseValue;
+
         return finalValue;
     }
 
