@@ -33,3 +33,7 @@ MonoBehaviour:
     Tag: 3
     BaseValue: 3
     HasAlarm: 0
+  - Name: Endurance
+    Tag: 2
+    BaseValue: 3
+    HasAlarm: 0

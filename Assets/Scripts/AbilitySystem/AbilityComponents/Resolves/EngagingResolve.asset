@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab10a8995f1cc4459e10b4e0008ccdf, type: 3}
   m_Name: EngagingResolve
   m_EditorClassIdentifier: AbilitySystem::EngagingResolve
+  _targeting: 1
+  _targetRadius: 0

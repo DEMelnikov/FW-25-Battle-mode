@@ -2352,6 +2352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
+  _character: {fileID: 0}
   _characterGoal: 3
   logging: 1
   _idleState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
@@ -4505,6 +4506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
+  _character: {fileID: 0}
   _characterGoal: 3
   logging: 1
   _idleState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
@@ -5227,6 +5229,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: He
       objectReference: {fileID: 0}
+    - target: {fileID: 8696575057540936075, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696575057540936075, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696575057540936075, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696575057540936075, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950310498589647232, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950310498589647232, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950310498589647232, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950310498589647232, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135246317730836718, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135246317730836718, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135246317730836718, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135246317730836718, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5356,6 +5406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
+  _character: {fileID: 0}
   _characterGoal: 3
   logging: 1
   _idleState: {fileID: 11400000, guid: c0176972871bf354ca55d5c9ad8513c8, type: 2}

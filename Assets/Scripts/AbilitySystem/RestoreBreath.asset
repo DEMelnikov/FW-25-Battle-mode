@@ -12,18 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f9a4c51ba545441933a0482a503876, type: 3}
   m_Name: RestoreBreath
   m_EditorClassIdentifier: AbilitySystem::TimedAbility
-  isTimed: 0
-  abilityName: 
-  description: 
+  isTimed: 1
+  abilityName: RestroreBreath
+  description: RestoreBreath when not in action
   icon: {fileID: 0}
-  logging: 0
+  logging: 1
+  triggers:
+  - {fileID: 11400000, guid: be4fa88aabb027b44b181b227136b99e, type: 2}
+  costs: []
   _targeting: 0
   _targetRadius: 0
-  triggers: []
-  costs: []
-  _abilityAction: {fileID: 0}
+  _abilityAction: {fileID: 11400000, guid: ae1919c406128114b9a4c72e99664fcd, type: 2}
   _animationTrigger: 4
-  resolves: []
+  resolves:
+  - {fileID: 11400000, guid: 04ce75d89d2f9c74c851fc207e40eed4, type: 2}
   tags: []
   isSubscribed: 0
   _interval: 1

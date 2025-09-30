@@ -11,6 +11,7 @@ public abstract class AbilityAction : ScriptableObject, IAction
     [SerializeField] [TextArea(2,5)] protected string _description;
     [SerializeField] protected bool logging = true;
     public virtual int ExecuteAction(ICharacter character) { return 0; }
+    public virtual int ExecuteAction(ICharacter character, float myDC) { return 0; }
 }
 
 

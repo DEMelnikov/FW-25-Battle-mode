@@ -2,7 +2,7 @@ public enum StatTag
 {
     Health,
     ENERGY,
-    //Mana,
+    ENDURANCE,
     Strength,
     Agility,
     UnarmedAttack

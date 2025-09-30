@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FSMStateCheckSelf
   m_EditorClassIdentifier: TriggersCollection::FSMStateCheck
   _description: 
-  _name: 
+  _name: FSMStateCheck_self_IDLE&UNCONS
   logging: 1
-  _statesToCheck: 
+  _statesToCheck: 0000000004000000
   _mustContainState: 1
   _target: 0

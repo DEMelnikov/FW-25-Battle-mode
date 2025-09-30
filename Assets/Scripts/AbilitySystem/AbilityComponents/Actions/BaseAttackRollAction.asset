@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: 
   logging: 0
-  _primaryAttackStat: 3
-  _secondaryAttackStat: 4
-  _DC: 38
+  stats: 0300000004000000
+  _DC: 29.8

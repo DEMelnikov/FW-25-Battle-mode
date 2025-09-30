@@ -23,5 +23,6 @@ public interface IAbilityController
 public interface IAction
 {
     int ExecuteAction(ICharacter character) { return 0; }
+    int ExecuteAction(ICharacter character, float myDC) { return 0; }
 }
 
