@@ -8,7 +8,7 @@ public abstract class BaseAbility : ScriptableObject
     public abstract bool HasTag(string tag);
     [SerializeField] private bool isTimed = false;
 
-    protected bool IsTimed { get => isTimed; }
+    public bool IsTimed { get => isTimed; }
     public abstract bool CanAfford(ICharacter character);
     protected virtual bool PayAllCost(ICharacter character) { return false; }
     public virtual bool GetLoggingState() { return false; }

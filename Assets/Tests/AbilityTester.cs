@@ -16,12 +16,12 @@ public class AbilityTester : MonoBehaviour
     {
         if (abilityController == null) {   return;}
 
-        if (Input.GetKeyDown(testKey) && abilityController.GetAllAbilities().Count > 0)
-        {
-            var ability = abilityController.GetAllAbilities()[0];
-            abilityController.TryActivateAbility(ability);
-            Debug.Log($"Attempted to use: {ability.GetAbilityName()}");
-        }
+        //if (Input.GetKeyDown(testKey) && abilityController.GetAllAbilities().Count > 0)
+        //{
+        //    var ability = abilityController.GetAllAbilities()[0];
+        //    abilityController.TryActivateAbility(ability);
+        //    Debug.Log($"Attempted to use: {ability.GetAbilityName()}");
+        //}
 
         //if (Input.GetKeyDown(testKey))
         //{

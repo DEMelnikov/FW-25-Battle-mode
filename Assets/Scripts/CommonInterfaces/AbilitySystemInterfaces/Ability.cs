@@ -9,16 +9,21 @@ public class Ability : BaseAbility, IAbility
 {
     [Header("Basic Info")]
 
-    [SerializeField] protected string abilityName;
-    [SerializeField] [TextArea(3,5)] private string description;
-                     public Sprite  icon;
-    [SerializeField] protected bool logging = false;
+    [SerializeField] protected string     abilityName;
+    [SerializeField] 
+    [TextArea(3,5)]  private   string     description;
+                     public    Sprite     icon;
+    [SerializeField] protected bool       logging = false;
     [SerializeField] protected ICharacter _character;
 
-    
+    [Header("Targeting:")]
+    [SerializeField] protected AbilityTargets _targeting    = AbilityTargets.SELF;
+    [SerializeField] 
+           [Min (0)] protected float          _targetRadius = 0f;
+
     [Header("Activation Requirements")]
-    [SerializeField] protected List<Trigger>  triggers      = new List<Trigger>();
-    [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();    
+    [SerializeField] protected List<Trigger>    triggers      = new List<Trigger>();
+    [SerializeField] public  List<AbilityCost>  costs         = new List<AbilityCost>();    
 
     [Header("Execution Logic")]
     [SerializeField] private AbilityAction     _abilityAction;
@@ -157,4 +162,8 @@ public class Ability : BaseAbility, IAbility
         //TryActivateAbility(character, out int outcome);
     }
 
+    public virtual void OnUpdate(float deltatime)
+    {
+
+    }
 }
