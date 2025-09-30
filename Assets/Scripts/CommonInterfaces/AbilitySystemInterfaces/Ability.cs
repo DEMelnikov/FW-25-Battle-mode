@@ -8,6 +8,7 @@ using UnityEngine.TextCore.Text;
 public class Ability : BaseAbility, IAbility
 {
     [Header("Basic Info")]
+
     [SerializeField] protected string abilityName;
     [SerializeField] [TextArea(3,5)] private string description;
                      public Sprite  icon;
@@ -17,7 +18,6 @@ public class Ability : BaseAbility, IAbility
     
     [Header("Activation Requirements")]
     [SerializeField] protected List<Trigger>  triggers      = new List<Trigger>();
-
     [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();    
 
     [Header("Execution Logic")]

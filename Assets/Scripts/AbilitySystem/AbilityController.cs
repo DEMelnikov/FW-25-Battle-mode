@@ -13,7 +13,8 @@ public class AbilityController : MonoBehaviour, IAbilityController
     [SerializeField] private List<Ability> AabilitiesATStart = new List<Ability>();
     [SerializeField] private List<IAbility> availableAbilities = new List<IAbility>();          //OLD
 
-    [SerializeField] private Dictionary<string, Ability> abilityInstances = new Dictionary<string, Ability>();  //NEW!
+    private Dictionary<string, Ability> abilityInstances      = new Dictionary<string, Ability>();
+    private Dictionary<string, Ability> timedAbilityInstances = new Dictionary<string, Ability>(); 
 
     private void Awake()
     {
