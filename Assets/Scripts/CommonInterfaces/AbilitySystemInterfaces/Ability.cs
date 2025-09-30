@@ -39,7 +39,7 @@ public class Ability : BaseAbility, IAbility
 
     // UI методы
 
-    public void IniTialize(ICharacter character)
+    public virtual void IniTialize(ICharacter character)
     {
         //Debug.LogError($"{character.GetGameObject.name} - TRY IniTialize abilitiy");
         _character = character;
