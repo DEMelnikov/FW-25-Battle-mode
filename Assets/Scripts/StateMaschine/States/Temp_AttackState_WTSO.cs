@@ -11,7 +11,7 @@ public class Temp_AttackState_WTSO : StateWithPause
     private TimerTrigger            attackTimer;
 
 
-    public override void OnEnter(IStateMachine machine)
+    public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
         behaviorProfile = owner.GetBehaviorProfile();
@@ -29,18 +29,18 @@ public class Temp_AttackState_WTSO : StateWithPause
         Engage();
     }
 
-    public override void OnExit(IStateMachine machine)
+    public override void OnExit(StateMachine machine)
     {
         attackTimer.UnsubscribeFromPauseEvents();
         base.OnExit(machine);
     }
 
-    public override void OnFixedUpdate(IStateMachine machine)
+    public override void OnFixedUpdate(StateMachine machine)
     {
         base.OnFixedUpdate(machine);
     }
 
-    public override void OnUpdate(IStateMachine machine)
+    public override void OnUpdate(StateMachine machine)
     {
         base.OnUpdate(machine);
 

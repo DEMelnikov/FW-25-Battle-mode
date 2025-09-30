@@ -22,7 +22,7 @@ public class Unconscious : State
 
     private Character owner;
 
-    public override void OnEnter(IStateMachine machine)
+    public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
 
@@ -65,7 +65,7 @@ public class Unconscious : State
         //if (_energyCost == null) Debug.LogError($"{owner.gameObject.name}.{this.name} has no ABilityCost");
     }
 
-    public override void OnExit(IStateMachine machine)
+    public override void OnExit(StateMachine machine)
     {
         //_navMeshAgent.isStopped = true;
 
@@ -78,13 +78,13 @@ public class Unconscious : State
         base.OnExit(machine);
     }
 
-    public override void OnFixedUpdate(IStateMachine machine)
+    public override void OnFixedUpdate(StateMachine machine)
     {
         if (PauseManager.IsPaused) return;
         base.OnFixedUpdate(machine);
     }
 
-    public override void OnUpdate(IStateMachine machine)
+    public override void OnUpdate(StateMachine machine)
     {
         if (PauseManager.IsPaused) return;
 
@@ -132,7 +132,7 @@ public class Unconscious : State
         //i
     }
 
-    public void CheckTransitions(IStateMachine machine)
+    public void CheckTransitions(StateMachine machine)
     {
         base.CheckTransitions(machine);
     }

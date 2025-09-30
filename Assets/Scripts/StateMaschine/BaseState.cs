@@ -10,7 +10,7 @@ public class BaseState : ScriptableObject, INameable
 
     public FSMStates StateType { get => stateType;}
 
-    public virtual void CheckTransitions(IStateMachine machine)
+    public virtual void CheckTransitions(StateMachine machine)
     {
         // Здесь будет логика проверки переходов между состояниями
     }

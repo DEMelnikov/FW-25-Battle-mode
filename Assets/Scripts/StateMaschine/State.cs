@@ -9,21 +9,21 @@ public abstract class State : BaseState
     [SerializeField] protected List<Transition> transitions = new List<Transition>();
     //[SerializeField] protected FSMStates _allTransitiosFailedState;
 
-    public virtual void OnEnter(IStateMachine machine) 
+    public virtual void OnEnter(StateMachine machine) 
     {
         if (logging) Debug.LogWarning($"{machine.GetGameObject().name} Enter {this.name} State:");
     }
-    public virtual void OnUpdate(IStateMachine machine) 
+    public virtual void OnUpdate(StateMachine machine) 
     {
         CheckTransitions(machine);
     }
-    public virtual void OnFixedUpdate(IStateMachine machine) { }
-    public virtual void OnExit(IStateMachine machine) 
+    public virtual void OnFixedUpdate(StateMachine machine) { }
+    public virtual void OnExit(StateMachine machine) 
     {
         if (logging) Debug.Log($"{machine.GetGameObject().name} Exit {this.name} State");
     }
 
-    public sealed override void CheckTransitions(IStateMachine machine)
+    public sealed override void CheckTransitions(StateMachine machine)
     {
         //if (logging) Debug.Log($"Checking transitions in state {this.name}");
         if (logging) Debug.Log($" {machine.GetGameObject().name} State {this.name} Start Checking transitions Q = {transitions.Count}");

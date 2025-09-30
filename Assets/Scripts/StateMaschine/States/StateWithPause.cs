@@ -7,7 +7,7 @@ public class StateWithPause : State
     protected Character owner;
 
 
-    public override void OnEnter(IStateMachine machine)
+    public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
         owner = machine.Context.Owner.GetComponent<Character>();
@@ -16,7 +16,7 @@ public class StateWithPause : State
 
     }
 
-    public override void OnExit(IStateMachine machine)
+    public override void OnExit(StateMachine machine)
     {
          // Отписываемся от события при выходе из состояния
         UnsubscribeFromPauseEvents();
@@ -24,20 +24,20 @@ public class StateWithPause : State
         base.OnExit(machine);
     }
 
-    public override void OnFixedUpdate(IStateMachine machine)
+    public override void OnFixedUpdate(StateMachine machine)
     {
         if (PauseManager.IsPaused) return;
         base.OnFixedUpdate(machine);
     }
 
-    public override void OnUpdate(IStateMachine machine)
+    public override void OnUpdate(StateMachine machine)
     {
         if (PauseManager.IsPaused) return;
         base.OnUpdate(machine);
 
     }
 
-    public void CheckTransitions(IStateMachine machine)
+    public void CheckTransitions(StateMachine machine)
     {
         base.CheckTransitions(machine);
     }

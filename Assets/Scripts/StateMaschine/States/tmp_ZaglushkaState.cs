@@ -4,23 +4,23 @@ using UnityEngine;
 public class tmp_ZaglushkaState : State
 {
     [SerializeField] private string _message;
-    public override void OnEnter(IStateMachine machine)
+    public override void OnEnter(StateMachine machine)
     {
         Debug.LogWarning($"{machine.Context.Owner.name} Enters to Zaglushka State _ name: {_message}");
         base.OnEnter(machine);
     }
 
-    public override void OnExit(IStateMachine machine)
+    public override void OnExit(StateMachine machine)
     {
         base.OnExit(machine);
     }
 
-    public override void OnFixedUpdate(IStateMachine machine)
+    public override void OnFixedUpdate(StateMachine machine)
     {
         base.OnFixedUpdate(machine);
     }
 
-    public override void OnUpdate(IStateMachine machine)
+    public override void OnUpdate(StateMachine machine)
     {
         base.OnUpdate(machine);
     }
