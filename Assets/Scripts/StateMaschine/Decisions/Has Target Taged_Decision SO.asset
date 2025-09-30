@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Has Target Taged_Decision SO
   m_EditorClassIdentifier: 
   _description: 
-  triggersVault: {fileID: 11400000, guid: fcd9e60024a376b44a3474ba4debc440, type: 2}
-  logging: 1
-  triggersVaultNames: []
+  logging: 0
   abilityTriggers: []
   _targetTag: 1

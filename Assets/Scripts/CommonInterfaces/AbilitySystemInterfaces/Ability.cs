@@ -8,29 +8,20 @@ using UnityEngine.TextCore.Text;
 public class Ability : BaseAbility, IAbility
 {
     [Header("Basic Info")]
-    [SerializeField] private string abilityName;
+    [SerializeField] protected string abilityName;
     [SerializeField] [TextArea(3,5)] private string description;
                      public Sprite  icon;
-    [SerializeField] private bool   logging = false;
+    [SerializeField] protected bool logging = false;
+    [SerializeField] protected ICharacter _character;
 
-    //[Header("Vaults")]
-    //[SerializeField] private ActionsVault  _actionsVault;
-    //[SerializeField] private TriggersVault _triggersVault;
     
     [Header("Activation Requirements")]
-    //[SONameDropdown(typeof(TriggersVault))]
-    //public    List<string>   triggersNames = new List<string>();
     [SerializeField] protected List<Trigger>  triggers      = new List<Trigger>();
 
-
-    [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();
-    //[SerializeField] private IAction               action;
-
+    [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();    
 
     [Header("Execution Logic")]
-    //[SONameDropdown(typeof(ActionsVault))]
-    //public string _actionName;
-    [SerializeField] private AbilityAction _abilityAction;
+    [SerializeField] private AbilityAction     _abilityAction;
     [SerializeField] private AnimationTriggers _animationTrigger = AnimationTriggers.EMPTY;
 
     [SerializeField] private List<AbilityResolve>  resolves = new List<AbilityResolve>();
@@ -38,8 +29,22 @@ public class Ability : BaseAbility, IAbility
     [Header("UI & Filtering")]
     public List<string> tags = new List<string>();
 
+    [Header("Events Subscribing")]
+    [SerializeField] private bool isSubscribed = false;
+
     // UI методы
 
+    public void IniTialize(ICharacter character)
+    {
+        //Debug.LogError($"{character.GetGameObject.name} - TRY IniTialize abilitiy");
+        _character = character;
+        isSubscribed = false;
+
+        //Debug.LogError($"{character.GetGameObject.name} -  IniTialize Success {_character.GetGameObject.name} + {isSubscribed}");
+    }
+
+    public string GetName { get=>abilityName; }
+    public bool IsSubscribed { get => isSubscribed; set => isSubscribed = value; }
     public override bool HasTag(string tag) => tags.Contains(tag);
     public override IAction GetAbilityAction() => _abilityAction;
     //public override List<AbilityResolve> GetAbilityResolves() => resolves;
@@ -94,7 +99,8 @@ public class Ability : BaseAbility, IAbility
         if (logging) Debug.Log($"Ability {this.name} - ready to abilityAction");
 
         // Выполнение действия
-        outcome = _abilityAction.ExecuteAction(character);   //.GetExecuteAction(character);
+        if(_abilityAction != null) outcome = _abilityAction.ExecuteAction(character);   //.GetExecuteAction(character);
+
         character.ActivateAnimationTrigger(_animationTrigger);
 
 
@@ -109,7 +115,7 @@ public class Ability : BaseAbility, IAbility
         return true;
     }
 
-protected sealed override bool CheckTriggersReady(ICharacter character)
+    protected sealed override bool CheckTriggersReady(ICharacter character)
 {
 
     if (logging) { Debug.Log($"Start Check Triggers у {character.name}"); }
@@ -130,10 +136,25 @@ protected sealed override bool CheckTriggersReady(ICharacter character)
     return true;
 }
 
-public virtual IAbility Clone()
-{
-    // Реализация клона через Instantiate
-    return Instantiate(this);
-}
+    public virtual IAbility Clone()
+    {
+        // Реализация клона через Instantiate
+        return Instantiate(this);
+    }
+
+    public virtual void Subscribe(ICharacter character)
+    {
+        // По умолчанию ничего не подписываем
+    }
+
+    public virtual void Unsubscribe(ICharacter character)
+    {
+        // По умолчанию ничего не отписываем
+    }
+
+    protected virtual void EventHandler()
+    {
+        //TryActivateAbility(character, out int outcome);
+    }
 
 }

@@ -4,24 +4,24 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FW25/State Machine/States/Idle State")]
 public class IdleState_WTSO : State
 {
-    public override void OnEnter(IStateMachine machine)
+    public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
     }
 
-    public override void OnExit(IStateMachine machine)
+    public override void OnExit(StateMachine machine)
     {
         base.OnExit(machine);
     }
 
-    public override void OnFixedUpdate(IStateMachine machine)
+    public override void OnFixedUpdate(StateMachine machine)
     {
         base.OnFixedUpdate(machine);
     }
 
-    public override void OnUpdate(IStateMachine machine)
+    public override void OnUpdate(StateMachine machine)
     {
-        if (logging) Debug.Log($"{machine.Context.Owner.name} On Idle State:");
+        if (logging) Debug.Log($"{machine.GetGameObject().name} On Idle State:");
         base.OnUpdate(machine);
     }
 }

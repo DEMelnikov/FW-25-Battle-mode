@@ -22,7 +22,7 @@ public class MoveTest : MonoBehaviour
 
         // Смена состояния Walk/Idle
         bool isMoving = moveVector.sqrMagnitude > 0.01f;
-        animator.SetBool("Walk", isMoving);
+        animator.SetBool("ISWALK", isMoving);
 
         // Разворот персонажа по горизонтали
         if (moveX > 0)
@@ -40,8 +40,13 @@ public class MoveTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            animator.SetTrigger("DEATH");
+            animator.SetTrigger("DDD");
             //animator.SetBool("Attack",);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetBool("ISDEAD", true);
         }
     }
 }

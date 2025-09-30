@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3701a9f828aa3674896752d19fe1246d, type: 3}
   m_Name: Ability For test
   m_EditorClassIdentifier: 
-  abilityName: MeleUnarmedAttack
-  description: only for tests
+  abilityName: MeleUnarmedAttackToUnconscious
+  description: 'only for tests to Unconscious
+
+'
   icon: {fileID: 0}
   logging: 0
   triggers:
   - {fileID: 11400000, guid: 976f0ad6d99642040a96942540933526, type: 2}
   - {fileID: 11400000, guid: 1b3ccb156c40ad04f92559c7451d6c51, type: 2}
+  - {fileID: 11400000, guid: 9ffde317b9a3984459a5d369c8692733, type: 2}
   costs:
   - {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
   _abilityAction: {fileID: 11400000, guid: 348df2c179bed8a4a95546ff1dc95735, type: 2}
@@ -31,3 +34,4 @@ MonoBehaviour:
   - Attack
   - Unarmed
   - Offencive
+  isSubscribed: 0
