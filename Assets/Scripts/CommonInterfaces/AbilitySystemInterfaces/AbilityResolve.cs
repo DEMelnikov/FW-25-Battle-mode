@@ -39,4 +39,30 @@ public abstract class AbilityResolve : ScriptableObject
 
         return _targetCharacter;
     }
+    protected ICharacter GetTargetForAbility(ICharacter character, AbilityTargets manualSetTarget)
+    {
+        ICharacter _targetCharacter = null;
+
+        switch (manualSetTarget)
+        {
+
+            case AbilityTargets.SELF:
+                _targetCharacter = character;
+                break;
+
+            case AbilityTargets.TARGETENEMY:
+                if (!character.GetTargetsVault().TryGetTargetCharacter(out var _enemyCharacter))
+                {
+                    Debug.LogError($"{character.GetGameObject.name} - has no TargetEnemy! ");
+                    _targetCharacter = _enemyCharacter;
+                }
+                break;
+
+            default:
+                Debug.LogError($"{character.GetGameObject.name} - Unknown target for trigger {manualSetTarget}");
+                break;
+        }
+
+        return _targetCharacter;
+    }
 }
