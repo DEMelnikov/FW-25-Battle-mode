@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: RestroreBreath
   description: RestoreBreath when not in action
   icon: {fileID: 0}
-  logging: 1
+  logging: 0
   triggers:
   - {fileID: 11400000, guid: be4fa88aabb027b44b181b227136b99e, type: 2}
   costs: []

@@ -15,8 +15,8 @@ MonoBehaviour:
   _targeting: 0
   _targetRadius: 0
   logging: 0
-  _addValue: 1
+  _addValue: -1
   _statName: 1
-  useAditionalMultiplier: 0
-  _statNameAditional: 1
+  useAditionalMultiplier: 1
+  _statNameAditional: 3
   _addStatOwner: 0

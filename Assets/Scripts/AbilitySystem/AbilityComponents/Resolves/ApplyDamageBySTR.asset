@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612a3f122b3c63846855bb22f80607f5, type: 3}
   m_Name: ApplyDamageBySTR
   m_EditorClassIdentifier: AbilitySystem::AddValueToStat
-  _targeting: 0
+  _targeting: 1
   _targetRadius: 0
   logging: 0
   _addValue: 1
-  _statName: 1
-  useAditionalMultiplier: 0
-  _statNameAditional: 1
+  _statName: 0
+  useAditionalMultiplier: 1
+  _statNameAditional: 3
   _addStatOwner: 0

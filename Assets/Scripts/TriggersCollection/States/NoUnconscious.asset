@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: TriggersCollection::TargetEnemyCharGlobalState
   _description: if Target Enemy  No  DEAD or Unconscious = true
   _name: TargetEnemyHas(HasNo)GlobalState
-  logging: 1
+  logging: 0
   _statesToCheck: 0500000004000000
   _mustContainState: 0
