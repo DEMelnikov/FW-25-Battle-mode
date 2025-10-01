@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: AbilitySystem::EngagingResolve
   _targeting: 1
   _targetRadius: 0
+  logging: 1

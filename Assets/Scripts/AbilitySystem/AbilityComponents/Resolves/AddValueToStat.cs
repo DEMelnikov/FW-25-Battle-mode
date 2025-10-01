@@ -16,12 +16,18 @@ public class AddValueToStat : AbilityResolve
 
     public override void ApplyResolve(ICharacter character, int outcome)
     {
+        if (logging) Debug.Log($"Start Resolve {this.name}:");
         if (outcome <= 0) return;
         
         var _target = GetTargetForAbility(character);
+        if (_target == null) Debug.LogError("NO TARGET ENEMY");
+
+
         var enemyStats = _target.GetStatsController();
         float multiplier = 1f;
 
+
+        if (logging) Debug.Log($"Resolve {this.name} check for multiplier:");
         if (useAditionalMultiplier)  multiplier = GetAditionalMultiplier(character); 
 
         enemyStats.Stats[_statName].AddToTmpModifier(outcome * _addValue * multiplier);

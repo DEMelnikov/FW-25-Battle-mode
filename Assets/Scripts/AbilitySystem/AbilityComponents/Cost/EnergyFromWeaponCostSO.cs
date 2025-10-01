@@ -23,18 +23,18 @@ public class EnergyFromWeaponCost : AbilityCost
             return false;
         }
             
-        if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: Got Hero stats");            
+        //if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: Got Hero stats");            
 ;
-        if (logging) Debug.Log($"Check payCost CanAffordCost: check started");
+        //if (logging) Debug.Log($"Check payCost CanAffordCost: check started");
 
         if (CanAffordCost(character))
         {
             heroStats.Stats[StatTag.ENERGY].AddToTmpModifier(_energyCost * -1);
-            if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: check finished success");
+            if (logging) Debug.Log($"PayCost EnergyFromWeaponCost: paid and finished success");
             return true;
         }
 
-        if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: check finished unsuccess");
+        if (logging) Debug.Log($"Check EnergyFromWeaponCost:  finished unsuccess");
         return false;
     }
 

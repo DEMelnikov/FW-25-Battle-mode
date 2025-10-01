@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: AbilitySystem::AddValueToStat
   _targeting: 0
   _targetRadius: 0
-  logging: 0
+  logging: 1
   _addValue: -1
   _statName: 1
   useAditionalMultiplier: 1

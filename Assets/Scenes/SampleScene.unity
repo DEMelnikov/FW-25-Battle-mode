@@ -365,8 +365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63de1ed3f60d1564399a64ecae364986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testingObject: {fileID: 878806293192145506}
-  testKey: 97
+  testingObject: {fileID: 578513236}
+  toSetEnemy: {fileID: 878806293192145506}
+  abilityToTest: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
+  character: {fileID: 0}
 --- !u!4 &304960289
 Transform:
   m_ObjectHideFlags: 0
@@ -5291,7 +5293,7 @@ Transform:
   m_GameObject: {fileID: 878806293192145506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: -1.19, z: 0}
+  m_LocalPosition: {x: 5.41, y: -1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
