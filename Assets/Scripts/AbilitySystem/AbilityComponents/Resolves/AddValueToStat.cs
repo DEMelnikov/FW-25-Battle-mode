@@ -22,10 +22,10 @@ public class AddValueToStat : AbilityResolve
         var _target = GetTargetForAbility(character);
         if (_target == null) Debug.LogError("NO TARGET ENEMY");
 
-
         var enemyStats = _target.GetStatsController();
         float multiplier = 1f;
 
+        //Debug.LogWarning($"Enemy Stats is TryGetComponent targetICharacter name  ");
 
         if (logging) Debug.Log($"Resolve {this.name} check for multiplier:");
         if (useAditionalMultiplier)  multiplier = GetAditionalMultiplier(character); 
