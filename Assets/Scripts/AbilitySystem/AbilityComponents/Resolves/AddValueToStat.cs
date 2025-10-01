@@ -15,6 +15,8 @@ public class AddValueToStat : AbilityResolve
             var enemyStats = _target.GetStatsController();
 
             enemyStats.Stats[_statName].AddToTmpModifier(outcome * _addValue);
+
+            if (logging) Debug.Log($" Resolve {this.name} to {_target.GetGameObject.name}'s {_statName} added {outcome * _addValue}");
             //enemyStats.Stats[StatTag.ENERGY].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value * -1);
         }
     }

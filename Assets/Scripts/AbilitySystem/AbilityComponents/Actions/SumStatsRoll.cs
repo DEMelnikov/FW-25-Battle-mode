@@ -69,7 +69,7 @@ public class SumStatsRoll : AbilityAction
 
         rolls = CalculateRolls(character);
 
-        for (int i = 0; i <= rolls; i++)
+        for (int i = 0; i < rolls; i++)
         {
             var roll = Random.Range(0f, 100f);
             if (logging) { Debug.Log($"{this.name}: Roll {i} result  = {roll} "); }

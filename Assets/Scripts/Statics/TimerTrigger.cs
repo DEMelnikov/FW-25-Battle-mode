@@ -135,6 +135,11 @@ public class TimerTrigger
             _isSubscribed = false;
         }
     }
-    
+
+    //public void Pausesynchronization()
+    //{
+    //    if (PauseManager.IsPaused) Stop(); else ResumeTimer();
+    //}
+
     // ...остальные методы (Stop, Reset и свойства) как в предыдущем примере...
 }

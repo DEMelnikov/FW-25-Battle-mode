@@ -8,6 +8,7 @@ public abstract class AbilityResolve : ScriptableObject
     [SerializeField] protected AbilityTargets _targeting = AbilityTargets.SELF;
     [SerializeField]
     [Min(0)] protected float _targetRadius = 0f;
+    [SerializeField] protected  bool logging = false;
 
     //public abstract void ApplyResolve(Character character, ActionOutcome outcome);
     public virtual void ApplyResolve(ICharacter character, int outcome) { }

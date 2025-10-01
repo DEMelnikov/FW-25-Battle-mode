@@ -20,6 +20,9 @@ public class TimedAbility : Ability
             onStart: null,
             onComplete: null,
             looped: true);
+
+        timer.Start();
+        //timer.Pausesynchronization();
     }
 
     public override void Unsubscribe(ICharacter character)
@@ -32,5 +35,6 @@ public class TimedAbility : Ability
     {
         base.OnUpdate(deltatime);
         timer.Update(deltatime);
+        if (logging) Debug.Log($"{_character.GetGameObject.name} - restore breath timer - {timer.RemainingTime}");
     }
 }
