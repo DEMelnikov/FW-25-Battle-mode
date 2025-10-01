@@ -2,23 +2,29 @@ using System.Collections.Generic;
 using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using static UnityEngine.GraphicsBuffer;
 
 
 [CreateAssetMenu(fileName = "New Ability", menuName = "FW25/Ability System/Ability")]
 public class Ability : BaseAbility, IAbility
 {
     [Header("Basic Info")]
-    [SerializeField] protected string abilityName;
-    [SerializeField] [TextArea(3,5)] private string description;
-                     public Sprite  icon;
-    [SerializeField] protected bool logging = false;
+
+    [SerializeField] protected string     abilityName;
+    [SerializeField] 
+    [TextArea(3,5)]  private   string     description;
+                     public    Sprite     icon;
+    [SerializeField] protected bool       logging = false;
     [SerializeField] protected ICharacter _character;
 
-    
     [Header("Activation Requirements")]
-    [SerializeField] protected List<Trigger>  triggers      = new List<Trigger>();
+    [SerializeField] protected List<Trigger>      triggers      = new List<Trigger>();
+    [SerializeField] public    List<AbilityCost>  costs         = new List<AbilityCost>();    
 
-    [SerializeField] public  List<AbilityCost>     costs    = new List<AbilityCost>();    
+    [Header("Targeting:")]
+    [SerializeField] protected AbilityTargets _targeting    = AbilityTargets.SELF;
+    [SerializeField] 
+           [Min (0)] protected float          _targetRadius = 0f;
 
     [Header("Execution Logic")]
     [SerializeField] private AbilityAction     _abilityAction;
@@ -34,7 +40,7 @@ public class Ability : BaseAbility, IAbility
 
     // UI методы
 
-    public void IniTialize(ICharacter character)
+    public virtual void IniTialize(ICharacter character)
     {
         //Debug.LogError($"{character.GetGameObject.name} - TRY IniTialize abilitiy");
         _character = character;
@@ -52,7 +58,7 @@ public class Ability : BaseAbility, IAbility
     public override bool CanAfford(ICharacter character)
     {
             
-        if (logging) { Debug.Log($"Start check CanAfford у {abilityName}"); }
+        if (logging) { Debug.Log($"{character.GetGameObject.name} - Start check CanAfford at ability {abilityName}"); }
         if (costs.Count==0)return true;
 
         foreach (var cost in costs)
@@ -63,7 +69,7 @@ public class Ability : BaseAbility, IAbility
                 return false;
             }
         }
-        if (logging) { Debug.Log($"CanAfford passed у {abilityName}"); }
+        if (logging) { Debug.Log($"{character.GetGameObject.name} -  CanAfford passed at ability {abilityName}"); }
         return true;
     }
 
@@ -82,7 +88,7 @@ public class Ability : BaseAbility, IAbility
     }
 
     public string GetAbilityName() { return abilityName; }
-    public bool GetLoggingState() { return logging; }
+    public bool  GetLoggingState() { return logging; }
 
     public sealed override bool TryActivateAbility(ICharacter character, out int outcome )
     {
@@ -116,7 +122,7 @@ public class Ability : BaseAbility, IAbility
     }
 
     protected sealed override bool CheckTriggersReady(ICharacter character)
-{
+    {
 
     if (logging) { Debug.Log($"Start Check Triggers у {character.name}"); }
     if (triggers.Count == 0) return true;
@@ -134,7 +140,7 @@ public class Ability : BaseAbility, IAbility
     }
 
     return true;
-}
+    }
 
     public virtual IAbility Clone()
     {
@@ -156,5 +162,11 @@ public class Ability : BaseAbility, IAbility
     {
         //TryActivateAbility(character, out int outcome);
     }
+
+    public virtual void OnUpdate(float deltatime)
+    {
+
+    }
+
 
 }

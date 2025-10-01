@@ -47,13 +47,20 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     /// Возвращает true, если цель валидна, иначе false.
     /// </summary>
     /// <returns>bool — результат проверки, out ICharacter </returns>
-    public bool TryGetTargetCharacter(out ICharacter targetCharacter)
+    public bool TryGetTargetCharacter(out ICharacter targetICharacter)
     {
-        targetCharacter = null;
+        targetICharacter = null;
         if (!ValidateTargetEnemy()) return false;
 
-        if (_selectedTarget.TryGetComponent<ICharacter>(out targetCharacter))
-            return true;
+
+        if (_selectedTarget.TryGetComponent<Character>(out var targetCharacter))
+        {
+            targetICharacter = targetCharacter as ICharacter;
+
+            //Debug.LogWarning($"I'm inside TryGetComponent targetICharacter name {targetICharacter.GetGameObject.name} ");
+
+            return targetICharacter != null; 
+        }
 
         return false;
     }

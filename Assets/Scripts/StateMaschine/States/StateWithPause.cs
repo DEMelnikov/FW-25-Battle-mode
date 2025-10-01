@@ -13,7 +13,6 @@ public class StateWithPause : State
         owner = owner = machine.Character;
 
         SubscribeToPauseEvents();
-
     }
 
     public override void OnExit(StateMachine machine)

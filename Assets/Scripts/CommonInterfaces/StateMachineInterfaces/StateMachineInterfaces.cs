@@ -7,6 +7,8 @@ public interface IStateMachine
     void SetState(FSMStates newState);
     CharacterGlobalState CharacterGoal { get; set; }
     GameObject GetGameObject();
+    FSMStates CurrentStateFSM {  get; }
+
 }
 
 

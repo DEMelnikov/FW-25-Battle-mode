@@ -8,17 +8,23 @@ using UnityEngine;
 
 public class AbilityController : MonoBehaviour, IAbilityController
 {
-                     private ICharacter     character;
-    [SerializeField] private bool logging = false;
-    [SerializeField] private List<Ability> AabilitiesATStart = new List<Ability>();
-    [SerializeField] private List<IAbility> availableAbilities = new List<IAbility>();          //OLD
+                     private ICharacter    character;
+    [SerializeField] private bool          logging            = false;
+    [SerializeField] private List<Ability> AabilitiesATStart  = new List<Ability>();
+    //[SerializeField] private List<IAbility> availableAbilities = new List<IAbility>();          //OLD
 
-    [SerializeField] private Dictionary<string, Ability> abilityInstances = new Dictionary<string, Ability>();  //NEW!
+    private Dictionary<string, Ability> abilityInstances      = new Dictionary<string, Ability>();
+    private Dictionary<string, Ability> timedAbilityInstances = new Dictionary<string, Ability>();
 
-    private void Awake()
+    #region UnityMethods
+    private void Update()
     {
-
+        foreach (var ability in timedAbilityInstances)
+        {
+            ability.Value.OnUpdate(Time.deltaTime);
+        }
     }
+
 
     private void OnDestroy()
     {
@@ -26,7 +32,12 @@ public class AbilityController : MonoBehaviour, IAbilityController
         {
             ability.Value.Unsubscribe(character);
         }
+        foreach (var ability in timedAbilityInstances)
+        {
+            ability.Value.Unsubscribe(character);
+        }
     }
+    #endregion
 
     public void Initialize()
     {
@@ -42,33 +53,52 @@ public class AbilityController : MonoBehaviour, IAbilityController
             InitAbility(ability);  
         }
 
+
         //Debug.LogError($"{character.GetGameObject.name} - in abilityInstances {abilityInstances.Count} abilities");
 
-        foreach (var ability in abilityInstances)
-        {
+        //foreach (var ability in abilityInstances)
+        //{
 
-            ability.Value.IniTialize(character);
-            ability.Value.Subscribe(character);
-        }
+        //    ability.Value.IniTialize(character);
+        //    ability.Value.Subscribe(character);
+        //}
+
+        //foreach (var ability in timedAbilityInstances)
+        //{
+
+        //    ability.Value.IniTialize(character);
+        //    ability.Value.Subscribe(character);
+        //}
 
 
-
-        if (logging) Debug.Log($" {character.name } AbilityController Initialized = {abilityInstances.Count} abilities");
+        if (logging) Debug.Log($" {character.name } AbilityController Initialized = {abilityInstances.Count+timedAbilityInstances.Count} abilities");
     }
 
     private void InitAbility(Ability originalability)
     {
-        if (!abilityInstances.ContainsKey(originalability.GetName))
+        if (!abilityInstances.ContainsKey(originalability.GetName) || !timedAbilityInstances.ContainsKey(originalability.GetName) )
         {
             Ability clone = Instantiate(originalability);
-            abilityInstances[originalability.GetName] = clone;
+            clone.IniTialize(character);
+            clone.Subscribe(character);
+
+            if (clone.IsTimed)
+            {
+                timedAbilityInstances[originalability.GetName] = clone;
+            }
+            else
+            {
+                abilityInstances[originalability.GetName] = clone;
+            }
         }
     }
 
     public Dictionary<string, Ability> GetAbilities { get => abilityInstances; }
+    public Dictionary<string, Ability> GetTimedAbilityInstances { get => timedAbilityInstances; }
+
     //public bool TryGetAbilityByName(string _abilityName, out var _ability)
     //{
-       
+
     //    if abilityInstances.Co
     //}
 
@@ -85,17 +115,17 @@ public class AbilityController : MonoBehaviour, IAbilityController
         return ability != null && ability.CanAfford(character);
     }
 
-    // ћетоды дл€ управлени€ списком способностей
-    public void AddAbility(IAbility ability)
-    {
-        if (ability != null && !availableAbilities.Contains(ability))
-            availableAbilities.Add(ability);
-    }
+    //// ћетоды дл€ управлени€ списком способностей OLD
+    //public void AddAbility(IAbility ability)
+    //{
+    //    if (ability != null && !availableAbilities.Contains(ability) && !timedAbilityInstances.Contains(ability) )
+    //        availableAbilities.Add(ability);
+    //}
 
-    public void RemoveAbility(IAbility ability)
-    {
-        availableAbilities.Remove(ability);
-    }
+    //public void RemoveAbility(IAbility ability)
+    //{
+    //    availableAbilities.Remove(ability);
+    //}
 
     //[System.Obsolete("Use HasTargetEnemy() for checking and ValidateAndCleanTarget() for cleaning")] 
     //public List<IAbility> GetAbilitiesByTag(string tag)
@@ -103,5 +133,5 @@ public class AbilityController : MonoBehaviour, IAbilityController
     //    return availableAbilities.FindAll(a => a.HasTag(tag));
     //}
 
-    public List<IAbility> GetAllAbilities() => availableAbilities;
+    //public List<IAbility> GetAllAbilities() => availableAbilities;
 }

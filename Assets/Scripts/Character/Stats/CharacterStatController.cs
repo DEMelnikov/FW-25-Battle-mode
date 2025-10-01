@@ -24,7 +24,7 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
     {
         //Stats.Add(StatTag.Health, new CharacterStat("Health", StatTag.Health, 100f));
         //Stats.Add(StatTag.Mana, new CharacterStat("Mana", StatTag.Mana, 50f));
-        Stats.Add(StatTag.Strength, new Stat("Strength", StatTag.Strength, 5f,true));
+        //Stats.Add(StatTag.Strength, new Stat("Strength", StatTag.Strength, 5f,true));
         //Stats.Add(StatTag.MovementSpeed, new CharacterStat("Movement Speed", StatTag.MovementSpeed, 5f));
 
         foreach (var stat in Stats.Values)
@@ -47,7 +47,7 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
             }
             else
             {
-                Debug.LogWarning($"Duplicate StatTag {statDef.Tag} in config!", this);
+                Debug.LogWarning($"{this.gameObject.name} - Duplicate StatTag {statDef.Tag} in config!", this);
             }
         }
     }

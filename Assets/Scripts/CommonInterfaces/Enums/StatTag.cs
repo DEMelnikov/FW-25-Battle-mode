@@ -1,11 +1,15 @@
 public enum StatTag
 {
+    //Main
     Health,
-    Energy,
-    //Mana,
+    ENERGY,
+    ENDURANCE,
     Strength,
     Agility,
-    UnarmedAttack
+    
+    //Secondary
+    UnarmedAttack,
+    RANGEDATTACK
     //Intelligence,
     //AttackDamage,
     //Armor,

@@ -2,10 +2,10 @@ using Unity.Android.Gradle;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-[CreateAssetMenu(fileName = "Ability_subscribe", menuName = "FW25/Ability System/Ability With Stat Subscribe")]
+[CreateAssetMenu(fileName = "Ability_subscribe", menuName = "FW25/Ability System/Ability/Ability With Stat Subscribe")]
 public class AbilityWithSubscribeToStat: Ability
 {
-    [SerializeField] private StatTag _statToSubscribe = StatTag.Energy;
+    [SerializeField] private StatTag _statToSubscribe = StatTag.ENERGY;
 
     public override void Subscribe(ICharacter character)
     {
