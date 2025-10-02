@@ -56,10 +56,10 @@ public class GameConstantsEditor : Editor
             GUILayout.Space(10);
         }
 
-        // Кнопки управления
+        // Кнопки управления - ПЕРВАЯ ГРУППА
         GUILayout.Space(20);
-        EditorGUILayout.BeginHorizontal();
 
+        EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Initialize Constants"))
         {
             constants.Initialize();
@@ -73,11 +73,10 @@ public class GameConstantsEditor : Editor
             AddMissingConstants(constants);
             GroupConstants(constants);
         }
-
         EditorGUILayout.EndHorizontal();
 
+        // ВТОРАЯ ГРУППА КНОПОК
         EditorGUILayout.BeginHorizontal();
-
         if (GUILayout.Button("Remove Orphaned", GUILayout.Width(150)))
         {
             if (EditorUtility.DisplayDialog("Remove Orphaned Constants",
@@ -101,16 +100,14 @@ public class GameConstantsEditor : Editor
                 Debug.Log("All constants reset to defaults");
             }
         }
-
         EditorGUILayout.EndHorizontal();
 
         // Секция Импорт/Экспорт
         GUILayout.Space(20);
         EditorGUILayout.LabelField("Import / Export", EditorStyles.boldLabel);
 
+        // ТРЕТЬЯ ГРУППА КНОПОК - Экспорт
         EditorGUILayout.BeginHorizontal();
-
-        // Экспорт
         if (GUILayout.Button("Export to JSON"))
         {
             ExportToJson(constants);
@@ -120,12 +117,10 @@ public class GameConstantsEditor : Editor
         {
             ExportToCsv(constants);
         }
-
         EditorGUILayout.EndHorizontal();
 
+        // ЧЕТВЕРТАЯ ГРУППА КНОПОК - Импорт
         EditorGUILayout.BeginHorizontal();
-
-        // Импорт
         if (GUILayout.Button("Import from JSON"))
         {
             string path = EditorUtility.OpenFilePanel("Import JSON", "", "json");
@@ -145,7 +140,6 @@ public class GameConstantsEditor : Editor
                 GroupConstants(constants);
             }
         }
-
         EditorGUILayout.EndHorizontal();
 
         // Поле для быстрого экспорта
@@ -153,10 +147,12 @@ public class GameConstantsEditor : Editor
         EditorGUILayout.LabelField("Quick Export Path:", EditorStyles.miniLabel);
         exportPath = EditorGUILayout.TextField(exportPath);
 
+        EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Quick Export to JSON Path"))
         {
             QuickExportToJson(constants, exportPath);
         }
+        EditorGUILayout.EndHorizontal();
 
         // Статистика
         GUILayout.Space(10);
