@@ -11,5 +11,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ced3accccf5078429a363393ef71564, type: 3}
   m_Name: GameConstants
-  m_EditorClassIdentifier: Assembly-CSharp::GameConstants
+  m_EditorClassIdentifier: Constants::GameConstants
   constants: []
