@@ -3,39 +3,44 @@ using System;
 using UnityEngine;
 public enum ConstantType
 {
-    // Player
-    [ConstantInfo("Player", "Базовая скорость игрока", 5f)]
-    PlayerSpeed,
+    [ConstantInfo("DC", "Default Attack DC", 50f)]
+    DC_attack_Default
 
-    [ConstantInfo("Player", "Сила прыжка", 10f)]
-    JumpForce,
 
-    [ConstantInfo("Player", "Максимальное здоровье", 100f)]
-    PlayerMaxHealth,
 
-    // Physics
-    [ConstantInfo("Physics", "Гравитация", 9.81f)]
-    Gravity,
+    //// Player
+    //[ConstantInfo("Player", "Базовая скорость игрока", 5f)]
+    //PlayerSpeed,
 
-    [ConstantInfo("Physics", "Сила трения", 0.2f)]
-    Friction,
+    //[ConstantInfo("Player", "Сила прыжка", 10f)]
+    //JumpForce,
 
-    // Game
-    [ConstantInfo("Game", "Длительность игры (секунды)", 180f)]
-    GameDuration,
+    //[ConstantInfo("Player", "Максимальное здоровье", 100f)]
+    //PlayerMaxHealth,
 
-    [ConstantInfo("Game", "Максимальный счет", 1000f)]
-    MaxScore,
+    //// Physics
+    //[ConstantInfo("Physics", "Гравитация", 9.81f)]
+    //Gravity,
 
-    [ConstantInfo("Game", "Время возрождения", 3f)]
-    RespawnTime,
+    //[ConstantInfo("Physics", "Сила трения", 0.2f)]
+    //Friction,
 
-    // UI
-    [ConstantInfo("UI", "Длительность анимации UI", 0.3f)]
-    UIAnimationDuration,
+    //// Game
+    //[ConstantInfo("Game", "Длительность игры (секунды)", 180f)]
+    //GameDuration,
 
-    [ConstantInfo("UI", "Скорость всплывающего текста", 2f)]
-    FloatingTextSpeed
+    //[ConstantInfo("Game", "Максимальный счет", 1000f)]
+    //MaxScore,
+
+    //[ConstantInfo("Game", "Время возрождения", 3f)]
+    //RespawnTime,
+
+    //// UI
+    //[ConstantInfo("UI", "Длительность анимации UI", 0.3f)]
+    //UIAnimationDuration,
+
+    //[ConstantInfo("UI", "Скорость всплывающего текста", 2f)]
+    //FloatingTextSpeed
 }
 
 // Атрибут для мета-информации

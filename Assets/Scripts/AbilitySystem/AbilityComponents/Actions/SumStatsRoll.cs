@@ -9,16 +9,18 @@ public class SumStatsRoll : AbilityAction
     //[SerializeField] private StatTag _secondaryAttackStat = StatTag.UnarmedAttack;
 
     [SerializeField] protected List<StatTag> stats = new List<StatTag>();
+    [SerializeField] protected ConstantType defaultDC;
 
 
-    [SerializeField] [Range(0, 100)]  private float _DC = 50f;
+    //[SerializeField] [Range(0, 100)]  private float _DC = 50f;
     //public string attackStat = "Attack";
     //public string defenseStat = "Defense";
 
     //public override ActionOutcome ExecuteAction(Character character)
     public override int ExecuteAction(ICharacter character)
     {
-        return Action(character, _DC);
+        //float defaultDC = Constants.attackDC;
+        return Action(character, Constants.attackDC);
     }
 
     public override int ExecuteAction(ICharacter character, float myDC)
@@ -55,6 +57,7 @@ public class SumStatsRoll : AbilityAction
 
     private int Action(ICharacter character, float DC)
     {
+
         if (logging) { Debug.Log($"Character {character.ObjName} starts action BaseAttackRollAction "); }
 
         int outcome = 0;
