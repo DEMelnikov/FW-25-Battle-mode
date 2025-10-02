@@ -38,14 +38,13 @@ public class Ability : BaseAbility, IAbility
     [Header("Events Subscribing")]
     [SerializeField] private bool isSubscribed = false;
 
-    // UI методы
+    // UI методы   
 
     public virtual void IniTialize(ICharacter character)
     {
         //Debug.LogError($"{character.GetGameObject.name} - TRY IniTialize abilitiy");
         _character = character;
         isSubscribed = false;
-
         //Debug.LogError($"{character.GetGameObject.name} -  IniTialize Success {_character.GetGameObject.name} + {isSubscribed}");
     }
 
