@@ -3,9 +3,9 @@ using UnityEngine;
 
 public enum AbilityTag
 {
+    EMPTY,
     ATTACK,
     DEFENCE,
-    EMPTY,
     TIMED,
     WITHSUBSCRIBE
     //// Базовые категории

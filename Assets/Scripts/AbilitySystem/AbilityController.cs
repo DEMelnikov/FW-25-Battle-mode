@@ -5,12 +5,13 @@ using UnityEditor.Playables;
 using UnityEngine;
 
 //Version 1.2 - with Dictionary for abilities with subscribe
+//Version 1.3 - added default Attack & Defence abilities with methods
 
 public class AbilityController : MonoBehaviour, IAbilityController
 {
                      private ICharacter    character;
     [SerializeField] private bool          logging            = false;
-    [SerializeField] private List<Ability> AabilitiesATStart  = new List<Ability>();
+    [SerializeField] private List<Ability> AabilitiesATStart  = new();
 
     [Header("Attack Settings:")]
     [SerializeField] private Ability _initialAttackability;
@@ -78,6 +79,12 @@ public class AbilityController : MonoBehaviour, IAbilityController
 
     private void InitAbility(Ability originalability)
     {
+        if (originalability == null)
+        {
+            Debug.LogError($"{character.ObjName} - trying Initialize empty ability");
+            return;
+        }
+
         if (!abilityInstances.ContainsKey(originalability.GetName) || !timedAbilityInstances.ContainsKey(originalability.GetName) )
         {
             Ability clone = Instantiate(originalability);
@@ -104,12 +111,6 @@ public class AbilityController : MonoBehaviour, IAbilityController
     //    if abilityInstances.Co
     //}
 
-
-    [System.Obsolete("old")]
-    public  bool TryActivateAbility(IAbility ability)
-    {
-        return ability.TryActivateAbility(character, out _); 
-    }
 
     public bool CanActivateAbility(BaseAbility ability)
     {
@@ -184,4 +185,15 @@ public class AbilityController : MonoBehaviour, IAbilityController
         return false;
     }
 
+    public void TryExecuteAttackAbility()
+    {
+        if (_currentAttackAbility != null)
+            _currentAttackAbility.TryActivateAbility(character, out _);   
+    }
+
+    public void TryExecuteDegenceAbility()
+    {
+        if (_currentDefenceAbility != null)
+            _currentDefenceAbility.TryActivateAbility(character, out _);
+    }
 }

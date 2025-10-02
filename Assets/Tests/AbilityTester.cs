@@ -47,4 +47,10 @@ public class AbilityTester : MonoBehaviour
         //character.GetTargetsVault().TryGetTargetCharacter(out ICharacter enemyICharacter);
         //enemyCharacter = enemyICharacter;
     }
+
+    [Button]
+    public void TestAttack()
+    {
+        character.AbilityController.TryExecuteAttackAbility();
+    }
 }

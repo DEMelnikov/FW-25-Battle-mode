@@ -26,6 +26,6 @@ MonoBehaviour:
   _animationTrigger: 4
   resolves:
   - {fileID: 11400000, guid: 04ce75d89d2f9c74c851fc207e40eed4, type: 2}
-  tags: []
+  abilityTags: 00000000
   isSubscribed: 0
   _interval: 1

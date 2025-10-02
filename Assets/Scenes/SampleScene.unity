@@ -2299,6 +2299,7 @@ MonoBehaviour:
   _weaponRange: 2
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2
+  _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 0.5
 --- !u!114 &904469787
@@ -2385,6 +2386,8 @@ MonoBehaviour:
   logging: 1
   AabilitiesATStart:
   - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
+  _initialAttackability: {fileID: 0}
+  _initialDefenceAbility: {fileID: 0}
 --- !u!114 &904469791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4453,6 +4456,7 @@ MonoBehaviour:
   _weaponRange: 2
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2
+  _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 0.5
 --- !u!114 &1971976391
@@ -4538,6 +4542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logging: 0
   AabilitiesATStart: []
+  _initialAttackability: {fileID: 0}
+  _initialDefenceAbility: {fileID: 0}
 --- !u!114 &1971976395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5439,6 +5445,8 @@ MonoBehaviour:
   logging: 0
   AabilitiesATStart:
   - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
+  _initialAttackability: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
+  _initialDefenceAbility: {fileID: 11400000, guid: 80a55596f2b50694ba8e455eae83bb85, type: 2}
 --- !u!195 &7723458236203311626
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5494,6 +5502,7 @@ MonoBehaviour:
   _weaponRange: 3
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2
+  _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 10
 --- !u!1660057539 &9223372036854775807

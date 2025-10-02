@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3701a9f828aa3674896752d19fe1246d, type: 3}
+  m_Name: temp Def ability
+  m_EditorClassIdentifier: 
+  isTimed: 0
+  abilityName: tempDef
+  description: 'only for tests
+
+'
+  icon: {fileID: 0}
+  logging: 1
+  triggers:
+  - {fileID: 11400000, guid: 976f0ad6d99642040a96942540933526, type: 2}
+  - {fileID: 11400000, guid: 1b3ccb156c40ad04f92559c7451d6c51, type: 2}
+  - {fileID: 11400000, guid: 9ffde317b9a3984459a5d369c8692733, type: 2}
+  costs:
+  - {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
+  _targeting: 1
+  _targetRadius: 0
+  _abilityAction: {fileID: 11400000, guid: 348df2c179bed8a4a95546ff1dc95735, type: 2}
+  _animationTrigger: 0
+  resolves:
+  - {fileID: 11400000, guid: 64be7a472faeb0448800c52deae7ab75, type: 2}
+  - {fileID: 11400000, guid: c6569b6bcd7cc0443aa62813d13858ff, type: 2}
+  - {fileID: 11400000, guid: 43b8668ef765bc64e8627cc687164692, type: 2}
+  abilityTags: 02000000
+  isSubscribed: 0

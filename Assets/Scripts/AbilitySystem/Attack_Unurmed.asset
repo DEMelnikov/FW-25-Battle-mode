@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3701a9f828aa3674896752d19fe1246d, type: 3}
-  m_Name: Ability For test
+  m_Name: Attack_Unurmed
   m_EditorClassIdentifier: 
   isTimed: 0
   abilityName: MeleUnarmedAttackToUnconscious
@@ -33,5 +33,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 64be7a472faeb0448800c52deae7ab75, type: 2}
   - {fileID: 11400000, guid: c6569b6bcd7cc0443aa62813d13858ff, type: 2}
   - {fileID: 11400000, guid: 43b8668ef765bc64e8627cc687164692, type: 2}
-  abilityTags: 
+  abilityTags: 01000000
   isSubscribed: 0

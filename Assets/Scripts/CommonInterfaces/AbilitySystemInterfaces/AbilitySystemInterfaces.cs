@@ -15,8 +15,9 @@ public interface IAbility
 
 public interface IAbilityController
 {
-    bool TryActivateAbility(IAbility ability);
     void Initialize();
+    void TryExecuteAttackAbility();
+    void TryExecuteDegenceAbility();
 
 }
 

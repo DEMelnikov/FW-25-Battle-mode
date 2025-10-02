@@ -38,14 +38,14 @@ public class AddValueToStat : AbilityResolve
 
     private float GetAditionalMultiplier(ICharacter character)
     {
-        float multiplier = 1f;
+        float multiplier;
 
         var _target = GetTargetForAbility(character, _addStatOwner);
         var enemyStats = _target.GetStatsController();
 
         multiplier = enemyStats.Stats[_statNameAditional].Value;
 
-        if (multiplier == 0 || multiplier == null) multiplier = 1;
+        if (multiplier == 0 ) multiplier = 1f;
 
         if (logging) Debug.Log($" Resolve {this.name} to {_target.GetGameObject.name}'s has aditional multiplier {_statName} = {multiplier}");
 
