@@ -11,9 +11,14 @@ public class AbilityTester : MonoBehaviour
     [SerializeField] private GameObject toSetEnemy;
 
     [SerializeField] private Ability    abilityToTest;
+    [SerializeField] private Trigger    triggerToTest;    
     
-    
-    [SerializeField] private Character  character;
+                     private Character  character;
+
+    [Header("Set Stat")]
+    [SerializeField] private StatTag _statToSetValue = StatTag.ENERGY;
+    [SerializeField] private float   _newValue = 10f;
+
     //[SerializeField] private Character  enemyCharacter;
 
 
@@ -52,5 +57,24 @@ public class AbilityTester : MonoBehaviour
     public void TestAttack()
     {
         character.AbilityController.TryExecuteAttackAbility();
+    }
+
+    [Button]
+    public void TestTrigger()
+    {
+        triggerToTest.CheckTrigger(character);
+    }
+
+    [Button]
+    public void SetNewValue()
+    {
+        float oldvalue = character.GetStatsController().Stats[_statToSetValue].Value;
+        float oldPercentage = character.GetStatsController().Stats[_statToSetValue].GetValuePercentage();
+
+        character.GetStatsController().Stats[_statToSetValue].TESTSSetValue(_newValue);
+
+        float newValue = character.GetStatsController().Stats[_statToSetValue].Value;
+        float newPercentage = character.GetStatsController().Stats[_statToSetValue].GetValuePercentage();
+        Debug.Log($" old value ={oldvalue} {oldPercentage}% /// new value {newValue} {newPercentage}% ");
     }
 }

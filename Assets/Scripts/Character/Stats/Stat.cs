@@ -139,6 +139,12 @@ public class Stat:IStat
         }
     }
 
+    //TODO:   REMOVE after tests
+    public void TESTSSetValue(float newValue)
+    {
+        _lastCalculatedValue = newValue;
+    }
+
     public void AddToTmpModifier(float tmpValue)
     {
         _permanentModifiers[0].AddToValue(tmpValue);
@@ -191,4 +197,13 @@ public class Stat:IStat
             }
         }
     }
+
+    public float GetValuePercentage()
+    {
+        if (BaseValue == 0f)
+            return 0f; // или возвращать 100f, если BaseValue = 0 трактовать как полный объем
+
+        return (Value / BaseValue) * 100f;
+    }
+
 }

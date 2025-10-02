@@ -32,7 +32,8 @@ public class AddValueToStat : AbilityResolve
 
         enemyStats.Stats[_statName].AddToTmpModifier(outcome * _addValue * multiplier);
 
-        if (logging) Debug.Log($" Resolve {this.name} to {_target.GetGameObject.name}'s {_statName} added {outcome * _addValue * multiplier} with multiplier {multiplier}");         //enemyStats.Stats[StatTag.ENERGY].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value * -1);
+        if (logging) Debug.Log($" Resolve {this.name} to {_target.GetGameObject.name}'s {_statName} added {outcome * _addValue * multiplier} with multiplier {multiplier}"); 
+        //enemyStats.Stats[StatTag.ENERGY].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value * -1);
         
     }
 

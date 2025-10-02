@@ -73,4 +73,6 @@ public interface IStat
     /// Добавляет значение к временному модификатору
     /// </summary>
     void AddToTmpModifier(float tmpValue);
+    float GetValuePercentage();
+    void TESTSSetValue(float newValue);
 }

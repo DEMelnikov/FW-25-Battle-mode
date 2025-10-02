@@ -368,7 +368,9 @@ MonoBehaviour:
   testingObject: {fileID: 578513236}
   toSetEnemy: {fileID: 878806293192145506}
   abilityToTest: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
-  character: {fileID: 0}
+  triggerToTest: {fileID: 11400000, guid: 7901f510e08c2214184e279e7b6643f2, type: 2}
+  _statToSetValue: 1
+  _newValue: 10
 --- !u!4 &304960289
 Transform:
   m_ObjectHideFlags: 0

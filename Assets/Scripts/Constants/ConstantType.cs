@@ -4,13 +4,11 @@ using UnityEngine;
 public enum ConstantType
 {
     [ConstantInfo("DC", "Default Attack DC", 50f)]
-    DC_attack_Default
+    DC_attack_Default,
 
-
-
-    //// Player
-    //[ConstantInfo("Player", "Базовая скорость игрока", 5f)]
-    //PlayerSpeed,
+    // Player
+    [ConstantInfo("Player", "Базовая скорость игрока", 5f)]
+    DefenceEnergyLimit,
 
     //[ConstantInfo("Player", "Сила прыжка", 10f)]
     //JumpForce,
