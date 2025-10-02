@@ -11,7 +11,10 @@ public enum ConstantType
     DefenceEnergyLimit,
 
     [ConstantInfo("Player", "Default price to defence roll", 0.5f)]
-    DefenceEnergyCost
+    DefenceEnergyCost,
+
+    [ConstantInfo("DC", "Default DC", 50f)]
+    DefaultDC
 
     //[ConstantInfo("Player", "Сила прыжка", 10f)]
     //JumpForce,

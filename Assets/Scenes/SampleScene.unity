@@ -371,6 +371,8 @@ MonoBehaviour:
   triggerToTest: {fileID: 11400000, guid: 7901f510e08c2214184e279e7b6643f2, type: 2}
   _statToSetValue: 1
   _newValue: 10
+  _costToTest: {fileID: 11400000, guid: 643fdf77429f03346aa3dfb09f118a00, type: 2}
+  _actionToTest: {fileID: 11400000, guid: a2fab8955406ce8458a429daf4bf1a75, type: 2}
 --- !u!4 &304960289
 Transform:
   m_ObjectHideFlags: 0

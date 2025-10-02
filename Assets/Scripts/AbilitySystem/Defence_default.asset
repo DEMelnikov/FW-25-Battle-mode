@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Defence_default
   m_EditorClassIdentifier: AbilitySystem::AbilityWithSubscribeToStat
   isTimed: 0
-  abilityName: 
+  abilityName: DefaultDefence
   description: 
   icon: {fileID: 0}
-  logging: 0
-  triggers: []
-  costs: []
+  logging: 1
+  triggers:
+  - {fileID: 11400000, guid: 7901f510e08c2214184e279e7b6643f2, type: 2}
+  costs:
+  - {fileID: 11400000, guid: 643fdf77429f03346aa3dfb09f118a00, type: 2}
   _targeting: 0
   _targetRadius: 0
   _abilityAction: {fileID: 0}

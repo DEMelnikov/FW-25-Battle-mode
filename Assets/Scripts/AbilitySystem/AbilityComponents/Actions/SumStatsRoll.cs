@@ -35,14 +35,14 @@ public class SumStatsRoll : AbilityAction
         
         if (stats.Count == 0)
         {
-            Debug.LogError($"{character.GetGameObject.name} - empty Stats collection in action {this.name}");
+            Debug.LogError($"{character.ObjName} - empty Stats collection in action {this.name}");
             return 0;
         }
 
         IStatsController charStats = character.StatController;
         if (charStats == null)
         {
-            Debug.LogError($"BaseAttackRollAction: can't get CharacterStatsController "); 
+            Debug.LogError($"{character.ObjName} - {this.name}: can't get CharacterStatsController "); 
             return 0;
         }
 
@@ -58,7 +58,7 @@ public class SumStatsRoll : AbilityAction
     private int Action(ICharacter character, float DC)
     {
 
-        if (logging) { Debug.Log($"Character {character.ObjName} starts action BaseAttackRollAction "); }
+        if (logging) { Debug.Log($"Character {character.ObjName} starts action {this.name} "); }
 
         int outcome = 0;
         int rolls = 0;
@@ -66,7 +66,7 @@ public class SumStatsRoll : AbilityAction
         IStatsController charStats = character.StatController;
         if (charStats == null)
         {
-            if (logging) { Debug.Log($"BaseAttackRollAction: can't get CharacterStatsController "); }
+            Debug.LogError($"{character.ObjName} - {this.name}: can't get CharacterStatsController ");
             return 0;
         }
 

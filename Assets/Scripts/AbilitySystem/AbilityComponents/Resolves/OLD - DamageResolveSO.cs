@@ -13,8 +13,8 @@ public class DamageResolveSO : AbilityResolve
 
         if (outcome > 0)
         {
-            GameObject enemy = character.GetTargetsVault().GetTargetEnemy();
-            IStatsController enemyStats = character.GetTargetsVault().GetTargetEnemy().
+            GameObject enemy = character.TargetsVault.GetTargetEnemy();
+            IStatsController enemyStats = character.TargetsVault.GetTargetEnemy().
                 GetComponent<ICharacter>().StatController;
 
             IStatsController heroStats = character.StatController;

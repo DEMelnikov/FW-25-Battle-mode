@@ -9,7 +9,8 @@ public enum StatTag
     
     //Secondary
     UnarmedAttack,
-    RANGEDATTACK
+    RANGEDATTACK,
+    DEFENCE
     //Intelligence,
     //AttackDamage,
     //Armor,

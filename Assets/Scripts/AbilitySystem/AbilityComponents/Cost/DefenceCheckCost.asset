@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: AbilitySystem::SumOfStatsAsMultiplerToConst
   logging: 1
   _statToAddModifier: 1
+  _listStatsToSum: 04000000
   _constant: 2
   isSubtraction: 1

@@ -12,7 +12,7 @@ namespace AbilitySystem.AbilityComponents
             if (logging) Debug.Log($"{character.ObjName} starts CheckTrigger NoSelectedEnemy");
 
             // Используем новый безопасный метод
-            if (!character.GetTargetsVault().TryGetTargetCharacter(out _)) 
+            if (!character.TargetsVault.TryGetTargetCharacter(out _)) 
             {
                 if (logging) Debug.Log($"{character.ObjName}  NoSelectedEnemy - result TRUE");
                 return true;

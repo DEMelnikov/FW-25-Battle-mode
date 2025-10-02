@@ -11,7 +11,7 @@ public class HasValidTargetTrigger : Trigger
         if (logging) Debug.Log($"{character.ObjName} starts CheckTrigger {this.name}");
 
         // Используем новый безопасный метод
-        if (character.GetTargetsVault().TryGetTargetEnemy(out _))
+        if (character.TargetsVault.TryGetTargetEnemy(out _))
         {
             if (logging) Debug.Log($"{character.ObjName} CheckTrigger {this.name} pass success");
             return true;

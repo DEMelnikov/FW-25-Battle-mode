@@ -41,3 +41,7 @@ MonoBehaviour:
     Tag: 6
     BaseValue: 0
     HasAlarm: 0
+  - Name: Defence
+    Tag: 7
+    BaseValue: 1
+    HasAlarm: 0

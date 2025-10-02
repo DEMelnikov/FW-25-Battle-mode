@@ -12,7 +12,7 @@ namespace AbilitySystem.AbilityComponents
         {
             if (logging) Debug.Log($"{character.ObjName} starts CheckTrigger {this.name}");
 
-            if (character.GetTargetsVault().GetWayPoint() != Vector3.zero)
+            if (character.TargetsVault.GetWayPoint() != Vector3.zero)
                 return true;
 
             return false;

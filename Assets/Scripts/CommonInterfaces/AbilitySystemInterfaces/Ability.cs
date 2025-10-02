@@ -35,8 +35,8 @@ public class Ability : BaseAbility, IAbility
     [Header("UI & Filtering")]
     public List<AbilityTag> abilityTags = new List<AbilityTag>();
 
-    [Header("Events Subscribing")]
-    [SerializeField] private bool isSubscribed = false;
+    //[Header("Events Subscribing")]
+                    private bool isSubscribed = false;
 
     // UI методы   
 

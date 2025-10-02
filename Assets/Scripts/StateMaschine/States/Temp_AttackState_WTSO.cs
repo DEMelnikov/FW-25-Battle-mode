@@ -16,7 +16,7 @@ public class Temp_AttackState_WTSO : StateWithPause
         base.OnEnter(machine);
         behaviorProfile = owner.GetBehaviorProfile();
         defaultAttack = behaviorProfile.BaseAttackAbility;
-        targetsVault = owner.GetTargetsVault();
+        targetsVault = owner.TargetsVault;
 
         attackTimer = new TimerTrigger(
         duration: behaviorProfile.BaseAttackInterval, // Например, 1 секунда

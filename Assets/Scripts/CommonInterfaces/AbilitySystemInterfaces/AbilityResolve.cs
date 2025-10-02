@@ -27,7 +27,7 @@ public abstract class AbilityResolve : ScriptableObject
             case AbilityTargets.TARGETENEMY:
                 if (logging) Debug.Log($"Resolve {this.name} Target to resolve is TargeteEnemy:");
 
-                if (character.GetTargetsVault().TryGetTargetCharacter(out var _enemyCharacter))
+                if (character.TargetsVault.TryGetTargetCharacter(out var _enemyCharacter))
                 {
                     _targetCharacter = _enemyCharacter;
                 }
@@ -56,7 +56,7 @@ public abstract class AbilityResolve : ScriptableObject
                 break;
 
             case AbilityTargets.TARGETENEMY:
-                if (!character.GetTargetsVault().TryGetTargetCharacter(out var _enemyCharacter))
+                if (!character.TargetsVault.TryGetTargetCharacter(out var _enemyCharacter))
                 {
                     Debug.LogError($"{character.GetGameObject.name} - has no TargetEnemy! ");
                     _targetCharacter = _enemyCharacter;

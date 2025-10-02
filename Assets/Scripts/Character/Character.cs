@@ -90,7 +90,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     //public IStatsController StatController 
     public IStateMachine GetStateMachine() => _stateMachine;
     public IAbilityController AbilityController { get => _abilityController; }
-    public ICharacterTargetsVault GetTargetsVault() => _targets;
+    public ICharacterTargetsVault TargetsVault { get => _targets; private set => _targets = value as CharacterTargets; }
     public Transform transform => this.gameObject.transform;
     public GameObject GetGameObject => this.gameObject;
     public string ObjName => gameObject.name;

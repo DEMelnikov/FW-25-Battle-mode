@@ -20,8 +20,11 @@ public class AbilityTester : MonoBehaviour
     [SerializeField] private float   _newValue = 10f;
 
     [Header("Cost tests")]
-    [SerializeField] private AbilityCost _costToTest; 
-    
+    [SerializeField] private AbilityCost _costToTest;
+
+    [Header("Action tests")]
+    [SerializeField] private AbilityAction _actionToTest;
+
 
     //[SerializeField] private Character  enemyCharacter;
 
@@ -52,7 +55,7 @@ public class AbilityTester : MonoBehaviour
     [Button]
     public void AddEnemy()
     {
-        character.GetTargetsVault().SetTargetEnemyCharacter(toSetEnemy.GetComponent<Character>());
+        character.        TargetsVault.SetTargetEnemyCharacter(toSetEnemy.GetComponent<Character>());
         //character.GetTargetsVault().TryGetTargetCharacter(out ICharacter enemyICharacter);
         //enemyCharacter = enemyICharacter;
     }
@@ -87,5 +90,11 @@ public class AbilityTester : MonoBehaviour
     public void TestCost()
     {
         _costToTest.PayAbilityCost(character);
+    }
+
+    [Button]
+    public void TestAction()
+    {
+        _actionToTest.ExecuteAction(character);
     }
 }

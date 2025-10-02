@@ -6,7 +6,7 @@ public interface ICharacter
     Transform transform { get; }
     GameObject GetGameObject { get; }
     string ObjName { get; }
-    ICharacterTargetsVault GetTargetsVault();
+    ICharacterTargetsVault TargetsVault { get; }
     IStatsController StatController { get; }
     public virtual void SetSelectedTarget(GameObject target) { }
     public SceneObjectTag SceneObjectTag { get; }

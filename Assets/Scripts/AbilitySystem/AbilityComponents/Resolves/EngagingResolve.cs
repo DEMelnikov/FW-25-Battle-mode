@@ -5,7 +5,7 @@ public class EngagingResolve : AbilityResolve
 {
     public override void ApplyResolve(ICharacter character, int outcome)
     {
-        var targetsVault = character.GetTargetsVault();
+        var targetsVault = character.TargetsVault;
         if (!targetsVault.HasTargetEnemy()) return;
         
 

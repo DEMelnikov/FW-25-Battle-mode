@@ -30,7 +30,7 @@ public class FSMStateCheck : Trigger
                 break;
 
             case AbilityTargets.TARGETENEMY:
-                if(!character.GetTargetsVault().TryGetTargetCharacter(out _targetCharacter))
+                if(!character.TargetsVault.TryGetTargetCharacter(out _targetCharacter))
                 {
                     Debug.LogError($"{character.GetGameObject.name} - has no TargetEnemy! ");
                     return false;
