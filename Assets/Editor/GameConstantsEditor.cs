@@ -12,13 +12,17 @@ public class GameConstantsEditor : Editor
 {
     private Dictionary<string, List<ConstantEntry>> groupedConstants;
     private string exportPath = "Constants/constants.json";
+    private bool needsRefresh = false;
 
     public override void OnInspectorGUI()
     {
         var constants = (GameConstants)target;
 
-        if (groupedConstants == null)
+        if (groupedConstants == null || needsRefresh)
+        {
             GroupConstants(constants);
+            needsRefresh = false;
+        }
 
         GUILayout.Space(10);
         EditorGUILayout.LabelField("Game Constants", EditorStyles.boldLabel);
@@ -56,26 +60,27 @@ public class GameConstantsEditor : Editor
             GUILayout.Space(10);
         }
 
-        // Кнопки управления - ПЕРВАЯ ГРУППА
+        // Кнопки управления
         GUILayout.Space(20);
 
+        // Группа 1
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Initialize Constants"))
         {
             constants.Initialize();
             EditorUtility.SetDirty(constants);
-            GroupConstants(constants);
+            needsRefresh = true;
             Debug.Log("Constants initialized!");
         }
 
         if (GUILayout.Button("Add Missing"))
         {
             AddMissingConstants(constants);
-            GroupConstants(constants);
+            needsRefresh = true;
         }
         EditorGUILayout.EndHorizontal();
 
-        // ВТОРАЯ ГРУППА КНОПОК
+        // Группа 2
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Remove Orphaned", GUILayout.Width(150)))
         {
@@ -84,7 +89,7 @@ public class GameConstantsEditor : Editor
                 "Remove", "Cancel"))
             {
                 int removedCount = RemoveOrphanedConstants(constants);
-                GroupConstants(constants);
+                needsRefresh = true;
                 Debug.Log($"Removed {removedCount} orphaned constants");
             }
         }
@@ -96,7 +101,7 @@ public class GameConstantsEditor : Editor
                 "Reset", "Cancel"))
             {
                 ResetToDefaults(constants);
-                GroupConstants(constants);
+                needsRefresh = true;
                 Debug.Log("All constants reset to defaults");
             }
         }
@@ -106,7 +111,7 @@ public class GameConstantsEditor : Editor
         GUILayout.Space(20);
         EditorGUILayout.LabelField("Import / Export", EditorStyles.boldLabel);
 
-        // ТРЕТЬЯ ГРУППА КНОПОК - Экспорт
+        // Группа 3 - Экспорт
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Export to JSON"))
         {
@@ -119,7 +124,7 @@ public class GameConstantsEditor : Editor
         }
         EditorGUILayout.EndHorizontal();
 
-        // ЧЕТВЕРТАЯ ГРУППА КНОПОК - Импорт
+        // Группа 4 - Импорт
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Import from JSON"))
         {
@@ -127,7 +132,7 @@ public class GameConstantsEditor : Editor
             if (!string.IsNullOrEmpty(path))
             {
                 ImportFromJson(constants, path);
-                GroupConstants(constants);
+                needsRefresh = true;
             }
         }
 
@@ -137,7 +142,7 @@ public class GameConstantsEditor : Editor
             if (!string.IsNullOrEmpty(path))
             {
                 ImportFromCsv(constants, path);
-                GroupConstants(constants);
+                needsRefresh = true;
             }
         }
         EditorGUILayout.EndHorizontal();
@@ -147,6 +152,7 @@ public class GameConstantsEditor : Editor
         EditorGUILayout.LabelField("Quick Export Path:", EditorStyles.miniLabel);
         exportPath = EditorGUILayout.TextField(exportPath);
 
+        // Группа 5 - Быстрый экспорт
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Quick Export to JSON Path"))
         {
@@ -162,6 +168,12 @@ public class GameConstantsEditor : Editor
         if (GUI.changed)
         {
             EditorUtility.SetDirty(constants);
+        }
+
+        // Если нужно обновить GUI, вызываем Repaint
+        if (needsRefresh)
+        {
+            Repaint();
         }
     }
 
