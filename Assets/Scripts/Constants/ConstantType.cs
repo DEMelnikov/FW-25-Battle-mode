@@ -7,8 +7,11 @@ public enum ConstantType
     DC_attack_Default,
 
     // Player
-    [ConstantInfo("Player", "Базовая скорость игрока", 5f)]
+    [ConstantInfo("Player", "Limit to stop Defence Actions", 5f)]
     DefenceEnergyLimit,
+
+    [ConstantInfo("Player", "Default price to defence roll", 0.5f)]
+    DefenceEnergyCost
 
     //[ConstantInfo("Player", "Сила прыжка", 10f)]
     //JumpForce,

@@ -19,6 +19,10 @@ public class AbilityTester : MonoBehaviour
     [SerializeField] private StatTag _statToSetValue = StatTag.ENERGY;
     [SerializeField] private float   _newValue = 10f;
 
+    [Header("Cost tests")]
+    [SerializeField] private AbilityCost _costToTest; 
+    
+
     //[SerializeField] private Character  enemyCharacter;
 
 
@@ -76,5 +80,11 @@ public class AbilityTester : MonoBehaviour
         float newValue = character.GetStatsController().Stats[_statToSetValue].Value;
         float newPercentage = character.GetStatsController().Stats[_statToSetValue].GetValuePercentage();
         Debug.Log($" old value ={oldvalue} {oldPercentage}% /// new value {newValue} {newPercentage}% ");
+    }
+
+    [Button]
+    public void TestCost()
+    {
+        _costToTest.PayAbilityCost(character);
     }
 }
