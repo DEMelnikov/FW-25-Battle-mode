@@ -45,3 +45,7 @@ MonoBehaviour:
     Tag: 7
     BaseValue: 1
     HasAlarm: 0
+  - Name: DefenceDC
+    Tag: 8
+    BaseValue: 50
+    HasAlarm: 0

@@ -18,6 +18,7 @@ public interface IAbilityController
     void Initialize();
     void TryExecuteAttackAbility();
     void TryExecuteDegenceAbility();
+    string DefenceAbilityName {  get; } 
 
 }
 

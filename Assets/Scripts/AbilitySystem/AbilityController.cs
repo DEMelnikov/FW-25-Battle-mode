@@ -196,4 +196,6 @@ public class AbilityController : MonoBehaviour, IAbilityController
         if (_currentDefenceAbility != null)
             _currentDefenceAbility.TryActivateAbility(character, out _);
     }
+
+    public string DefenceAbilityName { get => _currentDefenceAbility.GetName; }
 }

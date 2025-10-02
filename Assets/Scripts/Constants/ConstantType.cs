@@ -14,7 +14,10 @@ public enum ConstantType
     DefenceEnergyCost,
 
     [ConstantInfo("DC", "Default DC", 50f)]
-    DefaultDC
+    DefaultDC,
+
+    [ConstantInfo("DC", "Bonus to DC when get Success on Defence ABility check", 7f)]
+    SeccessDefenceCheckBonus
 
     //[ConstantInfo("Player", "Сила прыжка", 10f)]
     //JumpForce,

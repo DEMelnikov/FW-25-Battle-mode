@@ -1,7 +1,8 @@
 // Простой скрипт для тестирования
 using AbilitySystem;
-using UnityEngine;
 using EditorAttributes;
+using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 
 public class AbilityTester : MonoBehaviour
@@ -24,6 +25,10 @@ public class AbilityTester : MonoBehaviour
 
     [Header("Action tests")]
     [SerializeField] private AbilityAction _actionToTest;
+
+    [Header("Resolves tests")]
+    [SerializeField] private AbilityResolve _resolveToTest;
+    [SerializeField] private int outcome;
 
 
     //[SerializeField] private Character  enemyCharacter;
@@ -96,5 +101,11 @@ public class AbilityTester : MonoBehaviour
     public void TestAction()
     {
         _actionToTest.ExecuteAction(character);
+    }
+
+    [Button]
+    public void TestResolve()
+    {
+        _resolveToTest.ApplyResolve(character, outcome);
     }
 }
