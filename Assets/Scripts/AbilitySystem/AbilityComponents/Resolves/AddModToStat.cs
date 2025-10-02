@@ -7,7 +7,7 @@ using UnityEngine.TextCore.Text;
 public class AddModToStat : AbilityResolve
 {
     [SerializeField] private StatTag _targetStat = StatTag.DefenceDC;
-    [SerializeField] private ConstantType _constantToMultiply = ConstantType.SeccessDefenceCheckBonus;
+    [SerializeField] private ConstantType _constantToMultiply = ConstantType.SuccessDefenceCheckBonus;
     [SerializeField] private StatModType _modType = StatModType.Flat;
     [SerializeField] private bool isSubtraction = false;
 
