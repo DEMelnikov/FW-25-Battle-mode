@@ -12,7 +12,7 @@ public class AbilityWithSubscribeToStat: Ability
         base.Subscribe(character);
         if (character == null || IsSubscribed) return;
 
-        if(character.GetStatsController().Stats.TryGetValue(_statToSubscribe, out var foundStat))
+        if(character.StatController.Stats.TryGetValue(_statToSubscribe, out var foundStat))
         {
             foundStat.OnValueChanged += OnStatValueChanged;
         }
@@ -26,7 +26,7 @@ public class AbilityWithSubscribeToStat: Ability
         base.Unsubscribe(character);
         if (!IsSubscribed) return;
 
-        if (character.GetStatsController().Stats.TryGetValue(_statToSubscribe, out var foundStat))
+        if (character.StatController.Stats.TryGetValue(_statToSubscribe, out var foundStat))
         {
             foundStat.OnValueChanged -= OnStatValueChanged;
         }

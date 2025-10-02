@@ -18,7 +18,7 @@ public class SumOfStatsAsMultiplerToConst : AbilityCost
         if (CanAffordCost(character))
         {
             float result = GetResult(character);
-            character.GetStatsController().Stats[_statToAddModifier].AddToTmpModifier(result);
+            character.            StatController.Stats[_statToAddModifier].AddToTmpModifier(result);
 
             if (logging) Debug.Log($"{character.ObjName} - {this.name} : paying cost {result} from {_statToAddModifier} stat");
             return true;
@@ -30,14 +30,14 @@ public class SumOfStatsAsMultiplerToConst : AbilityCost
 
     public override bool CanAffordCost(ICharacter character)
     {
-        IStatsController heroStats = character.GetStatsController();
+        IStatsController heroStats = character.StatController;
         if (heroStats.Stats[StatTag.ENERGY].Value + GetResult(character) > 0 ) return true; else return false;
     }
 
     private float GetResult(ICharacter character)
     {
         float multiplier = 0;
-        IStatsController heroStats = character.GetStatsController();
+        IStatsController heroStats = character.StatController;
 
         foreach (StatTag stat in _listStatsToSum)
         {

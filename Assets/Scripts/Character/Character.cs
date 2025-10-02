@@ -1,4 +1,5 @@
 using Unity.Android.Gradle;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,8 +30,9 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     #region Unity methods
     void Awake()
     {
-        _statsController = GetComponent<CharacterStatsController>();
+        StatController = GetComponent<CharacterStatsController>();
         if (_statsController == null) { Debug.Log("NO STATS CONTROLLER"); } else { if (logging) Debug.Log("Stat controller is on"); }
+
         InitializeFromSettings();
 
         _abilityController = GetComponent<IAbilityController>();
@@ -83,7 +85,9 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     {
         _targets.SetTargetEnemy(target);
     }
-    public IStatsController GetStatsController() { return _statsController; }
+    //[System.Obsolete("Use StatContoller")]
+    public IStatsController StatController { get => _statsController; private set => _statsController = value as CharacterStatsController; }
+    //public IStatsController StatController 
     public IStateMachine GetStateMachine() => _stateMachine;
     public IAbilityController AbilityController { get => _abilityController; }
     public ICharacterTargetsVault GetTargetsVault() => _targets;

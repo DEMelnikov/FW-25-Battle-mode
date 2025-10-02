@@ -15,9 +15,9 @@ public class DamageResolveSO : AbilityResolve
         {
             GameObject enemy = character.GetTargetsVault().GetTargetEnemy();
             IStatsController enemyStats = character.GetTargetsVault().GetTargetEnemy().
-                GetComponent<ICharacter>().GetStatsController();
+                GetComponent<ICharacter>().StatController;
 
-            IStatsController heroStats = character.GetStatsController();
+            IStatsController heroStats = character.StatController;
 
             enemyStats.Stats[StatTag.Health].AddToTmpModifier(outcome * _defaultDamage * -1);
             enemyStats.Stats[StatTag.ENERGY].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value*-1);

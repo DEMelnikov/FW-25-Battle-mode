@@ -15,7 +15,7 @@ public class EnergyFromWeaponCost : AbilityCost
     {
         if (logging) Debug.Log($"Check payCost EnergyFromWeaponCost: check started");
 
-        IStatsController heroStats = character.GetStatsController();
+        IStatsController heroStats = character.StatController;
 
         if (heroStats == null)
         {
@@ -40,7 +40,7 @@ public class EnergyFromWeaponCost : AbilityCost
 
     public override bool CanAffordCost(ICharacter character)
     {
-        IStatsController heroStats = character.GetStatsController();
+        IStatsController heroStats = character.StatController;
         if (heroStats.Stats[StatTag.ENERGY].Value > _energyCost)  return true; else return false;
     }
 }

@@ -22,11 +22,11 @@ public class CheckStatValue : Trigger
 
         if (isInPercantage)
         {
-            actualValue = _charcterToCheck.GetStatsController().Stats[_statToCheck].GetValuePercentage();
+            actualValue = _charcterToCheck.StatController.Stats[_statToCheck].GetValuePercentage();
         }
         else
         {
-            actualValue = _charcterToCheck.GetStatsController().Stats[_statToCheck].GetValuePercentage();
+            actualValue = _charcterToCheck.StatController.Stats[_statToCheck].GetValuePercentage();
         }
 
         float compareWith = Constants.Get(_costant);

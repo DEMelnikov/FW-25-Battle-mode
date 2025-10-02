@@ -27,7 +27,7 @@ public class ApproachTargetEnemyState_WTSO : State
         owner = machine.Character;//Context.Owner.GetComponent<Character>();
 
         _targetsVault    = owner.GetTargetsVault();
-        _statsController = owner.GetStatsController();
+        _statsController = owner.StatController;
         _navMeshAgent    = owner.GetNavMeshAgent();
         _behaviorProfile = owner.GetBehaviorProfile();
 

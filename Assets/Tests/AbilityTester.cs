@@ -72,13 +72,14 @@ public class AbilityTester : MonoBehaviour
     [Button]
     public void SetNewValue()
     {
-        float oldvalue = character.GetStatsController().Stats[_statToSetValue].Value;
-        float oldPercentage = character.GetStatsController().Stats[_statToSetValue].GetValuePercentage();
+        float oldvalue = character.StatController.Stats[_statToSetValue].Value;
+        float oldPercentage = character.StatController.Stats[_statToSetValue].GetValuePercentage();
 
-        character.GetStatsController().Stats[_statToSetValue].TESTSSetValue(_newValue);
+        character.
+        StatController.Stats[_statToSetValue].TESTSSetValue(_newValue);
 
-        float newValue = character.GetStatsController().Stats[_statToSetValue].Value;
-        float newPercentage = character.GetStatsController().Stats[_statToSetValue].GetValuePercentage();
+        float newValue = character.StatController.Stats[_statToSetValue].Value;
+        float newPercentage = character.StatController.Stats[_statToSetValue].GetValuePercentage();
         Debug.Log($" old value ={oldvalue} {oldPercentage}% /// new value {newValue} {newPercentage}% ");
     }
 

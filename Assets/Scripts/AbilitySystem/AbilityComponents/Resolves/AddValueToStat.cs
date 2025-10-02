@@ -22,7 +22,7 @@ public class AddValueToStat : AbilityResolve
         var _target = GetTargetForAbility(character);
         if (_target == null) Debug.LogError("NO TARGET ENEMY");
 
-        var enemyStats = _target.GetStatsController();
+        var enemyStats = _target.StatController;
         float multiplier = 1f;
 
         //Debug.LogWarning($"Enemy Stats is TryGetComponent targetICharacter name  ");
@@ -42,7 +42,7 @@ public class AddValueToStat : AbilityResolve
         float multiplier;
 
         var _target = GetTargetForAbility(character, _addStatOwner);
-        var enemyStats = _target.GetStatsController();
+        var enemyStats = _target.StatController;
 
         multiplier = enemyStats.Stats[_statNameAditional].Value;
 

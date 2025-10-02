@@ -39,7 +39,7 @@ public class SumStatsRoll : AbilityAction
             return 0;
         }
 
-        IStatsController charStats = character.GetStatsController();
+        IStatsController charStats = character.StatController;
         if (charStats == null)
         {
             Debug.LogError($"BaseAttackRollAction: can't get CharacterStatsController "); 
@@ -63,7 +63,7 @@ public class SumStatsRoll : AbilityAction
         int outcome = 0;
         int rolls = 0;
 
-        IStatsController charStats = character.GetStatsController();
+        IStatsController charStats = character.StatController;
         if (charStats == null)
         {
             if (logging) { Debug.Log($"BaseAttackRollAction: can't get CharacterStatsController "); }
