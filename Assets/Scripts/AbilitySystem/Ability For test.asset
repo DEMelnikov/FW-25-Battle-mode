@@ -31,11 +31,7 @@ MonoBehaviour:
   _animationTrigger: 0
   resolves:
   - {fileID: 11400000, guid: 64be7a472faeb0448800c52deae7ab75, type: 2}
-  - {fileID: 11400000, guid: 058148aabad581d46b0ea16bca6dfff5, type: 2}
+  - {fileID: 11400000, guid: c6569b6bcd7cc0443aa62813d13858ff, type: 2}
   - {fileID: 11400000, guid: 43b8668ef765bc64e8627cc687164692, type: 2}
-  tags:
-  - Mele
-  - Attack
-  - Unarmed
-  - Offencive
+  abilityTags: 
   isSubscribed: 0

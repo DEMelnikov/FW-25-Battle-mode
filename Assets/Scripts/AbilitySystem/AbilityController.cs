@@ -64,10 +64,10 @@ public class AbilityController : MonoBehaviour, IAbilityController
             Debug.LogError($"{this.gameObject.name} - in Ability Controller No Initial attack or defence abilities");
         
         InitAbility(_initialAttackability);
-        _currentAttackAbility = abilityInstances[_initialAttackability.GetName];
+        SetCurrentAttackAbility(_initialAttackability.GetName);
 
         InitAbility(_initialDefenceAbility);
-        _currentDefenceAbility = abilityInstances[_initialDefenceAbility.GetName];
+        SetCurrentDefenceAbility(_initialDefenceAbility.GetName);
 
         if (_currentAttackAbility == null || _currentDefenceAbility == null)
             Debug.LogError($"{this.gameObject.name} - in Ability Controller Attack/Defence abilities not initialized!");
@@ -104,7 +104,6 @@ public class AbilityController : MonoBehaviour, IAbilityController
     //    if abilityInstances.Co
     //}
 
-    [ContextMenu("Вызвать метод")]
 
     [System.Obsolete("old")]
     public  bool TryActivateAbility(IAbility ability)
@@ -117,23 +116,72 @@ public class AbilityController : MonoBehaviour, IAbilityController
         return ability != null && ability.CanAfford(character);
     }
 
-    //// Методы для управления списком способностей OLD
-    //public void AddAbility(IAbility ability)
-    //{
-    //    if (ability != null && !availableAbilities.Contains(ability) && !timedAbilityInstances.Contains(ability) )
-    //        availableAbilities.Add(ability);
-    //}
+    public bool SetCurrentAttackAbility(string abilityName)
+    {
+        if (abilityInstances.ContainsKey(abilityName))
+        {
+            var ability = abilityInstances[abilityName];
+            if (ability.HasTag(AbilityTag.ATTACK))
+            {
+                _currentAttackAbility = ability;
+                return true;
+            }
+            else
+            {
+                Debug.LogError($"Ability {abilityName} doesn't have Attack tag");
+                return false;
+            }
+        }
+        return false;
+    }
 
-    //public void RemoveAbility(IAbility ability)
-    //{
-    //    availableAbilities.Remove(ability);
-    //}
+    public bool SetCurrentDefenceAbility(string abilityName)
+    {
+        if (abilityInstances.ContainsKey(abilityName))
+        {
+            var ability = abilityInstances[abilityName];
+            if (ability.HasTag(AbilityTag.DEFENCE))
+            {
+                _currentDefenceAbility = ability;
+                return true;
+            }
+            else
+            {
+                Debug.LogWarning($"Ability {abilityName} doesn't have Defence tag");
+                return false;
+            }
+        }
+        return false;
+    }
 
-    //[System.Obsolete("Use HasTargetEnemy() for checking and ValidateAndCleanTarget() for cleaning")] 
-    //public List<IAbility> GetAbilitiesByTag(string tag)
-    //{
-    //    return availableAbilities.FindAll(a => a.HasTag(tag));
-    //}
+    // Метод для поиска способностей по тегу
+    public List<Ability> GetAbilitiesByTag(AbilityTag tag)
+    {
+        var result = new List<Ability>();
 
-    //public List<IAbility> GetAllAbilities() => availableAbilities;
+        foreach (var ability in abilityInstances.Values)
+        {
+            if (ability.HasTag(tag))
+                result.Add(ability);
+        }
+
+        foreach (var ability in timedAbilityInstances.Values)
+        {
+            if (ability.HasTag(tag))
+                result.Add(ability);
+        }
+
+        return result;
+    }
+
+    // Метод для проверки, подходит ли способность для слота
+    public bool IsAbilityValidForSlot(string abilityName, AbilityTag requiredTag)
+    {
+        if (abilityInstances.ContainsKey(abilityName))
+        {
+            return abilityInstances[abilityName].HasTag(requiredTag);
+        }
+        return false;
+    }
+
 }
