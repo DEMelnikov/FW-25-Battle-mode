@@ -10,7 +10,7 @@ namespace AbilitySystem.AbilityComponents
 
         public override bool CheckTrigger(ICharacter character)
         {
-            if (logging) Debug.Log($"{character.name} starts CheckTrigger {this.name}");
+            if (logging) Debug.Log($"{character.ObjName} starts CheckTrigger {this.name}");
 
             if (character.GetTargetsVault().GetWayPoint() != Vector3.zero)
                 return true;

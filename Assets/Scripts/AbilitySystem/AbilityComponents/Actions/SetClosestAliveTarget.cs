@@ -15,7 +15,7 @@ public class SetClosestAliveTarget : AbilityAction
 
     public override int ExecuteAction(ICharacter character)
     {
-        if (logging) Debug.Log($"{character.name} starts Action SetTarget and try find Enemy with tag {_targetTag}");
+        if (logging) Debug.Log($"{character.ObjName} starts Action SetTarget and try find Enemy with tag {_targetTag}");
 
         myPosition = character.transform;
 
@@ -23,7 +23,7 @@ public class SetClosestAliveTarget : AbilityAction
         Character[] allCharacters = FindObjectsByType<Character>(FindObjectsSortMode.None);
         List<Character> validTargets = new List<Character>();
 
-        if (logging) Debug.Log($"{character.name} Action SetTarget find {allCharacters.Length} Characters");
+        if (logging) Debug.Log($"{character.ObjName} Action SetTarget find {allCharacters.Length} Characters");
 
         // Собираем все подходящие цели
         foreach (Character ch in allCharacters)
@@ -36,7 +36,7 @@ public class SetClosestAliveTarget : AbilityAction
             }
         }
 
-        if (logging) Debug.Log($"{character.name} Action SetTarget find {validTargets.Count} Enemies with tag {_targetTag}");
+        if (logging) Debug.Log($"{character.ObjName} Action SetTarget find {validTargets.Count} Enemies with tag {_targetTag}");
 
 
         // Если нет подходящих целей
@@ -52,7 +52,7 @@ public class SetClosestAliveTarget : AbilityAction
         {
             GameObject closestGO = closestTarget.gameObject;
             character.SetSelectedTarget(closestGO);
-            if (logging) Debug.Log($"{character.name} Action SetTarget find closest target with name {closestGO.name}");
+            if (logging) Debug.Log($"{character.ObjName} Action SetTarget find closest target with name {closestGO.name}");
 
             return 1;
         }

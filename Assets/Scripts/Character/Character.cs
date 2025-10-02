@@ -89,7 +89,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public ICharacterTargetsVault GetTargetsVault() => _targets;
     public Transform transform => this.gameObject.transform;
     public GameObject GetGameObject => this.gameObject;
-    public string name => gameObject.name;
+    public string ObjName => gameObject.name;
     public bool InEngage { get => _inEngage; set => _inEngage = value; }
     public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
     public IBehaviorProfile GetBehaviorProfile() => _behaviorProfile;

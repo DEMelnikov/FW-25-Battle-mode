@@ -5,7 +5,7 @@ public interface ICharacter
 {
     Transform transform { get; }
     GameObject GetGameObject { get; }
-    string name { get; }
+    string ObjName { get; }
     ICharacterTargetsVault GetTargetsVault();
     IStatsController GetStatsController();
     //GameObject GetSelectedTarget();

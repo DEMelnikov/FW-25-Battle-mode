@@ -91,7 +91,9 @@ public class Ability : BaseAbility, IAbility
 
     public sealed override bool TryActivateAbility(ICharacter character, out int outcome )
     {
-        if (logging) { Debug.Log($"-Start Activation Ability {this.name} у {character.name}"); }
+        //string summary = "Character:" + character.ObjName + " execute ability " + this.name;
+        ;
+        if (logging) { Debug.Log($"-Start Activation Ability {this.name} у {character.ObjName}"); }
          
         outcome = 0;
 
@@ -123,7 +125,7 @@ public class Ability : BaseAbility, IAbility
     protected sealed override bool CheckTriggersReady(ICharacter character)
     {
 
-    if (logging) { Debug.Log($"Start Check Triggers у {character.name}"); }
+    if (logging) { Debug.Log($"Start Check Triggers у {character.ObjName}"); }
     if (triggers.Count == 0) return true;
     // Проверяем триггеры
     foreach (var trigger in triggers)

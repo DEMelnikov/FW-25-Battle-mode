@@ -190,7 +190,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
             //Debug.LogWarning("I'm in targetsVault");
 
             _targetEnemyChararacter = target;
-            if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_targetEnemyChararacter.name}");
+            if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_targetEnemyChararacter.ObjName}");
 
             //TODO убрать потом
             SetTargetEnemy(target.GetGameObject);

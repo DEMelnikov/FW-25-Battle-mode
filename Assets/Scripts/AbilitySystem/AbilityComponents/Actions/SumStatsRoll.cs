@@ -55,7 +55,7 @@ public class SumStatsRoll : AbilityAction
 
     private int Action(ICharacter character, float DC)
     {
-        if (logging) { Debug.Log($"Character {character.name} starts action BaseAttackRollAction "); }
+        if (logging) { Debug.Log($"Character {character.ObjName} starts action BaseAttackRollAction "); }
 
         int outcome = 0;
         int rolls = 0;
@@ -76,7 +76,7 @@ public class SumStatsRoll : AbilityAction
             if (roll >= DC) outcome++;
         }
 
-        if (logging) { Debug.Log($"Character {character.name} make rolls vs DC {DC} & has {outcome} successes"); }
+        if (logging) { Debug.Log($"Character {character.ObjName} make rolls vs DC {DC} & has {outcome} successes"); }
         return outcome;
     }
 
