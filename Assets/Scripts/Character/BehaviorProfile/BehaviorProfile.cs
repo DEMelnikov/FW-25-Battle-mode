@@ -14,10 +14,14 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
     //public string defaultAttackAbilityName;
     [SerializeField][Min(0.1f)] private float _weaponRange = 3f;
 
-    [SerializeField] private Ability _defaultAttackAbility;
+    [SerializeField] private Ability  _defaultAttackAbility;
     [SerializeField] private float    _baseAttackInterval = 2f;
 
     [Header("Defence Settings:")]
+    [SerializeField] private Ability  _defaultDefenceAbility;
+    //[SerializeField] private float _baseAttackInterval = 2f;
+
+
 
     [Header("Movement Settings:")]
     [SerializeField] [Min(0.1f)] private float pursuitDistance = 150f;

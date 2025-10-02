@@ -11,7 +11,14 @@ public class AbilityController : MonoBehaviour, IAbilityController
                      private ICharacter    character;
     [SerializeField] private bool          logging            = false;
     [SerializeField] private List<Ability> AabilitiesATStart  = new List<Ability>();
-    //[SerializeField] private List<IAbility> availableAbilities = new List<IAbility>();          //OLD
+
+    [Header("Attack Settings:")]
+    [SerializeField] private Ability _initialAttackability;
+                     private Ability _currentAttackAbility;
+
+    [Header("Defence Settings:")]
+    [SerializeField] private Ability _initialDefenceAbility;
+                     private Ability _currentDefenceAbility;
 
     private Dictionary<string, Ability> abilityInstances      = new Dictionary<string, Ability>();
     private Dictionary<string, Ability> timedAbilityInstances = new Dictionary<string, Ability>();
@@ -53,22 +60,17 @@ public class AbilityController : MonoBehaviour, IAbilityController
             InitAbility(ability);  
         }
 
+        if (_initialAttackability == null || _initialDefenceAbility == null) 
+            Debug.LogError($"{this.gameObject.name} - in Ability Controller No Initial attack or defence abilities");
+        
+        InitAbility(_initialAttackability);
+        _currentAttackAbility = abilityInstances[_initialAttackability.GetName];
 
-        //Debug.LogError($"{character.GetGameObject.name} - in abilityInstances {abilityInstances.Count} abilities");
+        InitAbility(_initialDefenceAbility);
+        _currentDefenceAbility = abilityInstances[_initialDefenceAbility.GetName];
 
-        //foreach (var ability in abilityInstances)
-        //{
-
-        //    ability.Value.IniTialize(character);
-        //    ability.Value.Subscribe(character);
-        //}
-
-        //foreach (var ability in timedAbilityInstances)
-        //{
-
-        //    ability.Value.IniTialize(character);
-        //    ability.Value.Subscribe(character);
-        //}
+        if (_currentAttackAbility == null || _currentDefenceAbility == null)
+            Debug.LogError($"{this.gameObject.name} - in Ability Controller Attack/Defence abilities not initialized!");
 
 
         if (logging) Debug.Log($" {character.ObjName } AbilityController Initialized = {abilityInstances.Count+timedAbilityInstances.Count} abilities");
