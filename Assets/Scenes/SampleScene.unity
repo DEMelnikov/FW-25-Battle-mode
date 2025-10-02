@@ -5197,6 +5197,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1528280980784431842, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: _initialDefenceAbility
+      value: 
+      objectReference: {fileID: 11400000, guid: dff1d1f89f250c545aa99f59e078f1af, type: 2}
     - target: {fileID: 2498684146753102151, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5
@@ -5450,7 +5454,7 @@ MonoBehaviour:
   AabilitiesATStart:
   - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
   _initialAttackability: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
-  _initialDefenceAbility: {fileID: 11400000, guid: 80a55596f2b50694ba8e455eae83bb85, type: 2}
+  _initialDefenceAbility: {fileID: 11400000, guid: dff1d1f89f250c545aa99f59e078f1af, type: 2}
 --- !u!195 &7723458236203311626
 NavMeshAgent:
   m_ObjectHideFlags: 0

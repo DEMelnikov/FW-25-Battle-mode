@@ -23,9 +23,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 643fdf77429f03346aa3dfb09f118a00, type: 2}
   _targeting: 0
   _targetRadius: 0
-  _abilityAction: {fileID: 0}
+  _abilityAction: {fileID: 11400000, guid: a2fab8955406ce8458a429daf4bf1a75, type: 2}
   _animationTrigger: 4
   resolves: []
-  abilityTags: 
-  isSubscribed: 0
+  abilityTags: 02000000
   _statToSubscribe: 1
