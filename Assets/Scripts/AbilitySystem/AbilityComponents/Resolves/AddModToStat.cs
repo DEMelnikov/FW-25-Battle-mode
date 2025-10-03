@@ -38,7 +38,8 @@ public class AddModToStat : AbilityResolve
 
         stats.Stats[_targetStat].AddModifier(statModifier);
 
-        if (logging) Debug.Log($" Resolve {this.name} to {_target.ObjName}'s {_targetStat} added bonus {bonus} with tag {_target.AbilityController.DefenceAbilityName}");
+        if (logging) Debug.Log($" Resolve {this.name} to {_target.ObjName}'s {_targetStat} added bonus {bonus} with tag {_target.AbilityController.DefenceAbilityName} new " +
+            $"{_targetStat} = {stats.Stats[_targetStat].Value} ");
 
     }
 }

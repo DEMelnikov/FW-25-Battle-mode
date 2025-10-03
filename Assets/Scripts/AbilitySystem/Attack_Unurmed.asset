@@ -27,11 +27,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 670ea8ab4a248e44e9640f3ce334dd45, type: 2}
   _targeting: 1
   _targetRadius: 0
-  _abilityAction: {fileID: 11400000, guid: 348df2c179bed8a4a95546ff1dc95735, type: 2}
+  _abilityAction: {fileID: 11400000, guid: e24058b01af7b9745b3c20c0c30dfc52, type: 2}
   _animationTrigger: 0
   resolves:
   - {fileID: 11400000, guid: 64be7a472faeb0448800c52deae7ab75, type: 2}
   - {fileID: 11400000, guid: c6569b6bcd7cc0443aa62813d13858ff, type: 2}
   - {fileID: 11400000, guid: 43b8668ef765bc64e8627cc687164692, type: 2}
   abilityTags: 01000000
-  isSubscribed: 0

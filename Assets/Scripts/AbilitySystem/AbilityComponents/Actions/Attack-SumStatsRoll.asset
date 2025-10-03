@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60605cf228be7b4ba5edb9ba928d25b, type: 3}
   m_Name: Attack-SumStatsRoll
   m_EditorClassIdentifier: AbilitySystem::SumStatsRoll_AttackMode
-  _description: 'Makes x rolls by sum of list Stats - return outcom Success vs DC-from
+  _description: 'Makes x rolls by sum of list Stats - return outcome Success vs DC-from
     target.DefenceCheck '
   logging: 1
-  stats: 
+  stats: 0400000005000000
   defaultDC: 3
   targetDC: 8

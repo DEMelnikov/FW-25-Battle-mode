@@ -44,7 +44,26 @@ public class AbilityTester : MonoBehaviour
     private void Update()
     {
     }
-    
+
+    [Button]
+    public void GetAllCharacterStats()
+    {
+        AddEnemy();
+
+        if (character == null)
+        {
+            Debug.LogError("No Character in Ability Tester");
+        }
+
+        //abilityToTest.TryActivateAbility(character, out int outcome);
+        foreach(var item in character.StatController.Stats)
+        {
+            Debug.Log($"{character.ObjName} - {item.Key} - {item.Value.Value} / {item.Value.BaseValue}");
+        }
+        
+    }
+
+
     [Button]
     public void TestAbility()
     {
@@ -100,6 +119,7 @@ public class AbilityTester : MonoBehaviour
     [Button]
     public void TestAction()
     {
+        AddEnemy();
         _actionToTest.ExecuteAction(character);
     }
 
