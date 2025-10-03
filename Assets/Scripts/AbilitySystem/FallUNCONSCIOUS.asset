@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: FallUNCONSCIOUS
   m_EditorClassIdentifier: AbilitySystem::AbilityWithSubscribeToStat
   isTimed: 0
-  abilityName: SubscribeToStat
-  description: test Ability with resolveBy Subscribe
+  abilityName: FallUNCONSCIOUS
+  description: test Ability with resolveBy Subscribe Fall to Unconscious State when
+    energy below 0
   icon: {fileID: 0}
   logging: 1
-  triggers: []
+  triggers:
+  - {fileID: 11400000, guid: e42643d2389e5e749bff994135d25080, type: 2}
   costs: []
   _targeting: 0
   _targetRadius: 0
   _abilityAction: {fileID: 0}
-  _animationTrigger: 4
+  _animationTrigger: 1
   resolves:
   - {fileID: 11400000, guid: a17303255fa1ec84382a8a27cda73a38, type: 2}
   abilityTags: 04000000
-  isSubscribed: 1
   _statToSubscribe: 1

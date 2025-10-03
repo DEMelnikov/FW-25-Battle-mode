@@ -157,7 +157,10 @@ public class Stat:IStat
     //TODO:   REMOVE after tests
     public void TESTSSetValue(float newValue)
     {
+        var oldValue = _lastCalculatedValue;
         _lastCalculatedValue = newValue;
+
+        OnValueChanged?.Invoke(this, oldValue, _lastCalculatedValue);
     }
 
     public void AddToTmpModifier(float tmpValue)
