@@ -372,7 +372,7 @@ MonoBehaviour:
   _statToSetValue: 1
   _newValue: 10
   _costToTest: {fileID: 11400000, guid: 643fdf77429f03346aa3dfb09f118a00, type: 2}
-  _actionToTest: {fileID: 11400000, guid: a2fab8955406ce8458a429daf4bf1a75, type: 2}
+  _actionToTest: {fileID: 11400000, guid: e24058b01af7b9745b3c20c0c30dfc52, type: 2}
   _resolveToTest: {fileID: 11400000, guid: e89224b4428788742bdf9bf928a4efcb, type: 2}
   outcome: 1
 --- !u!4 &304960289

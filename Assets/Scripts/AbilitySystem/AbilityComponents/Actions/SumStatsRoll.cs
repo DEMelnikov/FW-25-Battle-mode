@@ -23,7 +23,7 @@ public class SumStatsRoll : AbilityAction
     public override int ExecuteAction(ICharacter character)
     {
         //float defaultDC = Constants.attackDC;
-        return Action(character, Constants.attackDC);
+        return Action(character, Constants.Get(defaultDC));
     }
 
     public override int ExecuteAction(ICharacter character, float myDC)
@@ -77,7 +77,8 @@ public class SumStatsRoll : AbilityAction
 
         for (int i = 0; i < rolls; i++)
         {
-            var roll = Random.Range(0f, 100f);
+            //var roll = Random.Range(0f, 100f);
+            var roll = Random.Range(0f, Constants.RollDice);
             if (logging) { Debug.Log($"{this.name}: Roll {i} result  = {roll} "); }
             if (roll >= DC) outcome++;
         }

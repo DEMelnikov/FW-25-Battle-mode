@@ -17,7 +17,12 @@ public enum ConstantType
     DefaultDC,
 
     [ConstantInfo("DC", "Bonus to DC when get Success on Defence ABility check", 7f)]
-    SuccessDefenceCheckBonus
+    SuccessDefenceCheckBonus,
+
+    [ConstantInfo("Gameplay", "Default dice roll", 100f)]
+    MaxToRoll
+
+
 
     //[ConstantInfo("Player", "Сила прыжка", 10f)]
     //JumpForce,

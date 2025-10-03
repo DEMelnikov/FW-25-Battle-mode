@@ -43,7 +43,8 @@ public static class Constants
     }
 
     // Специфичные свойства для удобства
-    public static float attackDC => Get(ConstantType.DC_attack_Default);
+    public static float RollDice => Get(ConstantType.MaxToRoll);
+    //public static float attackDC => Get(ConstantType.DC_attack_Default);
 
     //public static float PlayerSpeed => Get(ConstantType.PlayerSpeed);
     //public static float JumpForce => Get(ConstantType.JumpForce);
