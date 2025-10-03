@@ -45,7 +45,6 @@ public class CheckStatValue : Trigger
 
     private bool CompareWithTolerance(float actualValue, float compareWith, RelationType relation, float tolerance)
     {
-
         switch (relation)
         {
             case RelationType.Lesser:
@@ -59,9 +58,12 @@ public class CheckStatValue : Trigger
             case RelationType.Greater:
                 if (logging) Debug.Log($"Check trigger {this.name}: actualValue = {actualValue} compareWith= {compareWith}");
                 return actualValue > compareWith;
+            case RelationType.EqualOrLesser:
+                if (logging) Debug.Log($"Check trigger {this.name}: actualValue = {actualValue} compareWith= {compareWith}");
+                return actualValue <= compareWith + tolerance;
 
             default:
-                Debug.LogWarning($"Unknown RelationType: {relation}");
+                Debug.LogError($"Unknown RelationType: {relation}");
                 return false;
         }
     }

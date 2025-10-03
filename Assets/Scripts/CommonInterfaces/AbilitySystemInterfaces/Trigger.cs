@@ -84,6 +84,36 @@ public abstract class Trigger : ScriptableObject
         return _targetCharacter;
     }
 
+    protected virtual bool CompareWithTolerance(float actualValue, float compareWith, RelationType relation, float tolerance)
+    {
+        switch (relation)
+        {
+            case RelationType.Lesser:
+                if (logging) Debug.Log($"Check trigger {this.name}: actualValue = {actualValue} compareWith= {compareWith}");
+                return actualValue < compareWith;
+
+            case RelationType.Equal:
+                if (logging) Debug.Log($"Check trigger {this.name}: actualValue = {actualValue} compareWith= {compareWith}");
+                return Mathf.Abs(actualValue - compareWith) <= tolerance;
+
+            case RelationType.Greater:
+                if (logging) Debug.Log($"Check trigger {this.name}: actualValue = {actualValue} compareWith= {compareWith}");
+                return actualValue > compareWith;
+
+            case RelationType.EqualOrLesser:
+                if (logging) Debug.Log($"Check trigger {this.name}: actualValue = {actualValue} compareWith= {compareWith}");
+                return actualValue <= compareWith + tolerance;
+
+            case RelationType.EqualOrGreater:
+                if (logging) Debug.Log($"Check trigger {this.name}: actualValue = {actualValue} compareWith= {compareWith}");
+                return actualValue >= compareWith + tolerance;
+
+            default:
+                Debug.LogError($"Unknown RelationType: {relation}");
+                return false;
+        }
+    }
+
 
     //public bool GetLoggingState() {  return logging; }
 }
