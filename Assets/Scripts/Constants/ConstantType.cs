@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 public enum ConstantType
 {
-    [ConstantInfo("DC", "Default Attack DC", 50f)]
+    [ConstantInfo("Obsolete", "OLD - do not use", 50f)]
     DC_attack_Default,
 
     // Player
