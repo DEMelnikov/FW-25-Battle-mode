@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37eb7038f826c6a46b642b287c953fdc, type: 3}
-  m_Name: BaseAttackRollAction
-  m_EditorClassIdentifier: 
-  _description: Makes x rolls by sum of list Stats - return outcom Success vs DC
-    default or input DC
-  logging: 0
-  stats: 0500000004000000
-  _DC: 33
+  m_Name: DefaultDefenceAction
+  m_EditorClassIdentifier: AbilitySystem::SumStatsRoll
+  _description: 
+  logging: 1
+  stats: 0400000007000000
+  defaultDC: 3

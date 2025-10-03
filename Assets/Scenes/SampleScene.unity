@@ -368,7 +368,13 @@ MonoBehaviour:
   testingObject: {fileID: 578513236}
   toSetEnemy: {fileID: 878806293192145506}
   abilityToTest: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
-  character: {fileID: 0}
+  triggerToTest: {fileID: 11400000, guid: 7901f510e08c2214184e279e7b6643f2, type: 2}
+  _statToSetValue: 8
+  _newValue: 10
+  _costToTest: {fileID: 11400000, guid: 643fdf77429f03346aa3dfb09f118a00, type: 2}
+  _actionToTest: {fileID: 11400000, guid: e24058b01af7b9745b3c20c0c30dfc52, type: 2}
+  _resolveToTest: {fileID: 11400000, guid: e89224b4428788742bdf9bf928a4efcb, type: 2}
+  outcome: 1
 --- !u!4 &304960289
 Transform:
   m_ObjectHideFlags: 0
@@ -2299,6 +2305,7 @@ MonoBehaviour:
   _weaponRange: 2
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2
+  _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 0.5
 --- !u!114 &904469787
@@ -2385,6 +2392,8 @@ MonoBehaviour:
   logging: 1
   AabilitiesATStart:
   - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
+  _initialAttackability: {fileID: 0}
+  _initialDefenceAbility: {fileID: 0}
 --- !u!114 &904469791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4453,6 +4462,7 @@ MonoBehaviour:
   _weaponRange: 2
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2
+  _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 0.5
 --- !u!114 &1971976391
@@ -4538,6 +4548,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logging: 0
   AabilitiesATStart: []
+  _initialAttackability: {fileID: 0}
+  _initialDefenceAbility: {fileID: 0}
 --- !u!114 &1971976395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5187,6 +5199,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1528280980784431842, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: _initialDefenceAbility
+      value: 
+      objectReference: {fileID: 11400000, guid: dff1d1f89f250c545aa99f59e078f1af, type: 2}
     - target: {fileID: 2498684146753102151, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5
@@ -5293,7 +5309,7 @@ Transform:
   m_GameObject: {fileID: 878806293192145506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.41, y: -1.15, z: 0}
+  m_LocalPosition: {x: 2.03, y: 1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5439,6 +5455,8 @@ MonoBehaviour:
   logging: 0
   AabilitiesATStart:
   - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
+  _initialAttackability: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
+  _initialDefenceAbility: {fileID: 11400000, guid: dff1d1f89f250c545aa99f59e078f1af, type: 2}
 --- !u!195 &7723458236203311626
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5494,6 +5512,7 @@ MonoBehaviour:
   _weaponRange: 3
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2
+  _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 10
 --- !u!1660057539 &9223372036854775807

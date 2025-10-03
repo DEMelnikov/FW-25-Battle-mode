@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3a638055616e624fa8ac64b6d714c77, type: 3}
-  m_Name: OLD - DamageResolve_TargetEnemy
-  m_EditorClassIdentifier: 
-  _targeting: 1
+  m_Script: {fileID: 11500000, guid: 880a581d221223d4795c3275d0fc3c39, type: 3}
+  m_Name: AddBonusToDC
+  m_EditorClassIdentifier: AbilitySystem::AddModToStat
+  _targeting: 0
   _targetRadius: 0
-  _defaultDamage: 1
+  logging: 1
+  _targetStat: 8
+  _constantToMultiply: 4
+  _modType: 0
+  isSubtraction: 0

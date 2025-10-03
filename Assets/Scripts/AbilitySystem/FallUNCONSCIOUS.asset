@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5ac8fbf3366ca46a70141a7432679f, type: 3}
-  m_Name: testQQQ
+  m_Name: FallUNCONSCIOUS
   m_EditorClassIdentifier: AbilitySystem::AbilityWithSubscribeToStat
+  isTimed: 0
   abilityName: SubscribeToStat
   description: test Ability with resolveBy Subscribe
   icon: {fileID: 0}
   logging: 1
   triggers: []
   costs: []
+  _targeting: 0
+  _targetRadius: 0
   _abilityAction: {fileID: 0}
   _animationTrigger: 4
   resolves:
   - {fileID: 11400000, guid: a17303255fa1ec84382a8a27cda73a38, type: 2}
-  tags: []
+  abilityTags: 04000000
   isSubscribed: 1
   _statToSubscribe: 1

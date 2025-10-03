@@ -15,8 +15,10 @@ public interface IAbility
 
 public interface IAbilityController
 {
-    bool TryActivateAbility(IAbility ability);
     void Initialize();
+    void TryExecuteAttackAbility();
+    void TryExecuteDefenceAbility();
+    string DefenceAbilityName {  get; } 
 
 }
 

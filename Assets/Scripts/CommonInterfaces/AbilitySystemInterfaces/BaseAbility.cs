@@ -5,7 +5,6 @@ using UnityEngine.TextCore.Text;
 public abstract class BaseAbility : ScriptableObject
 {
 
-    public abstract bool HasTag(string tag);
     [SerializeField] protected bool isTimed = false;
     
     public bool IsTimed { get => isTimed; }

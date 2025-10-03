@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5ac8fbf3366ca46a70141a7432679f, type: 3}
+  m_Name: Defence_default
+  m_EditorClassIdentifier: AbilitySystem::AbilityWithSubscribeToStat
+  isTimed: 0
+  abilityName: DefaultDefence
+  description: 
+  icon: {fileID: 0}
+  logging: 1
+  triggers:
+  - {fileID: 11400000, guid: 7901f510e08c2214184e279e7b6643f2, type: 2}
+  costs:
+  - {fileID: 11400000, guid: 643fdf77429f03346aa3dfb09f118a00, type: 2}
+  _targeting: 0
+  _targetRadius: 0
+  _abilityAction: {fileID: 11400000, guid: a2fab8955406ce8458a429daf4bf1a75, type: 2}
+  _animationTrigger: 4
+  resolves:
+  - {fileID: 11400000, guid: e89224b4428788742bdf9bf928a4efcb, type: 2}
+  abilityTags: 02000000
+  _statToSubscribe: 1

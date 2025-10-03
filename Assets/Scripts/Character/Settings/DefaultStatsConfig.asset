@@ -17,27 +17,44 @@ MonoBehaviour:
     Tag: 4
     BaseValue: 3
     HasAlarm: 0
+    hasBaseValueLimit: 1
   - Name: EP
     Tag: 1
     BaseValue: 150
     HasAlarm: 1
+    hasBaseValueLimit: 1
   - Name: HP
     Tag: 0
     BaseValue: 100
     HasAlarm: 1
+    hasBaseValueLimit: 1
   - Name: Srength
     Tag: 3
     BaseValue: 5
     HasAlarm: 1
+    hasBaseValueLimit: 1
   - Name: UnarmedAttack
     Tag: 5
     BaseValue: 2
     HasAlarm: 0
+    hasBaseValueLimit: 1
   - Name: Endurance
     Tag: 2
     BaseValue: 5
     HasAlarm: 0
+    hasBaseValueLimit: 1
   - Name: RangedAttack
     Tag: 6
     BaseValue: 0
     HasAlarm: 0
+    hasBaseValueLimit: 1
+  - Name: Defence
+    Tag: 7
+    BaseValue: 1
+    HasAlarm: 0
+    hasBaseValueLimit: 1
+  - Name: DefenceDC
+    Tag: 8
+    BaseValue: 50
+    HasAlarm: 0
+    hasBaseValueLimit: 0

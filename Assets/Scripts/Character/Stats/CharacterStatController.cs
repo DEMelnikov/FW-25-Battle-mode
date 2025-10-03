@@ -41,7 +41,7 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
         {
             if (!Stats.ContainsKey(statDef.Tag))
             {
-                var newStat = new Stat(statDef.Name, statDef.Tag, statDef.BaseValue, statDef.HasAlarm);
+                var newStat = new Stat(statDef.Name, statDef.Tag, statDef.BaseValue, statDef.HasAlarm, statDef.hasBaseValueLimit);
                 newStat.OnValueChanged += HandleStatChanged;
                 Stats.Add(statDef.Tag, newStat);
             }
@@ -81,6 +81,17 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
     public void AddTempModifier()
     {
         Stats[StatTag.Strength].AddToTmpModifier(3f);
+    }
+
+    // Метод для безопасного получения стата
+    public IStat GetStat(StatTag tag)
+    {
+        if (Stats.ContainsKey(tag))
+        {
+            return Stats[tag];
+        }
+        Debug.LogWarning($"Stat with tag {tag} not found!");
+        return null;
     }
 }
 

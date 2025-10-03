@@ -1,7 +1,7 @@
 using Mono.Cecil;
 using System.Collections.Generic;
 using System;
-using System.Diagnostics;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class Stat:IStat
@@ -9,6 +9,7 @@ public class Stat:IStat
     public string Name { get; private set; }
     public StatTag Tag { get; private set; }
     public float BaseValue { get; private set; }
+    public bool LimitValueGreaterBase  { get; private set;} 
 
     private float _lastCalculatedValue;
     private bool _isDirty = true;
@@ -55,21 +56,35 @@ public class Stat:IStat
     }
 
 
-    public Stat(string name, StatTag tag, float baseValue, bool alarmBelowZero)
+    public Stat(string name, StatTag tag, float baseValue, bool alarmBelowZero, bool limitValueGreaterBase)
     {
         Name = name;
         Tag = tag;
         BaseValue = baseValue;
         _alarmIfBelowZero = alarmBelowZero;
+        LimitValueGreaterBase = limitValueGreaterBase;
 
         this.AddModifier(new StatModifier("tmp","default",tag,0,StatModType.Flat));
     }
 
     public void AddModifier(StatModifier modifier)
     {
+        //Debug.LogWarning($"{this.Name} stat - AddModifier run");
         _permanentModifiers.Add(modifier);
+        //Debug.LogWarning($"{this.Name} stat - _permanentModifiers: {_permanentModifiers.Count}");
         _isDirty = true;
         CheckForInvoke();
+        //Debug.LogWarning($"{this.Name} stat - NewValue: {Value}");
+    }
+
+    public void AddModifier(IStatModifier modifier)
+    {
+        //Debug.LogWarning($"{this.Name} stat - AddModifier run");
+        _permanentModifiers.Add(modifier);
+        //Debug.LogWarning($"{this.Name} stat - _permanentModifiers: {_permanentModifiers.Count}");
+        _isDirty = true;
+        CheckForInvoke();
+        Debug.Log($"{this.Name} stat added modifier from {modifier.Source} new Value: {Value}");
     }
 
     public void AddTimedModifier(ITimedStatModifier modifier)
@@ -139,6 +154,12 @@ public class Stat:IStat
         }
     }
 
+    //TODO:   REMOVE after tests
+    public void TESTSSetValue(float newValue)
+    {
+        _lastCalculatedValue = newValue;
+    }
+
     public void AddToTmpModifier(float tmpValue)
     {
         _permanentModifiers[0].AddToValue(tmpValue);
@@ -163,7 +184,10 @@ public class Stat:IStat
         finalValue *= productPercentMult;
 
         // Ограничение значения не выше BaseValue
-        if (finalValue > BaseValue)  finalValue = BaseValue;
+        if (LimitValueGreaterBase) 
+        {
+            if (finalValue > BaseValue) finalValue = BaseValue; 
+        }
 
         return finalValue;
     }
@@ -190,5 +214,30 @@ public class Stat:IStat
                     break;
             }
         }
+    }
+
+    public float GetValuePercentage()
+    {
+        if (BaseValue == 0f)
+            return 0f; // или возвращать 100f, если BaseValue = 0 трактовать как полный объем
+
+        return (Value / BaseValue) * 100f;
+    }
+
+    public void CheckAllPermanentModifiers()
+    {
+        int counter = 0;
+        //TEST purpose
+        foreach(var item in _permanentModifiers)
+        {
+            Debug.Log($" {item.TargetStat}: ID = {item.Id} Source: {item.Source} value {item.Value} type{item.Type}");
+            counter++;
+        }
+        Debug.Log($" found {counter} modifiers");
+    }
+
+    public int ModifiersCount()
+    {
+        return _permanentModifiers.Count;
     }
 }

@@ -22,7 +22,7 @@ using UnityEngine;
             }
 
             // Защита 2: Проверка на наличие компонента Targets
-            var targetsComponent = character.GetTargetsVault();
+            var targetsComponent = character.TargetsVault;
             if (targetsComponent == null)
             {
                 if (logging) Debug.LogWarning("Targets component is null or missing");

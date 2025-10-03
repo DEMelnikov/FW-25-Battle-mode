@@ -16,4 +16,4 @@ MonoBehaviour:
     default or input DC
   logging: 1
   stats: 02000000
-  _DC: 50
+  defaultDC: 3

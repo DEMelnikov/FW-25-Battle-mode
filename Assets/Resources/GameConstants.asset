@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ced3accccf5078429a363393ef71564, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: Constants::GameConstants
-  constants: []
+  constants:
+  - type: 0
+    value: 50
+  - type: 1
+    value: 5
+  - type: 2
+    value: 0.5
+  - type: 3
+    value: 50
+  - type: 4
+    value: 7
+  - type: 5
+    value: 100

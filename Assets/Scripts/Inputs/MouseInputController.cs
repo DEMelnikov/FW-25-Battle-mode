@@ -92,7 +92,8 @@ public class MouseInputController : MonoBehaviour
                 if (enemy != null && enemy.SceneObjectTag == SceneObjectTag.Enemy)
                 {
                     //selectedHero.TargetsVault.AddAttackTarget(enemy);
-                    selectedHero.GetTargetsVault().SetTargetEnemyCharacter(enemy);
+                    selectedHero.                    //selectedHero.TargetsVault.AddAttackTarget(enemy);
+                    TargetsVault.SetTargetEnemyCharacter(enemy);
                 }
 
             }
@@ -100,7 +101,9 @@ public class MouseInputController : MonoBehaviour
             {
                 //Debug.LogWarning($"End Drag no colision  {mousePos.x}");
                 //Vector3 waypoint = new Vector3(mousePos.x, mousePos.y, 0f);
-                selectedHero.GetTargetsVault().SetWayPoint(new Vector3(mousePos.x, mousePos.y, 0f));
+                selectedHero.                //Debug.LogWarning($"End Drag no colision  {mousePos.x}");
+                //Vector3 waypoint = new Vector3(mousePos.x, mousePos.y, 0f);
+                TargetsVault.SetWayPoint(new Vector3(mousePos.x, mousePos.y, 0f));
             }
         }
 

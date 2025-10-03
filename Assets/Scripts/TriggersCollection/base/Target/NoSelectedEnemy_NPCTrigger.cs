@@ -9,12 +9,12 @@ namespace AbilitySystem.AbilityComponents
 
         public override bool CheckTrigger(ICharacter character)
         {
-            if (logging) Debug.Log($"{character.name} starts CheckTrigger NoSelectedEnemy");
+            if (logging) Debug.Log($"{character.ObjName} starts CheckTrigger NoSelectedEnemy");
 
             // Используем новый безопасный метод
-            if (!character.GetTargetsVault().TryGetTargetCharacter(out _)) 
+            if (!character.TargetsVault.TryGetTargetCharacter(out _)) 
             {
-                if (logging) Debug.Log($"{character.name}  NoSelectedEnemy - result TRUE");
+                if (logging) Debug.Log($"{character.ObjName}  NoSelectedEnemy - result TRUE");
                 return true;
             }//TryGetTargetEnemy(out _))
 
@@ -27,7 +27,7 @@ namespace AbilitySystem.AbilityComponents
             //}
 
             //if (logging) Debug.Log($"{character.name} Targetenemy is not empty check not pass");
-            if (logging) Debug.Log($"{character.name}  NoSelectedEnemy - result FALSE");
+            if (logging) Debug.Log($"{character.ObjName}  NoSelectedEnemy - result FALSE");
             return false;
 
             //bool tagMatches = targetCharacter.SceneObjectTag == _targetTag;

@@ -8,16 +8,16 @@ public class HasValidTargetTrigger : Trigger
 
     public override bool CheckTrigger(ICharacter character)
     {
-        if (logging) Debug.Log($"{character.name} starts CheckTrigger {this.name}");
+        if (logging) Debug.Log($"{character.ObjName} starts CheckTrigger {this.name}");
 
         // Используем новый безопасный метод
-        if (character.GetTargetsVault().TryGetTargetEnemy(out _))
+        if (character.TargetsVault.TryGetTargetEnemy(out _))
         {
-            if (logging) Debug.Log($"{character.name} CheckTrigger {this.name} pass success");
+            if (logging) Debug.Log($"{character.ObjName} CheckTrigger {this.name} pass success");
             return true;
         }
 
-        if (logging) Debug.Log($"{character.name} CheckTrigger {this.name} unsuccess");
+        if (logging) Debug.Log($"{character.ObjName} CheckTrigger {this.name} unsuccess");
         return false;
     }
 }

@@ -5,10 +5,10 @@ public interface ICharacter
 {
     Transform transform { get; }
     GameObject GetGameObject { get; }
-    string name { get; }
-    ICharacterTargetsVault GetTargetsVault();
-    IStatsController GetStatsController();
-    //GameObject GetSelectedTarget();
+    string ObjName { get; }
+    ICharacterTargetsVault TargetsVault { get; }
+    IStatsController StatController { get; }
+    IAbilityController AbilityController {  get; }
     public virtual void SetSelectedTarget(GameObject target) { }
     public SceneObjectTag SceneObjectTag { get; }
     NavMeshAgent GetNavMeshAgent();

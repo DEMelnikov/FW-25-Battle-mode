@@ -3,39 +3,56 @@ using System;
 using UnityEngine;
 public enum ConstantType
 {
+    [ConstantInfo("Obsolete", "OLD - do not use", 50f)]
+    DC_attack_Default,
+
     // Player
-    [ConstantInfo("Player", "Базовая скорость игрока", 5f)]
-    PlayerSpeed,
+    [ConstantInfo("Player", "Limit to stop Defence Actions", 5f)]
+    DefenceEnergyLimit,
 
-    [ConstantInfo("Player", "Сила прыжка", 10f)]
-    JumpForce,
+    [ConstantInfo("Player", "Default price to defence roll", 0.5f)]
+    DefenceEnergyCost,
 
-    [ConstantInfo("Player", "Максимальное здоровье", 100f)]
-    PlayerMaxHealth,
+    [ConstantInfo("DC", "Default DC", 50f)]
+    DefaultDC,
 
-    // Physics
-    [ConstantInfo("Physics", "Гравитация", 9.81f)]
-    Gravity,
+    [ConstantInfo("DC", "Bonus to DC when get Success on Defence ABility check", 7f)]
+    SuccessDefenceCheckBonus,
 
-    [ConstantInfo("Physics", "Сила трения", 0.2f)]
-    Friction,
+    [ConstantInfo("Gameplay", "Default dice roll", 100f)]
+    MaxToRoll
 
-    // Game
-    [ConstantInfo("Game", "Длительность игры (секунды)", 180f)]
-    GameDuration,
 
-    [ConstantInfo("Game", "Максимальный счет", 1000f)]
-    MaxScore,
 
-    [ConstantInfo("Game", "Время возрождения", 3f)]
-    RespawnTime,
+    //[ConstantInfo("Player", "Сила прыжка", 10f)]
+    //JumpForce,
 
-    // UI
-    [ConstantInfo("UI", "Длительность анимации UI", 0.3f)]
-    UIAnimationDuration,
+    //[ConstantInfo("Player", "Максимальное здоровье", 100f)]
+    //PlayerMaxHealth,
 
-    [ConstantInfo("UI", "Скорость всплывающего текста", 2f)]
-    FloatingTextSpeed
+    //// Physics
+    //[ConstantInfo("Physics", "Гравитация", 9.81f)]
+    //Gravity,
+
+    //[ConstantInfo("Physics", "Сила трения", 0.2f)]
+    //Friction,
+
+    //// Game
+    //[ConstantInfo("Game", "Длительность игры (секунды)", 180f)]
+    //GameDuration,
+
+    //[ConstantInfo("Game", "Максимальный счет", 1000f)]
+    //MaxScore,
+
+    //[ConstantInfo("Game", "Время возрождения", 3f)]
+    //RespawnTime,
+
+    //// UI
+    //[ConstantInfo("UI", "Длительность анимации UI", 0.3f)]
+    //UIAnimationDuration,
+
+    //[ConstantInfo("UI", "Скорость всплывающего текста", 2f)]
+    //FloatingTextSpeed
 }
 
 // Атрибут для мета-информации

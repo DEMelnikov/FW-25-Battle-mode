@@ -33,24 +33,26 @@ public class Ability : BaseAbility, IAbility
     [SerializeField] private List<AbilityResolve>  resolves = new List<AbilityResolve>();
 
     [Header("UI & Filtering")]
-    public List<string> tags = new List<string>();
+    public List<AbilityTag> abilityTags = new List<AbilityTag>();
 
-    [Header("Events Subscribing")]
-    [SerializeField] private bool isSubscribed = false;
+    //[Header("Events Subscribing")]
+                    private bool isSubscribed = false;
 
     // UI методы   
 
     public virtual void IniTialize(ICharacter character)
     {
-        //Debug.LogError($"{character.GetGameObject.name} - TRY IniTialize abilitiy");
         _character = character;
         isSubscribed = false;
-        //Debug.LogError($"{character.GetGameObject.name} -  IniTialize Success {_character.GetGameObject.name} + {isSubscribed}");
     }
+
+    public bool HasTag(AbilityTag tag) => abilityTags.Contains(tag);
+    public List<AbilityTag> GetTags() => new List<AbilityTag>(abilityTags);
+
 
     public string GetName { get=>abilityName; }
     public bool IsSubscribed { get => isSubscribed; set => isSubscribed = value; }
-    public override bool HasTag(string tag) => tags.Contains(tag);
+    //public override bool HasTag(AbilityTag tag) => tags.Contains(tag);
     public override IAction GetAbilityAction() => _abilityAction;
     //public override List<AbilityResolve> GetAbilityResolves() => resolves;
 
@@ -91,7 +93,9 @@ public class Ability : BaseAbility, IAbility
 
     public sealed override bool TryActivateAbility(ICharacter character, out int outcome )
     {
-        if (logging) { Debug.Log($"-Start Activation Ability {this.name} у {character.name}"); }
+        //string summary = "Character:" + character.ObjName + " execute ability " + this.name;
+        ;
+        if (logging) { Debug.Log($"-Start Activation Ability {this.name} у {character.ObjName}"); }
          
         outcome = 0;
 
@@ -123,7 +127,7 @@ public class Ability : BaseAbility, IAbility
     protected sealed override bool CheckTriggersReady(ICharacter character)
     {
 
-    if (logging) { Debug.Log($"Start Check Triggers у {character.name}"); }
+    if (logging) { Debug.Log($"Start Check Triggers у {character.ObjName}"); }
     if (triggers.Count == 0) return true;
     // Проверяем триггеры
     foreach (var trigger in triggers)

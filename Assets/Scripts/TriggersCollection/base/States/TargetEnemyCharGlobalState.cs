@@ -13,7 +13,7 @@ public class TargetEnemyCharGlobalState : Trigger
     public override bool CheckTrigger(ICharacter character)
     {
         if (logging) Debug.Log($"Start trigger {this.name} ");
-        if (character.GetTargetsVault().TryGetTargetCharacter(out var enemy))
+        if (character.TargetsVault.TryGetTargetCharacter(out var enemy))
         {
             var enemyState = enemy.GetStateMachine().CharacterGoal;
             bool contains = _statesToCheck.Contains(enemyState);

@@ -16,7 +16,7 @@ public class Temp_AttackState_WTSO : StateWithPause
         base.OnEnter(machine);
         behaviorProfile = owner.GetBehaviorProfile();
         defaultAttack = behaviorProfile.BaseAttackAbility;
-        targetsVault = owner.GetTargetsVault();
+        targetsVault = owner.TargetsVault;
 
         attackTimer = new TimerTrigger(
         duration: behaviorProfile.BaseAttackInterval, // Например, 1 секунда
@@ -55,15 +55,15 @@ public class Temp_AttackState_WTSO : StateWithPause
     {
         if (defaultAttack == null)
         {
-            Debug.LogError($" No Default attack {owner.name}");
+            Debug.LogError($" No Default attack {owner.ObjName}");
             return;
         } 
         if (defaultAttack.TryActivateAbility(owner,out var outcome))
         {
-           if(logging) Debug.Log($"{this.owner.name} Making Attack result {outcome}");
+           if(logging) Debug.Log($"{this.owner.ObjName} Making Attack result {outcome}");
             return;
         }
-        Debug.Log($"{this.owner.name} Making Attack no success");
+        Debug.Log($"{this.owner.ObjName} Making Attack no success");
     }
 
     private void Engage()

@@ -42,7 +42,7 @@ public interface IStat
     /// <summary>
     /// Добавляет постоянный модификатор
     /// </summary>
-    void AddModifier(IStatModifier modifier) { }
+    void AddModifier(IStatModifier modifier);
 
     /// <summary>
     /// Добавляет временный модификатор
@@ -73,4 +73,8 @@ public interface IStat
     /// Добавляет значение к временному модификатору
     /// </summary>
     void AddToTmpModifier(float tmpValue);
+    float GetValuePercentage();
+    void TESTSSetValue(float newValue);
+    void CheckAllPermanentModifiers();
+    int ModifiersCount();
 }

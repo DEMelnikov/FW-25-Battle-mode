@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3085d0d504d7e8e47832b198efd491d5, type: 3}
+  m_Name: EnergyCheckLimit
+  m_EditorClassIdentifier: TriggersCollection::CheckStatValue
+  _description: Energy percent > Energy limit => true
+  _name: HeroEnergy>Limit
+  _targeting: 0
+  logging: 1
+  _statToCheck: 1
+  _relationType: 2
+  _costant: 1
+  isInPercantage: 1
+  _equalityTolerance: 0.5
