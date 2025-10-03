@@ -369,7 +369,7 @@ MonoBehaviour:
   toSetEnemy: {fileID: 878806293192145506}
   abilityToTest: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   triggerToTest: {fileID: 11400000, guid: 7901f510e08c2214184e279e7b6643f2, type: 2}
-  _statToSetValue: 1
+  _statToSetValue: 8
   _newValue: 10
   _costToTest: {fileID: 11400000, guid: 643fdf77429f03346aa3dfb09f118a00, type: 2}
   _actionToTest: {fileID: 11400000, guid: e24058b01af7b9745b3c20c0c30dfc52, type: 2}
@@ -5309,7 +5309,7 @@ Transform:
   m_GameObject: {fileID: 878806293192145506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.41, y: -1.15, z: 0}
+  m_LocalPosition: {x: 2.03, y: 1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
