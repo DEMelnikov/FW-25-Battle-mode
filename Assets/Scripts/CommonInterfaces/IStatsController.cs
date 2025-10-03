@@ -4,4 +4,5 @@ using UnityEngine;
 public interface IStatsController
 {
     public Dictionary<StatTag, IStat> Stats { get; }
+    public IStat GetStat(StatTag tag);
 }

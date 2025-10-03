@@ -11,6 +11,7 @@ public class SO_CharacterStatsConfig : ScriptableObject
         public StatTag Tag;
         public float BaseValue;
         public bool HasAlarm;
+        public bool hasBaseValueLimit;
     }
 
     [SerializeField] private List<StatDefinition> _stats = new List<StatDefinition>();

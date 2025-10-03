@@ -1,6 +1,7 @@
 // Простой скрипт для тестирования
 using AbilitySystem;
 using EditorAttributes;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -16,9 +17,10 @@ public class AbilityTester : MonoBehaviour
     
                      private Character  character;
 
-    [Header("Set Stat")]
+    [Header("Set Stat / checkModifiers")]
     [SerializeField] private StatTag _statToSetValue = StatTag.ENERGY;
     [SerializeField] private float   _newValue = 10f;
+
 
     [Header("Cost tests")]
     [SerializeField] private AbilityCost _costToTest;
@@ -102,8 +104,7 @@ public class AbilityTester : MonoBehaviour
         float oldvalue = character.StatController.Stats[_statToSetValue].Value;
         float oldPercentage = character.StatController.Stats[_statToSetValue].GetValuePercentage();
 
-        character.
-        StatController.Stats[_statToSetValue].TESTSSetValue(_newValue);
+        character.StatController.Stats[_statToSetValue].TESTSSetValue(_newValue);
 
         float newValue = character.StatController.Stats[_statToSetValue].Value;
         float newPercentage = character.StatController.Stats[_statToSetValue].GetValuePercentage();
@@ -127,5 +128,35 @@ public class AbilityTester : MonoBehaviour
     public void TestResolve()
     {
         _resolveToTest.ApplyResolve(character, outcome);
+    }
+
+    [Button]
+    public void CheckStatModifiers()
+    {
+        character.StatController.Stats[_statToSetValue].CheckAllPermanentModifiers();
+    }
+
+    [Button]
+    public void AddModifiertoStat()
+    {
+        //this.AddModifier();
+
+        var modifier = new StatModifier(
+            id: "health_boost",
+            source: "potion",
+            targetStat: StatTag.Health,
+            value: 20f,
+            type: StatModType.Flat
+            );
+
+        //healthStat.AddModifier(modifier);
+
+        IStat _getStat = character.StatController.GetStat(_statToSetValue);
+
+        Debug.Log($" Stat: {_getStat.Name}  value ={_getStat.Value} / {_getStat.BaseValue}");
+
+        _getStat.AddModifier(modifier);
+
+        //.AddModifier(modifier);//Stats[_statToSetValue].AddModifier(modifier);
     }
 }

@@ -17,6 +17,8 @@ public class SumStatsRoll_AttackMode : SumStatsRoll
 
         targetCharacter.StatController.Stats[targetDC].RemoveModifiersFromSource(targetCharacter.AbilityController.DefenceAbilityName);
 
+        Debug.LogError($"{character.ObjName}.{this.name} - modifier removed - value is {targetCharacter.StatController.Stats[targetDC].Value}");
+
         return Action(character, DC);
     }
 }
