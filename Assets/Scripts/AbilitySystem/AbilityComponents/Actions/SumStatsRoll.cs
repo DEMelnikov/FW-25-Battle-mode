@@ -9,7 +9,10 @@ public class SumStatsRoll : AbilityAction
     //[SerializeField] private StatTag _secondaryAttackStat = StatTag.UnarmedAttack;
 
     [SerializeField] protected List<StatTag> stats = new List<StatTag>();
-    [SerializeField] protected ConstantType defaultDC;
+    
+    [Header("Настройки")]
+    [SerializeField] protected ConstantType defaultDC = ConstantType.DefaultDC;
+
 
 
     //[SerializeField] [Range(0, 100)]  private float _DC = 50f;
@@ -29,7 +32,7 @@ public class SumStatsRoll : AbilityAction
     }
 
 
-    private int CalculateRolls(ICharacter character)
+    protected int CalculateRolls(ICharacter character)
     {
         float countRolls = 0; 
         
@@ -55,7 +58,7 @@ public class SumStatsRoll : AbilityAction
         return  Mathf.RoundToInt(countRolls);
     }
 
-    private int Action(ICharacter character, float DC)
+    protected virtual int Action(ICharacter character, float DC)
     {
 
         if (logging) { Debug.Log($"Character {character.ObjName} starts action {this.name} "); }

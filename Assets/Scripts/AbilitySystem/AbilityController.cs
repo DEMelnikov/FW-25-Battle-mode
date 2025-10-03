@@ -191,7 +191,7 @@ public class AbilityController : MonoBehaviour, IAbilityController
             _currentAttackAbility.TryActivateAbility(character, out _);   
     }
 
-    public void TryExecuteDegenceAbility()
+    public void TryExecuteDefenceAbility()
     {
         if (_currentDefenceAbility != null)
             _currentDefenceAbility.TryActivateAbility(character, out _);
