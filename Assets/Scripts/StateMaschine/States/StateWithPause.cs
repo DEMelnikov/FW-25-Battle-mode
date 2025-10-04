@@ -4,13 +4,13 @@ using UnityEngine.AI;
 public class StateWithPause : State
 {
     protected bool _isSubscribed = false;
-    protected Character owner;
+    //protected Character owner;
 
 
     public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
-        owner = owner = machine.Character;
+        //owner = owner = machine.Character;
 
         SubscribeToPauseEvents();
     }

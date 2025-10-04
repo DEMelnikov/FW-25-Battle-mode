@@ -7,11 +7,14 @@ public abstract class State : BaseState
     [SerializeField] public bool logging;
 
     [SerializeField] protected List<Transition> transitions = new List<Transition>();
+
+    protected Character owner;
     //[SerializeField] protected FSMStates _allTransitiosFailedState;
 
     public virtual void OnEnter(StateMachine machine) 
     {
         if (logging) Debug.LogWarning($"{machine.GetGameObject().name} Enter {this.name} State:");
+        owner = machine.Character;
     }
     public virtual void OnUpdate(StateMachine machine) 
     {
@@ -57,5 +60,14 @@ public abstract class State : BaseState
     public List<Transition> GetTransitions()
     {
         return transitions;
+    }
+
+    protected virtual void SetAnimation()
+    {
+        //Debug.LogError($" TRY to SET ANIMATION!");
+        //owner.SetAnimationBool(AnimationBools.ISDEAD, true);
+        owner.ActivateAnimationTrigger(AnimationTriggers.EMPTY);
+
+        //owner.SetAnimationBool(AnimationBools.ISWALK, !_navMeshAgent.isStopped);
     }
 }

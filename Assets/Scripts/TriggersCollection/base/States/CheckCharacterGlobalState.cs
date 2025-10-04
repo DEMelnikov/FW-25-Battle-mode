@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "TargetEnemyState", menuName = "FW25/Triggers/States/Target Enemy Character Global State")]
 
-public class TargetEnemyCharGlobalState : Trigger
+public class CheckCharacterGlobalState : Trigger
 {
-    [SerializeField] private List<CharacterGlobalState> _statesToCheck = new List<CharacterGlobalState>();
+    [SerializeField] private List<CharacterGlobalState> _statesToCheck = new();
     [SerializeField] private bool _mustContainState = true; // true Ц требует наличие, false Ц отсутствие
 
 
@@ -15,7 +15,7 @@ public class TargetEnemyCharGlobalState : Trigger
         if (logging) Debug.Log($"Start trigger {this.name} ");
         if (character.TargetsVault.TryGetTargetCharacter(out var enemy))
         {
-            var enemyState = enemy.GetStateMachine().CharacterGoal;
+            var enemyState = enemy.StateMachine.CharacterGoal;
             bool contains = _statesToCheck.Contains(enemyState);
 
             // ¬ зависимости от того, требуетс€ совпадение или наоборот

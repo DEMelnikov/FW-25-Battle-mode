@@ -20,14 +20,14 @@ public class Unconscious : State
 
     //private TimerTrigger energyLoseTrigger;
 
-    private Character owner;
+
 
     public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
 
         //owner = machine.Context.Owner.GetComponent<Character>();
-        owner = machine.Character;
+        //owner = machine.Character;
         machine.CharacterGoal = CharacterGlobalState.UNCONSCIOUS;
         //_targetsVault = owner.GetTargetsVault();
         //_statsController = owner.GetStatsController();

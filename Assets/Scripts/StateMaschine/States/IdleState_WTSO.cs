@@ -7,6 +7,9 @@ public class IdleState_WTSO : State
     public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
+        SetAnimation();
+
+
     }
 
     public override void OnExit(StateMachine machine)
@@ -23,5 +26,10 @@ public class IdleState_WTSO : State
     {
         if (logging) Debug.Log($"{machine.GetGameObject().name} On Idle State:");
         base.OnUpdate(machine);
+    }
+
+    protected override void SetAnimation()
+    {
+        owner.ActivateAnimationTrigger(AnimationTriggers.TOIDLE);
     }
 }

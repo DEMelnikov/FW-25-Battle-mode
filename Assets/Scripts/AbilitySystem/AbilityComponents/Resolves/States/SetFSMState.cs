@@ -9,7 +9,10 @@ public class SetFSMState : AbilityResolve
 
     public override void ApplyResolve(ICharacter character, int outcome)
     {
-        var stateMachine = character.GetStateMachine();
+
+        ICharacter targetCharacter = GetTargetForAbility(character);
+
+        var stateMachine = targetCharacter.StateMachine;
         stateMachine.SetState(newState);
 
     }

@@ -18,13 +18,13 @@ public class ApproachTargetEnemyState_WTSO : State
 
     private TimerTrigger energyLoseTrigger;
 
-    private Character owner;
+    //private Character owner;
 
     public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
 
-        owner = machine.Character;//Context.Owner.GetComponent<Character>();
+        //owner = machine.Character;//Context.Owner.GetComponent<Character>();
 
         _targetsVault    = owner.TargetsVault;
         _statsController = owner.StatController;

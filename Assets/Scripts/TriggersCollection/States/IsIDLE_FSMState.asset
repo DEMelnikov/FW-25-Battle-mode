@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71a660fc801cd294caa4e33a714a7c4d, type: 3}
-  m_Name: FSMStateCheckSelf
+  m_Name: IsIDLE_FSMState
   m_EditorClassIdentifier: TriggersCollection::FSMStateCheck
-  _description: 'Character in TARGET has (or not)  states from list as current in
-    FSM '
-  _name: FSMStateCheck_self_IDLE&UNCONS
+  _description: 
+  _name: 
+  _targeting: 0
   logging: 1
-  _statesToCheck: 0000000004000000
+  _statesToCheck: 00000000
   _mustContainState: 1
-  _target: 0

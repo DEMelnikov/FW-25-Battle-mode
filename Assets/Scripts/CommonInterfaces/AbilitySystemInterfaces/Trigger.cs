@@ -14,6 +14,7 @@ public abstract class Trigger : ScriptableObject
     [Header("Настройки:")]
     [SerializeField] protected bool logging = true;
 
+
     public abstract bool CheckTrigger(ICharacter character);
     public string GetTriggerName() { return _name; } //TODO - seal this
 

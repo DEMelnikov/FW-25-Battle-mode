@@ -13,7 +13,7 @@ public interface ICharacter
     public SceneObjectTag SceneObjectTag { get; }
     NavMeshAgent GetNavMeshAgent();
     IBehaviorProfile GetBehaviorProfile();
-    IStateMachine GetStateMachine();
+    IStateMachine StateMachine { get; }
     bool InEngage {  get; }
     void UnderMeleAttack(GameObject agressor);
     void ActivateAnimationTrigger(AnimationTriggers trigger);

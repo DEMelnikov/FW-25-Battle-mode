@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83fba55b2ce7f564783ef64602e2504e, type: 3}
-  m_Name: Unconscious
+  m_Name: Old-NoUnconscious
   m_EditorClassIdentifier: TriggersCollection::TargetEnemyCharGlobalState
   _description: if Target Enemy  No  DEAD or Unconscious = true
-  _name: 
+  _name: TargetEnemyHas(HasNo)GlobalState
   logging: 0
-  _statesToCheck: 0400000005000000
-  _mustContainState: 1
+  _statesToCheck: 0500000004000000
+  _mustContainState: 0

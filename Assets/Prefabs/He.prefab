@@ -207,8 +207,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logging: 1
   AabilitiesATStart:
-  - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
   - {fileID: 11400000, guid: 529c5dd05716b9c4ca8cc2ba1d588e58, type: 2}
+  - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
+  - {fileID: 11400000, guid: 07135777b4b4ea94b815603d2da19945, type: 2}
   _initialAttackability: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _initialDefenceAbility: {fileID: 11400000, guid: dff1d1f89f250c545aa99f59e078f1af, type: 2}
 --- !u!114 &1282041725716576328
@@ -514,9 +515,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4271095123032851471, guid: c54b36ee7861c4b41bd1dabf2455160f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6750362127874603262}
-    - targetCorrespondingSourceObject: {fileID: 4271095123032851471, guid: c54b36ee7861c4b41bd1dabf2455160f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7229229473400559071}
   m_SourcePrefab: {fileID: 100100000, guid: c54b36ee7861c4b41bd1dabf2455160f, type: 3}
 --- !u!224 &5757879080561670256 stripped
@@ -529,18 +527,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4271095123032851471, guid: c54b36ee7861c4b41bd1dabf2455160f, type: 3}
   m_PrefabInstance: {fileID: 6950590312477201390}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6750362127874603262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6570909578811103201}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c84d26fe5a6dcc43a73c474a1e1d19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoveTest
 --- !u!114 &7229229473400559071
 MonoBehaviour:
   m_ObjectHideFlags: 0

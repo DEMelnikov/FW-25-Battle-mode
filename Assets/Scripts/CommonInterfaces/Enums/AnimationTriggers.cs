@@ -7,5 +7,6 @@ public enum AnimationTriggers
     DEATH,
     DAMAGED,
     WALK,
-    EMPTY
+    EMPTY,
+    TOIDLE
 }

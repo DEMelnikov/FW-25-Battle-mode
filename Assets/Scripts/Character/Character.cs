@@ -53,6 +53,11 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         //agent.SetDestination(new Vector3(0, 0, transform.position.z));
 
         //InitializeStateMachine();
+        //Transform child = transform.Find("SPUM_20240911215638389");
+        //if (child != null)
+        //{
+        //    animator = child.GetComponent<Animator>();
+        //}
 
         animator = GetComponentInChildren<Animator>();//GetComponentIn<Animator>();
         if (animator == null) Debug.LogError("No Animator");
@@ -88,7 +93,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     //[System.Obsolete("Use StatContoller")]
     public IStatsController StatController { get => _statsController; private set => _statsController = value as CharacterStatsController; }
     //public IStatsController StatController 
-    public IStateMachine GetStateMachine() => _stateMachine;
+    public IStateMachine StateMachine { get => _stateMachine; } //private set => _stateMachine = value as Stat; }
     public IAbilityController AbilityController { get => _abilityController; }
     public ICharacterTargetsVault TargetsVault { get => _targets; private set => _targets = value as CharacterTargets; }
     public Transform transform => this.gameObject.transform;
@@ -111,8 +116,8 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     #region Animations
     public void ActivateAnimationTrigger(AnimationTriggers trigger)
     {
-        //Debug.LogWarning($"Using Animation Trigger {trigger.ToString()}");
-        if(trigger!=AnimationTriggers.EMPTY) animator.SetTrigger(trigger.ToString());
+        Debug.LogWarning($"Using Animation Trigger {trigger.ToString()}");
+        //if(trigger!=AnimationTriggers.EMPTY) animator.SetTrigger(trigger.ToString());
     }
     public void SetAnimationBool(AnimationBools stateName, bool _bool)
     {
@@ -122,6 +127,8 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         //animator.
         //animator.SetBool("ISDEAD", true);
         //owner.SetAnimationBool(AnimationBools.ISDEAD.ToString(), true);
+
+        //animator.SetTrigger("TOIDLE");
     }
     
     #endregion
