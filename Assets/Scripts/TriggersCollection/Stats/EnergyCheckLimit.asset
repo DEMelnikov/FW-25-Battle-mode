@@ -15,9 +15,9 @@ MonoBehaviour:
   _description: Energy percent > Energy limit => true
   _name: HeroEnergy>Limit
   _targeting: 0
-  logging: 1
+  logging: 0
   _statToCheck: 1
   _relationType: 2
-  _costant: 1
   isInPercantage: 1
   _equalityTolerance: 0.5
+  _costant: 1

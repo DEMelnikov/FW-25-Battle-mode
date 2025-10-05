@@ -7,9 +7,9 @@ public class IdleState_WTSO : State
     public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
+
+        //Debug.LogWarning($"{owner.ObjName} - animator ");
         SetAnimation();
-
-
     }
 
     public override void OnExit(StateMachine machine)
@@ -30,6 +30,7 @@ public class IdleState_WTSO : State
 
     protected override void SetAnimation()
     {
-        owner.ActivateAnimationTrigger(AnimationTriggers.TOIDLE);
+        //owner.ActivateAnimationTrigger(AnimationTriggers.TOIDLE);
+        owner.AnimatorPlayIdle();
     }
 }

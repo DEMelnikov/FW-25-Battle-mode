@@ -136,7 +136,7 @@ public class Ability : BaseAbility, IAbility
         //    return false;
         if (!trigger.CheckTrigger(character))
         {
-            if (logging) Debug.Log($"{abilityName} Trigger {trigger.name} not passed");
+            if (logging) Debug.Log($"{abilityName} Trigger {trigger.name} NOT PASSED--- ");
             return false;
         }
             if (logging) Debug.Log($"  {abilityName} Trigger {trigger.name} passed +++");

@@ -159,4 +159,10 @@ public class AbilityTester : MonoBehaviour
 
         //.AddModifier(modifier);//Stats[_statToSetValue].AddModifier(modifier);
     }
+
+    [Button]
+    public void PlayAnimation()
+    {
+        character.Animator.Play("IDLE");
+    }
 }

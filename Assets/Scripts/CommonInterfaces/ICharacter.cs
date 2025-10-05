@@ -18,6 +18,8 @@ public interface ICharacter
     void UnderMeleAttack(GameObject agressor);
     void ActivateAnimationTrigger(AnimationTriggers trigger);
     void SetAnimationBool(AnimationBools stateName, bool _bool);
+    void AnimatorPlayIdle();
+    Animator Animator { get; }
 
 }
 

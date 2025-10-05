@@ -41,12 +41,13 @@ public class AbilityWithSubscribeToStat: Ability
             Debug.Log($"{abilityName}: Stat {stat.Name} changed from {oldValue} to {newValue}");
         }
 
-        if (newValue<=0) EventHandler();
+        //if (newValue<=0) 
+            EventHandler();
     }
 
     protected override void EventHandler()
     {
-        if(logging) Debug.Log($"{abilityName}: Stat TRY Set STATE!!!!!!!!!!!!!!!!!!!!!!!!");
+        //if(logging) Debug.Log($"{abilityName}: Stat TRY Set STATE!!!!!!!!!!!!!!!!!!!!!!!!");
         TryActivateAbility(_character, out _);
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   _description: Energy  <= 0 => true
   _name: EnergyBelow0
   _targeting: 0
-  logging: 1
+  logging: 0
   _statToCheck: 1
   _relationType: 3
   isInPercantage: 1

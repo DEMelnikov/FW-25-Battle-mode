@@ -38,6 +38,9 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         _abilityController = GetComponent<IAbilityController>();
         _abilityController.Initialize();
 
+        animator = GetComponentInChildren<Animator>();//GetComponentIn<Animator>();
+        if (animator == null) Debug.LogError("No Animator");
+
         _stateMachine = GetComponent<IStateMachine>();
         _stateMachine.Initialize();
         //_stateMachine.CharacterGlobalState = CharacterGlobalState.Idle;
@@ -58,9 +61,6 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         //{
         //    animator = child.GetComponent<Animator>();
         //}
-
-        animator = GetComponentInChildren<Animator>();//GetComponentIn<Animator>();
-        if (animator == null) Debug.LogError("No Animator");
     }
 
     void Update()
@@ -95,6 +95,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     //public IStatsController StatController 
     public IStateMachine StateMachine { get => _stateMachine; } //private set => _stateMachine = value as Stat; }
     public IAbilityController AbilityController { get => _abilityController; }
+    public Animator Animator { get=> animator;  }
     public ICharacterTargetsVault TargetsVault { get => _targets; private set => _targets = value as CharacterTargets; }
     public Transform transform => this.gameObject.transform;
     public GameObject GetGameObject => this.gameObject;
@@ -116,8 +117,8 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     #region Animations
     public void ActivateAnimationTrigger(AnimationTriggers trigger)
     {
-        Debug.LogWarning($"Using Animation Trigger {trigger.ToString()}");
-        //if(trigger!=AnimationTriggers.EMPTY) animator.SetTrigger(trigger.ToString());
+        Debug.Log($"Using Animation Trigger {trigger.ToString()}");
+        if(trigger!=AnimationTriggers.EMPTY) animator.SetTrigger(trigger.ToString());
     }
     public void SetAnimationBool(AnimationBools stateName, bool _bool)
     {
@@ -129,6 +130,12 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         //owner.SetAnimationBool(AnimationBools.ISDEAD.ToString(), true);
 
         //animator.SetTrigger("TOIDLE");
+    }
+
+    public void AnimatorPlayIdle()
+    {
+        //Debug.LogWarning("TRYING PLAY IDLE!");
+        animator.Play("IDLE");
     }
     
     #endregion

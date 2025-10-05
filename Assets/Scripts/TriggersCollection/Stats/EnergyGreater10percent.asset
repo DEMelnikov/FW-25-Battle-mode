@@ -15,7 +15,7 @@ MonoBehaviour:
   _description: Energy  Greater 10percent
   _name: EnergyGreater10percent
   _targeting: 0
-  logging: 1
+  logging: 0
   _statToCheck: 1
   _relationType: 2
   isInPercantage: 1
