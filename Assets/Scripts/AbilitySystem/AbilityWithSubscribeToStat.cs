@@ -3,14 +3,15 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 [CreateAssetMenu(fileName = "Ability_subscribe", menuName = "FW25/Ability System/Ability/Ability With Stat Subscribe")]
-public class AbilityWithSubscribeToStat: Ability
+public class AbilityWithSubscribeToStat : Ability
 {
     [SerializeField] private StatTag _statToSubscribe = StatTag.ENERGY;
 
     public override void Subscribe(ICharacter character)
     {
         base.Subscribe(character);
-        if (character == null || IsSubscribed) return;
+        if (character == null || IsSubscribed || !HasTag(AbilityTag.WITHSUBSCRIBE)) return;
+        //if () return; 
 
         if(character.StatController.Stats.TryGetValue(_statToSubscribe, out var foundStat))
         {
