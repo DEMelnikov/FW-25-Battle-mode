@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4474166e8e11af647a99372b608b8c05, type: 3}
-  m_Name: DeathState
+  m_Name: UnconsciousState
   m_EditorClassIdentifier: StateMaschine::DeathState
   _description: temp State
   stateId: 
