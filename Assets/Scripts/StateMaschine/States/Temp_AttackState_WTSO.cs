@@ -7,7 +7,6 @@ public class Temp_AttackState_WTSO : StateWithPause
 
     private IBehaviorProfile        behaviorProfile;
     private ICharacterTargetsVault  targetsVault;
-    private IAbility                defaultAttack;
     private TimerTrigger            attackTimer;
 
 
@@ -15,7 +14,6 @@ public class Temp_AttackState_WTSO : StateWithPause
     {
         base.OnEnter(machine);
         behaviorProfile = owner.GetBehaviorProfile();
-        defaultAttack = behaviorProfile.BaseAttackAbility;
         targetsVault = owner.TargetsVault;
 
         attackTimer = new TimerTrigger(
@@ -53,17 +51,7 @@ public class Temp_AttackState_WTSO : StateWithPause
 
     private void Attack()
     {
-        if (defaultAttack == null)
-        {
-            Debug.LogError($" No Default attack {owner.ObjName}");
-            return;
-        } 
-        if (defaultAttack.TryActivateAbility(owner,out var outcome))
-        {
-           if(logging) Debug.Log($"{this.owner.ObjName} Making Attack result {outcome}");
-            return;
-        }
-        Debug.Log($"{this.owner.ObjName} Making Attack no success");
+        owner.AbilityController.TryExecuteAttackAbility();
     }
 
     private void Engage()
