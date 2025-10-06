@@ -14,6 +14,8 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
     [SerializeField] private float wpActualDistance;
                      private IStateMachine _sm;
                      private BehaviorProfile _behaviorProfile;
+
+    #region UnityMethods and Initialize
     void Awake()
     {
 
@@ -26,10 +28,13 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
 
     public void Initialize()
     {
-        _sm = GetComponent<IStateMachine>();
+        _sm = GetComponent<Character>().StateMachine;
         _behaviorProfile = GetComponent<BehaviorProfile>();
     }
 
+    #endregion
+
+    #region Subscribe/Unsubscribe methods
     private void SubscribetToTargetsFSM()
     {
         if (!TryGetTargetCharacter(out var _targetChararacter)) return;
@@ -49,15 +54,10 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
         Debug.LogWarning($"{this.gameObject.name} - oppoenet changed State to {newState}");
     }
 
-
+    #endregion
 
     #region Target Enemy methods
 
-    /// <summary>
-    /// ��������� ���������� �������� �����.
-    /// ���������� true, ���� ���� �������, ����� false.
-    /// </summary>
-    /// <returns>bool � ��������� ��������, out ICharacter </returns>
     public bool TryGetTargetCharacter(out ICharacter targetICharacter)
     {
         targetICharacter = null;
@@ -141,17 +141,17 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
         enemyActualDistance = Vector3.Distance(this.gameObject.transform.position, enemyTransform.position);
     }
 
-    public bool TryGetTargetEnemyTransform (out Transform _transform)
+    public bool TryGetTargetEnemyTransform (out Transform transform)
     {
-        if (TryGetTargetEnemy(out GameObject _enemy))
+        if (TryGetTargetCharacter(out var enemy))
         {
             //if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() Got {_enemy.name} and now geting Transform");
-            _transform = _enemy.transform;
+            transform = enemy.transform;
             //if (logging) Debug.Log($" Transform position X: {_transform.position.x}");
             return true; 
         }
 
-        _transform = null;
+        transform = null;
         return false;
     }
 

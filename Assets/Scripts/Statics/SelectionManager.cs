@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.TextCore.Text;
 
 /// <summary>
 /// Статический менеджер выбора объектов (с ограничениями Unity)
@@ -40,13 +41,12 @@ public static class SelectionManager
         if (selected.TryGetComponent<ISelectableCharacter>(out var character) &&
             character.SceneObjectTag == SceneObjectTag.Hero)
         {
-            var target = character.GetSelectedTarget();
+            character.TargetsVault.TryGetTargetCharacter(out var target) ;
 
 
-            if (target != null && target.TryGetComponent<ISelectableCharacter>(out var targetChar) &&
-                targetChar.SceneObjectTag == SceneObjectTag.Enemy)
+            if (target != null && target.SceneObjectTag == SceneObjectTag.Enemy)
             {
-                SetSelectionWithOpponent(selected, target);
+                SetSelectionWithOpponent(selected, target.GetGameObject);
                 return;
             }
         }
@@ -55,11 +55,12 @@ public static class SelectionManager
         if (selected.TryGetComponent<ISelectableCharacter>(out var enemy) &&
             enemy.SceneObjectTag == SceneObjectTag.Enemy)
         {
-            var target = enemy.GetSelectedTarget();
-            if (target != null && target.TryGetComponent<ISelectableCharacter>(out var targetChar) &&
-                targetChar.SceneObjectTag == SceneObjectTag.Hero)
+            enemy.TargetsVault.TryGetTargetCharacter(out var target);
+
+
+            if (target != null && target.SceneObjectTag == SceneObjectTag.Hero)
             {
-                SetSelectionWithOpponent(target, selected);
+                SetSelectionWithOpponent(target.GetGameObject, selected);
                 return;
             }
         }

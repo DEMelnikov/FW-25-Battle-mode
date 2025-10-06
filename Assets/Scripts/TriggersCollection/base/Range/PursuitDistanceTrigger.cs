@@ -13,7 +13,7 @@ public class PursuitDistanceTrigger : Trigger
     {
         if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger started {_relationType} mode");
 
-        if (!character.TargetsVault.TryGetTargetEnemy(out GameObject enemy)) return false;
+        if (!character.TargetsVault.TryGetTargetCharacter(out ICharacter enemy)) return false;
         _targetDistance = character.GetBehaviorProfile().PursuitDistance;
         if(_targetDistance < 0) return false;
 

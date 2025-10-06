@@ -5155,8 +5155,8 @@ GameObject:
   - component: {fileID: 7723458236203311622}
   - component: {fileID: 7723458236203311623}
   - component: {fileID: 7723458236203311626}
-  - component: {fileID: 7723458236203311627}
   - component: {fileID: 7723458236203311628}
+  - component: {fileID: 7723458236203311629}
   m_Layer: 3
   m_Name: En
   m_TagString: Untagged
@@ -5325,7 +5325,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2268109125925623908, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5509,24 +5510,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7723458236203311627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878806293192145506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa69c71a63c539841869b45b80728803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Character::CharacterTargets
-  _selectedTarget: {fileID: 0}
-  _waypoint: {x: 0, y: 0, z: 0}
-  _whoIsYourEnemy: 0
-  logging: 0
-  enemyActualDistance: 0
-  wpActualDistance: 0
 --- !u!114 &7723458236203311628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5546,6 +5529,24 @@ MonoBehaviour:
   _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 10
+--- !u!114 &7723458236203311629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878806293192145506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d001163a0ebac48b98a5cd36261ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Character::CharacterTargetsVault
+  _selectedTarget: {fileID: 0}
+  _waypoint: {x: 0, y: 0, z: 0}
+  _whoIsYourEnemy: 0
+  logging: 0
+  enemyActualDistance: 0
+  wpActualDistance: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -7,22 +7,22 @@ using UnityEngine.AI;
 public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 {
     [Header("Настройки")]
-    [SerializeField] private CharacterSettings _settings;
+    [SerializeField] private CharacterSettings       _settings;
     [SerializeField] private SO_CharacterStatsConfig _statsConfig;
-    [SerializeField] private bool logging = false;
+    [SerializeField] private bool                    logging = false;
 
     //[SerializeField] private GameObject                _selectedTarget;
     [SerializeField] public SceneObjectTag SceneObjectTag { get; private set; }
 
-    private IStateMachine _stateMachine;
-    private CharacterStatsController _statsController;
-    private IAbilityController _abilityController;
-    private CharacterTargetsVault _targets;
-    private NavMeshAgent _navMeshAgent;
-    private IBehaviorProfile _behaviorProfile;
-    [SerializeField] private bool _inEngage;
+    private IStateMachine               _stateMachine;
+    private CharacterStatsController    _statsController;
+    private IAbilityController          _abilityController;
+    private CharacterTargetsVault       _targets;
+    private NavMeshAgent                _navMeshAgent;
+    private IBehaviorProfile            _behaviorProfile;
+    [SerializeField] private bool       _inEngage;
 
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator   animator;
 
     //public StateMaschine StateMaschine { get; set; }
     //public hState_Idle IdleState { get; set; }
@@ -83,12 +83,12 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 
     #region Публичные свойства
 
-    [System.Obsolete("Use CharacterTargetVaults")]
-    public GameObject GetSelectedTarget()
-    {
-        if (_targets.TryGetTargetEnemy(out GameObject enemyGameobject)) return enemyGameobject;
-        return null;
-    }
+    //[System.Obsolete("Use CharacterTargetVaults")]
+    //public GameObject GetSelectedTarget()
+    //{
+    //    if (_targets.TryGetTargetEnemy(out GameObject enemyGameobject)) return enemyGameobject;
+    //    return null;
+    //}
 
     //TODO заменить и возмоно убрать
     public void SetSelectedTarget(GameObject target)

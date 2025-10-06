@@ -13,7 +13,7 @@ public class WeaponRangeDistanceCheck : Trigger
     {
         if (logging) Debug.Log($"Check trigger {this.name} started {_relationType} mode");
 
-        if (!character.TargetsVault.TryGetTargetEnemy(out GameObject enemy)) return false;
+        if (!character.TargetsVault.HasTargetEnemy()) return false;
 
         _actualDistance = character.TargetsVault.ActualEnemyDistance;
 

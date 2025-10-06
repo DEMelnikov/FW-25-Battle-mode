@@ -4,6 +4,7 @@ using UnityEngine;
 public interface ISelectableCharacter
 {
     SceneObjectTag SceneObjectTag { get; }
-    GameObject GetSelectedTarget();
+    //GameObject GetSelectedTarget();
+    ICharacterTargetsVault TargetsVault { get; }
     //GameObject gameObject { get; }
 }
