@@ -9,8 +9,6 @@ public class StateMachine : MonoBehaviour, IStateMachine
     //[SerializeField] private ScriptableObject _initialStateBehaviour;
 
     [SerializeReference] private State                _currentState;
-    [SerializeField] 
-                         //private IStateContext        _context;
                          private Character            _character;
     [SerializeReference] private CharacterGlobalState _characterGoal = CharacterGlobalState.Idle;
     [SerializeReference] private bool logging = false;

@@ -5,7 +5,7 @@ using UnityEngine.TextCore.Text;
 public interface ICharacterTargetsVault
 {
     public bool HasTargetEnemy();
-    public bool TryGetTargetEnemy(out GameObject targetEnemy);
+    //public bool TryGetTargetEnemy(out GameObject targetEnemy);
     public bool TryGetTargetCharacter(out ICharacter targetCharacter);
     public bool TryGetTargetEnemyTransform(out Transform _transform);
     //public GameObject GetTargetEnemy();

@@ -13,7 +13,7 @@ public class EngagingResolve : AbilityResolve
         {
             if (!targetCharacter.InEngage)
             {
-                targetCharacter.UnderMeleAttack(character.GetGameObject);
+                targetCharacter.UnderMeleAttack(character);
             }
         }
     }

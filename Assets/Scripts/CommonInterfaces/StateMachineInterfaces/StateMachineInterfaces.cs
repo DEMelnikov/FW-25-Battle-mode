@@ -9,6 +9,7 @@ public interface IStateMachine
     GameObject GetGameObject();
     FSMStates CurrentStateFSM {  get; }
     event System.Action<FSMStates, FSMStates> OnStateChangedFSM;
+    public void ClearAllSubscribers();
 
 
 }

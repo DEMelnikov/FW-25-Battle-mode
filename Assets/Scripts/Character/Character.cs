@@ -91,10 +91,10 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     //}
 
     //TODO заменить и возмоно убрать
-    public void SetSelectedTarget(GameObject target)
-    {
-        _targets.SetTargetEnemy(target);
-    }
+    //public void SetSelectedTarget(GameObject target)
+    //{
+    //    _targets.SetTargetEnemy(target);
+    //}
     //[System.Obsolete("Use StatContoller")]
     public IStatsController StatController { get => _statsController; private set => _statsController = value as CharacterStatsController; }
     //public IStatsController StatController 
@@ -108,12 +108,12 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public bool InEngage { get => _inEngage; set => _inEngage = value; }
     public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
     public IBehaviorProfile GetBehaviorProfile() => _behaviorProfile;
-    public void UnderMeleAttack(GameObject agressor)
+    public void UnderMeleAttack(ICharacter agressor)
     {
         _inEngage = true;
         if (!_targets.HasTargetEnemy())
         {
-            _targets.SetTargetEnemy(agressor);
+            _targets.SetTargetEnemyCharacter(agressor);
         }
         _stateMachine.SetState(FSMStates.INENGAGE);
     }

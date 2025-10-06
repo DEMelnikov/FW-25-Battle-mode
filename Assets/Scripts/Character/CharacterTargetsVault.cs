@@ -1,10 +1,11 @@
 using UnityEditorInternal;
 using UnityEngine;
+using EditorAttributes;
 
 [DisallowMultipleComponent]
 public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
 {
-    [SerializeField] private GameObject _selectedTarget;
+    [SerializeField]  private GameObject _selectedTargetGO; //For Inspector purpose only
     [SerializeField] private ICharacter _targetEnemyChararacter;
 
     [SerializeField] private Vector3 _waypoint = Vector3.zero;
@@ -15,6 +16,9 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
                      private IStateMachine _sm;
                      private BehaviorProfile _behaviorProfile;
 
+    public event System.Action<ICharacter> OnTargetEnemySet;        // Когда установлена новая цель
+    public event System.Action<ICharacter> OnTargetEnemyCleared;    // Когда цель очищена
+
     #region UnityMethods and Initialize
     void Awake()
     {
@@ -24,12 +28,20 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
     private void OnDestroy()
     {
         UnSubscribetToTargetsFSM();
+        ClearAllSubscribers();
     }
 
     public void Initialize()
     {
         _sm = GetComponent<Character>().StateMachine;
         _behaviorProfile = GetComponent<BehaviorProfile>();
+    }
+
+    // Очистка всех подписчиков событий
+    public void ClearAllSubscribers()
+    {
+        OnTargetEnemySet = null;
+        OnTargetEnemyCleared = null;
     }
 
     #endregion
@@ -40,6 +52,7 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
         if (!TryGetTargetCharacter(out var _targetChararacter)) return;
 
         _targetChararacter.StateMachine.OnStateChangedFSM += OnTargetsFSMStateChanged;
+        if (logging) Debug.Log($"{this.gameObject} - Subscribed to FSM Changes of {_targetChararacter.ObjName}");
     }
 
     private void UnSubscribetToTargetsFSM()
@@ -47,6 +60,7 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
         if (!TryGetTargetCharacter(out var _targetChararacter)) return;
 
         _targetChararacter.StateMachine.OnStateChangedFSM -= OnTargetsFSMStateChanged;
+        if (logging) Debug.Log($"{this.gameObject} - UnSubscribed to FSM Changes of {_targetChararacter.ObjName}");
     }
 
     public void OnTargetsFSMStateChanged(FSMStates oldState, FSMStates newState)
@@ -64,9 +78,9 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
         if (!ValidateTargetEnemy()) return false;
 
 
-        if (_selectedTarget.TryGetComponent<Character>(out var targetCharacter))
+        if (_targetEnemyChararacter != null)
         {
-            targetICharacter = targetCharacter as ICharacter;
+            targetICharacter = _targetEnemyChararacter;
 
             //Debug.LogWarning($"I'm inside TryGetComponent targetICharacter name {targetICharacter.GetGameObject.name} ");
 
@@ -78,65 +92,22 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
 
     private bool ValidateTargetEnemy()
     {
-        if (_selectedTarget != null &&
-            _selectedTarget.GetComponent<Character>() != null &&
-            _selectedTarget.GetComponent<Character>().SceneObjectTag == _whoIsYourEnemy)
+        if (_targetEnemyChararacter != null &&
+            _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
         {
             return true;
         }
         return false;
     }
 
-
-    [System.Obsolete("Use TryGetEnemyCharacter")]
-    public bool TryGetTargetEnemy(out GameObject targetEnemy)
-    {
-        if (_selectedTarget != null &&
-            _selectedTarget.GetComponent<Character>() != null &&
-            _selectedTarget.GetComponent<Character>().SceneObjectTag == _whoIsYourEnemy)
-        {
-            targetEnemy = _selectedTarget;
-            if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
-                $"- valid enemy target: {targetEnemy.name}");
-            return true;
-        }
-
-        if (_targetEnemyChararacter !=null && _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
-        {
-            targetEnemy = _targetEnemyChararacter.GetGameObject;
-            return true;
-        }
-
-        targetEnemy = null;
-        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
-            $"- no valid enemy target");
-        return false;
-    }
-
-    //public bool TryGetEnemyCharacter(out ICharacter characterEnemy)
-    //{
-    //    if (_targetEnemyChararacter != null &&
-    //        _targetEnemyChararacter.SceneObjectTag == _whoIsYourEnemy)
-    //    {
-    //        characterEnemy = _targetEnemyChararacter;
-    //        if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetTargetEnemy() " +
-    //            $"- valid enemy target: {_targetEnemyChararacter.GetGameObject.name}");
-    //        return true;
-    //    }
-
-    //    characterEnemy = null;
-    //    if (logging) Debug.Log($"{gameObject.name} CharacterTargets.TryGetEnemyCharacter() " +
-    //        $"- no valid enemy target");
-    //    return false;
-    //}
 
     private void UpdateDistanceTargetEnemy()
     {
         enemyActualDistance = Mathf.Infinity;
         ValidateAndCleanTarget();
 
-        if (_selectedTarget == null) return;
-        Transform enemyTransform = _selectedTarget.transform;
+        if (_targetEnemyChararacter == null) return;
+        Transform enemyTransform = _targetEnemyChararacter.transform;
 
         enemyActualDistance = Vector3.Distance(this.gameObject.transform.position, enemyTransform.position);
     }
@@ -163,64 +134,94 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
 
     public void ValidateAndCleanTarget()
     {
-        if (!ValidateTargetEnemy()) { _selectedTarget = null; }
+        if (!ValidateTargetEnemy()) { _targetEnemyChararacter = null; }
     }
+    
+    //public void SetTargetEnemyCharacter(ICharacter target)
+    //{
+    //    if (target == null) return;
 
-    public void SetTargetEnemy(GameObject target)
-    {
-        //Debug.Break();
+    //    if (target.SceneObjectTag == _whoIsYourEnemy)
+    //    {
+    //        //Debug.LogWarning("I'm in targetsVault");
 
-        if (target == null) return;
+    //        _targetEnemyChararacter = target;
+    //        if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_targetEnemyChararacter.ObjName}");
 
-        var targetCharacter = target.GetComponent<Character>();
-        if (targetCharacter == null) return;
+    //        //TODO ������ �����
+    //        _selectedTargetGO = target.GetGameObject;
+    //        SubscribetToTargetsFSM();
+    //    }
+    //    else if (logging)
+    //    {
+    //        Debug.Log($"{gameObject.name} SetTargetEnemyCharacter rejected " +
+    //            $"- target tag {target.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
+    //    }
 
-        if (targetCharacter.SceneObjectTag == _whoIsYourEnemy)
-        {
-            _selectedTarget = target;
-            SubscribetToTargetsFSM();
-            if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_selectedTarget.name}");
-        }
-        else if (logging)
-        {
-            Debug.Log($"{gameObject.name} SetTargetEnemy rejected " +
-                $"- target tag {targetCharacter.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
-        }
-
-        //SetTargetEnemyCharacter(target.GetComponent<Character>());
-        //Debug.Break();
-    }
+    //}
 
     public void SetTargetEnemyCharacter(ICharacter target)
     {
         if (target == null) return;
 
-
-
         if (target.SceneObjectTag == _whoIsYourEnemy)
         {
-            //Debug.LogWarning("I'm in targetsVault");
+            ICharacter previousTarget = _targetEnemyChararacter;
 
-            _targetEnemyChararacter = target;
-            if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_targetEnemyChararacter.ObjName}");
+            // Если это новая цель (не та же самая)
+            if (previousTarget != target)
+            {
+                // Отписываемся от старой цели
+                if (previousTarget != null)
+                {
+                    UnSubscribetToTargetsFSM();
+                }
 
-            //TODO ������ �����
-            SetTargetEnemy(target.GetGameObject);
-            SubscribetToTargetsFSM();
+                // Устанавливаем новую цель
+                _targetEnemyChararacter = target;
+                _selectedTargetGO = target.GetGameObject;
+
+                // Подписываемся на события новой цели
+                SubscribetToTargetsFSM();
+
+                // Оповещаем подписчиков
+                OnTargetEnemySet?.Invoke(target);
+
+                if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_targetEnemyChararacter.ObjName}");
+            }
         }
         else if (logging)
         {
             Debug.Log($"{gameObject.name} SetTargetEnemyCharacter rejected " +
                 $"- target tag {target.SceneObjectTag} != enemy tag {_whoIsYourEnemy}");
         }
-
     }
 
-    [System.Obsolete("Use TryGetEnemyCharacter")]
-    public GameObject GetTargetEnemy()
+    public void CleanTargetEnemyCharacter()
     {
-        return TryGetTargetEnemy(out var target) ? target : null;
+        ICharacter previousTarget = _targetEnemyChararacter;
+
+        if (previousTarget != null)
+        {
+            // Отписываемся от событий цели
+            UnSubscribetToTargetsFSM();
+
+            // Очищаем ссылки
+            _targetEnemyChararacter = null;
+            _selectedTargetGO = null;
+
+            // Оповещаем подписчиков
+            OnTargetEnemyCleared?.Invoke(previousTarget);
+
+            if (logging) Debug.Log($"{gameObject.name} Cleared target {previousTarget.ObjName}");
+        }
+        else
+        {
+            _targetEnemyChararacter = null;
+            _selectedTargetGO = null;
+        }
     }
+
 
     #endregion
 
@@ -288,7 +289,7 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
     
     public void UpdateDistances()
     {
-        if (_selectedTarget != null) UpdateDistanceTargetEnemy();
+        if (_targetEnemyChararacter != null) UpdateDistanceTargetEnemy();
         if (_waypoint != Vector3.zero) UpdateDistanceWayPoint();
     }
 
@@ -298,7 +299,6 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
     {
         get
         {
-            // ����� �������������� ������� ����� ��������� ��������
             UpdateDistanceTargetEnemy();
             return enemyActualDistance;
         }

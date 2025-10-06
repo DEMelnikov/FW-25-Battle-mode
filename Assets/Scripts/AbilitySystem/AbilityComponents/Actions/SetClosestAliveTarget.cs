@@ -50,9 +50,8 @@ public class SetClosestAliveTarget : AbilityAction
 
         if (closestTarget != null)
         {
-            GameObject closestGO = closestTarget.gameObject;
-            character.SetSelectedTarget(closestGO);
-            if (logging) Debug.Log($"{character.ObjName} Action SetTarget find closest target with name {closestGO.name}");
+            character.TargetsVault.SetTargetEnemyCharacter(closestTarget);// SetSelectedTarget(closestGO);
+            if (logging) Debug.Log($"{character.ObjName} Action SetTarget find closest target with name {closestTarget.name}");
 
             return 1;
         }
