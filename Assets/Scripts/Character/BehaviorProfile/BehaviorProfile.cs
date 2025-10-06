@@ -8,6 +8,7 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
 {
 
     [Header("Attack Settings:")]
+    [SerializeField] private CoupDeGrace _coupDeGraceSettings = CoupDeGrace.NoAttackUnconscious;
     [SerializeField][Min(0.1f)] private float _weaponRange = 3f;
 
     [SerializeField] private Ability  _defaultAttackAbility;
@@ -29,6 +30,7 @@ public class BehaviorProfile : MonoBehaviour, IBehaviorProfile
     public float WeaponRange { get => _weaponRange; set => _weaponRange = value; }
     public float BaseAttackInterval { get => _baseAttackInterval; set => _baseAttackInterval = value; }
     public float WalkEnergyCost { get => walkEnergyCost; set => walkEnergyCost = value; }
+    public CoupDeGrace CoupDeGraceSettings { get => _coupDeGraceSettings; set => _coupDeGraceSettings = value; }
 
     // Методы обновления значений
     [System.Obsolete("Use BaseAttackAbility")]
