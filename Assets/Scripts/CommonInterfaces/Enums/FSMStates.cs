@@ -8,4 +8,5 @@ public enum FSMStates
     ATTACK,
     UNCONSCIOUS,
     INENGAGE,
+    SHELLDEFENCE
 }

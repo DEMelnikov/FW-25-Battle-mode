@@ -95,7 +95,7 @@ public class Ability : BaseAbility, IAbility
     {
         //string summary = "Character:" + character.ObjName + " execute ability " + this.name;
         ;
-        if (logging) { Debug.Log($"-Start Activation Ability {this.name} ó {character.ObjName}"); }
+        if (logging) { Debug.Log($"{character.ObjName} - Start Activation Ability {this.name}"); }
          
         outcome = 0;
 

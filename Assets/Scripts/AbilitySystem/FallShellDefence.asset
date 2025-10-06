@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5ac8fbf3366ca46a70141a7432679f, type: 3}
+  m_Name: FallShellDefence
+  m_EditorClassIdentifier: AbilitySystem::AbilityWithSubscribeToStat
+  isTimed: 0
+  abilityName: FallShellDefence
+  description: test Ability with resolveBy Subscribe Fall to ShellDefence State when
+    energy below X%
+  icon: {fileID: 0}
+  logging: 1
+  triggers:
+  - {fileID: 11400000, guid: ec0dd23cc02694a44b09bfcd5bed08c8, type: 2}
+  - {fileID: 11400000, guid: cb21fe6c53986a24e86c43d024cd4265, type: 2}
+  costs: []
+  _targeting: 0
+  _targetRadius: 0
+  _abilityAction: {fileID: 0}
+  _animationTrigger: 4
+  resolves:
+  - {fileID: 11400000, guid: cb83ac20ed37bdd42848ba4c81178850, type: 2}
+  abilityTags: 04000000
+  subscribeToStats: 1
+  subscribeFSM: 0
+  _statsToSubscribe: 01000000
+  _statesToSubscribe: 

@@ -18,6 +18,6 @@ MonoBehaviour:
   logging: 0
   _statToCheck: 1
   _relationType: 3
-  isInPercantage: 1
+  isInPercantage: 0
   _equalityTolerance: 0.5
   _comapareWith: 0

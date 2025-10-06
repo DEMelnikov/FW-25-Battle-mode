@@ -21,7 +21,9 @@ public class StateMachine : MonoBehaviour, IStateMachine
     [SerializeField] private State _moveState;
     [SerializeField] private State _attackState;
     [SerializeField] private State _unconsciousState;
-    [SerializeField] private State _inEngageState; 
+    [SerializeField] private State _inEngageState;
+    [SerializeField] private State _shellDefence; 
+    
 
     [Header("Actual States")]
     [SerializeField] private State idleState;
@@ -30,6 +32,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     [SerializeField] private State attackState;
     [SerializeField] private State unconsciousState;
     [SerializeField] private State inEngageState;
+    [SerializeField] private State shellDefence;
 
     //private Dictionary<string, State> stateInstances = new Dictionary<string, State>();
 
@@ -48,13 +51,16 @@ public class StateMachine : MonoBehaviour, IStateMachine
         AttackState = _attackState;
         UnconsciousState = _unconsciousState;
         InEngageState = _inEngageState;
+        ShellDefence = _shellDefence;
+
 
         if (IdleState        == null || 
             ChaseState       == null || 
             MoveState        == null || 
             AttackState      == null ||
             InEngageState    == null ||
-            UnconsciousState == null)
+            UnconsciousState == null ||
+            ShellDefence     == null)
         {
             Debug.LogError($"{this.gameObject.name} - has no Initial State in SM");
             return;
@@ -118,6 +124,15 @@ public class StateMachine : MonoBehaviour, IStateMachine
                 inEngageState = Instantiate(value);
         }
     }
+    public State ShellDefence
+    {
+        get => shellDefence;
+        set
+        {
+            if(value != null && value.StateType == FSMStates.SHELLDEFENCE)
+                shellDefence = Instantiate(value);
+        }
+    }
 
     #endregion
 
@@ -151,6 +166,9 @@ public class StateMachine : MonoBehaviour, IStateMachine
                 break;
             case FSMStates.INENGAGE:
                 ChangeState(inEngageState); 
+                break;
+            case FSMStates.SHELLDEFENCE:
+                ChangeState(shellDefence);
                 break;
             default:
                 Debug.LogError($"Unknown state {stateType}");

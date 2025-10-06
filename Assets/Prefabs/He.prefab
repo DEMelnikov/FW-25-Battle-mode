@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: {fileID: 0}
-  _character: {fileID: 0}
   _characterGoal: 3
   logging: 1
   _idleState: {fileID: 11400000, guid: feb8d9e7fa4dbab4b98751caaffbaac0, type: 2}
@@ -232,12 +231,14 @@ MonoBehaviour:
   _attackState: {fileID: 11400000, guid: b05919a4d09d0154dbafb572b347719b, type: 2}
   _unconsciousState: {fileID: 11400000, guid: 79c9db308430a434496bb86499b47649, type: 2}
   _inEngageState: {fileID: 11400000, guid: 4fdace59909ec644887beea34a83335e, type: 2}
+  _shellDefence: {fileID: 11400000, guid: c387a4b4e0e0c3c418dffcba332a01d5, type: 2}
   idleState: {fileID: 0}
   chaseState: {fileID: 0}
   moveState: {fileID: 0}
   attackState: {fileID: 0}
   unconsciousState: {fileID: 0}
   inEngageState: {fileID: 0}
+  shellDefence: {fileID: 0}
   currentStateName: 
 --- !u!195 &704807867129404301
 NavMeshAgent:
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d001163a0ebac48b98a5cd36261ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Character::CharacterTargetsVault
-  _selectedTarget: {fileID: 0}
+  _selectedTargetGO: {fileID: 0}
   _waypoint: {x: 0, y: 0, z: 0}
   _whoIsYourEnemy: 1
   logging: 1

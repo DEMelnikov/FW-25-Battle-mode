@@ -22,10 +22,8 @@ MonoBehaviour:
     trueState: 0
     isInfluenceCharacterGlobalGoal: 0
     setNewGlobalGoal: 3
-    setIdleState: 0
   - description: 
-    decision: {fileID: 11400000, guid: 4f795b1a6b741ec4c9f98175cdfdef54, type: 2}
+    decision: {fileID: 11400000, guid: 2e35b4d2485dfa343bbeb3b9c3f44c38, type: 2}
     trueState: 0
-    isInfluenceCharacterGlobalGoal: 0
+    isInfluenceCharacterGlobalGoal: 1
     setNewGlobalGoal: 3
-    setIdleState: 1
