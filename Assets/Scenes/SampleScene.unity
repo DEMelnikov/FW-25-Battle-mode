@@ -369,8 +369,9 @@ MonoBehaviour:
   toSetEnemy: {fileID: 878806293192145506}
   abilityToTest: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   triggerToTest: {fileID: 11400000, guid: 7901f510e08c2214184e279e7b6643f2, type: 2}
-  _statToSetValue: 8
+  _statToSetValue: 1
   _newValue: 10
+  _newValueViaNodifier: -50
   _costToTest: {fileID: 11400000, guid: 643fdf77429f03346aa3dfb09f118a00, type: 2}
   _actionToTest: {fileID: 11400000, guid: e24058b01af7b9745b3c20c0c30dfc52, type: 2}
   _resolveToTest: {fileID: 11400000, guid: a17303255fa1ec84382a8a27cda73a38, type: 2}
@@ -2302,6 +2303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76334f2ae63190a41b5b5a03b56547db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
+  _coupDeGraceSettings: 0
   _weaponRange: 2
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2
@@ -2390,8 +2392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logging: 1
-  AabilitiesATStart:
-  - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
+  abilitiesPacks: []
   _initialAttackability: {fileID: 0}
   _initialDefenceAbility: {fileID: 0}
 --- !u!114 &904469791
@@ -4459,6 +4460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76334f2ae63190a41b5b5a03b56547db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
+  _coupDeGraceSettings: 0
   _weaponRange: 2
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2
@@ -4547,7 +4549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logging: 0
-  AabilitiesATStart: []
+  abilitiesPacks: []
   _initialAttackability: {fileID: 0}
   _initialDefenceAbility: {fileID: 0}
 --- !u!114 &1971976395
@@ -5200,6 +5202,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1528280980784431842, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: logging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528280980784431842, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
       propertyPath: _initialDefenceAbility
       value: 
       objectReference: {fileID: 11400000, guid: dff1d1f89f250c545aa99f59e078f1af, type: 2}
@@ -5219,6 +5225,10 @@ PrefabInstance:
       propertyPath: 'AabilitiesATStart.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: 07135777b4b4ea94b815603d2da19945, type: 2}
+    - target: {fileID: 2069265361314126729, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
+      propertyPath: _baseAttackInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2498684146753102151, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5
@@ -5473,10 +5483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logging: 0
-  AabilitiesATStart:
-  - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
-  - {fileID: 11400000, guid: 07135777b4b4ea94b815603d2da19945, type: 2}
-  - {fileID: 11400000, guid: 529c5dd05716b9c4ca8cc2ba1d588e58, type: 2}
+  abilitiesPacks:
+  - {fileID: 11400000, guid: 889a54556f23e094393130e867c030da, type: 2}
   _initialAttackability: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _initialDefenceAbility: {fileID: 11400000, guid: dff1d1f89f250c545aa99f59e078f1af, type: 2}
 --- !u!195 &7723458236203311626
@@ -5531,6 +5539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76334f2ae63190a41b5b5a03b56547db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Character::BehaviorProfile
+  _coupDeGraceSettings: 0
   _weaponRange: 3
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _baseAttackInterval: 2

@@ -20,6 +20,7 @@ MonoBehaviour:
   logging: 1
   triggers:
   - {fileID: 11400000, guid: e42643d2389e5e749bff994135d25080, type: 2}
+  - {fileID: 11400000, guid: 168972080aaddc64e8ac5ce6c9926ec8, type: 2}
   costs: []
   _targeting: 0
   _targetRadius: 0
@@ -28,4 +29,7 @@ MonoBehaviour:
   resolves:
   - {fileID: 11400000, guid: 9d8459483ed884a4d8062db8d0e12486, type: 2}
   abilityTags: 04000000
-  _statToSubscribe: 1
+  subscribeToStats: 1
+  subscribeFSM: 0
+  _statsToSubscribe: 01000000
+  _statesToSubscribe: 

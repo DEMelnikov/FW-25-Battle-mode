@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a660fc801cd294caa4e33a714a7c4d, type: 3}
   m_Name: IsNotUnconscious
   m_EditorClassIdentifier: TriggersCollection::FSMStateCheck
-  _description: 
+  _description: Not Uncosns = TRUE
   _name: 
   _targeting: 0
-  logging: 1
-  _statesToCheck: 
-  _mustContainState: 1
+  logging: 0
+  _statesToCheck: 04000000
+  _mustContainState: 0

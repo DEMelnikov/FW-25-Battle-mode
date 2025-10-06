@@ -2,7 +2,7 @@ using UnityEditorInternal;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
+public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
 {
     [SerializeField] private GameObject _selectedTarget;
     [SerializeField] private ICharacter _targetEnemyChararacter;
@@ -13,40 +13,51 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     [SerializeField] private float enemyActualDistance;
     [SerializeField] private float wpActualDistance;
                      private IStateMachine _sm;
+                     private BehaviorProfile _behaviorProfile;
     void Awake()
     {
-        _sm = GetComponent<IStateMachine>();//.GetStateMachine();
-        
-        //if (_sm != null ) Debug.LogWarning($" Awake in TargetsVault {_sm.GetGameObject().name}");
+
     }
 
-    //public float ActualEnemyDistance { get => enemyActualDistance; set => enemyActualDistance = value; }
-
-    public float ActualEnemyDistance
+    private void OnDestroy()
     {
-        get
-        {
-            // Вызов дополнительной функции перед возвратом значения
-            UpdateDistanceTargetEnemy();
-            return enemyActualDistance;
-        }
-        set
-        {
-            enemyActualDistance = value;
-        }
+        UnSubscribetToTargetsFSM();
     }
 
+    public void Initialize()
+    {
+        _sm = GetComponent<IStateMachine>();
+        _behaviorProfile = GetComponent<BehaviorProfile>();
+    }
 
+    private void SubscribetToTargetsFSM()
+    {
+        if (!TryGetTargetCharacter(out var _targetChararacter)) return;
+
+        _targetChararacter.StateMachine.OnStateChangedFSM += OnTargetsFSMStateChanged;
+    }
+
+    private void UnSubscribetToTargetsFSM()
+    {
+        if (!TryGetTargetCharacter(out var _targetChararacter)) return;
+
+        _targetChararacter.StateMachine.OnStateChangedFSM -= OnTargetsFSMStateChanged;
+    }
+
+    public void OnTargetsFSMStateChanged(FSMStates oldState, FSMStates newState)
+    {
+        Debug.LogWarning($"{this.gameObject.name} - oppoenet changed State to {newState}");
+    }
 
 
 
     #region Target Enemy methods
 
     /// <summary>
-    /// Проверяет валидность целевого врага.
-    /// Возвращает true, если цель валидна, иначе false.
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ true, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ false.
     /// </summary>
-    /// <returns>bool — результат проверки, out ICharacter </returns>
+    /// <returns>bool пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, out ICharacter </returns>
     public bool TryGetTargetCharacter(out ICharacter targetICharacter)
     {
         targetICharacter = null;
@@ -144,7 +155,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         return false;
     }
 
-    // Обновленный HasTargetEnemy - теперь без побочных эффектов!
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HasTargetEnemy - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!
     public bool HasTargetEnemy()
     {
         return ValidateTargetEnemy();
@@ -167,6 +178,7 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         if (targetCharacter.SceneObjectTag == _whoIsYourEnemy)
         {
             _selectedTarget = target;
+            SubscribetToTargetsFSM();
             if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_selectedTarget.name}");
         }
         else if (logging)
@@ -192,8 +204,9 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
             _targetEnemyChararacter = target;
             if (logging) Debug.Log($"{gameObject.name} Get new Alive Target {_targetEnemyChararacter.ObjName}");
 
-            //TODO убрать потом
+            //TODO пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             SetTargetEnemy(target.GetGameObject);
+            SubscribetToTargetsFSM();
         }
         else if (logging)
         {
@@ -242,6 +255,8 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
     #endregion
 
     #region Universal
+
+
     public Vector3 GetCoordinates()
     {
         switch (GetCharacterGoal())
@@ -276,6 +291,20 @@ public class CharacterTargets : MonoBehaviour, ICharacterTargetsVault
         if (_selectedTarget != null) UpdateDistanceTargetEnemy();
         if (_waypoint != Vector3.zero) UpdateDistanceWayPoint();
     }
-    
+
     #endregion
+
+    public float ActualEnemyDistance
+    {
+        get
+        {
+            // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            UpdateDistanceTargetEnemy();
+            return enemyActualDistance;
+        }
+        set
+        {
+            enemyActualDistance = value;
+        }
+    }
 }

@@ -28,4 +28,7 @@ MonoBehaviour:
   resolves:
   - {fileID: 11400000, guid: a17303255fa1ec84382a8a27cda73a38, type: 2}
   abilityTags: 04000000
-  _statToSubscribe: 1
+  subscribeToStats: 1
+  subscribeFSM: 0
+  _statsToSubscribe: 01000000
+  _statesToSubscribe: 

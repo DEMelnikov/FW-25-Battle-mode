@@ -17,7 +17,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     private IStateMachine _stateMachine;
     private CharacterStatsController _statsController;
     private IAbilityController _abilityController;
-    private CharacterTargets _targets;
+    private CharacterTargetsVault _targets;
     private NavMeshAgent _navMeshAgent;
     private IBehaviorProfile _behaviorProfile;
     [SerializeField] private bool _inEngage;
@@ -36,22 +36,27 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         InitializeFromSettings();
 
         _abilityController = GetComponent<IAbilityController>();
-        _abilityController.Initialize();
 
         animator = GetComponentInChildren<Animator>();//GetComponentIn<Animator>();
         if (animator == null) Debug.LogError("No Animator");
 
         _stateMachine = GetComponent<IStateMachine>();
-        _stateMachine.Initialize();
-        //_stateMachine.CharacterGlobalState = CharacterGlobalState.Idle;
 
-        _targets = GetComponent<CharacterTargets>();
+
+        _targets = GetComponent<CharacterTargetsVault>();
         _behaviorProfile = GetComponent<BehaviorProfile>();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
         if (_navMeshAgent == null) { Debug.Log("NO _navMeshAgent CONTROLLER"); } else { if (logging) Debug.Log("_navMeshAgent is on"); }
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
+
+
+        _abilityController.Initialize();
+        _stateMachine.Initialize();
+        _targets.Initialize();
+
+
 
         //agent.SetDestination(new Vector3(0, 0, transform.position.z));
 
@@ -96,7 +101,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public IStateMachine StateMachine { get => _stateMachine; } //private set => _stateMachine = value as Stat; }
     public IAbilityController AbilityController { get => _abilityController; }
     public Animator Animator { get=> animator;  }
-    public ICharacterTargetsVault TargetsVault { get => _targets; private set => _targets = value as CharacterTargets; }
+    public ICharacterTargetsVault TargetsVault { get => _targets; private set => _targets = value as CharacterTargetsVault; }
     public Transform transform => this.gameObject.transform;
     public GameObject GetGameObject => this.gameObject;
     public string ObjName => gameObject.name;

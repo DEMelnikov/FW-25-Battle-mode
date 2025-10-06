@@ -8,6 +8,8 @@ public interface IStateMachine
     CharacterGlobalState CharacterGoal { get; set; }
     GameObject GetGameObject();
     FSMStates CurrentStateFSM {  get; }
+    event System.Action<FSMStates, FSMStates> OnStateChangedFSM;
+
 
 }
 

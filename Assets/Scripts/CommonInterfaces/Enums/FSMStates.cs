@@ -7,5 +7,5 @@ public enum FSMStates
     MOVE,
     ATTACK,
     UNCONSCIOUS,
-    INENGAGE
+    INENGAGE,
 }

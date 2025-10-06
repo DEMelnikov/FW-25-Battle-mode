@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.CullingGroup;
 
 //version 2.0
 public class StateMachine : MonoBehaviour, IStateMachine
@@ -14,6 +15,7 @@ public class StateMachine : MonoBehaviour, IStateMachine
     [SerializeReference] private CharacterGlobalState _characterGoal = CharacterGlobalState.Idle;
     [SerializeReference] private bool logging = false;
 
+                         public event System.Action<FSMStates, FSMStates> OnStateChangedFSM; // (previousState, newState)
 
     [Header("Initial States")]
     [SerializeField] private State _idleState;
@@ -109,7 +111,6 @@ public class StateMachine : MonoBehaviour, IStateMachine
                 unconsciousState = Instantiate(value);
         }
     }
-
     public State InEngageState
     {
         get => inEngageState;
@@ -163,9 +164,17 @@ public class StateMachine : MonoBehaviour, IStateMachine
         if (newState == null || newState == _currentState)
             return;
 
+        State previousState = _currentState;
+        FSMStates previousStateType = previousState?.StateType ?? default(FSMStates); //on case FSMStates == null
+
         _currentState?.OnExit(this);
         _currentState = newState;
         currentStateName = newState.name;
+
+        // Вызываем события после смены состояния
+        //OnStateChanged?.Invoke(previousState, newState);
+        OnStateChangedFSM?.Invoke(previousStateType, newState.StateType);
+
         _currentState?.OnEnter(this);
     }
 
@@ -194,6 +203,25 @@ public class StateMachine : MonoBehaviour, IStateMachine
         if (_currentState != null)
         {
             _currentState.OnFixedUpdate(this);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        ClearAllSubscribers();
+    }
+
+    public void ClearAllSubscribers()
+    {
+        //_onStateChanged = null;
+        OnStateChangedFSM = null;
+        //_onStateEnter = null;
+        //_onStateExit = null;
+
+        // Логирование для отладки
+        if (logging)
+        {
+            Debug.Log($"{gameObject.name}: StateMachine cleared all subscribers");
         }
     }
 
