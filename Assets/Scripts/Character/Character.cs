@@ -107,7 +107,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
     public string ObjName => gameObject.name;
     public bool InEngage { get => _inEngage; set => _inEngage = value; }
     public NavMeshAgent GetNavMeshAgent() => _navMeshAgent;
-    public IBehaviorProfile GetBehaviorProfile() => _behaviorProfile;
+    public IBehaviorProfile BehaviorProfile { get => _behaviorProfile; } 
     public void UnderMeleAttack(ICharacter agressor)
     {
         _inEngage = true;

@@ -29,7 +29,7 @@ public class ApproachTargetEnemyState_WTSO : State
         _targetsVault    = owner.TargetsVault;
         _statsController = owner.StatController;
         _navMeshAgent    = owner.GetNavMeshAgent();
-        _behaviorProfile = owner.GetBehaviorProfile();
+        _behaviorProfile = owner.BehaviorProfile;
 
         //if( !_targetsVault.TryGetTargetEnemyTransform(out _targetTransform))
         //{

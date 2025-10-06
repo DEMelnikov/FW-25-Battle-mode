@@ -13,7 +13,7 @@ public class Temp_AttackState_WTSO : StateWithPause
     public override void OnEnter(StateMachine machine)
     {
         base.OnEnter(machine);
-        behaviorProfile = owner.GetBehaviorProfile();
+        behaviorProfile = owner.BehaviorProfile;
         targetsVault = owner.TargetsVault;
 
         attackTimer = new TimerTrigger(

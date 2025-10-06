@@ -5,8 +5,9 @@ using EditorAttributes;
 [DisallowMultipleComponent]
 public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
 {
-    [SerializeField]  private GameObject _selectedTargetGO; //For Inspector purpose only
+    [SerializeField] private GameObject _selectedTargetGO; //For Inspector purpose only
     [SerializeField] private ICharacter _targetEnemyChararacter;
+                     private Character owner;
 
     [SerializeField] private Vector3 _waypoint = Vector3.zero;
     [SerializeField] private SceneObjectTag _whoIsYourEnemy = SceneObjectTag.Enemy;
@@ -33,7 +34,8 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
 
     public void Initialize()
     {
-        _sm = GetComponent<Character>().StateMachine;
+        owner = GetComponent<Character>();
+        _sm = owner.StateMachine;
         _behaviorProfile = GetComponent<BehaviorProfile>();
     }
 
@@ -66,7 +68,11 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
     public void OnTargetsFSMStateChanged(FSMStates oldState, FSMStates newState)
     {
         Debug.LogWarning($"{this.gameObject.name} - oppoenet changed State to {newState}");
+        if(CheckMercyByCoupDeGraceSetting()) CleanTargetEnemyCharacter();
+
     }
+
+    
 
     #endregion
 
@@ -199,6 +205,8 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
 
     public void CleanTargetEnemyCharacter()
     {
+        //if(_targetEnemyChararacter == null) return;
+
         ICharacter previousTarget = _targetEnemyChararacter;
 
         if (previousTarget != null)
@@ -306,5 +314,14 @@ public class CharacterTargetsVault : MonoBehaviour, ICharacterTargetsVault
         {
             enemyActualDistance = value;
         }
+    }
+
+    public bool CheckMercyByCoupDeGraceSetting()
+    {
+        var CDG = owner.BehaviorProfile.CoupDeGraceSettings;
+
+        if(_targetEnemyChararacter.StateMachine.CurrentStateFSM == FSMStates.UNCONSCIOUS && CDG == CoupDeGrace.NoAttackUnconscious) return true;
+        
+        return false;
     }
 }

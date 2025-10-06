@@ -29,41 +29,12 @@ public class Unconscious : State
         //owner = machine.Context.Owner.GetComponent<Character>();
         //owner = machine.Character;
         machine.CharacterGoal = CharacterGlobalState.UNCONSCIOUS;
-        //_targetsVault = owner.GetTargetsVault();
-        //_statsController = owner.GetStatsController();
-        //_navMeshAgent = owner.GetNavMeshAgent();
-        //_behaviorProfile = owner.GetBehaviorProfile();
+        owner.TargetsVault.CleanTargetEnemyCharacter();
 
-        //if( !_targetsVault.TryGetTargetEnemyTransform(out _targetTransform))
-        //{
-        //    if (logging) Debug.Log($"{this.name} - can't get enemy Transform");
-        //    machine.SetState(_whenLooseTargetState);
-        //}
-
-        //_currentTargetCoordinates = _targetsVault.GetCoordinates();
-
-        //_navMeshAgent.SetDestination(_currentTargetCoordinates);
-
-        //_navMeshAgent.speed = 2f;          // Скорость движения
-        //_navMeshAgent.angularSpeed = 120f; // Скорость поворота
-        //_navMeshAgent.acceleration = 8f;   // Ускорение
-        //_navMeshAgent.stoppingDistance = 1f; // Дистанция остановки
-        //_navMeshAgent.isStopped = PauseManager.IsPaused;
 
         SetAnimation();
 
-        //// Подписываемся на событие паузы
-        //SubscribeToPauseEvents();
 
-        //energyLoseTrigger = new TimerTrigger(
-        //    duration: 1f, // Например, 1 секунда
-        //    onTick: () => OnTimerTick(),
-        //    onStart: null,
-        //    onComplete: null,
-        //    looped: true);
-
-        //energyLoseTrigger.Start();
-        //if (_energyCost == null) Debug.LogError($"{owner.gameObject.name}.{this.name} has no ABilityCost");
     }
 
     public override void OnExit(StateMachine machine)

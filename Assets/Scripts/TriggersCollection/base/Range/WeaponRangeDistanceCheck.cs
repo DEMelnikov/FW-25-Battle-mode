@@ -17,7 +17,7 @@ public class WeaponRangeDistanceCheck : Trigger
 
         _actualDistance = character.TargetsVault.ActualEnemyDistance;
 
-        _weaponRange = character.GetBehaviorProfile().WeaponRange;
+        _weaponRange = character.BehaviorProfile.WeaponRange;
         if (_weaponRange < 0) return false;
 
         //Vector3 enemyPosition = enemy.transform.position;

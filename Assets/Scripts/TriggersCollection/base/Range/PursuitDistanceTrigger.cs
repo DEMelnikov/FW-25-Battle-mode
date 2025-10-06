@@ -14,7 +14,7 @@ public class PursuitDistanceTrigger : Trigger
         if (logging) Debug.Log($"Check trigger PursuitDistanceTrigger started {_relationType} mode");
 
         if (!character.TargetsVault.TryGetTargetCharacter(out ICharacter enemy)) return false;
-        _targetDistance = character.GetBehaviorProfile().PursuitDistance;
+        _targetDistance = character.BehaviorProfile.PursuitDistance;
         if(_targetDistance < 0) return false;
 
         Vector3 enemyPosition = enemy.transform.position;

@@ -12,7 +12,7 @@ public interface ICharacter
     //public virtual void SetSelectedTarget(GameObject target) { }
     public SceneObjectTag SceneObjectTag { get; }
     NavMeshAgent GetNavMeshAgent();
-    IBehaviorProfile GetBehaviorProfile();
+    IBehaviorProfile BehaviorProfile { get; }
     IStateMachine StateMachine { get; }
     bool InEngage {  get; }
     void UnderMeleAttack(ICharacter agressor);
