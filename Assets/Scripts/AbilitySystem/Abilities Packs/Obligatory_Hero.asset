@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7cdef7b4e00014d868ccd2d3754de8, type: 3}
+  m_Name: Obligatory_Hero
+  m_EditorClassIdentifier: AbilitySystem::AbilitiesPack
+  abilities:
+  - {fileID: 11400000, guid: 529c5dd05716b9c4ca8cc2ba1d588e58, type: 2}
+  - {fileID: 11400000, guid: 88123b98dfafe1a4190d87c4e8f4c54c, type: 2}
+  - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
+  - {fileID: 11400000, guid: 07135777b4b4ea94b815603d2da19945, type: 2}

@@ -206,10 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logging: 1
-  AabilitiesATStart:
-  - {fileID: 11400000, guid: 529c5dd05716b9c4ca8cc2ba1d588e58, type: 2}
-  - {fileID: 11400000, guid: 349e4c3dbfc3b0543b8e2fa3b2aad7d2, type: 2}
-  - {fileID: 11400000, guid: 07135777b4b4ea94b815603d2da19945, type: 2}
+  abilitiesPacks:
+  - {fileID: 11400000, guid: 889a54556f23e094393130e867c030da, type: 2}
   _initialAttackability: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   _initialDefenceAbility: {fileID: 11400000, guid: dff1d1f89f250c545aa99f59e078f1af, type: 2}
 --- !u!114 &1282041725716576328

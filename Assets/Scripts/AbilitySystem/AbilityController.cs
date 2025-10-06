@@ -11,7 +11,9 @@ public class AbilityController : MonoBehaviour, IAbilityController
 {
                      private ICharacter    character;
     [SerializeField] private bool          logging            = false;
-    [SerializeField] private List<Ability> AabilitiesATStart  = new();
+    //[SerializeField] private bool debug = false;
+    //[SerializeField] private List<Ability> AabilitiesATStart  = new();
+    [SerializeField] private List<AbilitiesPack> abilitiesPacks  = new();
 
     [Header("Attack Settings:")]
     [SerializeField] private Ability _initialAttackability;
@@ -56,9 +58,12 @@ public class AbilityController : MonoBehaviour, IAbilityController
 
         //Debug.LogError($"{character.GetGameObject.name} - in AabilitiesATStart {AabilitiesATStart.Count} abilities");
 
-        foreach (var ability in AabilitiesATStart) 
-        {        
-            InitAbility(ability);  
+        foreach (var pack in abilitiesPacks) 
+        {   
+            foreach (var ability in pack.Abilities)
+            {
+                InitAbility(ability);
+            }
         }
 
         if (_initialAttackability == null || _initialDefenceAbility == null) 
