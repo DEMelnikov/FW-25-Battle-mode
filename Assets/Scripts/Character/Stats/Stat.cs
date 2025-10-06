@@ -47,7 +47,7 @@ public class Stat:IStat
             if (oldValue != _lastCalculatedValue)
             {
                 //Debug.l
-                //Debug.Log("Should be invoke");
+                Debug.Log("Should be invoke");
                 OnValueChanged?.Invoke(this, oldValue, _lastCalculatedValue);
             }
 

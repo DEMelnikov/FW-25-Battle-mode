@@ -59,7 +59,7 @@ public class Ability : BaseAbility, IAbility
     public override bool CanAfford(ICharacter character)
     {
             
-        if (logging) { Debug.Log($"{character.GetGameObject.name} - Start check CanAfford at ability {abilityName}"); }
+        //if (logging) { Debug.Log($"{character.GetGameObject.name} - Start check CanAfford at ability {abilityName}"); }
         if (costs.Count==0)return true;
 
         foreach (var cost in costs)

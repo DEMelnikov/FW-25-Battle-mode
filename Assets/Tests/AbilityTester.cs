@@ -20,6 +20,7 @@ public class AbilityTester : MonoBehaviour
     [Header("Set Stat / checkModifiers")]
     [SerializeField] private StatTag _statToSetValue = StatTag.ENERGY;
     [SerializeField] private float   _newValue = 10f;
+    [SerializeField] private float   _newValueViaNodifier = 0f;
 
 
     [Header("Cost tests")]
@@ -112,6 +113,30 @@ public class AbilityTester : MonoBehaviour
     }
 
     [Button]
+    public void AddModifiertoStat()
+    {
+        //this.AddModifier();
+
+        var modifier = new StatModifier(
+            id: "Test",
+            source: "test",
+            targetStat: _statToSetValue,
+            value: _newValueViaNodifier,
+            type: StatModType.Flat
+            );
+
+        //healthStat.AddModifier(modifier);
+
+        IStat _getStat = character.StatController.GetStat(_statToSetValue);
+
+        Debug.Log($" Stat: {_getStat.Name}  value ={_getStat.Value} / {_getStat.BaseValue}");
+
+        _getStat.AddModifier(modifier);
+
+        //.AddModifier(modifier);//Stats[_statToSetValue].AddModifier(modifier);
+    }
+
+    [Button]
     public void TestCost()
     {
         _costToTest.PayAbilityCost(character);
@@ -136,29 +161,7 @@ public class AbilityTester : MonoBehaviour
         character.StatController.Stats[_statToSetValue].CheckAllPermanentModifiers();
     }
 
-    [Button]
-    public void AddModifiertoStat()
-    {
-        //this.AddModifier();
 
-        var modifier = new StatModifier(
-            id: "health_boost",
-            source: "potion",
-            targetStat: StatTag.Health,
-            value: 20f,
-            type: StatModType.Flat
-            );
-
-        //healthStat.AddModifier(modifier);
-
-        IStat _getStat = character.StatController.GetStat(_statToSetValue);
-
-        Debug.Log($" Stat: {_getStat.Name}  value ={_getStat.Value} / {_getStat.BaseValue}");
-
-        _getStat.AddModifier(modifier);
-
-        //.AddModifier(modifier);//Stats[_statToSetValue].AddModifier(modifier);
-    }
 
     [Button]
     public void PlayAnimation()
