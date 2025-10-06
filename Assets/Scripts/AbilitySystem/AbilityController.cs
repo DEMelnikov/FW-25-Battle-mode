@@ -93,8 +93,10 @@ public class AbilityController : MonoBehaviour, IAbilityController
         if (!abilityInstances.ContainsKey(originalability.GetName) || !timedAbilityInstances.ContainsKey(originalability.GetName) )
         {
             Ability clone = Instantiate(originalability);
+            
             clone.IniTialize(character);
-            clone.Subscribe(character);
+
+            if (clone.HasTag(AbilityTag.WITHSUBSCRIBE)) clone.Subscribe(character);
 
             if (clone.IsTimed)
             {

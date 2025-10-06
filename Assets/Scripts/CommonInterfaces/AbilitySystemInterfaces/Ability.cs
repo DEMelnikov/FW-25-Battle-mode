@@ -47,7 +47,7 @@ public class Ability : BaseAbility, IAbility
     }
 
     public bool HasTag(AbilityTag tag) => abilityTags.Contains(tag);
-    public List<AbilityTag> GetTags() => new List<AbilityTag>(abilityTags);
+    public List<AbilityTag> AbilityTags { get => abilityTags;  }
 
 
     public string GetName { get=>abilityName; }

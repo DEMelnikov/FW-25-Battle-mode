@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3701a9f828aa3674896752d19fe1246d, type: 3}
-  m_Name: Set New Target _NPC
+  m_Name: OLD - Set New Target _NPC
   m_EditorClassIdentifier: 
   isTimed: 0
   abilityName: Set New Target
