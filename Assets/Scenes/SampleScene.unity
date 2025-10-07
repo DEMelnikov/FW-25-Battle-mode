@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63de1ed3f60d1564399a64ecae364986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testingObject: {fileID: 878806293192145506}
+  testingObject: {fileID: 578513236}
   toSetEnemy: {fileID: 878806293192145506}
   abilityToTest: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
   triggerToTest: {fileID: 11400000, guid: 7901f510e08c2214184e279e7b6643f2, type: 2}
@@ -5217,7 +5217,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 07135777b4b4ea94b815603d2da19945, type: 2}
     - target: {fileID: 2069265361314126729, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
       propertyPath: _baseAttackInterval
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2498684146753102151, guid: 22452fdfb2fbc914a980b743fc6098d7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5516,7 +5516,7 @@ MonoBehaviour:
   _coupDeGraceSettings: 0
   _weaponRange: 3
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
-  _baseAttackInterval: 2
+  _baseAttackInterval: 15
   _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 10

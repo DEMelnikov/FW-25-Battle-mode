@@ -16,4 +16,9 @@ MonoBehaviour:
   stateId: 
   stateType: 6
   logging: 1
-  transitions: []
+  transitions:
+  - description: exit to IDLE
+    decision: {fileID: 11400000, guid: b87c3f9b16d428244be11ed4ef70010b, type: 2}
+    trueState: 0
+    isInfluenceCharacterGlobalGoal: 0
+    setNewGlobalGoal: 0

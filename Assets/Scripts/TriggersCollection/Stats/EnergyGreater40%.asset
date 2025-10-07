@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb42501267e94449adb1eace8f0b5f8, type: 3}
+  m_Name: EnergyGreater40%
+  m_EditorClassIdentifier: TriggersCollection::CheckStatValue_FloattMode
+  _description: Energy  Greater 40percent
+  _name: EnergyGreater10percent
+  _targeting: 0
+  logging: 0
+  _statToCheck: 1
+  _relationType: 2
+  isInPercantage: 1
+  _equalityTolerance: 0.5
+  _comapareWith: 40

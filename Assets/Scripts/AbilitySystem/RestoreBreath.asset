@@ -18,7 +18,8 @@ MonoBehaviour:
   icon: {fileID: 0}
   logging: 0
   triggers:
-  - {fileID: 11400000, guid: 85db6ef4e8edb164a89be5fd9112342d, type: 2}
+  - {fileID: 11400000, guid: 66a1c225e78066449a5299a5794928f3, type: 2}
+  - {fileID: 11400000, guid: f2e5bf0cb6a6b9f428cc7cedd2c234b9, type: 2}
   costs: []
   _targeting: 0
   _targetRadius: 0

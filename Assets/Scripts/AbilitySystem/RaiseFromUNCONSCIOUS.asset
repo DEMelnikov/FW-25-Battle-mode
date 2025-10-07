@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: RaiseFromUNCONSCIOUS
   description: Raise Character from Uncons to Idle - when EP is about X%
   icon: {fileID: 0}
-  logging: 1
+  logging: 0
   triggers:
   - {fileID: 11400000, guid: 0e6de407c5947924085d308574597368, type: 2}
   - {fileID: 11400000, guid: caa4f23cd646e304882e10907a2d83ad, type: 2}

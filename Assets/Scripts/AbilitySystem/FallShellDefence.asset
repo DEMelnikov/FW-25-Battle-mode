@@ -17,7 +17,7 @@ MonoBehaviour:
   description: test Ability with resolveBy Subscribe Fall to ShellDefence State when
     energy below X%
   icon: {fileID: 0}
-  logging: 1
+  logging: 0
   triggers:
   - {fileID: 11400000, guid: ec0dd23cc02694a44b09bfcd5bed08c8, type: 2}
   - {fileID: 11400000, guid: cb21fe6c53986a24e86c43d024cd4265, type: 2}

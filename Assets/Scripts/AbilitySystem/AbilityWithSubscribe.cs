@@ -74,7 +74,7 @@ public class AbilityWithSubscribe : Ability
     {
         if (logging)
         {
-            Debug.Log($"{abilityName}: Stat {stat.Name} changed from {oldValue} to {newValue}");
+            if(logging) Debug.Log($"{abilityName}: Stat {stat.Name} changed from {oldValue} to {newValue}");
         }
 
         //if (newValue<=0) 

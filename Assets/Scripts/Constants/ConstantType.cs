@@ -11,7 +11,7 @@ public enum ConstantType
     DefenceEnergyLimit,
 
     [ConstantInfo("Player", "Default price to defence roll", 0.5f)]
-    DefenceEnergyCost,
+    DefenceRollEnergyCost,
 
     [ConstantInfo("DC", "Default DC", 50f)]
     DefaultDC,

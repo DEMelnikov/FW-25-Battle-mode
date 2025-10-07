@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: AbilitySystem::SumStatsRoll
   _description: Makes x rolls by sum of list Stats - return outcom Success vs DC
     default or input DC
-  logging: 1
+  logging: 0
   stats: 02000000
   defaultDC: 3

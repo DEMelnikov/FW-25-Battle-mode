@@ -79,7 +79,7 @@ public class SumStatsRoll : AbilityAction
         {
             //var roll = Random.Range(0f, 100f);
             var roll = Random.Range(0f, Constants.RollDice);
-            if (logging) { Debug.Log($"{this.name}: Roll {i} result  = {roll} "); }
+            if (logging) { Debug.Log($"{character.ObjName} - {this.name}: Roll {i} result  = {roll} "); }
             if (roll >= DC) outcome++;
         }
 

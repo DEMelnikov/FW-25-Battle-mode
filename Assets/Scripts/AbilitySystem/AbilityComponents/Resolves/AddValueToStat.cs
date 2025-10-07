@@ -27,7 +27,7 @@ public class AddValueToStat : AbilityResolve
 
         //Debug.LogWarning($"Enemy Stats is TryGetComponent targetICharacter name  ");
 
-        if (logging) Debug.Log($"Resolve {this.name} check for multiplier:");
+        if (logging) Debug.Log($"{character.ObjName} - Resolve {this.name} check for multiplier:");
         if (useAditionalMultiplier)  multiplier = GetAditionalMultiplier(character); 
 
         enemyStats.Stats[_statName].AddToTmpModifier(outcome * _addValue * multiplier);

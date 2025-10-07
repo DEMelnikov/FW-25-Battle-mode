@@ -16,5 +16,5 @@ MonoBehaviour:
   _name: 
   _targeting: 0
   logging: 0
-  _statesToCheck: 00000000
+  _statesToCheck: 0000000006000000
   _mustContainState: 1

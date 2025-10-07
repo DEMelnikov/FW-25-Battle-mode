@@ -8,7 +8,7 @@ public class SumOfStatsAsMultiplerToConst : AbilityCost
     [SerializeField] private bool logging = true;
     [SerializeField] private StatTag _statToAddModifier =  StatTag.ENERGY;
     [SerializeField] private List<StatTag> _listStatsToSum = new();
-    [SerializeField] private ConstantType _constant = ConstantType.DefenceEnergyCost;
+    [SerializeField] private ConstantType _constant = ConstantType.DefenceRollEnergyCost;
     [SerializeField] private bool isSubtraction = true;
 
     public override bool PayAbilityCost(ICharacter character)

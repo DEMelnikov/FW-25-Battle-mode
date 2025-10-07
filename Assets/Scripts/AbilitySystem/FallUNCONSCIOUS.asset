@@ -17,7 +17,7 @@ MonoBehaviour:
   description: test Ability with resolveBy Subscribe Fall to Unconscious State when
     energy below 0
   icon: {fileID: 0}
-  logging: 1
+  logging: 0
   triggers:
   - {fileID: 11400000, guid: e42643d2389e5e749bff994135d25080, type: 2}
   - {fileID: 11400000, guid: 168972080aaddc64e8ac5ce6c9926ec8, type: 2}
