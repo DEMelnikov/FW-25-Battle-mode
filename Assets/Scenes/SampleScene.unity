@@ -5516,7 +5516,7 @@ MonoBehaviour:
   _coupDeGraceSettings: 0
   _weaponRange: 3
   _defaultAttackAbility: {fileID: 11400000, guid: a1266295d8b51d54db3201a857b37c7f, type: 2}
-  _baseAttackInterval: 15
+  _baseAttackInterval: 3
   _defaultDefenceAbility: {fileID: 0}
   pursuitDistance: 150
   walkEnergyCost: 10

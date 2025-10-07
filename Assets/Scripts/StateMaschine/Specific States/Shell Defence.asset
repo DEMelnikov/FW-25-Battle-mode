@@ -17,6 +17,13 @@ MonoBehaviour:
   stateType: 6
   logging: 1
   transitions:
+  - description: 'exit to Attack
+
+'
+    decision: {fileID: 11400000, guid: ff4ec7d5b0cdb8f4288902d5c98e91e7, type: 2}
+    trueState: 3
+    isInfluenceCharacterGlobalGoal: 1
+    setNewGlobalGoal: 0
   - description: exit to IDLE
     decision: {fileID: 11400000, guid: b87c3f9b16d428244be11ed4ef70010b, type: 2}
     trueState: 0

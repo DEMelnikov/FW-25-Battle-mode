@@ -9,12 +9,12 @@ public class AbilityWithSubscribe : Ability
 {
     [Header("Subscribe types:")]
     [SerializeField] private bool subscribeToStats = false;
-    [SerializeField] private bool subscribeFSM     = false;
+                     private bool subscribeFSM     = false;
 
     //TODO: возможно здесь будет List - сделать альтер
 
     [SerializeField] private List<StatTag> _statsToSubscribe = new();
-    [SerializeField] private List<FSMStates> _statesToSubscribe = new();
+                     private List<FSMStates> _statesToSubscribe = new();
     public override void IniTialize(ICharacter character)
     {
         base.IniTialize(character);
@@ -40,13 +40,29 @@ public class AbilityWithSubscribe : Ability
         base.Subscribe(character);
         if (character == null || IsSubscribed || !HasTag(AbilityTag.WITHSUBSCRIBE)) return;
 
-        foreach (var item in _statsToSubscribe) 
+        if (subscribeToStats)
         {
-            if (character.StatController.Stats.TryGetValue(item, out var foundStat))
+            foreach (var item in _statsToSubscribe)
             {
-                foundStat.OnValueChanged += OnStatValueChanged;
+                if (character.StatController.Stats.TryGetValue(item, out var foundStat))
+                {
+                    foundStat.OnValueChanged += OnStatValueChanged;
+                }
             }
         }
+
+        //TODO: SubscribeToFSM - Hero?
+
+        //if (subscribeFSM)
+        //{
+        //    foreach (var item in _statsToSubscribe)
+        //    {
+        //        if (character.StatController.Stats.TryGetValue(item, out var foundStat))
+        //        {
+        //            foundStat.OnValueChanged += OnStatValueChanged;
+        //        }
+        //    }
+        //}
 
 
 
@@ -67,6 +83,7 @@ public class AbilityWithSubscribe : Ability
             }
         }
 
+        
         IsSubscribed = false;
     }
 
@@ -79,6 +96,17 @@ public class AbilityWithSubscribe : Ability
 
         //if (newValue<=0) 
             EventHandler();
+    }
+
+    private void OnFSMStateChanged(FSMStates oldValue, FSMStates newValue)
+    {
+        if (logging)
+        {
+            if (logging) Debug.Log($"{abilityName}: State changed from {oldValue} to {newValue}");
+        }
+
+        //if (newValue<=0) 
+        EventHandler();
     }
 
     protected override void EventHandler()
