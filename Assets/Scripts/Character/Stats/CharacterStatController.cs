@@ -60,7 +60,8 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
     {
         calculatedStatFormulas = new Dictionary<StatTag, Func<float>>()
         {
-            { StatTag.ENERGY, () => Stats.ContainsKey(StatTag.ENDURANCE) ? Stats[StatTag.ENDURANCE].Value * 50f : 0f },
+            { StatTag.ENERGY, () => Stats.ContainsKey(StatTag.ENDURANCE) ? Stats[StatTag.ENDURANCE].Value * 
+                Constants.Get(ConstantType.SatsConvertorEnduranceToEnergy) : 0f },
             //{ StatTag.ViewRange, () => Stats.ContainsKey(StatTag.Attention) ? Stats[StatTag.Attention].BaseValue * 30f : 0f },
             // добавляйте новые расчетные статы здесь
         };

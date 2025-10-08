@@ -296,20 +296,43 @@ public class Stat : IStat
 
     public override string ToString()
     {
-        return $"{Name} ({Tag}): {Value}/{BaseValue} [Mods: {_permanentModifiers.Count + _timedModifiers.Count}]";
+        return $"{Name} ({Tag}): {Value}/{BaseValue} [Initial: {_initialBaseValue}, " +
+            $"Mods: {_permanentModifiers.Count + _timedModifiers.Count}, Limit: {LimitValueGreaterBase}]";
     }
 
     public string GetDebugInfo()
     {
         var sb = new StringBuilder();
-        sb.AppendLine($"Stat: {Name}, Value: {Value}, Base: {BaseValue}");
-        sb.AppendLine($"Permanent Modifiers: {_permanentModifiers.Count}");
-        foreach (var mod in _permanentModifiers)
-            sb.AppendLine($"  - {mod.Source}: {mod.Value} ({mod.Type})");
+        sb.AppendLine($"=== Stat: {Name} ===");
+        sb.AppendLine($"Tag: {Tag}");
+        sb.AppendLine($"Values: Current={Value:F2}, Base={BaseValue:F2}, Initial={_initialBaseValue:F2}");
+        sb.AppendLine($"Flags: LimitGreaterBase={LimitValueGreaterBase}, AlarmBelowZero={_alarmIfBelowZero}, IsDirty={_isDirty}");
+        sb.AppendLine($"Dynamic Formula: {(_dynamicBaseValueFormula != null ? "Yes" : "No")}");
 
-        sb.AppendLine($"Timed Modifiers: {_timedModifiers.Count}");
-        foreach (var mod in _timedModifiers)
-            sb.AppendLine($"  - {mod.Source}: {mod.Value} ({mod.Type})");
+        sb.AppendLine($"Permanent Modifiers ({_permanentModifiers.Count}):");
+        if (_permanentModifiers.Count > 0)
+        {
+            foreach (var mod in _permanentModifiers)
+                sb.AppendLine($"  - {mod.Source} ({mod.Id}): {mod.Value:F2} ({mod.Type})");
+        }
+        else
+        {
+            sb.AppendLine("  None");
+        }
+
+        sb.AppendLine($"Timed Modifiers ({_timedModifiers.Count}):");
+        if (_timedModifiers.Count > 0)
+        {
+            foreach (var mod in _timedModifiers)
+            {
+                string expired = mod.IsExpired ? " [EXPIRED]" : "";
+                sb.AppendLine($"  - {mod.Source} ({mod.Id}): {mod.Value:F2} ({mod.Type}){expired}");
+            }
+        }
+        else
+        {
+            sb.AppendLine("  None");
+        }
 
         return sb.ToString();
     }
