@@ -89,7 +89,7 @@ public class Stat : IStat
         _alarmIfBelowZero = alarmBelowZero;
         LimitValueGreaterBase = limitValueGreaterBase;
 
-        this.AddModifier(new StatModifier("tmp","default",tag,0,StatModType.Flat));
+        //this.AddModifier(new StatModifier("tmp","default",tag,0,StatModType.Flat));
     }
 
     public void AddModifier(StatModifier modifier)
@@ -188,7 +188,7 @@ public class Stat : IStat
         OnValueChanged?.Invoke(this, oldValue, _lastCalculatedValue);
     }
 
-    private const string TmpModifierId = "tmp";
+    private const string TmpModifierId = "tmp"; // for AddToTmpModifier method
 
     public void AddToTmpModifier(float tmpValue)
     {
