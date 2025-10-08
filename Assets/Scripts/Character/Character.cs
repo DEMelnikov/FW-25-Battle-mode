@@ -8,7 +8,6 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
 {
     [Header("Настройки")]
     [SerializeField] private CharacterSettings       _settings;
-    [SerializeField] private SO_CharacterStatsConfig _statsConfig;
     [SerializeField] private bool                    logging = false;
 
     //[SerializeField] private GameObject                _selectedTarget;
@@ -51,7 +50,7 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
 
-
+        _statsController.Initialize();
         _abilityController.Initialize();
         _stateMachine.Initialize();
         _targets.Initialize();
@@ -150,17 +149,6 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
             Debug.LogWarning("Character settings not assigned!", this);
             SceneObjectTag = SceneObjectTag.Hero;
             //TODO - убрать заглушку
-            //_selectedTarget = null;
-        }
-
-        if (_statsConfig != null)
-        {
-            _statsController.SOIntializeStats(_statsConfig);
-        }
-        else
-        {
-            Debug.LogWarning("Character starting stats not assigned!", this);
-            SceneObjectTag = SceneObjectTag.Hero;
             //_selectedTarget = null;
         }
     }

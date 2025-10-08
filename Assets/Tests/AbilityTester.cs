@@ -61,7 +61,7 @@ public class AbilityTester : MonoBehaviour
         //abilityToTest.TryActivateAbility(character, out int outcome);
         foreach(var item in character.StatController.Stats)
         {
-            Debug.Log($"{character.ObjName} - {item.Key} - {item.Value.Value} / {item.Value.BaseValue}");
+            Debug.Log($"{character.ObjName} - {item.Key} - {item.Value.Value} / {item.Value.BaseValue} type of LimitValueGreaterBase {item.Value.LimitValueGreaterBase} ");
         }
         
     }
@@ -129,7 +129,7 @@ public class AbilityTester : MonoBehaviour
 
         IStat _getStat = character.StatController.GetStat(_statToSetValue);
 
-        Debug.Log($" Stat: {_getStat.Name}  value ={_getStat.Value} / {_getStat.BaseValue}");
+        Debug.Log($" Stat: {_getStat.Name}  value ={_getStat.Value} / {_getStat.BaseValue}");// type of LimitValueGreaterBase {_getStat.LimitValueGreaterBase}");
 
         _getStat.AddModifier(modifier);
 
@@ -156,9 +156,22 @@ public class AbilityTester : MonoBehaviour
     }
 
     [Button]
-    public void CheckStatModifiers()
+    public void CheckStatInfo()
     {
-        character.StatController.Stats[_statToSetValue].CheckAllPermanentModifiers();
+        //Debug.Log("========= STAT Modifiers");
+        //character.StatController.Stats[_statToSetValue].CheckAllPermanentModifiers();
+
+        Debug.Log("========= Debug.info");
+        Debug.Log(character.StatController.GetStat(_statToSetValue).GetDebugInfo());
+
+        //Debug.Log("========= Debug.toString");
+        //Debug.Log(character.StatController.GetStat(_statToSetValue).ToString());
+        // Должно работать:
+
+        // Вывод: "Health (Health): 120.0/100.0 [Mods: 2]"
+
+
+
     }
 
 
