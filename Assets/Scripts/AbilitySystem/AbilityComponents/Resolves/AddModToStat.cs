@@ -36,11 +36,11 @@ public class AddModToStat : AbilityResolve
             bonus,
             _modType );
 
-        Debug.LogWarning($"Ready to add modifier to {_targetStat} now has  {stats.Stats[_targetStat].ModifiersCount()}");
+        Debug.LogWarning($"Ready to add modifier to {_targetStat} now has  {stats.GetStat(_targetStat).ModifiersCount()}");
         //if (statModifier != null) Debug.LogError("JOPA!");s
 
-        stats.Stats[_targetStat].AddModifier(statModifier);
-        Debug.LogWarning($"Finish add modifier to {_targetStat} now has  new value {stats.Stats[_targetStat].ModifiersCount()}");
+        stats.GetStat(_targetStat).AddModifier(statModifier);
+        Debug.LogWarning($"Finish add modifier to {_targetStat} now has  new value {stats.GetStat(_targetStat).ModifiersCount()}");
 
         if (logging) Debug.Log($" Resolve {this.name} to {_target.ObjName}'s {_targetStat} added bonus {bonus} with tag {_target.AbilityController.DefenceAbilityName} new " +
             $"{_targetStat} = {stats.Stats[_targetStat].Value} ");

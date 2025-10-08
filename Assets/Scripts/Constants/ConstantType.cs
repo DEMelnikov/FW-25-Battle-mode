@@ -20,9 +20,10 @@ public enum ConstantType
     SuccessDefenceCheckBonus,
 
     [ConstantInfo("Gameplay", "Default dice roll", 100f)]
-    MaxToRoll
+    MaxToRoll,
 
-
+    [ConstantInfo("Stats", "EDURANCE => ENERGY convertation", 50f)]
+    SatsConvertorEnduranceToEnergy
 
     //[ConstantInfo("Player", "Сила прыжка", 10f)]
     //JumpForce,

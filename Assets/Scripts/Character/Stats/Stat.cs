@@ -11,6 +11,7 @@ public class Stat : IStat
     public StatTag Tag { get; private set; }
 
     public bool LimitValueGreaterBase  { get; private set;}
+    private float _initialBaseValue;
 
     private Func<float> _dynamicBaseValueFormula;
     private float _baseValue;
@@ -81,15 +82,21 @@ public class Stat : IStat
         }
     }
 
-    public Stat(string name, StatTag tag, float baseValue, bool alarmBelowZero, bool limitValueGreaterBase)
+    public Stat(string name, StatTag tag, float baseValue, bool alarmBelowZero, bool limitValueGreaterBase, Func<float> baseValueFormula = null)
     {
         Name = name;
         Tag = tag;
-        BaseValue = baseValue;
+        _dynamicBaseValueFormula = baseValueFormula;
+        if (_dynamicBaseValueFormula != null)
+            _initialBaseValue = _dynamicBaseValueFormula();
+        else
+            _initialBaseValue = baseValue;
+
+        _baseValue = baseValue;  // для безопасности
         _alarmIfBelowZero = alarmBelowZero;
         LimitValueGreaterBase = limitValueGreaterBase;
 
-        this.AddModifier(new StatModifier("tmp","default",tag,0,StatModType.Flat));
+        _isDirty = true;
     }
 
     public void AddModifier(StatModifier modifier)
@@ -188,33 +195,51 @@ public class Stat : IStat
         OnValueChanged?.Invoke(this, oldValue, _lastCalculatedValue);
     }
 
+    private const string TmpModifierId = "tmp"; // for AddToTmpModifier method
+
     public void AddToTmpModifier(float tmpValue)
     {
-        _permanentModifiers[0].AddToValue(tmpValue);
+        // Ищем TMP-модификатор
+        var tmpModifier = _permanentModifiers.Find(m => m.Id == TmpModifierId);
+
+        if (tmpModifier != null)
+        {
+            // Обновляем значение модификатора
+            if (tmpModifier is StatModifier sm)
+            {
+                sm.AddToValue(tmpValue);
+            }
+            else
+            {
+                Debug.LogWarning("TMP modifier found but is not StatModifier");
+            }
+        }
+        else
+        {
+            // Создаем новый TMP модификатор и добавляем
+            var newTmp = new StatModifier(TmpModifierId, "default", Tag, tmpValue, StatModType.Flat);
+            AddModifier(newTmp);
+        }
+
         _isDirty = true;
-        CheckForInvoke() ;
+        CheckForInvoke();
     }
 
     private float CalculateFinalValue()
     {
-        float finalValue = BaseValue;
+        float finalValue = _initialBaseValue;  // используем фиксированное значение из инициализации
         float sumPercentAdd = 0;
         float productPercentMult = 1f;
 
-        // Обрабатываем все модификаторы (постоянные и временные)
         ProcessModifiers(_permanentModifiers, ref finalValue, ref sumPercentAdd, ref productPercentMult);
         ProcessModifiers(_timedModifiers, ref finalValue, ref sumPercentAdd, ref productPercentMult);
 
-        // Применяем PercentAdd
         finalValue *= 1 + sumPercentAdd / 100f;
-
-        // Применяем PercentMult
         finalValue *= productPercentMult;
 
-        // Ограничение значения не выше BaseValue
-        if (LimitValueGreaterBase) 
+        if (LimitValueGreaterBase && finalValue > BaseValue)
         {
-            if (finalValue > BaseValue) finalValue = BaseValue; 
+            finalValue = BaseValue;
         }
 
         return finalValue;
@@ -271,20 +296,43 @@ public class Stat : IStat
 
     public override string ToString()
     {
-        return $"{Name} ({Tag}): {Value}/{BaseValue} [Mods: {_permanentModifiers.Count + _timedModifiers.Count}]";
+        return $"{Name} ({Tag}): {Value}/{BaseValue} [Initial: {_initialBaseValue}, " +
+            $"Mods: {_permanentModifiers.Count + _timedModifiers.Count}, Limit: {LimitValueGreaterBase}]";
     }
 
     public string GetDebugInfo()
     {
         var sb = new StringBuilder();
-        sb.AppendLine($"Stat: {Name}, Value: {Value}, Base: {BaseValue}");
-        sb.AppendLine($"Permanent Modifiers: {_permanentModifiers.Count}");
-        foreach (var mod in _permanentModifiers)
-            sb.AppendLine($"  - {mod.Source}: {mod.Value} ({mod.Type})");
+        sb.AppendLine($"=== Stat: {Name} ===");
+        sb.AppendLine($"Tag: {Tag}");
+        sb.AppendLine($"Values: Current={Value:F2}, Base={BaseValue:F2}, Initial={_initialBaseValue:F2}");
+        sb.AppendLine($"Flags: LimitGreaterBase={LimitValueGreaterBase}, AlarmBelowZero={_alarmIfBelowZero}, IsDirty={_isDirty}");
+        sb.AppendLine($"Dynamic Formula: {(_dynamicBaseValueFormula != null ? "Yes" : "No")}");
 
-        sb.AppendLine($"Timed Modifiers: {_timedModifiers.Count}");
-        foreach (var mod in _timedModifiers)
-            sb.AppendLine($"  - {mod.Source}: {mod.Value} ({mod.Type})");
+        sb.AppendLine($"Permanent Modifiers ({_permanentModifiers.Count}):");
+        if (_permanentModifiers.Count > 0)
+        {
+            foreach (var mod in _permanentModifiers)
+                sb.AppendLine($"  - {mod.Source} ({mod.Id}): {mod.Value:F2} ({mod.Type})");
+        }
+        else
+        {
+            sb.AppendLine("  None");
+        }
+
+        sb.AppendLine($"Timed Modifiers ({_timedModifiers.Count}):");
+        if (_timedModifiers.Count > 0)
+        {
+            foreach (var mod in _timedModifiers)
+            {
+                string expired = mod.IsExpired ? " [EXPIRED]" : "";
+                sb.AppendLine($"  - {mod.Source} ({mod.Id}): {mod.Value:F2} ({mod.Type}){expired}");
+            }
+        }
+        else
+        {
+            sb.AppendLine("  None");
+        }
 
         return sb.ToString();
     }
