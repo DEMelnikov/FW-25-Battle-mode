@@ -30,7 +30,7 @@ public class AddValueToStat : AbilityResolve
         if (logging) Debug.Log($"{character.ObjName} - Resolve {this.name} check for multiplier:");
         if (useAditionalMultiplier)  multiplier = GetAditionalMultiplier(character); 
 
-        enemyStats.Stats[_statName].AddToTmpModifier(outcome * _addValue * multiplier);
+        enemyStats.GetStat(_statName).AddToTmpModifier(outcome * _addValue * multiplier);
 
         if (logging) Debug.Log($" Resolve {this.name} to {_target.GetGameObject.name}'s {_statName} added {outcome * _addValue * multiplier} with multiplier {multiplier}"); 
         //enemyStats.Stats[StatTag.ENERGY].AddToTmpModifier(outcome * _defaultDamage * heroStats.Stats[StatTag.Strength].Value * -1);
@@ -44,7 +44,7 @@ public class AddValueToStat : AbilityResolve
         var _target = GetTargetForAbility(character, _addStatOwner);
         var enemyStats = _target.StatController;
 
-        multiplier = enemyStats.Stats[_statNameAditional].Value;
+        multiplier = enemyStats.GetStat(_statNameAditional).Value;
 
         if (multiplier == 0 ) multiplier = 1f;
 

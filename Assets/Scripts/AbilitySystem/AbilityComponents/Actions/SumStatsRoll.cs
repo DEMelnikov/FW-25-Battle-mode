@@ -51,8 +51,8 @@ public class SumStatsRoll : AbilityAction
 
         foreach ( var item in stats)
         {
-            countRolls += charStats.Stats[item].Value;
-            if (logging) Debug.Log($"{this.name}: Got Stat: {item.ToString()} value = {charStats.Stats[item].Value} sumrolls: {countRolls}");
+            countRolls += charStats.GetStat(item).Value;
+            if (logging) Debug.Log($"{this.name}: Got Stat: {item.ToString()} value = {charStats.GetStat(item).Value} sumrolls: {countRolls}");
         }
 
         return  Mathf.RoundToInt(countRolls);
