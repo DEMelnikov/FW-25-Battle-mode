@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1032535c425e96e4b9b070b1be59dccc, type: 3}
+  m_Name: DefaultPrimalStatsConfig _Hero
+  m_EditorClassIdentifier: 
+  _stats:
+  - Name: Agility
+    Tag: 4
+    BaseValue: 3
+    HasAlarm: 0
+    hasBaseValueLimit: 1
+  - Name: Srength
+    Tag: 3
+    BaseValue: 5
+    HasAlarm: 1
+    hasBaseValueLimit: 1
+  - Name: Endurance
+    Tag: 2
+    BaseValue: 5
+    HasAlarm: 0
+    hasBaseValueLimit: 1

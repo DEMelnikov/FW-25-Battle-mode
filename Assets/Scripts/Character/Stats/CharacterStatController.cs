@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CharacterStatsController : MonoBehaviour, IStatsController
 {
+    [SerializeField] private SO_CharacterStatsConfig _primalStatsConfig;
+    [SerializeField] private SO_CharacterStatsConfig _secondaryStatsConfig;
+    [SerializeField] private SO_CharacterStatsConfig _calculatedStatsConfig;
     public Dictionary<StatTag, IStat> Stats { get; private set; } = new Dictionary<StatTag, IStat>();
 
     private void Awake()
@@ -16,18 +19,25 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
         UpdateAllTimedModifiers();
     }
 
-    private void InitializeStats()
+    public void Initialize()
     {
-        foreach (var stat in Stats.Values)
-        {
-            stat.OnValueChanged += HandleStatChanged;
-        }
+        Stats.Clear();
+
+        if (_primalStatsConfig     == null)   Debug.LogError($"{this.gameObject.name} primal stats empty");
+        SOIntializeStats(_primalStatsConfig);
+        if (_secondaryStatsConfig  == null)   Debug.LogError($"{this.gameObject.name} secondary stats empty");
+        SOIntializeStats(_secondaryStatsConfig);
+        if (_calculatedStatsConfig == null)   Debug.LogError($"{this.gameObject.name} calculated stats empty");
+        SOIntializeStats(_calculatedStatsConfig);
+
+        //foreach (var stat in Stats.Values)
+        //{
+        //    stat.OnValueChanged += HandleStatChanged;
+        //}
     }
 
     public void SOIntializeStats(SO_CharacterStatsConfig config)
     {
-        Stats.Clear();
-
         foreach (var statDef in config.Stats)
         {
             if (!Stats.ContainsKey(statDef.Tag))
