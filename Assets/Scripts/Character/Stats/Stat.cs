@@ -11,6 +11,7 @@ public class Stat : IStat
     public StatTag Tag { get; private set; }
 
     public bool LimitValueGreaterBase  { get; private set;}
+    private float _initialBaseValue;
 
     private Func<float> _dynamicBaseValueFormula;
     private float _baseValue;
@@ -81,15 +82,21 @@ public class Stat : IStat
         }
     }
 
-    public Stat(string name, StatTag tag, float baseValue, bool alarmBelowZero, bool limitValueGreaterBase)
+    public Stat(string name, StatTag tag, float baseValue, bool alarmBelowZero, bool limitValueGreaterBase, Func<float> baseValueFormula = null)
     {
         Name = name;
         Tag = tag;
-        BaseValue = baseValue;
+        _dynamicBaseValueFormula = baseValueFormula;
+        if (_dynamicBaseValueFormula != null)
+            _initialBaseValue = _dynamicBaseValueFormula();
+        else
+            _initialBaseValue = baseValue;
+
+        _baseValue = baseValue;  // для безопасности
         _alarmIfBelowZero = alarmBelowZero;
         LimitValueGreaterBase = limitValueGreaterBase;
 
-        //this.AddModifier(new StatModifier("tmp","default",tag,0,StatModType.Flat));
+        _isDirty = true;
     }
 
     public void AddModifier(StatModifier modifier)
@@ -220,24 +227,19 @@ public class Stat : IStat
 
     private float CalculateFinalValue()
     {
-        float finalValue = BaseValue;
+        float finalValue = _initialBaseValue;  // используем фиксированное значение из инициализации
         float sumPercentAdd = 0;
         float productPercentMult = 1f;
 
-        // Обрабатываем все модификаторы (постоянные и временные)
         ProcessModifiers(_permanentModifiers, ref finalValue, ref sumPercentAdd, ref productPercentMult);
         ProcessModifiers(_timedModifiers, ref finalValue, ref sumPercentAdd, ref productPercentMult);
 
-        // Применяем PercentAdd
         finalValue *= 1 + sumPercentAdd / 100f;
-
-        // Применяем PercentMult
         finalValue *= productPercentMult;
 
-        // Ограничение значения не выше BaseValue
-        if (LimitValueGreaterBase) 
+        if (LimitValueGreaterBase && finalValue > BaseValue)
         {
-            if (finalValue > BaseValue) finalValue = BaseValue; 
+            finalValue = BaseValue;
         }
 
         return finalValue;

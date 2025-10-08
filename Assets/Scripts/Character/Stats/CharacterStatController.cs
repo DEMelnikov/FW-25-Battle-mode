@@ -1,4 +1,5 @@
 using Mono.Cecil;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 //using static UnityEngine.Rendering.STP;
@@ -10,6 +11,7 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
     [SerializeField] private SO_CharacterStatsConfig _calculatedStatsConfig;
     [SerializeField] private bool logging;
     public Dictionary<StatTag, IStat> Stats { get; private set; } = new Dictionary<StatTag, IStat>();
+    private Dictionary<StatTag, Func<float>> calculatedStatFormulas;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
     public void Initialize()
     {
         Stats.Clear();
+        InitializeCalculatedStatFormulas();
+
 
         if (_primalStatsConfig     == null)   Debug.LogError($"{this.gameObject.name} primal stats empty");
         SOIntializeStats(_primalStatsConfig);
@@ -31,36 +35,38 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
         if (_calculatedStatsConfig == null)   Debug.LogError($"{this.gameObject.name} calculated stats empty");
         SOIntializeStats(_calculatedStatsConfig);
 
-        // Пример для двух расчетных статов:
-        if (Stats.ContainsKey(StatTag.ENERGY) && Stats.ContainsKey(StatTag.ENDURANCE))
-            Stats[StatTag.ENERGY].SetDynamicBaseValueFormula(() => Stats[StatTag.ENDURANCE].Value * 50f);
-
-
-        //if (Stats.ContainsKey(StatTag.ViewRange) && Stats.ContainsKey(StatTag.Attention))
-        //    Stats[StatTag.ViewRange].SetDynamicBaseValueFormula(() => Stats[StatTag.Attention].BaseValue * 30f);
-
-        //foreach (var stat in Stats.Values)
-        //{
-        //    stat.OnValueChanged += HandleStatChanged;
-        //}
     }
 
     public void SOIntializeStats(SO_CharacterStatsConfig config)
     {
         foreach (var statDef in config.Stats)
         {
-            if (!Stats.ContainsKey(statDef.Tag))
-            {
-                var newStat = new Stat(statDef.Name, statDef.Tag, statDef.BaseValue, statDef.HasAlarm, statDef.hasBaseValueLimit);
-                newStat.OnValueChanged += HandleStatChanged;
-                Stats.Add(statDef.Tag, newStat);
-            }
-            else
+            if (Stats.ContainsKey(statDef.Tag))
             {
                 Debug.LogWarning($"{this.gameObject.name} - Duplicate StatTag {statDef.Tag} in config!", this);
+                continue;
             }
+
+            Func<float> baseValueFormula = null;
+            calculatedStatFormulas?.TryGetValue(statDef.Tag, out baseValueFormula);
+
+            var newStat = new Stat(statDef.Name, statDef.Tag, statDef.BaseValue, statDef.HasAlarm, statDef.hasBaseValueLimit, baseValueFormula);
+            newStat.OnValueChanged += HandleStatChanged;
+            Stats.Add(statDef.Tag, newStat);
         }
     }
+
+    private void InitializeCalculatedStatFormulas()
+    {
+        calculatedStatFormulas = new Dictionary<StatTag, Func<float>>()
+        {
+            { StatTag.ENERGY, () => Stats.ContainsKey(StatTag.ENDURANCE) ? Stats[StatTag.ENDURANCE].Value * 50f : 0f },
+            //{ StatTag.ViewRange, () => Stats.ContainsKey(StatTag.Attention) ? Stats[StatTag.Attention].BaseValue * 30f : 0f },
+            // добавляйте новые расчетные статы здесь
+        };
+    }
+
+
 
 
     private void UpdateAllTimedModifiers()
