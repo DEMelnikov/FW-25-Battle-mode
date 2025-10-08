@@ -8,6 +8,7 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
     [SerializeField] private SO_CharacterStatsConfig _primalStatsConfig;
     [SerializeField] private SO_CharacterStatsConfig _secondaryStatsConfig;
     [SerializeField] private SO_CharacterStatsConfig _calculatedStatsConfig;
+    [SerializeField] private bool logging;
     public Dictionary<StatTag, IStat> Stats { get; private set; } = new Dictionary<StatTag, IStat>();
 
     private void Awake()
@@ -72,7 +73,7 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
 
     private void HandleStatChanged(IStat stat, float oldValue, float newValue)
     {
-        Debug.Log($"[{Time.time}] {this.gameObject.name} -  Stat {stat.Name} changed from {oldValue} to {newValue}");
+        if(logging) Debug.Log($"[{Time.time}] {this.gameObject.name} -  Stat {stat.Name} changed from {oldValue} to {newValue}");
     }
 
     public void LogingData()
