@@ -30,6 +30,14 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
         if (_calculatedStatsConfig == null)   Debug.LogError($"{this.gameObject.name} calculated stats empty");
         SOIntializeStats(_calculatedStatsConfig);
 
+        // Пример для двух расчетных статов:
+        if (Stats.ContainsKey(StatTag.ENERGY) && Stats.ContainsKey(StatTag.ENDURANCE))
+            Stats[StatTag.ENERGY].SetDynamicBaseValueFormula(() => Stats[StatTag.ENDURANCE].Value * 50f);
+
+
+        //if (Stats.ContainsKey(StatTag.ViewRange) && Stats.ContainsKey(StatTag.Attention))
+        //    Stats[StatTag.ViewRange].SetDynamicBaseValueFormula(() => Stats[StatTag.Attention].BaseValue * 30f);
+
         //foreach (var stat in Stats.Values)
         //{
         //    stat.OnValueChanged += HandleStatChanged;

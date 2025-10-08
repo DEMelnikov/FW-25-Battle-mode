@@ -8,12 +8,16 @@ public class Stat:IStat
 {
     public string Name { get; private set; }
     public StatTag Tag { get; private set; }
-    public float BaseValue { get; private set; }
-    public bool LimitValueGreaterBase  { get; private set;} 
+
+    public bool LimitValueGreaterBase  { get; private set;}
+
+    private Func<float> _dynamicBaseValueFormula;
+    private float _baseValue;
 
     private float _lastCalculatedValue;
     private bool _isDirty = true;
     private bool _alarmIfBelowZero = true;
+
     private List<IStatModifier> _permanentModifiers = new List<IStatModifier>();
     private List<ITimedStatModifier> _timedModifiers = new List<ITimedStatModifier>();
 
@@ -36,6 +40,18 @@ public class Stat:IStat
         }
     }
 
+    public float BaseValue
+    {
+        get => _dynamicBaseValueFormula != null ? _dynamicBaseValueFormula() : _baseValue;
+        private set { _baseValue = value; _isDirty = true; }
+    }
+
+    public void SetDynamicBaseValueFormula(Func<float> formula)
+    {
+        _dynamicBaseValueFormula = formula;
+        _isDirty = true;
+    }
+
     public void CheckForInvoke()
     {
         if (_isDirty)
@@ -54,7 +70,6 @@ public class Stat:IStat
             if (_alarmIfBelowZero && _lastCalculatedValue <= 0) { OnBelowZero?.Invoke(this,_lastCalculatedValue); }
         }
     }
-
 
     public Stat(string name, StatTag tag, float baseValue, bool alarmBelowZero, bool limitValueGreaterBase)
     {

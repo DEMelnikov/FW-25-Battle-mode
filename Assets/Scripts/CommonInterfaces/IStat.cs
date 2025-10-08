@@ -77,4 +77,6 @@ public interface IStat
     void TESTSSetValue(float newValue);
     void CheckAllPermanentModifiers();
     int ModifiersCount();
+    void SetDynamicBaseValueFormula(Func<float> formula);
+    bool LimitValueGreaterBase{get;}
 }
