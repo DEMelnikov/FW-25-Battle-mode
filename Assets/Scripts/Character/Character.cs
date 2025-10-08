@@ -57,15 +57,6 @@ public class Character : MonoBehaviour, ISelectableCharacter, ICharacter
         _targets.Initialize();
 
 
-
-        //agent.SetDestination(new Vector3(0, 0, transform.position.z));
-
-        //InitializeStateMachine();
-        //Transform child = transform.Find("SPUM_20240911215638389");
-        //if (child != null)
-        //{
-        //    animator = child.GetComponent<Animator>();
-        //}
     }
 
     void Update()

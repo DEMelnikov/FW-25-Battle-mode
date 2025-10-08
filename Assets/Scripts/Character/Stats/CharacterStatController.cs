@@ -9,24 +9,15 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
 
     private void Awake()
     {
-        //InitializeStats();
     }
 
     private void Update()
     {
         UpdateAllTimedModifiers();
-        //Debug.Log($"Stat {Stats[StatTag.Strength].Name} = {Stats[StatTag.Strength].Value} {Stats[StatTag.Strength].Tag}");
-
-       // Debug.Log( Stats["Strength"].Value);
     }
 
     private void InitializeStats()
     {
-        //Stats.Add(StatTag.Health, new CharacterStat("Health", StatTag.Health, 100f));
-        //Stats.Add(StatTag.Mana, new CharacterStat("Mana", StatTag.Mana, 50f));
-        //Stats.Add(StatTag.Strength, new Stat("Strength", StatTag.Strength, 5f,true));
-        //Stats.Add(StatTag.MovementSpeed, new CharacterStat("Movement Speed", StatTag.MovementSpeed, 5f));
-
         foreach (var stat in Stats.Values)
         {
             stat.OnValueChanged += HandleStatChanged;
@@ -68,10 +59,6 @@ public class CharacterStatsController : MonoBehaviour, IStatsController
 
     public void LogingData()
     {
-        //Debug.Log($"Stat {Stats[StatTag.Strength].Name} = {Stats[StatTag.Strength].Value} {Stats[StatTag.Strength].Tag}");
-        //Debug.Log($"Stat {Stats[StatTag.Health].Name} = {Stats[StatTag.Health].Value} {Stats[StatTag.Health].Tag}");
-        //Debug.Log($"Stat {Stats[StatTag.Energy].Name} = {Stats[StatTag.Energy].Value} {Stats[StatTag.Energy].Tag}");
-
         foreach (var stat in Stats) 
         {
             Debug.Log($"Stat {stat.Key} = {stat.Value.Value}");
