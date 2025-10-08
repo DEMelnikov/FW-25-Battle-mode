@@ -79,4 +79,6 @@ public interface IStat
     int ModifiersCount();
     void SetDynamicBaseValueFormula(Func<float> formula);
     bool LimitValueGreaterBase{get;}
+    string  GetDebugInfo();
+    string ToString();
 }

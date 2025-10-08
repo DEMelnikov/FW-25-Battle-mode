@@ -156,9 +156,22 @@ public class AbilityTester : MonoBehaviour
     }
 
     [Button]
-    public void CheckStatModifiers()
+    public void CheckStatInfo()
     {
-        character.StatController.Stats[_statToSetValue].CheckAllPermanentModifiers();
+        //Debug.Log("========= STAT Modifiers");
+        //character.StatController.Stats[_statToSetValue].CheckAllPermanentModifiers();
+
+        Debug.Log("========= Debug.info");
+        Debug.Log(character.StatController.GetStat(_statToSetValue).GetDebugInfo());
+
+        //Debug.Log("========= Debug.toString");
+        //Debug.Log(character.StatController.GetStat(_statToSetValue).ToString());
+        // Должно работать:
+
+        // Вывод: "Health (Health): 120.0/100.0 [Mods: 2]"
+
+
+
     }
 
 

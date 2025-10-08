@@ -1,10 +1,11 @@
 using Mono.Cecil;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Text;
 //using System.Diagnostics;
 using UnityEngine;
 
-public class Stat:IStat
+public class Stat : IStat
 {
     public string Name { get; private set; }
     public StatTag Tag { get; private set; }
@@ -36,6 +37,15 @@ public class Stat:IStat
             //    OnValueChanged?.Invoke(this, oldValue, _lastCalculatedValue);
             //}
             CheckForInvoke();
+
+            // ќграничение значени€ не выше BaseValue, если установлено
+            if (LimitValueGreaterBase && _lastCalculatedValue > BaseValue)
+            {
+                //_lastCalculatedValue = BaseValue;
+                _isDirty = true;
+                CheckForInvoke();
+            }
+
             return _lastCalculatedValue;
         }
     }
@@ -257,5 +267,25 @@ public class Stat:IStat
     public int ModifiersCount()
     {
         return _permanentModifiers.Count;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} ({Tag}): {Value}/{BaseValue} [Mods: {_permanentModifiers.Count + _timedModifiers.Count}]";
+    }
+
+    public string GetDebugInfo()
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine($"Stat: {Name}, Value: {Value}, Base: {BaseValue}");
+        sb.AppendLine($"Permanent Modifiers: {_permanentModifiers.Count}");
+        foreach (var mod in _permanentModifiers)
+            sb.AppendLine($"  - {mod.Source}: {mod.Value} ({mod.Type})");
+
+        sb.AppendLine($"Timed Modifiers: {_timedModifiers.Count}");
+        foreach (var mod in _timedModifiers)
+            sb.AppendLine($"  - {mod.Source}: {mod.Value} ({mod.Type})");
+
+        return sb.ToString();
     }
 }
