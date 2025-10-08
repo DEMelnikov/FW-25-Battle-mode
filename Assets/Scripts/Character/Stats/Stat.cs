@@ -188,11 +188,34 @@ public class Stat : IStat
         OnValueChanged?.Invoke(this, oldValue, _lastCalculatedValue);
     }
 
+    private const string TmpModifierId = "tmp";
+
     public void AddToTmpModifier(float tmpValue)
     {
-        _permanentModifiers[0].AddToValue(tmpValue);
+        // Ищем TMP-модификатор
+        var tmpModifier = _permanentModifiers.Find(m => m.Id == TmpModifierId);
+
+        if (tmpModifier != null)
+        {
+            // Обновляем значение модификатора
+            if (tmpModifier is StatModifier sm)
+            {
+                sm.AddToValue(tmpValue);
+            }
+            else
+            {
+                Debug.LogWarning("TMP modifier found but is not StatModifier");
+            }
+        }
+        else
+        {
+            // Создаем новый TMP модификатор и добавляем
+            var newTmp = new StatModifier(TmpModifierId, "default", Tag, tmpValue, StatModType.Flat);
+            AddModifier(newTmp);
+        }
+
         _isDirty = true;
-        CheckForInvoke() ;
+        CheckForInvoke();
     }
 
     private float CalculateFinalValue()
